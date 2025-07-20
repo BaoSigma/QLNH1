@@ -4,7 +4,8 @@
  */
 package DAO.impl;
 
-import DAO.ModelDAO.LoginDAO;
+
+import DAO.ModelDAO.NhanVienDAO;
 import Model.NhanVien;
 import Model.VaiTro;
 import Util.UQuery;
@@ -14,7 +15,7 @@ import java.util.List;
  *
  * @author User
  */
-public class Loginimpl implements LoginDAO{
+public class Loginimpl implements NhanVienDAO{
     private String findAllNhanVienSQL = "SELECT maNV, hoTen, namSinh, sdt, email, chucVu FROM Nhanvien";
     private String findNhanVienByIdSQL = findAllNhanVienSQL + " WHERE maNV = ?";
     private String updateNhanVienSQL = "UPDATE Nhanvien SET hoTen = ?, namSinh = ?, sdt = ?, email = ?, chucVu = ? WHERE maNV = ?";

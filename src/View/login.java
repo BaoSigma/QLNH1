@@ -5,11 +5,13 @@
 package View;
 
 import Controller.ModelController.LoginController;
-import DAO.ModelDAO.LoginDAO;
+import DAO.ModelDAO.NhanVienDAO;
+
 import DAO.impl.Loginimpl;
 import Model.NhanVien;
 import Util.UAuth;
 import Util.UDialog;
+import javax.swing.UIManager;
 
 
 /**
@@ -177,7 +179,7 @@ String username = txtUser.getText().trim();
         return;
     }
 
-        LoginDAO dao = new Loginimpl();
+        NhanVienDAO dao = new Loginimpl();
     NhanVien user = dao.findById(username);
 
     if (user == null) {

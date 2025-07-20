@@ -8,14 +8,14 @@ package View;
  *
  * @author micro
  */
-public class QuenMK extends javax.swing.JFrame {
+public class OTP extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(QuenMK.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(OTP.class.getName());
 
     /**
-     * Creates new form QuenMK
+     * Creates new form OTP
      */
-    public QuenMK() {
+    public OTP() {
         initComponents();
     }
 
@@ -30,15 +30,10 @@ public class QuenMK extends javax.swing.JFrame {
 
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        btnSignup1 = new javax.swing.JButton();
-        btnClose1 = new javax.swing.JButton();
-        btnLogin1 = new javax.swing.JButton();
-        txtPassNew = new javax.swing.JPasswordField();
         txtOTP = new javax.swing.JPasswordField();
         txtUser = new javax.swing.JTextField();
-        btnOTP = new javax.swing.JButton();
-        chkNewPass1 = new javax.swing.JCheckBox();
+        btnClose1 = new javax.swing.JButton();
+        btnLogin1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -49,71 +44,14 @@ public class QuenMK extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Barlow Condensed", 1, 30)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Tên đăng nhập:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
+        jLabel9.setText("Tên tài khoản:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, -1));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Barlow Condensed", 1, 30)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Mã OTP:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, -1, -1));
-
-        jLabel11.setFont(new java.awt.Font("Barlow Condensed", 1, 30)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Mật khẩu mới:");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, -1, -1));
-
-        btnSignup1.setBackground(new java.awt.Color(170, 120, 70));
-        btnSignup1.setFont(new java.awt.Font("Barlow Condensed", 1, 30)); // NOI18N
-        btnSignup1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSignup1.setText("Xác nhận");
-        btnSignup1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSignup1MouseClicked(evt);
-            }
-        });
-        btnSignup1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSignup1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSignup1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, 260, -1));
-
-        btnClose1.setBackground(new java.awt.Color(170, 120, 70));
-        btnClose1.setFont(new java.awt.Font("Barlow Condensed", 1, 30)); // NOI18N
-        btnClose1.setForeground(new java.awt.Color(255, 255, 255));
-        btnClose1.setText("Đóng");
-        btnClose1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnClose1MouseClicked(evt);
-            }
-        });
-        btnClose1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClose1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnClose1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 140, -1));
-
-        btnLogin1.setBackground(new java.awt.Color(170, 120, 70));
-        btnLogin1.setFont(new java.awt.Font("Barlow Condensed", 1, 30)); // NOI18N
-        btnLogin1.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogin1.setText("Quay lại");
-        btnLogin1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnLogin1MouseClicked(evt);
-            }
-        });
-        btnLogin1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogin1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 480, 160, -1));
-
-        txtPassNew.setBackground(new java.awt.Color(220, 220, 220));
-        txtPassNew.setFont(new java.awt.Font("Barlow Condensed", 1, 30)); // NOI18N
-        getContentPane().add(txtPassNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 310, -1));
+        jLabel8.setText("Email:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, -1, -1));
 
         txtOTP.setBackground(new java.awt.Color(220, 220, 220));
         txtOTP.setFont(new java.awt.Font("Barlow Condensed", 0, 30)); // NOI18N
@@ -128,24 +66,37 @@ public class QuenMK extends javax.swing.JFrame {
         txtUser.setFont(new java.awt.Font("Barlow Condensed", 0, 30)); // NOI18N
         getContentPane().add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 310, -1));
 
-        btnOTP.setBackground(new java.awt.Color(170, 120, 70));
-        btnOTP.setFont(new java.awt.Font("Barlow Condensed", 1, 20)); // NOI18N
-        btnOTP.setForeground(new java.awt.Color(255, 255, 255));
-        btnOTP.setText("Lấy mã OTP");
-        btnOTP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOTPActionPerformed(evt);
+        btnClose1.setBackground(new java.awt.Color(170, 120, 70));
+        btnClose1.setFont(new java.awt.Font("Barlow Condensed", 1, 30)); // NOI18N
+        btnClose1.setForeground(new java.awt.Color(255, 255, 255));
+        btnClose1.setText("Gửi lại mã");
+        btnClose1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnClose1MouseClicked(evt);
             }
         });
-        getContentPane().add(btnOTP, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 277, -1, -1));
+        btnClose1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClose1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnClose1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 200, -1));
 
-        chkNewPass1.setFont(new java.awt.Font("Barlow Condensed", 0, 30)); // NOI18N
-        chkNewPass1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkNewPass1ActionPerformed(evt);
+        btnLogin1.setBackground(new java.awt.Color(170, 120, 70));
+        btnLogin1.setFont(new java.awt.Font("Barlow Condensed", 1, 30)); // NOI18N
+        btnLogin1.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin1.setText("Xác nhận");
+        btnLogin1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogin1MouseClicked(evt);
             }
         });
-        getContentPane().add(chkNewPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 350, -1, -1));
+        btnLogin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogin1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 380, 190, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo-Photoroom.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -159,23 +110,18 @@ public class QuenMK extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Barlow Condensed", 1, 60)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("ĐẶT LẠI MẬT KHẨU");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1320, 110));
+        jLabel2.setText("LẤY MÃ OTP");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1320, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background đăng nhập.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSignup1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignup1MouseClicked
+    private void txtOTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOTPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSignup1MouseClicked
-
-    private void btnSignup1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignup1ActionPerformed
-        // TODO add your handling code here:
-        setPass();
-    }//GEN-LAST:event_btnSignup1ActionPerformed
+    }//GEN-LAST:event_txtOTPActionPerformed
 
     private void btnClose1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClose1MouseClicked
         // TODO add your handling code here:
@@ -195,24 +141,6 @@ public class QuenMK extends javax.swing.JFrame {
         new login().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnLogin1ActionPerformed
-
-    private void txtOTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOTPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtOTPActionPerformed
-
-    private void btnOTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOTPActionPerformed
-        // TODO add your handling code here:
-        new OTP().setVisible(true);
-    }//GEN-LAST:event_btnOTPActionPerformed
-
-    private void chkNewPass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNewPass1ActionPerformed
-        // TODO add your handling code here:
-        if (chkNewPass1.isSelected()) {
-            txtPassNew.setEchoChar((char) 0); // Hiện mật khẩu
-        } else {
-            txtPassNew.setEchoChar('●'); // Ẩn mật khẩu bằng dấu chấm
-        }
-    }//GEN-LAST:event_chkNewPass1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,24 +164,19 @@ public class QuenMK extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new QuenMK().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new OTP().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose1;
     private javax.swing.JButton btnLogin1;
-    private javax.swing.JButton btnOTP;
-    private javax.swing.JButton btnSignup1;
-    private javax.swing.JCheckBox chkNewPass1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField txtOTP;
-    private javax.swing.JPasswordField txtPassNew;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
