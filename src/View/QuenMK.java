@@ -4,12 +4,14 @@
  */
 package View;
 
+import javax.swing.UIManager;
+
 /**
  *
  * @author micro
  */
 public class QuenMK extends javax.swing.JFrame {
-    
+        NhanVienDAO dao = new LoginandSignupimpl();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(QuenMK.class.getName());
 
     /**
@@ -17,6 +19,7 @@ public class QuenMK extends javax.swing.JFrame {
      */
     public QuenMK() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -217,7 +220,7 @@ public class QuenMK extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) {S
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -237,7 +240,15 @@ public class QuenMK extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new QuenMK().setVisible(true));
-    }
+            public void run(){
+                try {
+                    UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatLightLaf());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                new ForgetPass().setVisible(true);
+        });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose1;
@@ -256,4 +267,40 @@ public class QuenMK extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPassNew;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
+@Override
+    public void setPass() {
+           String username = txtUser.getText().trim(); 
+           String otpInput = new String(txtOTP.getPassword()).trim(); 
+           String newPass = new String(txtPassNew.getPassword()).trim(); 
+
+    if (!username.equals(OTPStore.maNV)) {
+        UDialog.alert(" Sai mã nhân viên!");
+    } else if (!otpInput.equals(OTPStore.otp)) {
+        UDialog.alert(" Sai mã OTP!");
+    } else {
+        NhanVien nv = dao.findById(username);
+        if (nv != null) {
+            nv.setMatKhau(newPass);
+            dao.update(nv);
+
+            OTPStore.otp = "";
+            OTPStore.maNV = "";
+            OTPStore.email = "";
+
+            UDialog.alert(" Đổi mật khẩu thành công!");
+        } else {
+            UDialog.alert(" Không tìm thấy nhân viên!");
+        }
+    }
+    }
+    
+    @Override
+    public void open() {
+        setLocationRelativeTo(null);
+    }
+
+    @Override
+    public void close() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

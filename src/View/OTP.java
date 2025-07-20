@@ -4,20 +4,49 @@
  */
 package View;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Random;
+
 /**
  *
  * @author micro
  */
 public class OTP extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(OTP.class.getName());
-
+    NhanVienDAO dao = new LoginandSignupimpl();
+    public String generateOTP() {
+    Random random = new Random();
+    int otp = 100000 + random.nextInt(900000);
+    return String.valueOf(otp);
+    }
     /**
      * Creates new form OTP
      */
     public OTP() {
         initComponents();
     }
+    public class OTPStore {
+    public static String otp = "";
+    public static String maNV = "";
+    public static String email = "";
+}
+    public void createOTP() throws MessagingException, UnsupportedEncodingException {
+    String maNV = txtUser.getText().trim();
+    String email = txtEmail.getText().trim();
+    NhanVien nv = dao.findById(maNV);
+
+    if (nv == null) {
+        UDialog.alert(" Không tìm thấy mã nhân viên!");
+    } else if (nv.getEmail() == null || !nv.getEmail().equalsIgnoreCase(email)) {
+        UDialog.alert("Email không khớp với nhân viên!");
+    } else {
+        String otp = generateOTP(); 
+        OTPStore.otp = otp;
+        OTPStore.maNV = maNV;
+        OTPStore.email = email;
+        UEmail.sendOTP(email, otp);
+        UDialog.alert(" Đã gửi OTP đến email của bạn!");
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -165,6 +194,9 @@ public class OTP extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new OTP().setVisible(true));
+        public void run() {
+                new OTP().setVisible(true);
+            }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
