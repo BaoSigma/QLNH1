@@ -205,7 +205,8 @@ public class QuenMK extends javax.swing.JFrame {
 
     private void btnOTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOTPActionPerformed
         // TODO add your handling code here:
-        new OTP().setVisible(true);
+        dispose();
+        new OTP().s
     }//GEN-LAST:event_btnOTPActionPerformed
 
     private void chkNewPass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNewPass1ActionPerformed
