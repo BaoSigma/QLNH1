@@ -896,10 +896,14 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
 
     @Override
     public void XacNhan() {
-if (UDialog.confirm("Bạn thực sự muốn thêm hóa đơn?")) {
-    
+if (!UAuth.isLogin()) {
+        UDialog.alert("Bạn cần đăng nhập để tạo hóa đơn!");
+        return;
+    }
+
+    if (UDialog.confirm("Bạn thực sự muốn thêm hóa đơn?")) {
         HoaDon entity = new HoaDon();
-        entity.setMaNV("NV01");
+        entity.setMaNV(UAuth.user.getMaNV());
         entity.setHinhThucTT(String.valueOf(cboPTTT.getSelectedItem()));
 
         String selected = String.valueOf(cboBanAn.getSelectedItem());

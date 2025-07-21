@@ -11,6 +11,7 @@ import DAO.impl.Loginimpl;
 import Model.NhanVien;
 import Util.UAuth;
 import Util.UDialog;
+import Util.UHash;
 import javax.swing.UIManager;
 
 
@@ -26,7 +27,13 @@ public class login extends javax.swing.JFrame implements LoginController    {
     public login() {
         initComponents();
         this.setSize(840, 650); // hoặc bất kỳ kích thước nào bạn muốn
-    
+        UAuth.load(); // Tải thông tin user từ Preferences
+
+        if (UAuth.user != null) {
+    txtUser.setText(UAuth.user.getMaNV());
+    txtPass.setText(UAuth.user.getMatKhau());
+    chkRemember.setSelected(true);
+}
     }
 
     /**
@@ -106,7 +113,7 @@ public class login extends javax.swing.JFrame implements LoginController    {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 160, 50));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 140, 50));
 
         jButton3.setBackground(new java.awt.Color(170, 120, 70));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -119,7 +126,7 @@ public class login extends javax.swing.JFrame implements LoginController    {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 140, 50));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 140, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background (1).jpg"))); // NOI18N
         jLabel1.setName(""); // NOI18N
@@ -166,20 +173,21 @@ public class login extends javax.swing.JFrame implements LoginController    {
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void loginn() {
-String username = txtUser.getText().trim();
+public void loginn() {
+    String username = txtUser.getText().trim();
     String password = new String(txtPass.getPassword()).trim();
 
     if (username.isEmpty()) {
         UDialog.alert("Chưa nhập tài khoản!");
         return;
     }
+
     if (password.isEmpty()) {
         UDialog.alert("Chưa nhập mật khẩu!");
         return;
     }
 
-        NhanVienDAO dao = new Loginimpl();
+    NhanVienDAO dao = new Loginimpl();
     NhanVien user = dao.findById(username);
 
     if (user == null) {
@@ -187,23 +195,41 @@ String username = txtUser.getText().trim();
         return;
     }
 
-    if (!password.equals(user.getMatKhau())) {
+    // So sánh mật khẩu đã mã hóa
+    if (!UHash.match(password, user.getMatKhau())) {
         UDialog.alert("Nhập sai mật khẩu!");
         return;
     }
-        UAuth.user = user; // Đặt user trước khi save
 
+    // Gán user hiện tại vào UAuth
+    UAuth.user = user;
+
+    // Nếu chọn ghi nhớ, tạo bản sao user và mã hóa lại mật khẩu để lưu
         if (chkRemember.isSelected()) {
-            UAuth.save(); // Lưu thông tin vào Preferences
-        } else {
-            UAuth.clear(); // Xoá thông tin khỏi Preferences
-        }
+        NhanVien rememberUser = new NhanVien();
+        rememberUser.setMaNV(user.getMaNV());
+        rememberUser.setHoTen(user.getHoTen());
+        rememberUser.setMatKhau(UHash.encodePassword(password)); // mã hóa lại
+        rememberUser.setEmail(user.getEmail());
+        rememberUser.setLuongCoBan(user.getLuongCoBan());
+        rememberUser.setNgaySinh(user.getNgaySinh());
+        rememberUser.setAnh(user.getAnh());
 
-        UDialog.alert("Đăng nhập thành công!");
-        new goimon().setVisible(true);
-        exit();
+        // từ lớp cha VaiTro
+        rememberUser.setTenVaiTro(user.getTenVaiTro());
 
-        }
+        UAuth.user = rememberUser;
+        UAuth.save();
+    } else {
+        UAuth.clear();
+    }
+
+
+    UDialog.alert("Đăng nhập thành công!");
+    new menu().setVisible(true);
+    dispose();
+}
+
 
     @Override
     public void exit() {

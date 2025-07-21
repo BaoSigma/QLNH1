@@ -4,10 +4,15 @@
  */
 package Model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  *
  * @author User
  */
+@Getter
+@Setter
 public class VaiTro {
     private int MaVaiTro;
     private String TenVaiTro;

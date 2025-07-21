@@ -1,24 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Util;
 
 import Model.NhanVien;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.prefs.Preferences;
 
-/**
- *
- * @author baoha
- */
 public class UAuth {
-    public static NhanVien user = null; 
+    public static NhanVien user = null;
+    private static final String FILE_PATH = "login.txt";
 
     public static void clear() {
         user = null;
+        File file = new File(FILE_PATH);
+        if (file.exists()) file.delete();
     }
 
     public static boolean isLogin() {
@@ -30,90 +25,95 @@ public class UAuth {
     }
 
     public static boolean is2() {
-    return user != null && (
-        "Nhân viên".equalsIgnoreCase(user.getTenVaiTro())
-    );
-}
+        return user != null && "Nhân viên".equalsIgnoreCase(user.getTenVaiTro());
+    }
 
     public static boolean is3() {
-        return user != null && (
-                 "Phục vụ".equalsIgnoreCase(user.getTenVaiTro())
-                );
+        return user != null && "Phục vụ".equalsIgnoreCase(user.getTenVaiTro());
     }
-    
+
     public static boolean is4() {
-        return user != null && (
-                "Bảo vệ" .equalsIgnoreCase(user.getTenVaiTro())
-                );
+        return user != null && "Bảo vệ".equalsIgnoreCase(user.getTenVaiTro());
     }
-    private static final Preferences prefs = Preferences.userRoot().node("PolyLogin");
 
     public static void save() {
-        if (user != null) {
-            prefs.put("maNV", safe(user.getMaNV()));
-        prefs.put("hoTen", safe(user.getHoTen()));
-        prefs.put("matKhau", safe(user.getMatKhau()));
-        prefs.put("email", safe(user.getEmail()));
-        prefs.put("luongCoBan", safe(Double.toString(user.getLuongCoBan())));
-        prefs.put("tenVaiTro", safe(user.getTenVaiTro()));
-        prefs.put("anh", safe(user.getAnh()));
+        if (user == null) return;
 
-            
-            String namSinhStr = "";
-            if (user.getNgaySinh()!= null) {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                namSinhStr = sdf.format(user.getNgaySinh());
-            }
-            prefs.put("NgaySinh", namSinhStr);
-            prefs.put("Anh", safe(user.getAnh()));
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            writer.write(user.getMaNV() != null ? user.getMaNV() : ""); writer.newLine();
+            writer.write(user.getHoTen() != null ? user.getHoTen() : ""); writer.newLine();
+            writer.write(user.getMatKhau() != null ? user.getMatKhau() : ""); writer.newLine();
+            writer.write(user.getEmail() != null ? user.getEmail() : ""); writer.newLine();
+            writer.write(Double.toString(user.getLuongCoBan())); writer.newLine();
+            writer.write(user.getTenVaiTro() != null ? user.getTenVaiTro() : ""); writer.newLine();
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String dateStr = (user.getNgaySinh() != null) ? sdf.format(user.getNgaySinh()) : "";
+            writer.write(dateStr); writer.newLine();
+
+            writer.write(user.getAnh() != null ? user.getAnh() : ""); writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public static void load() {
-        String maNV = prefs.get("MaNV", null);
-        if (maNV == null || maNV.isEmpty()) {
-            user = null;
-            return;
-        }
+    File file = new File(FILE_PATH);
+    if (!file.exists()) {
+        user = null;
+        return;
+    }
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date ngaySinh;
+    try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+        String maNV = reader.readLine();
+        String hoTen = reader.readLine();
+        String matKhau = reader.readLine();
+        String email = reader.readLine();
+        String luongStr = reader.readLine();
+        double luongCoBan = 0;
         try {
-            ngaySinh = sdf.parse(prefs.get("NgaySinh", "2000-01-01"));
-        } catch (ParseException e) {
-            ngaySinh = new Date();
+            luongCoBan = Double.parseDouble(luongStr);
+        } catch (NumberFormatException e) {
+            luongCoBan = 0;
         }
 
+        String tenVaiTro = reader.readLine(); // Đọc đúng dòng vai trò
+        String ngaySinhStr = reader.readLine();
+        String anh = reader.readLine();
+
+        Date ngaySinh = null;
+        try {
+            if (ngaySinhStr != null && !ngaySinhStr.isBlank()) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                ngaySinh = sdf.parse(ngaySinhStr);
+            } else {
+                ngaySinh = new Date(); // fallback nếu rỗng
+            }
+        } catch (ParseException e) {
+            ngaySinh = new Date(); // fallback nếu sai định dạng
+        }
+
+        // Dùng builder tạo đối tượng NhanVien
         user = NhanVien.builder()
                 .MaNV(maNV)
-                .HoTen(prefs.get("HoTen", ""))
-                .MatKhau(prefs.get("MatKhau", ""))
-                .Email(prefs.get("Email", ""))
-                .LuongCoBan(Double.parseDouble(prefs.get("LuongCoBan", "0")))
+                .HoTen(hoTen)
+                .MatKhau(matKhau)
+                .Email(email)
+                .LuongCoBan(luongCoBan)
                 .NgaySinh(ngaySinh)
-                .Anh(prefs.get("Anh", ""))
+                .Anh(anh)
                 .build();
-    }
-    public static void buildSampleUser() {
-    try {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date sampleDate = sdf.parse("2000-01-01");
-        
-        user = NhanVien.builder()
-                .MaNV("NV01")
-                .HoTen("Bùi Gia Bảo")
-                .MatKhau("123   ")
-                .Email("baobao1@gmail.com")
-                .LuongCoBan(7000000.00)
-                .NgaySinh(sampleDate)
-                .Anh("nv1.jpg")
-                .build();
-    } catch (ParseException e) {
+
+        // Nếu class VaiTro có setTenVaiTro(), ta gọi lại sau khi build
+        if (tenVaiTro != null && !tenVaiTro.isBlank()) {
+            user.setTenVaiTro(tenVaiTro);
+        }
+
+    } catch (IOException e) {
         e.printStackTrace();
+        user = null;
     }
 }
 
-    private static String safe(String value) {
-        return value == null ? "" : value;
-    }
 }
+

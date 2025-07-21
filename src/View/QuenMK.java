@@ -4,22 +4,28 @@
  */
 package View;
 
-import javax.swing.UIManager;
+import Controller.ModelController.ForgetPassController;
+import DAO.ModelDAO.NhanVienDAO;
+import DAO.impl.Loginimpl;
+import Model.NhanVien;
+import Util.UDialog;
+import Util.UHash;
+import View.OTP.OTPStore;
 
 /**
  *
  * @author micro
  */
-public class QuenMK extends javax.swing.JFrame {
-        NhanVienDAO dao = new LoginandSignupimpl();
+public class QuenMK extends javax.swing.JFrame implements ForgetPassController{
+    NhanVienDAO dao = new Loginimpl();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(QuenMK.class.getName());
-
+    
     /**
      * Creates new form QuenMK
      */
     public QuenMK() {
         initComponents();
-        setLocationRelativeTo(null);
+        open();
     }
 
     /**
@@ -53,18 +59,18 @@ public class QuenMK extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Barlow Condensed", 1, 30)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Tên đăng nhập:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, -1, -1));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Barlow Condensed", 1, 30)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Mã OTP:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Barlow Condensed", 1, 30)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Mật khẩu mới:");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 340, -1, -1));
 
         btnSignup1.setBackground(new java.awt.Color(170, 120, 70));
         btnSignup1.setFont(new java.awt.Font("Barlow Condensed", 1, 30)); // NOI18N
@@ -80,7 +86,7 @@ public class QuenMK extends javax.swing.JFrame {
                 btnSignup1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSignup1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, 260, -1));
+        getContentPane().add(btnSignup1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 260, -1));
 
         btnClose1.setBackground(new java.awt.Color(170, 120, 70));
         btnClose1.setFont(new java.awt.Font("Barlow Condensed", 1, 30)); // NOI18N
@@ -149,8 +155,6 @@ public class QuenMK extends javax.swing.JFrame {
             }
         });
         getContentPane().add(chkNewPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 350, -1, -1));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo-Photoroom.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Barlow Condensed", 2, 25)); // NOI18N
@@ -186,7 +190,7 @@ public class QuenMK extends javax.swing.JFrame {
 
     private void btnClose1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClose1ActionPerformed
         // TODO add your handling code here:
-        dispose();
+        close();
     }//GEN-LAST:event_btnClose1ActionPerformed
 
     private void btnLogin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogin1MouseClicked
@@ -196,7 +200,7 @@ public class QuenMK extends javax.swing.JFrame {
     private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
         // TODO add your handling code here:
         new login().setVisible(true);
-        dispose();
+        close();
     }//GEN-LAST:event_btnLogin1ActionPerformed
 
     private void txtOTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOTPActionPerformed
@@ -205,8 +209,7 @@ public class QuenMK extends javax.swing.JFrame {
 
     private void btnOTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOTPActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new OTP().s
+        new OTP().setVisible(true);
     }//GEN-LAST:event_btnOTPActionPerformed
 
     private void chkNewPass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNewPass1ActionPerformed
@@ -214,14 +217,14 @@ public class QuenMK extends javax.swing.JFrame {
         if (chkNewPass1.isSelected()) {
             txtPassNew.setEchoChar((char) 0); // Hiện mật khẩu
         } else {
-            txtPassNew.setEchoChar('●'); // Ẩn mật khẩu bằng dấu chấm
+            txtPassNew.setEchoChar('*'); // Ẩn mật khẩu bằng dấu chấm
         }
     }//GEN-LAST:event_chkNewPass1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {S
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -241,15 +244,7 @@ public class QuenMK extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new QuenMK().setVisible(true));
-            public void run(){
-                try {
-                    UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatLightLaf());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                new ForgetPass().setVisible(true);
-        });
-}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose1;
@@ -268,33 +263,44 @@ public class QuenMK extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPassNew;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
+
 @Override
-    public void setPass() {
-           String username = txtUser.getText().trim(); 
-           String otpInput = new String(txtOTP.getPassword()).trim(); 
-           String newPass = new String(txtPassNew.getPassword()).trim(); 
+public void setPass() {
+    String username = txtUser.getText().trim(); 
+    String otpInput = new String(txtOTP.getPassword()).trim(); 
+    String newPass = new String(txtPassNew.getPassword()).trim(); 
 
     if (!username.equals(OTPStore.maNV)) {
-        UDialog.alert(" Sai mã nhân viên!");
+        UDialog.alert("Sai mã nhân viên!");
     } else if (!otpInput.equals(OTPStore.otp)) {
-        UDialog.alert(" Sai mã OTP!");
+        UDialog.alert("Sai mã OTP!");
     } else {
         NhanVien nv = dao.findById(username);
         if (nv != null) {
-            nv.setMatKhau(newPass);
-            dao.update(nv);
+            try {
+                // Mã hóa mật khẩu mới bằng hàm encode (có thể so sánh được sau này)
+                String hashedPass = UHash.encodePassword(newPass);
 
-            OTPStore.otp = "";
-            OTPStore.maNV = "";
-            OTPStore.email = "";
+                nv.setMatKhau(hashedPass);
+                dao.update(nv); 
 
-            UDialog.alert(" Đổi mật khẩu thành công!");
+                // Reset OTP
+                OTPStore.otp = "";
+                OTPStore.maNV = "";
+                OTPStore.email = "";
+
+                UDialog.alert("Đổi mật khẩu thành công!");
+            } catch (Exception e) {
+                UDialog.alert("Lỗi khi mã hóa mật khẩu!");
+                e.printStackTrace();
+            }
         } else {
-            UDialog.alert(" Không tìm thấy nhân viên!");
+            UDialog.alert("Không tìm thấy nhân viên!");
         }
     }
-    }
-    
+}
+
+
     @Override
     public void open() {
         setLocationRelativeTo(null);
@@ -302,6 +308,6 @@ public class QuenMK extends javax.swing.JFrame {
 
     @Override
     public void close() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        dispose();
     }
 }

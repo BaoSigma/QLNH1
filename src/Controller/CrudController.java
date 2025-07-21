@@ -23,4 +23,5 @@ public interface CrudController<Entity> {
     void moveNext(); // Hiển thị thực thể kế sau
     void moveLast(); // Hiển thị thực thể cuối cùng
     void moveTo(int rowIndex); // Hiển thị thực thể tại vị trí
+    boolean Checkall();
 }

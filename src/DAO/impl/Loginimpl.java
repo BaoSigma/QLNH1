@@ -8,6 +8,7 @@ package DAO.impl;
 import DAO.ModelDAO.NhanVienDAO;
 import Model.NhanVien;
 import Model.VaiTro;
+import Util.UJdbc;
 import Util.UQuery;
 import java.util.List;
 
@@ -16,9 +17,9 @@ import java.util.List;
  * @author User
  */
 public class Loginimpl implements NhanVienDAO{
-    private String findAllNhanVienSQL = "SELECT maNV, hoTen, namSinh, sdt, email, chucVu FROM Nhanvien";
+    private String findAllNhanVienSQL = "SELECT * FROM Nhanvien";
     private String findNhanVienByIdSQL = findAllNhanVienSQL + " WHERE maNV = ?";
-    private String updateNhanVienSQL = "UPDATE Nhanvien SET hoTen = ?, namSinh = ?, sdt = ?, email = ?, chucVu = ? WHERE maNV = ?";
+    private String updateNhanVienSQL = "UPDATE Nhanvien SET MatKhau = ? WHERE maNV = ?";
 
         @Override
     public NhanVien create(NhanVien entity) {
@@ -27,6 +28,11 @@ public class Loginimpl implements NhanVienDAO{
 
     @Override
     public void update(NhanVien entity) {
+        Object[] values = {
+            entity.getMatKhau(),
+            entity.getMaNV(),
+        };
+        UJdbc.executeUpdate(updateNhanVienSQL, values);
     }
 
     @Override
@@ -43,5 +49,5 @@ public class Loginimpl implements NhanVienDAO{
         return UQuery.getSingleBean(NhanVien.class, findNhanVienByIdSQL, id);
     }
      
-
+    
 }
