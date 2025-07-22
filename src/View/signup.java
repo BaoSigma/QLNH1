@@ -8,6 +8,7 @@ import Controller.ModelController.SignInController;
 import DAO.impl.SignInImpl;
 import Model.NhanVien;
 import Util.UDialog;
+import Util.UHash;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -185,8 +186,8 @@ public class signup extends javax.swing.JFrame implements SignInController{
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void create() {
-        String Pass = new String(txtPass.getPassword()).trim();
+public void create() {
+    String Pass = new String(txtPass.getPassword()).trim();
     String username = txtUser.getText().trim();
     String email = txtEmail.getText().trim(); 
     Date ngaySinh = DcNgaySinh.getDate();     
@@ -205,17 +206,19 @@ public class signup extends javax.swing.JFrame implements SignInController{
         } else if (ngaySinh == null) {
             UDialog.alert("Vui lòng chọn ngày sinh!");
         } else {
-            nv.setMatKhau(Pass);
+            // ✅ Mã hóa mật khẩu bằng MD5 trước khi lưu
+            nv.setMatKhau(UHash.encrypt(Pass));
             nv.setEmail(email);
             nv.setNgaySinh(ngaySinh);
-            
+
             dao.update(nv);
             UDialog.alert("Tạo tài khoản thành công!");
             new login().setVisible(true);
             dispose();
         }
     }
-    }
+}
+
 
     @Override
     public void exit() {

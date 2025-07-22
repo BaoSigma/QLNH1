@@ -21,7 +21,6 @@ public class NhanVienImpl implements NhanVienDAO{
 "    nv.MaNV,\n" +
 "    nv.HoTen,\n" +
 "    nv.MaVaiTro,\n" +
-"    vt.TenVaiTro AS ChucVu, -- Tên vai trò (chức vụ)\n" +
 "    nv.MatKhau,\n" +
 "    nv.Email,\n" +
 "    nv.LuongCoBan,\n" +
@@ -29,8 +28,17 @@ public class NhanVienImpl implements NhanVienDAO{
 "    nv.Anh\n" +
 "FROM NhanVien nv\n" +
 "JOIN VaiTro vt ON nv.MaVaiTro = vt.MaVaiTro;";
-    private static final String findallfortable = "SELECT MaNV, HoTen, MaVaiTro, Email, LuongCoBan, NgaySinh, MatKhau\n" +
-"FROM NhanVien;";
+    private static final String findallfortable =  "SELECT \n" +
+"    nv.MaNV,\n" +
+"    nv.HoTen,\n" +
+"    nv.MaVaiTro,\n" +
+"    nv.MatKhau,\n" +
+"    nv.Email,\n" +
+"    nv.LuongCoBan,\n" +
+"    nv.NgaySinh,\n" +
+"    nv.Anh\n" +
+"FROM NhanVien nv\n" +
+"JOIN VaiTro vt ON nv.MaVaiTro = vt.MaVaiTro;";
     private static final String  createsql= "EXEC sp_ThemVaTraNhanVien\n" +
 "    @HoTen = ?, \n" +
 "    @MaVaiTro = ?,\n" +
@@ -56,7 +64,7 @@ public class NhanVienImpl implements NhanVienDAO{
     
     @Override
     public NhanVien create(NhanVien entity) {
-       Object[] values = {
+        Object[] values = {
             entity.getHoTen(),
            entity.getMaVaiTro(),
            entity.getEmail(),
@@ -104,15 +112,20 @@ public class NhanVienImpl implements NhanVienDAO{
         return UQuery.getSingleBean(NhanVien.class, findbyid, id);
     }
     public List<NhanVien> findByKeyword(String keyword) {
-    String sql = """
-        SELECT nv.MaNV, nv.HoTen, nv.MaVaiTro, vt.TenVaiTro AS ChucVu, nv.Email, nv.LuongCoBan, nv.NgaySinh, nv.Anh
-        FROM NhanVien nv
-        JOIN VaiTro vt ON nv.MaVaiTro = vt.MaVaiTro
-        WHERE nv.MaNV LIKE ? OR nv.HoTen LIKE ? OR vt.TenVaiTro LIKE ? OR nv.Email LIKE ? OR CAST(nv.LuongCoBan AS NVARCHAR) LIKE ?
-    """;
+    String sql = "SELECT \n" +
+"    nv.MaNV,\n" +
+"    nv.HoTen,\n" +
+"    nv.MaVaiTro,\n" +
+"    nv.MatKhau,\n" +
+"    nv.Email,\n" +
+"    nv.LuongCoBan,\n" +
+"    nv.NgaySinh,\n" +
+"    nv.Anh\n" +
+"FROM NhanVien nv\n" +
+"JOIN VaiTro vt ON nv.MaVaiTro = vt.MaVaiTro;";
 
     String value = "%" + keyword + "%";
-    return UQuery.getBeanList(NhanVien.class, sql, value, value, value, value, value);
+    return UQuery.getBeanList(NhanVien.class, sql, value, value, value, value, value,value,value,value);
 }
 
 }

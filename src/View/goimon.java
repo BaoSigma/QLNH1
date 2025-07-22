@@ -894,40 +894,55 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
         } catch (Exception e) {}
     }
 
-    @Override
-    public void XacNhan() {
-if (!UAuth.isLogin()) {
+@Override
+public void XacNhan() {
+    if (!UAuth.isLogin()) {
         UDialog.alert("Bạn cần đăng nhập để tạo hóa đơn!");
         return;
     }
 
-    if (UDialog.confirm("Bạn thực sự muốn thêm hóa đơn?")) {
-        HoaDon entity = new HoaDon();
-        entity.setMaNV(UAuth.user.getMaNV());
-        entity.setHinhThucTT(String.valueOf(cboPTTT.getSelectedItem()));
+    if (!UDialog.confirm("Bạn thực sự muốn thêm hóa đơn?")) {
+        return; // Hủy nếu người dùng không xác nhận
+    }
 
+    try {
+        // Tạo đối tượng hóa đơn mới
+        HoaDon entity = new HoaDon();
+        entity.setMaNV(UAuth.user.getMaNV()); // Lấy mã NV từ người dùng đăng nhập
+        entity.setHinhThucTT(String.valueOf(cboPTTT.getSelectedItem())); // Lấy hình thức thanh toán
+
+        // Lấy mã bàn từ comboBox (giả sử định dạng là "B01 - Bàn 1")
         String selected = String.valueOf(cboBanAn.getSelectedItem());
         String maBan = selected.split(" - ")[0];
         entity.setMaBan(maBan);
 
-        entity = dao.create(entity); // Tạo hóa đơn, lấy mã mới
+        // Tạo hóa đơn trong CSDL và lấy mã HD vừa tạo
+        entity = dao.create(entity);
 
-         // DAO chi tiết
+        // Lấy bảng gọi món
         DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
 
+        // Duyệt qua từng dòng trong bảng gọi món để thêm chi tiết hóa đơn
         for (int i = 0; i < model.getRowCount(); i++) {
             String maSP = model.getValueAt(i, 0).toString();
-            String tenSP = model.getValueAt(i, 1).toString();
             int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString());
-            double giaTien = Double.parseDouble(model.getValueAt(i, 3).toString());
+            // Các giá trị bổ sung nếu cần
             String ghiChu = "";
             String trangThai = "";
-            String maVanDon = null; // Đặt null thay vì ""
+            String maVanDon = null;
+
+            // Gọi DAO thêm chi tiết hóa đơn
             dao.insertChiTietHoaDon(entity.getMaHD(), maSP, soLuong, ghiChu, trangThai, maVanDon);
         }
+
         UDialog.alert("Thêm hóa đơn thành công! Mã hóa đơn: " + entity.getMaHD());
-    }    
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        UDialog.alert("Đã xảy ra lỗi khi tạo hóa đơn!");
     }
+}
+  
 
     @Override
     public void HuyBo() {

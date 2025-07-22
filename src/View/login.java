@@ -24,17 +24,35 @@ public class login extends javax.swing.JFrame implements LoginController    {
     /**
      * Creates new form login
      */
-    public login() {
-        initComponents();
-        this.setSize(840, 650); // hoặc bất kỳ kích thước nào bạn muốn
-        UAuth.load(); // Tải thông tin user từ Preferences
-
-        if (UAuth.user != null) {
-    txtUser.setText(UAuth.user.getMaNV());
-    txtPass.setText(UAuth.user.getMatKhau());
-    chkRemember.setSelected(true);
+    public login(){
+    initComponents();   // ✅ Khởi tạo các JTextField, JCheckBox, Button, ...
+    init();             // ✅ Sau đó mới gán giá trị như txtUser.setText(...)
 }
+
+   public void init() {
+    UAuth.load();
+
+    if (UAuth.user != null) {
+        txtUser.setText(UAuth.user.getMaNV());
+        
+        // Giải mã mật khẩu
+        try {
+            String decryptedPassword = UHash.encrypt(UAuth.user.getMatKhau());
+            txtPass.setText(UAuth.user.getMatKhau());
+        } catch (Exception e) {
+            txtPass.setText(""); // Nếu lỗi giải mã
+        }
+
+        chkRemember.setSelected(true);
+    } else {
+        chkRemember.setSelected(false);
     }
+
+    this.setSize(838, 650);
+    this.setLocationRelativeTo(null);
+}
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -172,7 +190,7 @@ public class login extends javax.swing.JFrame implements LoginController    {
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 
-    @Override
+   @Override
 public void loginn() {
     String username = txtUser.getText().trim();
     String password = new String(txtPass.getPassword()).trim();
@@ -181,7 +199,6 @@ public void loginn() {
         UDialog.alert("Chưa nhập tài khoản!");
         return;
     }
-
     if (password.isEmpty()) {
         UDialog.alert("Chưa nhập mật khẩu!");
         return;
@@ -189,46 +206,31 @@ public void loginn() {
 
     NhanVienDAO dao = new Loginimpl();
     NhanVien user = dao.findById(username);
-
     if (user == null) {
         UDialog.alert("Sai tài khoản!");
         return;
     }
 
-    // So sánh mật khẩu đã mã hóa
     if (!UHash.match(password, user.getMatKhau())) {
-        UDialog.alert("Nhập sai mật khẩu!");
+        UDialog.alert("Sai mật khẩu!");
         return;
     }
 
-    // Gán user hiện tại vào UAuth
     UAuth.user = user;
 
-    // Nếu chọn ghi nhớ, tạo bản sao user và mã hóa lại mật khẩu để lưu
-        if (chkRemember.isSelected()) {
-        NhanVien rememberUser = new NhanVien();
-        rememberUser.setMaNV(user.getMaNV());
-        rememberUser.setHoTen(user.getHoTen());
-        rememberUser.setMatKhau(UHash.encodePassword(password)); // mã hóa lại
-        rememberUser.setEmail(user.getEmail());
-        rememberUser.setLuongCoBan(user.getLuongCoBan());
-        rememberUser.setNgaySinh(user.getNgaySinh());
-        rememberUser.setAnh(user.getAnh());
-
-        // từ lớp cha VaiTro
-        rememberUser.setTenVaiTro(user.getTenVaiTro());
-
-        UAuth.user = rememberUser;
-        UAuth.save();
+    if (chkRemember.isSelected()) {
+        UAuth.save(user); // ✅ Lưu user có sẵn mật khẩu đã mã hóa
     } else {
         UAuth.clear();
     }
 
-
-    UDialog.alert("Đăng nhập thành công!");
-    new menu().setVisible(true);
     dispose();
+    new menu().setVisible(true);
+    UDialog.alert("Đăng nhập thành công!");
 }
+    
+
+
 
 
     @Override

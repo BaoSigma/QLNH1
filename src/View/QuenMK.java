@@ -264,41 +264,45 @@ public class QuenMK extends javax.swing.JFrame implements ForgetPassController{
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 
-@Override
-public void setPass() {
-    String username = txtUser.getText().trim(); 
-    String otpInput = new String(txtOTP.getPassword()).trim(); 
-    String newPass = new String(txtPassNew.getPassword()).trim(); 
+    @Override
+    public void setPass() {
+        String username = txtUser.getText().trim(); 
+        String otpInput = new String(txtOTP.getPassword()).trim(); 
+        String newPass = new String(txtPassNew.getPassword()).trim(); 
 
-    if (!username.equals(OTPStore.maNV)) {
-        UDialog.alert("Sai mã nhân viên!");
-    } else if (!otpInput.equals(OTPStore.otp)) {
-        UDialog.alert("Sai mã OTP!");
-    } else {
+        if (!username.equals(OTPStore.maNV)) {
+            UDialog.alert("Sai mã nhân viên!");
+            return;
+        }
+
+        if (!otpInput.equals(OTPStore.otp)) {
+            UDialog.alert("Sai mã OTP!");
+            return;
+        }
+
         NhanVien nv = dao.findById(username);
         if (nv != null) {
             try {
-                // Mã hóa mật khẩu mới bằng hàm encode (có thể so sánh được sau này)
-                String hashedPass = UHash.encodePassword(newPass);
-
+                
+                String hashedPass = UHash.encrypt(newPass);
                 nv.setMatKhau(hashedPass);
-                dao.update(nv); 
+                dao.update(nv);
 
-                // Reset OTP
+                
                 OTPStore.otp = "";
                 OTPStore.maNV = "";
                 OTPStore.email = "";
 
                 UDialog.alert("Đổi mật khẩu thành công!");
             } catch (Exception e) {
-                UDialog.alert("Lỗi khi mã hóa mật khẩu!");
+                UDialog.alert("Lỗi khi đặt lại mật khẩu!");
                 e.printStackTrace();
             }
         } else {
             UDialog.alert("Không tìm thấy nhân viên!");
         }
     }
-}
+
 
 
     @Override

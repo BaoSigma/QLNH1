@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class NhanVien extends VaiTro{
+public class NhanVien{
     private String MaNV;
     private String HoTen;
     private String MatKhau;
@@ -24,11 +24,10 @@ public class NhanVien extends VaiTro{
     private double LuongCoBan;
     private Date NgaySinh;
     private String Anh;
+    private VaiTro vt  = new VaiTro();
 
 
-
-    public NhanVien(String MaNV, String HoTen, String MatKhau, String Email, double LuongCoBan, Date NgaySinh, String Anh, int MaVaiTro, String TenVaiTro) {
-        super(MaVaiTro, TenVaiTro);
+    public NhanVien(String MaNV, String HoTen, String MatKhau, String Email, double LuongCoBan, Date NgaySinh, String Anh) {
         this.MaNV = MaNV;
         this.HoTen = HoTen;
         this.MatKhau = MatKhau;
@@ -37,12 +36,20 @@ public class NhanVien extends VaiTro{
         this.NgaySinh = NgaySinh;
         this.Anh = Anh;
     }
+ public String getTenVaiTro() {
+        return vt.getTenVaiTro();
+    }
 
+    public void setTenVaiTro(String TenVaiTro) {
+        vt.setTenVaiTro(TenVaiTro);
+    }
+     public int getMaVaiTro() {
+        return vt.getMaVaiTro();
+    }
 
-
-    
-
-
+    public void setMaVaiTro(int MaVaiTro) {
+        vt.setMaVaiTro(MaVaiTro);
+    }
     public String getMaNV() {
         return MaNV;
     }
