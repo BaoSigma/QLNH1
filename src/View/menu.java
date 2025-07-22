@@ -812,6 +812,7 @@ public class menu extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 251, 233));
         jPanel5.setMinimumSize(new java.awt.Dimension(1316, 597));
         jPanel5.setPreferredSize(new java.awt.Dimension(1316, 597));
+        jPanel5.setVerifyInputWhenFocusTarget(false);
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -958,7 +959,7 @@ public class menu extends javax.swing.JFrame {
         jLabel1.setOpaque(true);
         jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1240, 90));
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 80, 1320, 670));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1320, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
