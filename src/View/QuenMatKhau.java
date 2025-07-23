@@ -10,20 +10,20 @@ import DAO.impl.Loginimpl;
 import Model.NhanVien;
 import Util.UDialog;
 import Util.UHash;
-import View.OTP.OTPStore;
+import View.OTPEmail.OTPStore;
 
 /**
  *
  * @author micro
  */
-public class QuenMK extends javax.swing.JFrame implements ForgetPassController{
+public class QuenMatKhau extends javax.swing.JFrame implements ForgetPassController{
     NhanVienDAO dao = new Loginimpl();
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(QuenMK.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(QuenMatKhau.class.getName());
     
     /**
      * Creates new form QuenMK
      */
-    public QuenMK() {
+    public QuenMatKhau() {
         initComponents();
         open();
     }
@@ -209,7 +209,7 @@ public class QuenMK extends javax.swing.JFrame implements ForgetPassController{
 
     private void btnOTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOTPActionPerformed
         // TODO add your handling code here:
-        new OTP().setVisible(true);
+        new OTPEmail().setVisible(true);
     }//GEN-LAST:event_btnOTPActionPerformed
 
     private void chkNewPass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNewPass1ActionPerformed
@@ -243,7 +243,7 @@ public class QuenMK extends javax.swing.JFrame implements ForgetPassController{
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new QuenMK().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new QuenMatKhau().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
