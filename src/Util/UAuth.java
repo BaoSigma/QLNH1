@@ -14,21 +14,19 @@ public class UAuth {
         return user != null;
     }
 
-    public static boolean is1() {
+    public static boolean QuanLy() {
         return user != null && "Quản lý".equalsIgnoreCase(user.getTenVaiTro());
     }
 
-    public static boolean is2() {
+    public static boolean NhanVien() {
         return user != null && "Nhân viên".equalsIgnoreCase(user.getTenVaiTro());
     }
 
-    public static boolean is3() {
+    public static boolean PhucVu() {
         return user != null && "Phục vụ".equalsIgnoreCase(user.getTenVaiTro());
     }
 
-    public static boolean is4() {
-        return user != null && "Bảo vệ".equalsIgnoreCase(user.getTenVaiTro());
-    }
+
 
     public static void save(NhanVien nv) {
         try (PrintWriter pw = new PrintWriter(FILE_PATH)) {

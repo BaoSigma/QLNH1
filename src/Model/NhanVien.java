@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model;
 
 import java.util.Date;
@@ -9,14 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-/**
- *
- * @author User
- */
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class NhanVien{
+@AllArgsConstructor // Lombok constructor đầy đủ
+public class NhanVien {
     private String MaNV;
     private String HoTen;
     private String MatKhau;
@@ -24,9 +15,13 @@ public class NhanVien{
     private double LuongCoBan;
     private Date NgaySinh;
     private String Anh;
-    private VaiTro vt  = new VaiTro();
+    private VaiTro vt = new VaiTro();
 
+    // ✅ Constructor không tham số thủ công (để tránh lỗi khi Lombok không hoạt động)
+    public NhanVien() {
+    }
 
+    // ✅ Constructor đầy đủ 7 tham số (đã có sẵn)
     public NhanVien(String MaNV, String HoTen, String MatKhau, String Email, double LuongCoBan, Date NgaySinh, String Anh) {
         this.MaNV = MaNV;
         this.HoTen = HoTen;
@@ -36,20 +31,25 @@ public class NhanVien{
         this.NgaySinh = NgaySinh;
         this.Anh = Anh;
     }
- public String getTenVaiTro() {
+
+    // Vai trò
+    public String getTenVaiTro() {
         return vt.getTenVaiTro();
     }
 
     public void setTenVaiTro(String TenVaiTro) {
         vt.setTenVaiTro(TenVaiTro);
     }
-     public int getMaVaiTro() {
+
+    public int getMaVaiTro() {
         return vt.getMaVaiTro();
     }
 
     public void setMaVaiTro(int MaVaiTro) {
         vt.setMaVaiTro(MaVaiTro);
     }
+
+    // Getters & setters
     public String getMaNV() {
         return MaNV;
     }
@@ -66,7 +66,6 @@ public class NhanVien{
         this.HoTen = HoTen;
     }
 
-    
     public String getMatKhau() {
         return MatKhau;
     }
