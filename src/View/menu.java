@@ -110,12 +110,6 @@ public class menu extends javax.swing.JFrame {
 //                setView(new PhanLoai(false));
 //            }
 //        });
-//        lblKhachHang.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                setView(new PhanLoai(false));
-//            }
-//        });
 //        lblThongTinCaNhan.addMouseListener(new MouseAdapter() {
 //            @Override
 //            public void mouseClicked(MouseEvent e) {

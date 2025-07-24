@@ -733,7 +733,7 @@
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
-              <Component id="jLabel6" alignment="0" pref="213" max="32767" attributes="0"/>
+              <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
               <Component id="jLabel49" alignment="0" max="32767" attributes="0"/>
               <Component id="jLabel56" alignment="0" max="32767" attributes="0"/>
           </Group>
@@ -776,7 +776,7 @@
                   <Component id="jLabel62" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel60" min="-2" max="-2" attributes="0"/>

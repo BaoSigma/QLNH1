@@ -4,12 +4,38 @@
  */
 package View;
 
+import Controller.ModelController.KhachHangController;
+import DAO.ModelDAO.KhachHangDAO;
+import DAO.impl.KhachHangImpl;
+import Model.KhachHang;
+import Model.NhanVien;
+import Util.UDialog;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author micro
  */
-public class QLKH extends javax.swing.JFrame {
-    
+public class QLKH extends javax.swing.JFrame implements KhachHangController{
+    KhachHangDAO dao = new KhachHangImpl();
+    List<KhachHang> items = new ArrayList<>();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(QLKH.class.getName());
 
     /**
@@ -28,92 +54,288 @@ public class QLKH extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblKhachHang = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
+        txtFind = new javax.swing.JTextField();
+        btnDau = new javax.swing.JButton();
+        btnTruoc = new javax.swing.JButton();
+        btnTien = new javax.swing.JButton();
+        btnCuoi = new javax.swing.JButton();
+        txtSdt = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        txtTongChiTieu = new javax.swing.JTextField();
+        txtHoTen = new javax.swing.JTextField();
+        btnLamMoi = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        btnThem = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txtMaKH = new javax.swing.JTextField();
+        btnSua = new javax.swing.JButton();
+        txtHanhKhach = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jPanel1.setPreferredSize(new java.awt.Dimension(1080, 560));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(173, 139, 115));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Quản Lý Khách Hàng");
+        jLabel1.setText("Quản lý khách hàng");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Mã khách hàng:");
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1320, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel1)
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel3.setText("Họ tên:");
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel4.setText("Số điện thoại:");
+        tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Mã khách hàng", "Họ tên", "Số điện thoại", "Tổng chi tiêu", "Hành khách"
+            }
+        ));
+        tblKhachHang.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tblKhachHangAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        tblKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblKhachHangMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblKhachHang);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setText("Tổng chi tiêu:");
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 145, 1320, 210));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel6.setText("Hành khách:");
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setText("Tìm kiếm :");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 102, -1, -1));
+        jPanel1.add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 102, 258, -1));
+
+        btnDau.setBackground(new java.awt.Color(173, 139, 115));
+        btnDau.setText("Về đầu");
+        btnDau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDauActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 83, 32));
+
+        btnTruoc.setBackground(new java.awt.Color(173, 139, 115));
+        btnTruoc.setText("Trước");
+        btnTruoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTruocActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnTruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 83, 32));
+
+        btnTien.setBackground(new java.awt.Color(173, 139, 115));
+        btnTien.setText("Tiến");
+        btnTien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTienActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 83, 32));
+
+        btnCuoi.setBackground(new java.awt.Color(173, 139, 115));
+        btnCuoi.setText("Về cuối");
+        btnCuoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCuoiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 83, 33));
+        jPanel1.add(txtSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 270, -1));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setText("Hành khách:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 580, 96, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setText("Số điện thoại:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 96, -1));
+        jPanel1.add(txtTongChiTieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 270, -1));
+
+        txtHoTen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtHoTenMouseClicked(evt);
+            }
+        });
+        jPanel1.add(txtHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, 270, -1));
+
+        btnLamMoi.setText("LÀM MỚI");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 110, -1, -1));
+
+        btnXoa.setText("XÓA");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("Mã khách hàng:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 110, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setText("Họ tên khách hàng:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, -1));
+
+        btnThem.setText("THÊM");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setText("Tổng chi tiêu:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, 96, -1));
+
+        txtMaKH.setEnabled(false);
+        jPanel1.add(txtMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 270, -1));
+
+        btnSua.setText("SỬA");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, -1, -1));
+        jPanel1.add(txtHanhKhach, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 580, 270, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1316, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField5))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 1318, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(103, Short.MAX_VALUE))
+            .addGap(0, 728, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblKhachHangAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblKhachHangAncestorAdded
+        // TODO add your handling code here:
+        DefaultTableModel model = new DefaultTableModel(
+            new Object[]{"Mã KH", "Họ Tên", "Số Điện Thoại", "Tổng Chi Tiêu", "Hành khách"},
+            0
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Không cho sửa bất kỳ ô nào
+            }
+        };
+        tblKhachHang.setModel(model);
+
+        fillToTable();
+
+    }//GEN-LAST:event_tblKhachHangAncestorAdded
+
+    private void tblKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachHangMouseClicked
+        edit();
+    }//GEN-LAST:event_tblKhachHangMouseClicked
+
+    private void btnDauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDauActionPerformed
+        // TODO add your handling code here:
+        moveFirst();
+    }//GEN-LAST:event_btnDauActionPerformed
+
+    private void btnTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTruocActionPerformed
+        // TODO add your handling code here:
+        movePrevious();
+    }//GEN-LAST:event_btnTruocActionPerformed
+
+    private void btnTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTienActionPerformed
+        // TODO add your handling code here:
+        moveNext();
+    }//GEN-LAST:event_btnTienActionPerformed
+
+    private void btnCuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoiActionPerformed
+        // TODO add your handling code here:
+        moveLast();
+    }//GEN-LAST:event_btnCuoiActionPerformed
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        clear();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+
+        delete();
+
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+
+        create();
+
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+
+        update();
+
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void txtHoTenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtHoTenMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHoTenMouseClicked
 
     /**
      * @param args the command line arguments
@@ -141,16 +363,240 @@ public class QLKH extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCuoi;
+    private javax.swing.JButton btnDau;
+    private javax.swing.JButton btnLamMoi;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnTien;
+    private javax.swing.JButton btnTruoc;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblKhachHang;
+    private javax.swing.JTextField txtFind;
+    private javax.swing.JTextField txtHanhKhach;
+    private javax.swing.JTextField txtHoTen;
+    private javax.swing.JTextField txtMaKH;
+    private javax.swing.JTextField txtSdt;
+    private javax.swing.JTextField txtTongChiTieu;
     // End of variables declaration//GEN-END:variables
+@Override
+public void open() {
+    throw new UnsupportedOperationException("Not supported yet.");
+}
+
+@Override
+public void setForm(KhachHang entity) {
+    txtMaKH.setText(entity.getMaKH());
+    txtHoTen.setText(entity.getHoTen());
+    txtSdt.setText(entity.getSdt());
+    txtTongChiTieu.setText(String.valueOf(entity.getTongChiTieu()));
+    txtHanhKhach.setText(entity.getHangKhach());
+}
+
+@Override
+public KhachHang getForm() {
+    KhachHang kh = new KhachHang();
+
+    kh.setMaKH(txtMaKH.getText().trim());
+    kh.setHoTen(txtHoTen.getText().trim());
+    kh.setSdt(txtSdt.getText().trim());
+
+    try {
+        kh.setTongChiTieu(Double.parseDouble(txtTongChiTieu.getText().trim()));
+    } catch (NumberFormatException e) {
+        kh.setTongChiTieu(0.0); // hoặc thông báo lỗi
+    }
+
+    kh.setHangKhach(txtHanhKhach.getText().trim());
+
+    return kh;
+}
+
+
+@Override
+public void fillToTable() {
+    DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
+    model.setRowCount(0);
+    items = dao.findAll();
+
+    for (KhachHang kh : items) {
+        Object[] row = {
+            kh.getMaKH(),
+            kh.getHoTen(),
+            kh.getSdt(),
+            kh.getTongChiTieu(),
+            kh.getHangKhach()
+        };
+        model.addRow(row);
+    }
+}
+
+
+@Override
+public void edit() {
+    KhachHang entity = items.get(tblKhachHang.getSelectedRow());
+    this.setForm(entity);
+}
+
+@Override
+public void create() {
+    if (!Checkall()) return;
+
+    if (UDialog.confirm("Bạn thực sự muốn thêm khách hàng này?")) {
+        KhachHang entity = this.getForm();
+        dao.create(entity);
+        this.fillToTable();
+        this.clear();
+        UDialog.alert("Đã thêm thành công");
+    }
+}
+
+@Override
+public void update() {
+    if (!Checkall()) return;
+
+    if (UDialog.confirm("Bạn thực sự muốn cập nhật thông tin khách hàng này?")) {
+        KhachHang kh = this.getForm();
+        dao.update(kh);
+        this.fillToTable();
+        this.clear();
+        UDialog.alert("Cập nhật thành công!");
+    }
+}
+
+@Override
+public void delete() {
+    int row = tblKhachHang.getSelectedRow();
+    if (row == -1) {
+        UDialog.alert("Vui lòng chọn khách hàng cần xóa!");
+        return;
+    }
+
+    String maKH = tblKhachHang.getValueAt(row, 0).toString();
+    if (UDialog.confirm("Bạn chắc chắn muốn xóa khách hàng này?")) {
+        dao.deleteById(maKH);
+        this.fillToTable();
+        this.clear();
+        UDialog.alert("Xóa khách hàng thành công!");
+    }
+}
+
+@Override
+public void clear() {
+    this.setForm(new KhachHang());
+}
+
+@Override
+public void moveFirst() {
+    int currentIndex = tblKhachHang.getSelectedRow();
+    if (currentIndex == 0) {
+        UDialog.alert("Đã ở vị trí đầu tiên rồi!");
+    } else {
+        this.moveTo(0);
+    }
+}
+
+@Override
+public void movePrevious() {
+    this.moveTo(tblKhachHang.getSelectedRow() - 1);
+}
+
+@Override
+public void moveNext() {
+    this.moveTo(tblKhachHang.getSelectedRow() + 1);
+}
+
+@Override
+public void moveLast() {
+    this.moveTo(tblKhachHang.getRowCount() - 1);
+}
+
+@Override
+public void moveTo(int rowIndex) {
+    if (rowIndex < 0) {
+        this.moveLast();
+    } else if (rowIndex >= tblKhachHang.getRowCount()) {
+        this.moveFirst();
+    } else {
+        tblKhachHang.clearSelection();
+        tblKhachHang.setRowSelectionInterval(rowIndex, rowIndex);
+        this.edit();
+    }
+}
+
+@Override
+public boolean Checkall() {
+    if (txtHoTen.getText().trim().isEmpty()) {
+        UDialog.alert("Vui lòng nhập tên khách hàng!");
+        txtHoTen.requestFocus();
+        return false;
+    }
+
+    if (txtSdt.getText().trim().isEmpty()) {
+        UDialog.alert("Vui lòng nhập số điện thoại!");
+        txtSdt.requestFocus();
+        return false;
+    }
+
+    if (txtTongChiTieu.getText().trim().isEmpty()) {
+        UDialog.alert("Vui lòng nhập tổng chi tiêu!");
+        txtTongChiTieu.requestFocus();
+        return false;
+    }
+
+    try {
+        Double.parseDouble(txtTongChiTieu.getText().trim());
+    } catch (NumberFormatException e) {
+        UDialog.alert("Tổng chi tiêu phải là số!");
+        txtTongChiTieu.requestFocus();
+        return false;
+    }
+
+    if (txtHanhKhach.getText().trim().isEmpty()) {
+        UDialog.alert("Vui lòng nhập hạng khách!");
+        txtHanhKhach.requestFocus();
+        return false;
+    }
+
+    return true;
+}
+public void fillToTableTheoDieuKien() {
+    try {
+        KhachHangImpl dao = new KhachHangImpl(); 
+        String keyword = txtFind.getText().trim();
+        List<KhachHang> list = dao.findByKeyword(keyword);
+
+        DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
+        model.setRowCount(0);
+
+        if (list.isEmpty()) {
+            UDialog.alert("Không tìm thấy khách hàng nào.");
+            return;
+        }
+
+        for (KhachHang kh : list) {
+            Object[] row = {
+                kh.getMaKH(),
+                kh.getHoTen(),
+                kh.getSdt(),
+                kh.getTongChiTieu(),
+                kh.getHangKhach()
+            };
+            model.addRow(row);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        UDialog.alert("Lỗi khi tìm khách hàng!");
+    }
+}
 }
