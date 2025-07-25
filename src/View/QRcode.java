@@ -26,7 +26,6 @@ public class QRcode extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel22 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -34,14 +33,6 @@ public class QRcode extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 251, 233));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
-        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel22MouseClicked(evt);
-            }
-        });
-        add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 80));
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -76,16 +67,10 @@ public class QRcode extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jLabel22MouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
