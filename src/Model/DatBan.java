@@ -4,6 +4,9 @@
  */
 package Model;
 
+import java.sql.Date;
+import java.sql.Time;
+
 /**
  *
  * @author Admin
@@ -16,6 +19,19 @@ public class DatBan {
     private java.sql.Time gioDat;
     private int soNguoi;
     private String trangThai;
+
+    public DatBan(String maDat, String maKH, String maBan, Date ngayDat, Time gioDat, int soNguoi, String trangThai) {
+        this.maDat = maDat;
+        this.maKH = maKH;
+        this.maBan = maBan;
+        this.ngayDat = ngayDat;
+        this.gioDat = gioDat;
+        this.soNguoi = soNguoi;
+        this.trangThai = trangThai;
+    }
+
+    public DatBan() {
+    }
 
     public String getMaDat() {
         return maDat;

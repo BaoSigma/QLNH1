@@ -702,18 +702,7 @@ public void delete() {
 
     return true;
     }
-    public boolean checkAnySelected() {
-    DefaultTableModel model = (DefaultTableModel) tblNhanVien.getModel();
-    int colIndex = model.getColumnCount() - 1; // Cột checkbox ở cuối
-
-    for (int i = 0; i < model.getRowCount(); i++) {
-        Boolean isChecked = (Boolean) model.getValueAt(i, colIndex);
-        if (Boolean.TRUE.equals(isChecked)) {
-            return true;
-        }
-    }
-    return false;
-}
+ 
 
     public void fillToTableTheoDieuKien() {
     try {

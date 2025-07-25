@@ -26,10 +26,6 @@ public class login extends javax.swing.JFrame implements LoginController    {
      */
     public login(){
     initComponents();   // ✅ Khởi tạo các JTextField, JCheckBox, Button, ...
-    init();             // ✅ Sau đó mới gán giá trị như txtUser.setText(...)
-}
-
-   public void init() {
     UAuth.load();
 
     if (UAuth.user != null) {
@@ -49,8 +45,10 @@ public class login extends javax.swing.JFrame implements LoginController    {
     }
 
     this.setSize(838, 650);
-    this.setLocationRelativeTo(null);
+    this.setLocationRelativeTo(null);          // ✅ Sau đó mới gán giá trị như txtUser.setText(...)
 }
+
+
 
 
 
@@ -73,7 +71,7 @@ public class login extends javax.swing.JFrame implements LoginController    {
         txtPass = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 280, 30));
@@ -146,9 +144,8 @@ public class login extends javax.swing.JFrame implements LoginController    {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 140, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background(1).jpg"))); // NOI18N
-        jLabel1.setName(""); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 650));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/backgroundchivaythoi.jpg"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void chkRememberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRememberActionPerformed
@@ -182,10 +179,10 @@ public class login extends javax.swing.JFrame implements LoginController    {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
