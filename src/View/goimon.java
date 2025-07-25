@@ -23,6 +23,7 @@ import javax.swing.JTable;
 import static javax.swing.SwingConstants.CENTER;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 /**
@@ -37,9 +38,11 @@ public class goimon extends javax.swing.JPanel implements OrderController{
      * Creates new form goimon
      */
     public goimon() {
-        initComponents();
-         
-    }
+    initComponents();
+    
+
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -424,8 +427,8 @@ public class goimon extends javax.swing.JPanel implements OrderController{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtabSP))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -486,23 +489,24 @@ public class goimon extends javax.swing.JPanel implements OrderController{
     private void tblDoUongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoUongMouseClicked
         // TODO add your handling code here:
     int row = tblDoUong.getSelectionModel().getLeadSelectionIndex(); // luôn chính xác dòng đang click
+    tblGoimon.getColumnModel().getColumn(2).setCellEditor(new QuantityCellEditorRenderer());; // cột số lượng
+        
+    if (row != -1) {
+        Object oMaMon = tblDoUong.getValueAt(row, 0);
+        Object oTenMon = tblDoUong.getValueAt(row, 1);
+        Object oGia = tblDoUong.getValueAt(row, 2);
 
-if (row != -1) {
-    Object oMaMon = tblDoUong.getValueAt(row, 0);
-    Object oTenMon = tblDoUong.getValueAt(row, 1);
-    Object oGia = tblDoUong.getValueAt(row, 2);
+        if (oTenMon != null && oGia != null) {
+            String MaMon = oMaMon.toString();
+            String tenMon = oTenMon.toString();
+            double gia = (oGia instanceof Number) ? ((Number) oGia).doubleValue() : Double.parseDouble(oGia.toString());
 
-    if (oTenMon != null && oGia != null) {
-        String MaMon = oMaMon.toString();
-        String tenMon = oTenMon.toString();
-        double gia = (oGia instanceof Number) ? ((Number) oGia).doubleValue() : Double.parseDouble(oGia.toString());
+            filltoTableGoiMon(MaMon, tenMon, gia); // dùng TenMon làm mã tạm
+        } else {
+            JOptionPane.showMessageDialog(null, "Một trong các cột bị null!");
+        }
 
-        filltoTableGoiMon(MaMon, tenMon, gia); // dùng TenMon làm mã tạm
-    } else {
-        JOptionPane.showMessageDialog(null, "Một trong các cột bị null!");
     }
-
-}
 
 
     }//GEN-LAST:event_tblDoUongMouseClicked
@@ -511,21 +515,21 @@ if (row != -1) {
         // TODO add your handling code here:
     int row = tblMonLau.getSelectionModel().getLeadSelectionIndex(); // luôn chính xác dòng đang click
 
-if (row != -1) {
-     Object oMaMon = tblMonLau.getValueAt(row, 0);
-    Object oTenMon = tblMonLau.getValueAt(row, 1);
-    Object oGia = tblMonLau.getValueAt(row, 2);
+    if (row != -1) {
+         Object oMaMon = tblMonLau.getValueAt(row, 0);
+        Object oTenMon = tblMonLau.getValueAt(row, 1);
+        Object oGia = tblMonLau.getValueAt(row, 2);
 
-    if (oTenMon != null && oGia != null) {
-        String MaMon = oMaMon.toString();
-        String tenMon = oTenMon.toString();
-        double gia = (oGia instanceof Number) ? ((Number) oGia).doubleValue() : Double.parseDouble(oGia.toString());
+        if (oTenMon != null && oGia != null) {
+            String MaMon = oMaMon.toString();
+            String tenMon = oTenMon.toString();
+            double gia = (oGia instanceof Number) ? ((Number) oGia).doubleValue() : Double.parseDouble(oGia.toString());
 
-        filltoTableGoiMon(MaMon, tenMon, gia); // dùng TenMon làm mã tạm
-    } else {
-        JOptionPane.showMessageDialog(null, "Một trong các cột bị null!");
+            filltoTableGoiMon(MaMon, tenMon, gia); // dùng TenMon làm mã tạm
+        } else {
+            JOptionPane.showMessageDialog(null, "Một trong các cột bị null!");
+        }
     }
-}
     }//GEN-LAST:event_tblMonLauMouseClicked
 
     private void tblMonNuongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMonNuongMouseClicked
@@ -583,7 +587,9 @@ if (row != -1) {
 
     private void tblGoimonAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblGoimonAncestorAdded
         // TODO add your handling code here:
-
+   
+    
+    
     }//GEN-LAST:event_tblGoimonAncestorAdded
 
     private void tblGoimonAncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblGoimonAncestorMoved
@@ -950,13 +956,14 @@ public void XacNhan() {
         model.setRowCount(0);
     }
 
-    @Override
-public void filltoTableGoiMon(String TenLoai, String TenMon, double Gia) {
-    boolean found = false;
+@Override
+public void filltoTableGoiMon(String MaMon, String TenMon, double Gia) {
     DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
+    boolean found = false;
 
     for (int i = 0; i < model.getRowCount(); i++) {
-        if (model.getValueAt(i, 0).toString().equals(TenLoai)) {
+        String existingTenMon = model.getValueAt(i, 1).toString();
+        if (existingTenMon.equals(TenMon)) {
             int soLuong = (int) model.getValueAt(i, 2);
             soLuong++;
             model.setValueAt(soLuong, i, 2);
@@ -967,11 +974,13 @@ public void filltoTableGoiMon(String TenLoai, String TenMon, double Gia) {
     }
 
     if (!found) {
-        Object[] rowData = { TenLoai, TenMon, 1, Gia };
+        Object[] rowData = { MaMon, TenMon, 1, Gia };
         model.addRow(rowData);
     }
+
     tinhTongTien();
 }
+
 
 @Override
 public double tinhTongTien() {
@@ -984,17 +993,17 @@ public double tinhTongTien() {
             tong += ((Number) val).doubleValue();
         } else if (val != null) {
             try {
-                tong += Double.parseDouble(val.toString().replace(",", ""));
+                String cleaned = val.toString().replace(",", "").trim();
+                tong += Double.parseDouble(cleaned);
             } catch (NumberFormatException e) {
-                // Bỏ qua giá trị không hợp lệ
+                System.err.println("Lỗi parse tổng tiền tại dòng " + i + ": " + val);
             }
         }
     }
 
-    lblTongTien.setText(String.format("%.0f", tong)); // format cho đẹp
+    lblTongTien.setText(String.format("%,.0f", tong)); // định dạng 1,000,000
     return tong;
 }
-
 
     public void filltoCombo(){
     cboBanAn.removeAllItems();
