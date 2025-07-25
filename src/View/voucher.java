@@ -13,10 +13,30 @@ public class voucher extends javax.swing.JPanel {
     /**
      * Creates new form voucher
      */
+    public static int tongTien = 0;
     public voucher() {
         initComponents();
+        capNhatTichDiem();
+    }
+    private void capNhatTichDiem() {
+        int diem = tongTien / 10000;
+        txtatichdiem.setText("Bạn đã tích được " + diem + "/200 điểm.\n(Mỗi điểm = 10.000 VNĐ)");
     }
 
+    
+    public static void main(String[] args) {
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                javax.swing.JFrame frame = new javax.swing.JFrame("Test Voucher Panel");
+                frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+                frame.setSize(1320, 630);
+                frame.setLocationRelativeTo(null);
+                frame.setContentPane(new voucher());
+                frame.setVisible(true);
+            }
+        });
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,12 +48,14 @@ public class voucher extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtatichdiem = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 251, 233));
+        setMinimumSize(new java.awt.Dimension(1320, 630));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
@@ -42,34 +64,21 @@ public class voucher extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("KHUYẾN MÃI GIẢM GIÁ");
 
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
-        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel22MouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel22)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 429, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(343, 343, 343))
+                .addGap(568, 568, 568)
+                .addComponent(jLabel1)
+                .addContainerGap(481, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                 .addContainerGap(14, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, -1));
@@ -77,38 +86,32 @@ public class voucher extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("TÍCH ĐIỂM ĐỔI QUÀ");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 240, 60));
-
-        jButton1.setBackground(new java.awt.Color(255, 251, 233));
-        jButton1.setText("ĐỔI VOUCHER");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 250, 50));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 240, 60));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Mỗi lần ghé là một lần tích điểm – Đổi 5 điểm, nhận ngay món ăn miễn phí!");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, 20));
+
+        txtatichdiem.setBackground(new java.awt.Color(255, 251, 233));
+        txtatichdiem.setColumns(20);
+        txtatichdiem.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtatichdiem.setRows(5);
+        jScrollPane1.setViewportView(txtatichdiem);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 660, 30));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/qrcode_231457493_f69d3621bdb234a4704ec3b3307a818d.png"))); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jLabel22MouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtatichdiem;
     // End of variables declaration//GEN-END:variables
 }
