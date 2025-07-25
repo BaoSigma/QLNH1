@@ -4,10 +4,10 @@
  */
 package View;
 
-import Controller.ModelController.KhachHangController;
-import DAO.ModelDAO.KhachHangDAO;
-import DAO.impl.KhachHangImpl;
-import Model.KhachHang;
+import Controller.ModelController.ChiTietHoaDonController;
+import DAO.ModelDAO.ChiTietHoaDonDAO;
+import DAO.impl.ChiTietHoaDonImpl;
+import Model.ChiTietHoaDon;
 import Util.UDialog;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -32,15 +32,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author micro
  */
-public class QLKH extends javax.swing.JPanel implements KhachHangController{
-    KhachHangDAO dao = new KhachHangImpl();
-    List<KhachHang> items = new ArrayList<>();
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(QLKH.class.getName());
+public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
+    ChiTietHoaDonDAO dao = new ChiTietHoaDonImpl();
+    List<ChiTietHoaDon> items = new ArrayList<>();
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CTHD.class.getName());
 
     /**
-     * Creates new form QLKH1
+     * Creates new form ChiTietHoaDon
      */
-    public QLKH() {
+    public CTHD() {
         initComponents();
     }
 
@@ -57,28 +57,30 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblKhachHang = new javax.swing.JTable();
+        tblChiTietHoaDon = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         txtFind = new javax.swing.JTextField();
         btnDau = new javax.swing.JButton();
         btnTruoc = new javax.swing.JButton();
         btnTien = new javax.swing.JButton();
         btnCuoi = new javax.swing.JButton();
-        txtSdt = new javax.swing.JTextField();
+        txtSoLuong = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtTongChiTieu = new javax.swing.JTextField();
-        txtHoTen = new javax.swing.JTextField();
+        txtGhiChu = new javax.swing.JTextField();
+        txtMaMon = new javax.swing.JTextField();
         btnLamMoi = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        txtMaKH = new javax.swing.JTextField();
+        txtMaHD = new javax.swing.JTextField();
         btnSua = new javax.swing.JButton();
-        txtHanhKhach = new javax.swing.JTextField();
+        txtTrangThai = new javax.swing.JTextField();
         btnTiemkiem = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        txtMaVanDon = new javax.swing.JTextField();
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1080, 560));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -88,7 +90,7 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Quản lý khách hàng");
+        jLabel1.setText("Chi tiết hóa đơn");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -106,34 +108,34 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, -1));
 
-        tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
+        tblChiTietHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Mã khách hàng", "Họ tên", "Số điện thoại", "Tổng chi tiêu", "Hành khách"
+                "Mã hóa đơn", "Mã món", "Số lượng", "Ghi chú", "Trạng thái", "Mã vận đơn"
             }
         ));
-        tblKhachHang.addAncestorListener(new javax.swing.event.AncestorListener() {
+        tblChiTietHoaDon.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tblKhachHangAncestorAdded(evt);
+                tblChiTietHoaDonAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        tblKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblChiTietHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblKhachHangMouseClicked(evt);
+                tblChiTietHoaDonMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblKhachHang);
+        jScrollPane1.setViewportView(tblChiTietHoaDon);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 145, 1320, 210));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 1320, 210));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Tìm kiếm :");
@@ -175,28 +177,28 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
             }
         });
         jPanel1.add(btnCuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 83, 33));
-        jPanel1.add(txtSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 270, -1));
+        jPanel1.add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 270, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setText("Hành khách:");
+        jLabel10.setText("Trạng thái:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 580, 96, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Số điện thoại:");
+        jLabel5.setText("Số lượng:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 96, -1));
-        jPanel1.add(txtTongChiTieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 270, -1));
+        jPanel1.add(txtGhiChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 270, -1));
 
-        txtHoTen.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtMaMon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtHoTenMouseClicked(evt);
+                txtMaMonMouseClicked(evt);
             }
         });
-        txtHoTen.addActionListener(new java.awt.event.ActionListener() {
+        txtMaMon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHoTenActionPerformed(evt);
+                txtMaMonActionPerformed(evt);
             }
         });
-        jPanel1.add(txtHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, 270, -1));
+        jPanel1.add(txtMaMon, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, 270, -1));
 
         btnLamMoi.setText("LÀM MỚI");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -215,11 +217,11 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Mã khách hàng:");
+        jLabel3.setText("Mã hóa đơn:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 110, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Họ tên khách hàng:");
+        jLabel6.setText("Mã món:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, -1));
 
         btnThem.setText("THÊM");
@@ -231,11 +233,11 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         jPanel1.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setText("Tổng chi tiêu:");
+        jLabel9.setText("Ghi chú:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, 96, -1));
 
-        txtMaKH.setEnabled(false);
-        jPanel1.add(txtMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 270, -1));
+        txtMaHD.setEnabled(false);
+        jPanel1.add(txtMaHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 270, -1));
 
         btnSua.setText("SỬA");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -244,7 +246,7 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
             }
         });
         jPanel1.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, -1, -1));
-        jPanel1.add(txtHanhKhach, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 580, 270, -1));
+        jPanel1.add(txtTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 580, 270, -1));
 
         btnTiemkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/find.png"))); // NOI18N
         btnTiemkiem.addActionListener(new java.awt.event.ActionListener() {
@@ -253,6 +255,11 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
             }
         });
         jPanel1.add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 102, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel11.setText("Mã vận đơn:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 620, 96, -1));
+        jPanel1.add(txtMaVanDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 620, 270, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -276,10 +283,10 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblKhachHangAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblKhachHangAncestorAdded
+    private void tblChiTietHoaDonAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblChiTietHoaDonAncestorAdded
         // TODO add your handling code here:
         DefaultTableModel model = new DefaultTableModel(
-            new Object[]{"Mã KH", "Họ Tên", "Số Điện Thoại", "Tổng Chi Tiêu", "Hành khách"},
+            new Object[]{"Mã Hóa Đơn", "Mã Món", "Số Lượng", "Ghi Chú", "Trạng Thái", "Mã Vận Đơn"},
             0
         ) {
             @Override
@@ -287,14 +294,14 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
                 return false; // Không cho sửa bất kỳ ô nào
             }
         };
-        tblKhachHang.setModel(model);
+        tblChiTietHoaDon.setModel(model);
 
         fillToTable();
-    }//GEN-LAST:event_tblKhachHangAncestorAdded
+    }//GEN-LAST:event_tblChiTietHoaDonAncestorAdded
 
-    private void tblKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachHangMouseClicked
+    private void tblChiTietHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChiTietHoaDonMouseClicked
         edit();
-    }//GEN-LAST:event_tblKhachHangMouseClicked
+    }//GEN-LAST:event_tblChiTietHoaDonMouseClicked
 
     private void btnDauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDauActionPerformed
         // TODO add your handling code here:
@@ -316,9 +323,13 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         moveLast();
     }//GEN-LAST:event_btnCuoiActionPerformed
 
-    private void txtHoTenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtHoTenMouseClicked
+    private void txtMaMonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMaMonMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtHoTenMouseClicked
+    }//GEN-LAST:event_txtMaMonMouseClicked
+
+    private void txtMaMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaMonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaMonActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
@@ -338,13 +349,8 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-
         update();
     }//GEN-LAST:event_btnSuaActionPerformed
-
-    private void txtHoTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoTenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtHoTenActionPerformed
 
     private void btnTiemkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiemkiemActionPerformed
         // TODO add your handling code here:
@@ -364,6 +370,7 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
     private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -372,82 +379,73 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblKhachHang;
+    private javax.swing.JTable tblChiTietHoaDon;
     private javax.swing.JTextField txtFind;
-    private javax.swing.JTextField txtHanhKhach;
-    private javax.swing.JTextField txtHoTen;
-    private javax.swing.JTextField txtMaKH;
-    private javax.swing.JTextField txtSdt;
-    private javax.swing.JTextField txtTongChiTieu;
+    private javax.swing.JTextField txtGhiChu;
+    private javax.swing.JTextField txtMaHD;
+    private javax.swing.JTextField txtMaMon;
+    private javax.swing.JTextField txtMaVanDon;
+    private javax.swing.JTextField txtSoLuong;
+    private javax.swing.JTextField txtTrangThai;
     // End of variables declaration//GEN-END:variables
 @Override
-public void open() {
-    throw new UnsupportedOperationException("Not supported yet.");
+public void setForm(ChiTietHoaDon entity) {
+    txtMaHD.setText(entity.getMaHD());
+    txtMaMon.setText(entity.getMaMon());
+    txtSoLuong.setText(String.valueOf(entity.getSoLuong()));
+    txtGhiChu.setText(entity.getGhiChu());
+    txtTrangThai.setText(entity.getTrangThai());
+    txtMaVanDon.setText(entity.getMaVanDon());
 }
 
 @Override
-public void setForm(KhachHang entity) {
-    txtMaKH.setText(entity.getMaKH());
-    txtHoTen.setText(entity.getHoTen());
-    txtSdt.setText(entity.getSdt());
-    txtTongChiTieu.setText(String.valueOf(entity.getTongChiTieu()));
-    txtHanhKhach.setText(entity.getHangKhach());
-}
+public ChiTietHoaDon getForm() {
+    ChiTietHoaDon ct = new ChiTietHoaDon();
 
-@Override
-public KhachHang getForm() {
-    KhachHang kh = new KhachHang();
-
-    kh.setMaKH(txtMaKH.getText().trim());
-    kh.setHoTen(txtHoTen.getText().trim());
-    kh.setSdt(txtSdt.getText().trim());
+    ct.setMaHD(txtMaHD.getText().trim());
+    ct.setMaMon(txtMaMon.getText().trim());
 
     try {
-        kh.setTongChiTieu(Double.parseDouble(txtTongChiTieu.getText().trim()));
+        ct.setSoLuong(Integer.parseInt(txtSoLuong.getText().trim()));
     } catch (NumberFormatException e) {
-        kh.setTongChiTieu(0.0); // hoặc thông báo lỗi
+        ct.setSoLuong(0);
     }
 
-    kh.setHangKhach(txtHanhKhach.getText().trim());
+    ct.setGhiChu(txtGhiChu.getText().trim());
+    ct.setTrangThai(txtTrangThai.getText().trim());
+    ct.setMaVanDon(txtMaVanDon.getText().trim());
 
-    return kh;
+    return ct;
 }
-
 
 @Override
 public void fillToTable() {
-    DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
+    DefaultTableModel model = (DefaultTableModel) tblChiTietHoaDon.getModel();
     model.setRowCount(0);
     items = dao.findAll();
 
-    for (KhachHang kh : items) {
+    for (ChiTietHoaDon ct : items) {
         Object[] row = {
-            kh.getMaKH(),
-            kh.getHoTen(),
-            kh.getSdt(),
-            kh.getTongChiTieu(),
-            kh.getHangKhach()
+            ct.getMaHD(),
+            ct.getMaMon(),
+            ct.getSoLuong(),
+            ct.getGhiChu(),
+            ct.getTrangThai(),
+            ct.getMaVanDon()
         };
         model.addRow(row);
     }
-}
-
-
-@Override
-public void edit() {
-    KhachHang entity = items.get(tblKhachHang.getSelectedRow());
-    this.setForm(entity);
 }
 
 @Override
 public void create() {
     if (!Checkall()) return;
 
-    if (UDialog.confirm("Bạn thực sự muốn thêm khách hàng này?")) {
-        KhachHang entity = this.getForm();
+    if (UDialog.confirm("Bạn muốn thêm chi tiết hóa đơn này?")) {
+        ChiTietHoaDon entity = getForm();
         dao.create(entity);
-        this.fillToTable();
-        this.clear();
+        fillToTable();
+        clear();
         UDialog.alert("Đã thêm thành công");
     }
 }
@@ -457,8 +455,8 @@ public void update() {
     if (!Checkall()) return;
 
     if (UDialog.confirm("Bạn thực sự muốn cập nhật thông tin khách hàng này?")) {
-        KhachHang kh = this.getForm();
-        dao.update(kh);
+        ChiTietHoaDon cthd = this.getForm();
+        dao.update(cthd);
         this.fillToTable();
         this.clear();
         UDialog.alert("Cập nhật thành công!");
@@ -467,127 +465,147 @@ public void update() {
 
 @Override
 public void delete() {
-    int row = tblKhachHang.getSelectedRow();
+    int row = tblChiTietHoaDon.getSelectedRow();
     if (row == -1) {
-        UDialog.alert("Vui lòng chọn khách hàng cần xóa!");
+        UDialog.alert("Vui lòng chọn dòng để xóa!");
         return;
     }
 
-    String maKH = tblKhachHang.getValueAt(row, 0).toString();
-    if (UDialog.confirm("Bạn chắc chắn muốn xóa khách hàng này?")) {
-        dao.deleteById(maKH);
-        this.fillToTable();
-        this.clear();
-        UDialog.alert("Xóa khách hàng thành công!");
+    String maHD = tblChiTietHoaDon.getValueAt(row, 0).toString();
+    String maMon = tblChiTietHoaDon.getValueAt(row, 1).toString();
+
+    if (UDialog.confirm("Bạn chắc chắn muốn xóa chi tiết này?")) {
+        dao.deleteById(maHD);
+        fillToTable();
+        clear();
+        UDialog.alert("Xóa thành công");
     }
+}
+
+@Override
+public void edit() {
+    ChiTietHoaDon entity = items.get(tblChiTietHoaDon.getSelectedRow());
+    this.setForm(entity);
 }
 
 @Override
 public void clear() {
-    this.setForm(new KhachHang());
-}
-
-@Override
-public void moveFirst() {
-    int currentIndex = tblKhachHang.getSelectedRow();
-    if (currentIndex == 0) {
-        UDialog.alert("Đã ở vị trí đầu tiên rồi!");
-    } else {
-        this.moveTo(0);
-    }
-}
-
-@Override
-public void movePrevious() {
-    this.moveTo(tblKhachHang.getSelectedRow() - 1);
-}
-
-@Override
-public void moveNext() {
-    this.moveTo(tblKhachHang.getSelectedRow() + 1);
-}
-
-@Override
-public void moveLast() {
-    this.moveTo(tblKhachHang.getRowCount() - 1);
-}
-
-@Override
-public void moveTo(int rowIndex) {
-    if (rowIndex < 0) {
-        this.moveLast();
-    } else if (rowIndex >= tblKhachHang.getRowCount()) {
-        this.moveFirst();
-    } else {
-        tblKhachHang.clearSelection();
-        tblKhachHang.setRowSelectionInterval(rowIndex, rowIndex);
-        this.edit();
-    }
+    this.setForm(new ChiTietHoaDon());
 }
 
 @Override
 public boolean Checkall() {
-    if (txtHoTen.getText().trim().isEmpty()) {
-        UDialog.alert("Vui lòng nhập tên khách hàng!");
-        txtHoTen.requestFocus();
+    if (txtMaHD.getText().trim().isEmpty()) {
+        UDialog.alert("Vui lòng nhập mã hóa đơn!");
+        txtMaHD.requestFocus();
         return false;
     }
 
-    if (txtSdt.getText().trim().isEmpty()) {
-        UDialog.alert("Vui lòng nhập số điện thoại!");
-        txtSdt.requestFocus();
+    if (txtMaMon.getText().trim().isEmpty()) {
+        UDialog.alert("Vui lòng nhập mã món!");
+        txtMaMon.requestFocus();
         return false;
     }
 
-    if (txtTongChiTieu.getText().trim().isEmpty()) {
-        UDialog.alert("Vui lòng nhập tổng chi tiêu!");
-        txtTongChiTieu.requestFocus();
+    if (txtSoLuong.getText().trim().isEmpty()) {
+        UDialog.alert("Vui lòng nhập số lượng!");
+        txtSoLuong.requestFocus();
         return false;
     }
 
     try {
-        Double.parseDouble(txtTongChiTieu.getText().trim());
+        Integer.parseInt(txtSoLuong.getText().trim());
     } catch (NumberFormatException e) {
-        UDialog.alert("Tổng chi tiêu phải là số!");
-        txtTongChiTieu.requestFocus();
+        UDialog.alert("Số lượng phải là số!");
+        txtSoLuong.requestFocus();
         return false;
     }
 
-    if (txtHanhKhach.getText().trim().isEmpty()) {
-        UDialog.alert("Vui lòng nhập hạng khách!");
-        txtHanhKhach.requestFocus();
+    if (txtTrangThai.getText().trim().isEmpty()) {
+        UDialog.alert("Vui lòng nhập trạng thái!");
+        txtTrangThai.requestFocus();
+        return false;
+    }
+
+    if (txtMaVanDon.getText().trim().isEmpty()) {
+        UDialog.alert("Vui lòng nhập mã vận đơn!");
+        txtMaVanDon.requestFocus();
         return false;
     }
 
     return true;
 }
+
+@Override
+public void moveFirst() {
+    if (tblChiTietHoaDon.getSelectedRow() == 0) {
+        UDialog.alert("Đã ở vị trí đầu tiên!");
+    } else {
+        moveTo(0);
+    }
+}
+
+@Override
+public void movePrevious() {
+    moveTo(tblChiTietHoaDon.getSelectedRow() - 1);
+}
+
+@Override
+public void moveNext() {
+    moveTo(tblChiTietHoaDon.getSelectedRow() + 1);
+}
+
+@Override
+public void moveLast() {
+    moveTo(tblChiTietHoaDon.getRowCount() - 1);
+}
+
+@Override
+public void moveTo(int rowIndex) {
+    if (rowIndex < 0) {
+        moveLast();
+    } else if (rowIndex >= tblChiTietHoaDon.getRowCount()) {
+        moveFirst();
+    } else {
+        tblChiTietHoaDon.clearSelection();
+        tblChiTietHoaDon.setRowSelectionInterval(rowIndex, rowIndex);
+        edit();
+    }
+}
+
 public void fillToTableTheoDieuKien() {
     try {
-        KhachHangImpl dao = new KhachHangImpl(); 
+        ChiTietHoaDonImpl dao = new ChiTietHoaDonImpl(); 
         String keyword = txtFind.getText().trim();
-        List<KhachHang> list = dao.findByKeyword(keyword);
+        List<ChiTietHoaDon> list = dao.findByMaHD(keyword);
 
-        DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblChiTietHoaDon.getModel();
         model.setRowCount(0);
 
         if (list.isEmpty()) {
-            UDialog.alert("Không tìm thấy khách hàng nào.");
+            UDialog.alert("Không tìm thấy kết quả.");
             return;
         }
 
-        for (KhachHang kh : list) {
+        for (ChiTietHoaDon ct : list) {
             Object[] row = {
-                kh.getMaKH(),
-                kh.getHoTen(),
-                kh.getSdt(),
-                kh.getTongChiTieu(),
-                kh.getHangKhach()
+                ct.getMaHD(),
+                ct.getMaMon(),
+                ct.getSoLuong(),
+                ct.getGhiChu(),
+                ct.getTrangThai(),
+                ct.getMaVanDon()
             };
             model.addRow(row);
         }
     } catch (Exception e) {
         e.printStackTrace();
-        UDialog.alert("Lỗi khi tìm khách hàng!");
+        UDialog.alert("Lỗi khi tìm kiếm!");
     }
 }
+
+    @Override
+    public void open() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
