@@ -39,7 +39,7 @@ public class goimon extends javax.swing.JPanel implements OrderController{
      */
     public goimon() {
     initComponents();
-    
+    filltoCombo();
 
 }
 
@@ -555,22 +555,21 @@ if (row != -1) {
 
     private void tblMonNheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMonNheMouseClicked
         // TODO add your handling code here:
-               int row = tblMonNhe.getSelectionModel().getLeadSelectionIndex(); // luôn chính xác dòng đang click
+        int row = tblMonNhe.getSelectionModel().getLeadSelectionIndex(); // luôn chính xác dòng đang click
 
-if (row != -1) {
+        if (row != -1) {
         Object oMaMon = tblMonNuong.getValueAt(row, 0);
-    Object oTenMon = tblMonNhe.getValueAt(row, 1);
-    Object oGia = tblMonNhe.getValueAt(row, 2);
+        Object oTenMon = tblMonNhe.getValueAt(row, 1);
+        Object oGia = tblMonNhe.getValueAt(row, 2);
+        if (oTenMon != null && oGia != null) {
+            String MaMon = oMaMon.toString();
+            String tenMon = oTenMon.toString();
+            double gia = (oGia instanceof Number) ? ((Number) oGia).doubleValue() : Double.parseDouble(oGia.toString());
 
-    if (oTenMon != null && oGia != null) {
-        String MaMon = oMaMon.toString();
-        String tenMon = oTenMon.toString();
-        double gia = (oGia instanceof Number) ? ((Number) oGia).doubleValue() : Double.parseDouble(oGia.toString());
-
-        filltoTableGoiMon(tenMon, tenMon, gia); // dùng TenMon làm mã tạm
-    } else {
-        JOptionPane.showMessageDialog(null, "Một trong các cột bị null!");
-    }
+            filltoTableGoiMon(tenMon, tenMon, gia); // dùng TenMon làm mã tạm
+        } else {
+            JOptionPane.showMessageDialog(null, "Một trong các cột bị null!");
+        }
 
 }
     }//GEN-LAST:event_tblMonNheMouseClicked
@@ -587,9 +586,9 @@ if (row != -1) {
 
     private void tblGoimonAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblGoimonAncestorAdded
         // TODO add your handling code here:
-   
+        tblGoimon.getColumnModel().getColumn(2).setCellEditor(new QuantityCellEditorRenderer()); 
     
-    
+        tblGoimon.getColumnModel().getColumn(2).setCellRenderer(new QuantityCellEditorRenderer());
     }//GEN-LAST:event_tblGoimonAncestorAdded
 
     private void tblGoimonAncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblGoimonAncestorMoved
