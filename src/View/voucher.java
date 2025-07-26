@@ -4,6 +4,8 @@
  */
 package View;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author User
@@ -100,8 +102,8 @@ public class voucher extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 660, 30));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/qrcode_231457493_f69d3621bdb234a4704ec3b3307a818d.png"))); // NOI18N
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, -1, -1));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/qruci.png"))); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
     
 
