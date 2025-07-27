@@ -4,6 +4,7 @@
  */
 package View;
 
+import DAO.impl.VoucherImpl;
 import javax.swing.ImageIcon;
 
 /**
@@ -15,30 +16,35 @@ public class voucher extends javax.swing.JPanel {
     /**
      * Creates new form voucher
      */
-    public static int tongTien = 0;
-    public voucher() {
+    private String maKH;
+    private VoucherImpl voucherDAO = new VoucherImpl();
+    
+    public voucher(String maKH) {
+        this.maKH = maKH;
         initComponents();
         capNhatTichDiem();
     }
     private void capNhatTichDiem() {
-        int diem = tongTien / 10000;
-        txtatichdiem.setText("Bạn đã tích được " + diem + "/200 điểm.\n(Mỗi điểm = 10.000 VNĐ)");
+        double tong = voucherDAO.layTongChiTieu(maKH);
+        int diem = (int) (tong / 1_000_000);   
+        txtatichdiem.setText("Tổng chi tiêu: " + tong + " VNĐ\n"+"Bạn đã tích được " + diem + "điểm.\n(Mỗi điểm = 1.000.000 VNĐ chi tiêu)");
     }
-
-    
-    public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                javax.swing.JFrame frame = new javax.swing.JFrame("Test Voucher Panel");
-                frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-                frame.setSize(1320, 630);
-                frame.setLocationRelativeTo(null);
-                frame.setContentPane(new voucher());
-                frame.setVisible(true);
-            }
-        });
-    }
-    
+    public void refresh() {
+    capNhatTichDiem();
+}
+     public static void run(String maKH) {
+    javax.swing.SwingUtilities.invokeLater(() -> {
+        javax.swing.JFrame frame = new javax.swing.JFrame("Voucher Khách Hàng");
+        frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        frame.setSize(1320, 630);
+        frame.setLocationRelativeTo(null);
+        frame.setContentPane(new voucher(maKH)); // Gắn JPanel vào JFrame
+        frame.setVisible(true);
+    });
+}
+     public static void main(String[] args) {
+    run("KH001"); // Thay "KH001" bằng mã khách hàng có trong DB
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
