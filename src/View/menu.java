@@ -115,12 +115,12 @@ public class menu extends javax.swing.JFrame {
                 setView(new QLKV());
             }
         });
-//        lblThongTinCaNhan.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                setView(new PhanLoai(false));
-//            }
-//        });
+        lblThongTinCaNhan.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                setView(new IN4());
+            }
+        });
 //        lblThoat.addMouseListener(new MouseAdapter() {
 //            @Override
 //            public void mouseClicked(MouseEvent e) {
@@ -176,7 +176,7 @@ public class menu extends javax.swing.JFrame {
         addHoverTextEffect(lblKhuVuc, normal, hover);
         addHoverTextEffect(lblKhachHang, normal, hover);
         addHoverTextEffect(lblDoanhThu, normal, hover);
-        addHoverTextEffect(lblTTCN, normal, hover);
+        addHoverTextEffect(lblThongTinCaNhan, normal, hover);
         addHoverTextEffect(lblThoat, normal, hover);
         addHoverTextEffect(lblDangXuat, normal, hover);
         addHoverTextEffect(lblVanDon, normal, hover);
@@ -281,7 +281,7 @@ public class menu extends javax.swing.JFrame {
         lblMonAn = new javax.swing.JLabel();
         lblBanAn = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        lblTTCN = new javax.swing.JLabel();
+        lblThongTinCaNhan = new javax.swing.JLabel();
         lblKhachHang = new javax.swing.JLabel();
         lblKhuVuc = new javax.swing.JLabel();
         lblHoaDon = new javax.swing.JLabel();
@@ -382,12 +382,12 @@ public class menu extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
 
-        lblTTCN.setBackground(new java.awt.Color(255, 255, 255));
-        lblTTCN.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblTTCN.setForeground(new java.awt.Color(255, 255, 255));
-        lblTTCN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTTCN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon thông tin cá nhân.png"))); // NOI18N
-        lblTTCN.setText("Thông tin cá nhân");
+        lblThongTinCaNhan.setBackground(new java.awt.Color(255, 255, 255));
+        lblThongTinCaNhan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblThongTinCaNhan.setForeground(new java.awt.Color(255, 255, 255));
+        lblThongTinCaNhan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblThongTinCaNhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon thông tin cá nhân.png"))); // NOI18N
+        lblThongTinCaNhan.setText("Thông tin cá nhân");
 
         lblKhachHang.setBackground(new java.awt.Color(255, 255, 255));
         lblKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -506,7 +506,7 @@ public class menu extends javax.swing.JFrame {
                 .addContainerGap())
             .addComponent(lblThoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblGoiMon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblTTCN, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+            .addComponent(lblThongTinCaNhan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblDatBan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
@@ -516,7 +516,7 @@ public class menu extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(jLabel44)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTTCN)
+                .addComponent(lblThongTinCaNhan)
                 .addGap(18, 18, 18)
                 .addComponent(lblMonAn)
                 .addGap(18, 18, 18)
@@ -822,8 +822,8 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLabel lblLoaiMon;
     private javax.swing.JLabel lblMonAn;
     private javax.swing.JLabel lblNhanVien;
-    private javax.swing.JLabel lblTTCN;
     private javax.swing.JLabel lblThoat;
+    private javax.swing.JLabel lblThongTinCaNhan;
     private javax.swing.JLabel lblVanDon;
     private javax.swing.JLabel lblVoucher;
     // End of variables declaration//GEN-END:variables

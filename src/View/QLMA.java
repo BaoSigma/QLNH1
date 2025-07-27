@@ -278,37 +278,36 @@ public class QLMA extends javax.swing.JPanel {
 
     private void btnCuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoiActionPerformed
         // TODO add your handling code here:
-        moveLast();
+
     }//GEN-LAST:event_btnCuoiActionPerformed
 
     private void btnTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTienActionPerformed
         // TODO add your handling code here:
-        moveNext();
+
     }//GEN-LAST:event_btnTienActionPerformed
 
     private void btnTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTruocActionPerformed
         // TODO add your handling code here:
-        movePrevious();
+
     }//GEN-LAST:event_btnTruocActionPerformed
 
     private void btnDauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDauActionPerformed
         // TODO add your handling code here:
-        moveFirst();
     }//GEN-LAST:event_btnDauActionPerformed
 
     private void btnTien1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTien1ActionPerformed
         // TODO add your handling code here:
-        moveNext();
+
     }//GEN-LAST:event_btnTien1ActionPerformed
 
     private void btnTruoc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTruoc1ActionPerformed
         // TODO add your handling code here:
-        movePrevious();
+
     }//GEN-LAST:event_btnTruoc1ActionPerformed
 
     private void btnDau1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDau1ActionPerformed
         // TODO add your handling code here:
-        moveFirst();
+
     }//GEN-LAST:event_btnDau1ActionPerformed
 
 

@@ -26,7 +26,7 @@ public class login extends javax.swing.JFrame implements LoginController    {
      */
     public login(){
     initComponents();   // ✅ Khởi tạo các JTextField, JCheckBox, Button, ...
-    UAuth.load();
+    
 
     if (UAuth.user != null) {
         txtUser.setText(UAuth.user.getMaNV());
@@ -261,6 +261,7 @@ public void loginn() {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                UAuth.load();
                 try {
                     UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatLightLaf());
                 } catch (Exception e) {

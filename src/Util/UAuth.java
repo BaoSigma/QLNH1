@@ -1,10 +1,12 @@
 package Util;
 
 import DAO.ModelDAO.NhanVienDAO;
+import DAO.impl.NhanVienImpl;
 import Model.NhanVien;
 
-import DAO.impl.NhanVienImpl;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class UAuth {
     public static NhanVien user = null;
@@ -15,52 +17,78 @@ public class UAuth {
     }
 
     public static boolean QuanLy() {
-        return user != null && "Quản lý".equalsIgnoreCase(user.getTenVaiTro());
+        return isLogin() && "Quản lý".equalsIgnoreCase(user.getTenVaiTro());
     }
 
     public static boolean NhanVien() {
-        return user != null && "Nhân viên".equalsIgnoreCase(user.getTenVaiTro());
+        return isLogin() && "Nhân viên".equalsIgnoreCase(user.getTenVaiTro());
     }
 
     public static boolean PhucVu() {
-        return user != null && "Phục vụ".equalsIgnoreCase(user.getTenVaiTro());
+        return isLogin() && "Phục vụ".equalsIgnoreCase(user.getTenVaiTro());
     }
-
-
 
     public static void save(NhanVien nv) {
         try (PrintWriter pw = new PrintWriter(FILE_PATH)) {
-            pw.println(nv.getMaNV());
-            pw.println(nv.getMatKhau()); // đã mã hóa sẵn từ DB
-        } catch (Exception e) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+            pw.println(safe(nv.getMaNV()));
+            pw.println(safe(nv.getMatKhau())); // thường là đã mã hóa
+            pw.println(safe(nv.getHoTen()));
+            pw.println(safe(nv.getEmail()));
+            pw.println(safe(nv.getTenVaiTro()));
+            pw.println(nv.getNgaySinh() != null ? sdf.format(nv.getNgaySinh()) : "");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void load() {
-        try {
-            File file = new File(FILE_PATH);
-            if (!file.exists()) return;
+        File file = new File(FILE_PATH);
+        if (!file.exists()) return;
 
-            BufferedReader br = new BufferedReader(new FileReader(file));
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String maNV = br.readLine();
-            String encryptedPass = br.readLine();
-            br.close();
+            String matKhau = br.readLine();
+            String hoTen = br.readLine();
+            String email = br.readLine();
+            String tenVaiTro = br.readLine();
+            String namSinhStr = br.readLine();
 
-            if (maNV != null && encryptedPass != null) {
-                NhanVienDAO dao = new NhanVienImpl();
-                NhanVien nv = dao.findById(maNV);
-                if (nv != null && encryptedPass.equals(nv.getMatKhau())) {
-                    user = nv;
+            if (safe(maNV).isEmpty() || safe(matKhau).isEmpty()) return;
+
+            NhanVienDAO dao = new NhanVienImpl();
+            NhanVien nv = dao.findById(maNV);
+
+            if (nv != null && matKhau.equals(nv.getMatKhau())) {
+                nv.setHoTen(hoTen);
+                nv.setEmail(email);
+                nv.setTenVaiTro(tenVaiTro);
+
+                if (namSinhStr != null && !namSinhStr.isEmpty()) {
+                    try {
+                        Date ns = new SimpleDateFormat("yyyy-MM-dd").parse(namSinhStr);
+                        nv.setNgaySinh(ns);
+                    } catch (Exception ignored) {}
                 }
+
+                user = nv;
             }
-        } catch (Exception e) {
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void clear() {
         File file = new File(FILE_PATH);
-        if (file.exists()) file.delete();
+        if (file.exists() && !file.delete()) {
+            System.err.println("Không thể xóa file đăng nhập.");
+        }
+        user = null;
+    }
+
+    private static String safe(String s) {
+        return s == null ? "" : s.trim();
     }
 }

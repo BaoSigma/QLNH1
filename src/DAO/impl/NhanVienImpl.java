@@ -64,9 +64,25 @@ private static final String findall = "SELECT \n" +
     return 0; // hoặc -1 nếu không có
 }
 
-
-    
-    
+ private static final String updatesqli4 = "UPDATE NhanVien\n" +
+   "SET\n" +
+   "    HoTen = ?,\n" +
+   "    Email = ?,\n" +
+   "    NgaySinh = ?,\n" +
+   "    Anh = ?\n" +
+   "WHERE MaNV = ?;";
+   
+    public void updatei4(NhanVien entity) {
+        Object[] values = {
+            entity.getHoTen(),
+           entity.getEmail(),
+           entity.getNgaySinh(),
+           entity.getAnh(),
+           entity.getMaNV()
+        };
+        UJdbc.executeUpdate(updatesqli4, values);
+        
+    }
     @Override
     public NhanVien create(NhanVien entity) {
         Object[] values = {

@@ -146,7 +146,7 @@
               </Group>
               <Component id="lblThoat" alignment="0" max="32767" attributes="0"/>
               <Component id="lblGoiMon" alignment="0" max="32767" attributes="0"/>
-              <Component id="lblTTCN" alignment="0" pref="224" max="32767" attributes="0"/>
+              <Component id="lblThongTinCaNhan" alignment="0" max="32767" attributes="0"/>
               <Component id="lblDatBan" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
@@ -157,7 +157,7 @@
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblTTCN" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblThongTinCaNhan" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblMonAn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -277,7 +277,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblTTCN">
+        <Component class="javax.swing.JLabel" name="lblThongTinCaNhan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

@@ -427,42 +427,42 @@ public class QLLM extends javax.swing.JPanel {
 
     private void btnCuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoiActionPerformed
         // TODO add your handling code here:
-        moveLast();
+
     }//GEN-LAST:event_btnCuoiActionPerformed
 
     private void btnTien1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTien1ActionPerformed
         // TODO add your handling code here:
-        moveNext();
+
     }//GEN-LAST:event_btnTien1ActionPerformed
 
     private void btnTruoc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTruoc1ActionPerformed
         // TODO add your handling code here:
-        movePrevious();
+
     }//GEN-LAST:event_btnTruoc1ActionPerformed
 
     private void btnDau1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDau1ActionPerformed
         // TODO add your handling code here:
-        moveFirst();
+
     }//GEN-LAST:event_btnDau1ActionPerformed
 
     private void btnCuoi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoi1ActionPerformed
         // TODO add your handling code here:
-        moveLast();
+
     }//GEN-LAST:event_btnCuoi1ActionPerformed
 
     private void btnTien2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTien2ActionPerformed
         // TODO add your handling code here:
-        moveNext();
+
     }//GEN-LAST:event_btnTien2ActionPerformed
 
     private void btnTruoc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTruoc2ActionPerformed
         // TODO add your handling code here:
-        movePrevious();
+
     }//GEN-LAST:event_btnTruoc2ActionPerformed
 
     private void btnDau2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDau2ActionPerformed
         // TODO add your handling code here:
-        moveFirst();
+
     }//GEN-LAST:event_btnDau2ActionPerformed
 
 
