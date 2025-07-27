@@ -383,15 +383,10 @@
                           <Component id="txtMaNV4" min="-2" pref="270" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="btnCuoi1" alignment="1" min="-2" pref="83" max="-2" attributes="0"/>
-                              <Component id="jLabel12" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="txtTenNV3" alignment="1" min="-2" pref="270" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="1" min="-2" pref="138" max="-2" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="btnCuoi1" min="-2" pref="83" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" pref="138" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="283" max="32767" attributes="0"/>
@@ -403,16 +398,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtMaNV4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTenNV3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                          <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMaNV4" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -465,7 +453,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="T&#xea;n m&#xf3;n:"/>
+            <Property name="text" type="java.lang.String" value="T&#xea;n lo&#x1ea1;i :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtMaNV4">
@@ -473,22 +461,12 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTenNV3">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel12">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="M&#xf4; t&#x1ea3; : "/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&#x110;&#x1a1;n gi&#xe1; :"/>
+            <Property name="text" type="java.lang.String" value="M&#xf9;a"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -556,11 +534,10 @@
         <Component class="javax.swing.JTable" name="jTable2">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
-                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+              <Table columnCount="3" rowCount="4">
+                <Column editable="true" title="M&#xe3; lo&#x1ea1;i " type="java.lang.Object"/>
+                <Column editable="true" title="T&#xea;n lo&#x1ea1;i " type="java.lang.Object"/>
+                <Column editable="true" title="T&#xea;n m&#xf9;a" type="java.lang.Object"/>
               </Table>
             </Property>
           </Properties>
