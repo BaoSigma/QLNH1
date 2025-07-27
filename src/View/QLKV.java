@@ -5,8 +5,8 @@
 package View;
 import Controller.ModelController.KhuVucController;
 import DAO.ModelDAO.KhuVucDAO;
-import DAO.impl.NhanVienImpl;
-import Model.NhanVien;
+import DAO.impl.KhuVucImp;
+import Model.KhuVuc;
 import Util.UDialog;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -30,8 +30,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public class QLKV extends javax.swing.JPanel {
-
+public class QLKV extends javax.swing.JPanel implements KhuVucController{
+  KhuVucDAO dao = new KhuVucImp();
+    List<KhuVuc> item = new ArrayList<>();
     /**
      * Creates new form QLKV
      */
@@ -51,7 +52,7 @@ public class QLKV extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblkhuvuc = new javax.swing.JTable();
         btnCuoi = new javax.swing.JButton();
         btnTien = new javax.swing.JButton();
         btnTruoc = new javax.swing.JButton();
@@ -60,9 +61,9 @@ public class QLKV extends javax.swing.JPanel {
         btnTiemkiem = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtMaNV = new javax.swing.JTextField();
+        txttenkv = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtMaNV2 = new javax.swing.JTextField();
+        txtmakv = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtMaNV3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -93,7 +94,7 @@ public class QLKV extends javax.swing.JPanel {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblkhuvuc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -104,7 +105,16 @@ public class QLKV extends javax.swing.JPanel {
                 "Mã khu vực", "tên khu vực", "Mã bàn", "Tên bàn"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblkhuvuc.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tblkhuvucAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane1.setViewportView(tblkhuvuc);
 
         btnCuoi.setBackground(new java.awt.Color(173, 139, 115));
         btnCuoi.setText("Về cuối");
@@ -151,20 +161,20 @@ public class QLKV extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Mã khu vực:");
 
-        txtMaNV.setEnabled(false);
-        txtMaNV.addActionListener(new java.awt.event.ActionListener() {
+        txttenkv.setEnabled(false);
+        txttenkv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMaNVActionPerformed(evt);
+                txttenkvActionPerformed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Tên khu vực:");
 
-        txtMaNV2.setEnabled(false);
-        txtMaNV2.addActionListener(new java.awt.event.ActionListener() {
+        txtmakv.setEnabled(false);
+        txtmakv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMaNV2ActionPerformed(evt);
+                txtmakvActionPerformed(evt);
             }
         });
 
@@ -241,7 +251,7 @@ public class QLKV extends javax.swing.JPanel {
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtMaNV2, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtmakv, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -251,7 +261,7 @@ public class QLKV extends javax.swing.JPanel {
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(txtMaNV4)
                                                 .addComponent(txtMaNV3)
-                                                .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(txttenkv, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(btnThem)
                                         .addGap(18, 18, 18)
@@ -290,11 +300,11 @@ public class QLKV extends javax.swing.JPanel {
                         .addGap(87, 87, 87)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(txtMaNV2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtmakv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txttenkv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -321,36 +331,36 @@ public class QLKV extends javax.swing.JPanel {
 
     private void btnCuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoiActionPerformed
         // TODO add your handling code here:
-        
+moveLast();
     }//GEN-LAST:event_btnCuoiActionPerformed
 
     private void btnTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTienActionPerformed
         // TODO add your handling code here:
-       
+     moveNext();
     }//GEN-LAST:event_btnTienActionPerformed
 
     private void btnTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTruocActionPerformed
         // TODO add your handling code here:
-        
+       movePrevious();
     }//GEN-LAST:event_btnTruocActionPerformed
 
     private void btnDauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDauActionPerformed
         // TODO add your handling code here:
-      
+        moveFirst();
     }//GEN-LAST:event_btnDauActionPerformed
 
     private void btnTiemkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiemkiemActionPerformed
         // TODO add your handling code here:
-       
+          fillToTableTheoDieuKien();
     }//GEN-LAST:event_btnTiemkiemActionPerformed
 
-    private void txtMaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNVActionPerformed
+    private void txttenkvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttenkvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaNVActionPerformed
+    }//GEN-LAST:event_txttenkvActionPerformed
 
-    private void txtMaNV2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNV2ActionPerformed
+    private void txtmakvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmakvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaNV2ActionPerformed
+    }//GEN-LAST:event_txtmakvActionPerformed
 
     private void txtMaNV3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNV3ActionPerformed
         // TODO add your handling code here:
@@ -361,6 +371,7 @@ public class QLKV extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMaNV4ActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+ create();
 
         
 
@@ -368,22 +379,38 @@ public class QLKV extends javax.swing.JPanel {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-
+delete();
         
 
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-
+update();
        
 
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
-       
+       clear();
     }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void tblkhuvucAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblkhuvucAncestorAdded
+        // TODO add your handling code here:
+        DefaultTableModel model = new DefaultTableModel(
+            new Object[]{"Mã khu vực", "tên khu vực", "Mã bàn", "Tên bàn",}, 
+            0
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Không cho sửa bất kỳ ô nào
+            }
+        };
+        tblkhuvuc.setModel(model);
+
+        fillToTable();
+    }//GEN-LAST:event_tblkhuvucAncestorAdded
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -404,11 +431,173 @@ public class QLKV extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblkhuvuc;
     private javax.swing.JTextField txtFind;
-    private javax.swing.JTextField txtMaNV;
-    private javax.swing.JTextField txtMaNV2;
     private javax.swing.JTextField txtMaNV3;
     private javax.swing.JTextField txtMaNV4;
+    private javax.swing.JTextField txtmakv;
+    private javax.swing.JTextField txttenkv;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void open() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void setForm(KhuVuc entity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public KhuVuc getForm() {
+        KhuVuc kv= new KhuVuc();
+   KhuVucImp kvdao = new KhuVucImp();
+
+    kv.setMaKV(txtmakv.getText().trim());
+    kv.setTenKV(txttenkv.getText().trim());
+        return kv;
+    }
+
+    @Override
+    public void fillToTable() {
+      DefaultTableModel model = (DefaultTableModel) tblkhuvuc.getModel();
+        model.setRowCount(0);
+        item = dao.findAll();
+        item.forEach(item -> {
+            Object[] rowData = {
+                item.getMaKV(),
+                item.getTenKV(),
+            };
+            model.addRow(rowData);
+        });
+    }
+
+    @Override
+    public void edit() {
+        KhuVuc entity = item.get(tblkhuvuc.getSelectedRow());
+        this.setForm(entity);
+    }
+
+    @Override
+    public void create() {
+          if (!Checkall()) return; 
+
+        if (UDialog.confirm("Bạn thực sự muốn thêm khu vực này?")) {
+            KhuVuc entity = this.getForm();
+            dao.create(entity);
+            this.fillToTable();
+            this.clear();
+            UDialog.alert("Đã thêm thành công");
+        }
+    }
+
+    @Override
+    public void update() {
+        if (!Checkall()) return;
+
+        if (UDialog.confirm("Bạn thực sự muốn cập nhật thông tin khu vực này?")) {
+            KhuVuc kv = this.getForm();
+            dao.update(kv);
+            this.fillToTable();
+            this.clear();
+            UDialog.alert("Cập nhật thành công!");
+        }
+    }
+
+    @Override
+    public void delete() {
+         int row = tblkhuvuc.getSelectedRow();
+        if (row == -1) {
+        UDialog.alert("Vui lòng chọn khu vực cần xóa!");
+        return;
+        }
+        String maNV = tblkhuvuc.getValueAt(row, 0).toString();
+    if (UDialog.confirm("Bạn chắc chắn muốn xóa khu vực này?")) {
+        dao.deleteById(maNV);
+        this.fillToTable();
+        this.clear();
+        UDialog.alert("Xóa thành công!");
+    }
+    }
+
+    @Override
+    public void clear() {
+        this.setForm(new KhuVuc());
+    }
+
+    @Override
+    public void moveFirst() {
+         this.setForm(new KhuVuc());
+    }
+
+    @Override
+    public void movePrevious() {
+       this.moveTo(tblkhuvuc.getSelectedRow() - 1);
+    }
+
+    @Override
+    public void moveNext() {
+        this.moveTo(tblkhuvuc.getSelectedRow() + 1);
+    }
+
+    @Override
+    public void moveLast() {
+       this.moveTo(tblkhuvuc.getRowCount() - 1);
+    }
+
+    @Override
+    public void moveTo(int rowIndex) {
+        if (rowIndex < 0) {
+        this.moveLast();
+    } else if (rowIndex >= tblkhuvuc.getRowCount()) {
+        this.moveFirst();
+    } else {
+        tblkhuvuc.clearSelection();
+        tblkhuvuc.setRowSelectionInterval(rowIndex, rowIndex);
+        this.edit();
+    }
+    }
+
+    @Override
+    public boolean Checkall() {
+        if (txttenkv.getText().trim().isEmpty()) {
+        UDialog.alert("Vui lòng nhập họ tên nhân viên!");
+        txttenkv.requestFocus();
+        return false;
+    }
+          if (txtmakv.getText().trim().isEmpty()) {
+        UDialog.alert("Vui lòng nhập họ tên nhân viên!");
+        txtmakv.requestFocus();
+        return false;
+    }
+        return false;
+    }
+
+    private void fillToTableTheoDieuKien() {
+       try {
+        KhuVucImp dao = new KhuVucImp(); 
+        String keyword = txtFind.getText().trim();
+        List<KhuVuc> list = dao.findByKeyword(keyword);
+
+        DefaultTableModel model = (DefaultTableModel) tblkhuvuc.getModel();
+        model.setRowCount(0);
+
+        if (list.isEmpty()) {
+            UDialog.alert("Không tìm thấy khu vực nào.");
+            return;
+        }
+
+        for (KhuVuc kv : list) {
+            Object[] row = {
+                kv.getMaKV(),
+                kv.getTenKV(),
+            };
+            model.addRow(row);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        UDialog.alert("Lỗi khi tìm khu vực!");
+    }
+    }
 }
