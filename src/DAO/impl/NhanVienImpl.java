@@ -46,7 +46,7 @@ private static final String findall = "SELECT \n" +
     "DELETE FROM NhanVien WHERE MaNV = ?;";
 
     private static final String findbyid = 
-    "SELECT nv.MaNV, nv.HoTen, vt.TenVaiTro, nv.Email, nv.LuongCoBan, nv.NgaySinh, nv.MatKhau " +
+    "SELECT nv.MaNV, nv.HoTen, vt.TenVaiTro, nv.Email, nv.LuongCoBan, nv.NgaySinh, nv.MatKhau, nv.Anh " +
     "FROM NhanVien nv " +
     "JOIN VaiTro vt ON nv.MaVaiTro = vt.MaVaiTro " +
     "WHERE nv.MaNV = ?;";

@@ -72,6 +72,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        lblAnh = new javax.swing.JLabel();
         txtLuong = new javax.swing.JTextField();
         txtTenNV = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -87,7 +88,6 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         rdoQuanLy = new javax.swing.JRadioButton();
         rdoNhanVien = new javax.swing.JRadioButton();
         rdoPhucVu = new javax.swing.JRadioButton();
-        lblAnh = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1080, 560));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -215,18 +215,24 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        lblAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 204, Short.MAX_VALUE)
+            .addGap(0, 198, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 174, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, -1, 176));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 200, 176));
         add(txtLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 570, 270, -1));
         add(txtTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 270, -1));
 
@@ -300,9 +306,6 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         rdoGroupVaiTro.add(rdoPhucVu);
         rdoPhucVu.setText("Phục vụ");
         add(rdoPhucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, -1, -1));
-
-        lblAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(lblAnh, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 204, 174));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVienMouseClicked
@@ -379,34 +382,37 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+JFileChooser chooser = new JFileChooser();
+chooser.setDialogTitle("Chọn ảnh từ máy");
+chooser.setFileFilter(new FileNameExtensionFilter("Hình ảnh", "jpg", "png", "jpeg", "gif"));
 
-    JFileChooser chooser = new JFileChooser();
-    chooser.setDialogTitle("Chọn ảnh từ máy");
-    chooser.setFileFilter(new FileNameExtensionFilter("Hình ảnh", "jpg", "png", "jpeg", "gif"));
+int result = chooser.showOpenDialog(this);
+if (result == JFileChooser.APPROVE_OPTION) {
+    File fileChon = chooser.getSelectedFile();
+    String tenFile = fileChon.getName();
 
-    int result = chooser.showOpenDialog(this);
-    if (result == JFileChooser.APPROVE_OPTION) {
-        File fileChon = chooser.getSelectedFile();
-        String tenFile = fileChon.getName();
-
-        File thuMucLuu = new File("src/img");
-        if (!thuMucLuu.exists()) {
-            thuMucLuu.mkdirs();
-        }
-
-        File fileDich = new File(thuMucLuu, tenFile);
-        try {
-            // Copy ảnh vào thư mục dự án
-            Files.copy(fileChon.toPath(), fileDich.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            tenAnh = tenFile;
-
-            // Hiển thị ảnh
-            hienThiAnh("src/img/" + tenFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Lỗi khi sao chép ảnh!");
-        }
+    File thuMucLuu = new File("src/img");
+    if (!thuMucLuu.exists()) {
+        thuMucLuu.mkdirs();
     }
+
+    File fileDich = new File(thuMucLuu, tenFile);
+    try {
+        // Copy ảnh vào thư mục dự án
+        Files.copy(fileChon.toPath(), fileDich.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        tenAnh = tenFile;
+
+        // Hiển thị ảnh với kích thước 150x150
+        ImageIcon icon = new ImageIcon("src/img/" + tenFile);
+        Image img = icon.getImage().getScaledInstance(198, 174, Image.SCALE_SMOOTH);
+        lblAnh.setIcon(new ImageIcon(img));
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Lỗi khi sao chép ảnh!");
+    }
+}
+
+    
 
 
 
@@ -452,7 +458,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
     // End of variables declaration//GEN-END:variables
     private void hienThiAnh(String duongDan) {
     ImageIcon icon = new ImageIcon(duongDan);
-    Image img = icon.getImage().getScaledInstance(206, 176, Image.SCALE_SMOOTH);
+    Image img = icon.getImage().getScaledInstance(198, 174, Image.SCALE_SMOOTH);
     lblAnh.setIcon(new ImageIcon(img));
     }
     @Override

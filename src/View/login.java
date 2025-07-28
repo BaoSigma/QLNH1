@@ -12,6 +12,8 @@ import Model.NhanVien;
 import Util.UAuth;
 import Util.UDialog;
 import Util.UHash;
+import java.awt.Cursor;
+import java.awt.Font;
 import javax.swing.UIManager;
 
 
@@ -45,7 +47,9 @@ public class login extends javax.swing.JFrame implements LoginController    {
     }
 
     this.setSize(838, 650);
-    this.setLocationRelativeTo(null);          // ✅ Sau đó mới gán giá trị như txtUser.setText(...)
+    this.setLocationRelativeTo(null);    
+    
+
 }
 
 
@@ -62,7 +66,6 @@ public class login extends javax.swing.JFrame implements LoginController    {
     private void initComponents() {
 
         txtUser = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         chkRemember = new javax.swing.JCheckBox();
         chkShowPass = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
@@ -71,18 +74,12 @@ public class login extends javax.swing.JFrame implements LoginController    {
         txtPass = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 280, 30));
-
-        jButton1.setBackground(new java.awt.Color(170, 120, 70));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Đóng");
-        jButton1.setBorder(null);
-        jButton1.setOpaque(true);
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, 170, 50));
 
         chkRemember.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         chkRemember.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,11 +98,25 @@ public class login extends javax.swing.JFrame implements LoginController    {
         });
         getContentPane().add(chkShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 90, 20));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Đăng Nhập");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 70, 840, -1));
+        jLabel2.setText("Quên mật khẩu?");
+        jLabel2.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jLabel2AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 315, 140, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -144,8 +155,22 @@ public class login extends javax.swing.JFrame implements LoginController    {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 140, 50));
 
+        jButton4.setBackground(new java.awt.Color(170, 120, 70));
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Đóng");
+        jButton4.setBorder(null);
+        jButton4.setOpaque(true);
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, 170, 50));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Đăng Nhập");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 70, 840, -1));
+
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/backgroundchivaythoi.jpg"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 650));
     }// </editor-fold>//GEN-END:initComponents
 
     private void chkRememberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRememberActionPerformed
@@ -172,17 +197,48 @@ public class login extends javax.swing.JFrame implements LoginController    {
         new signup().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jLabel2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel2AncestorAdded
+        // TODO add your handling code here:
+    jLabel2.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+
+    // Đặt con trỏ thành bàn tay khi hover
+    jLabel2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+    // Lưu text gốc lại để gỡ gạch chân khi thoát chuột
+    String originalText = jLabel2.getText();
+
+    jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jLabel2.setText("<html><u>" + originalText + "</u></html>");
+        }
+
+    @Override
+    public void mouseExited(java.awt.event.MouseEvent evt) {
+        jLabel2.setText(originalText);
+    }
+});
+// ✅ Sau đó mới gán giá trị như txtUser.setText(...)
+    }//GEN-LAST:event_jLabel2AncestorAdded
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        new QuenMatKhau().setVisible(true);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox chkRemember;
     private javax.swing.JCheckBox chkShowPass;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
@@ -216,7 +272,7 @@ public void loginn() {
     UAuth.user = user;
 
     if (chkRemember.isSelected()) {
-        UAuth.save(user); // ✅ Lưu user có sẵn mật khẩu đã mã hóa
+        UAuth.save(user); 
     } else {
         UAuth.clear();
     }

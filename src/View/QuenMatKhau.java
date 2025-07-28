@@ -199,8 +199,9 @@ public class QuenMatKhau extends javax.swing.JFrame implements ForgetPassControl
 
     private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
         // TODO add your handling code here:
-        new login().setVisible(true);
         close();
+        new login().setVisible(true);
+        
     }//GEN-LAST:event_btnLogin1ActionPerformed
 
     private void txtOTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOTPActionPerformed

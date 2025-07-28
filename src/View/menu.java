@@ -83,6 +83,12 @@ public class menu extends javax.swing.JFrame {
                 setView(new goimon());
             }
         });
+        lblLoaiMon.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                setView(new QLLM());
+            }
+        });
 //        lblHoaDon.addMouseListener(new MouseAdapter() {
 //            @Override
 //            public void mouseClicked(MouseEvent e) {
@@ -102,19 +108,19 @@ public class menu extends javax.swing.JFrame {
                 setView(new QLKH()); // đoán: ICT là chi tiết
             }
         });
-//        lblMonAn.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                setView(new SanPhamPanel(false)); // đoán: ISP là sản phẩm
-//            }
-//        });
-//
-        lblKhuVuc.addMouseListener(new MouseAdapter() {
+        lblMonAn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new QLKV());
+                setView(new QLMA()); // đoán: ISP là sản phẩm
             }
         });
+
+//        lblKhuVuc.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                setView(new());
+//            }
+//        });
         lblThongTinCaNhan.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -176,7 +182,6 @@ public class menu extends javax.swing.JFrame {
         addHoverTextEffect(lblThongTinCaNhan, normal, hover);
         addHoverTextEffect(lblThoat, normal, hover);
         addHoverTextEffect(lblDangXuat, normal, hover);
-        addHoverTextEffect(lblVanDon, normal, hover);
         addHoverTextEffect(lblLoaiMon, normal, hover);
         addHoverTextEffect(lblVoucher, normal, hover);
         addHoverTextEffect(lblCTDB, normal, hover);
@@ -188,7 +193,6 @@ public class menu extends javax.swing.JFrame {
         initComponents();
         openmenu();
         initLabelEvents(); // <-- Gọi ở đây
-        
         hover();
         setLocationRelativeTo(null);
         
@@ -285,7 +289,6 @@ public class menu extends javax.swing.JFrame {
         lblVoucher = new javax.swing.JLabel();
         lblDatBan = new javax.swing.JLabel();
         lblCTDB = new javax.swing.JLabel();
-        lblVanDon = new javax.swing.JLabel();
         lblCTHD = new javax.swing.JLabel();
         lblDangXuat = new javax.swing.JLabel();
         lblNhanVien = new javax.swing.JLabel();
@@ -428,13 +431,6 @@ public class menu extends javax.swing.JFrame {
         lblCTDB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon chi tiết đặt món.png"))); // NOI18N
         lblCTDB.setText("Chi tiết đặt bàn");
 
-        lblVanDon.setBackground(new java.awt.Color(255, 255, 255));
-        lblVanDon.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblVanDon.setForeground(new java.awt.Color(255, 255, 255));
-        lblVanDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVanDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon vận đơn.png"))); // NOI18N
-        lblVanDon.setText("Vận đơn");
-
         lblCTHD.setBackground(new java.awt.Color(255, 255, 255));
         lblCTHD.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblCTHD.setForeground(new java.awt.Color(255, 255, 255));
@@ -483,14 +479,17 @@ public class menu extends javax.swing.JFrame {
             .addComponent(lblMonAn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblLoaiMon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblKhuVuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblVanDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblVoucher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblDoanhThu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel44, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator2)
+            .addComponent(lblThoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblGoiMon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblThongTinCaNhan, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+            .addComponent(lblDatBan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblKhuVuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblVoucher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblCTHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblCTDB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblBanAn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -499,12 +498,8 @@ public class menu extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel63))
-                    .addComponent(lblNhanVien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(lblThoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblGoiMon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblThongTinCaNhan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblDatBan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -524,7 +519,7 @@ public class menu extends javax.swing.JFrame {
                 .addComponent(lblDatBan)
                 .addGap(21, 21, 21)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(36, 36, 36)
                 .addComponent(lblNhanVien)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblKhachHang)
@@ -536,11 +531,9 @@ public class menu extends javax.swing.JFrame {
                 .addComponent(lblBanAn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblKhuVuc)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblVoucher)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblVanDon)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblDoanhThu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblGoiMon)
@@ -821,7 +814,6 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLabel lblNhanVien;
     private javax.swing.JLabel lblThoat;
     private javax.swing.JLabel lblThongTinCaNhan;
-    private javax.swing.JLabel lblVanDon;
     private javax.swing.JLabel lblVoucher;
     // End of variables declaration//GEN-END:variables
 }

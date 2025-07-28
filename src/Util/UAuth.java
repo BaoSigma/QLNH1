@@ -17,15 +17,15 @@ public class UAuth {
     }
 
     public static boolean QuanLy() {
-        return isLogin() && "Quản lý".equalsIgnoreCase(user.getTenVaiTro());
+        return isLogin() && user.getMaVaiTro() == 3;
     }
 
     public static boolean NhanVien() {
-        return isLogin() && "Nhân viên".equalsIgnoreCase(user.getTenVaiTro());
+        return isLogin() && user.getMaVaiTro() == 2;
     }
 
     public static boolean PhucVu() {
-        return isLogin() && "Phục vụ".equalsIgnoreCase(user.getTenVaiTro());
+        return isLogin() && user.getMaVaiTro() == 1;
     }
 
     public static void save(NhanVien nv) {
