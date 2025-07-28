@@ -129,7 +129,7 @@
               <Component id="jSeparator2" max="32767" attributes="0"/>
               <Component id="lblThoat" alignment="0" max="32767" attributes="0"/>
               <Component id="lblGoiMon" alignment="0" max="32767" attributes="0"/>
-              <Component id="lblThongTinCaNhan" alignment="0" pref="241" max="32767" attributes="0"/>
+              <Component id="lblThongTinCaNhan" alignment="0" max="32767" attributes="0"/>
               <Component id="lblDatBan" alignment="0" max="32767" attributes="0"/>
               <Component id="lblKhachHang" alignment="0" max="32767" attributes="0"/>
               <Component id="lblKhuVuc" alignment="0" max="32767" attributes="0"/>

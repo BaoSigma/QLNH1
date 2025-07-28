@@ -99,28 +99,28 @@ public class menu extends javax.swing.JFrame {
         lblCTDB.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new CTDB()); // đoán: ICT là chi tiết
+                setView(new CTDB()); 
             }
         });
         lblKhachHang.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new QLKH()); // đoán: ICT là chi tiết
+                setView(new QLKH()); 
             }
         });
         lblMonAn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new QLMA()); // đoán: ISP là sản phẩm
+                setView(new QLMA()); 
             }
         });
 
-//        lblKhuVuc.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                setView(new());
-//            }
-//        });
+        lblKhuVuc.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                setView(new QLKV());
+            }
+        });
         lblThongTinCaNhan.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
