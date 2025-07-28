@@ -8,7 +8,7 @@ package Model;
  *
  * @author Admin
  */
-public class MonAn  {
+public class MonAn {
     private String maMon;
     private String tenMon;
     private double donGia;
@@ -23,11 +23,11 @@ public class MonAn  {
         this.moTa = moTa;
         this.hinhAnh = hinhAnh;
     }
-    public String getTenLoai(){
-        return l.getTenLoai();
+    public int getMaLoai(){
+        return l.getMaLoai();
     }
-    public void setTenLoai(String TenLoai){
-        l.setTenLoai(TenLoai);
+    public void setMaLoai(int MaLoai){
+        l.setMaLoai(MaLoai);
     }
     public MonAn() {
     }

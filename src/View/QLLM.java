@@ -4,12 +4,40 @@
  */
 package View;
 
+import Controller.ModelController.LoaiMonController;
+import DAO.ModelDAO.LoaiMonDAO;
+import DAO.impl.LoaiMonImpl;
+import Model.LoaiMon;
+import static Util.UAuth.clear;
+import Util.UDialog;
+import Util.UQuery;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ExpertBook
  */
-public class QLLM extends javax.swing.JPanel {
-
+public class QLLM extends javax.swing.JPanel implements LoaiMonController{
+    LoaiMonDAO dao = new LoaiMonImpl();
+    List<LoaiMon> items = new ArrayList<>();
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(QLLM.class.getName());
     /**
      * Creates new form QLLM
      */
@@ -48,11 +76,11 @@ public class QLLM extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        txtMaNV3 = new javax.swing.JTextField();
-        txtTenNV2 = new javax.swing.JTextField();
+        txtMaLoai = new javax.swing.JTextField();
+        txtTenLoai = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtMaNV4 = new javax.swing.JTextField();
+        txtTenMua = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnCuoi1 = new javax.swing.JButton();
@@ -60,10 +88,17 @@ public class QLLM extends javax.swing.JPanel {
         btnTruoc2 = new javax.swing.JButton();
         btnDau2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblLoaiMon = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtFind = new javax.swing.JTextField();
+        btnTiemkiem = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnLamMoi = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -249,7 +284,7 @@ public class QLLM extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        txtMaNV3.setEnabled(false);
+        txtMaLoai.setEnabled(false);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Mã loại :");
@@ -257,10 +292,10 @@ public class QLLM extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("Tên loại :");
 
-        txtMaNV4.setEnabled(false);
+        txtTenMua.setEnabled(false);
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel13.setText("Mùa");
+        jLabel13.setText("Mùa:");
 
         jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -307,11 +342,11 @@ public class QLLM extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(14, 14, 14)
-                            .addComponent(txtMaNV3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtMaLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(9, 9, 9)
-                            .addComponent(txtTenNV2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtTenLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnDau2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
@@ -323,30 +358,29 @@ public class QLLM extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
-                        .addComponent(txtMaNV4, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtTenMua, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(btnCuoi1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(141, 141, 141)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addContainerGap(521, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel13)
-                        .addComponent(txtMaNV4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel13)
+                    .addComponent(txtTenMua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
-                            .addComponent(txtMaNV3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtMaLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
-                            .addComponent(txtTenNV2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtTenLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -360,7 +394,7 @@ public class QLLM extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblLoaiMon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -371,7 +405,16 @@ public class QLLM extends javax.swing.JPanel {
                 "Mã loại ", "Tên loại ", "Tên mùa"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        tblLoaiMon.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tblLoaiMonAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane2.setViewportView(tblLoaiMon);
 
         jPanel5.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -388,7 +431,7 @@ public class QLLM extends javax.swing.JPanel {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 962, Short.MAX_VALUE)
+                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel16)
                 .addContainerGap())
@@ -406,6 +449,44 @@ public class QLLM extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel12.setText("Tìm kiếm :");
+
+        btnTiemkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/find.png"))); // NOI18N
+        btnTiemkiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTiemkiemActionPerformed(evt);
+            }
+        });
+
+        btnThem.setText("THÊM");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+
+        btnXoa.setText("XÓA");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+
+        btnSua.setText("SỬA");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+
+        btnLamMoi.setText("LÀM MỚI");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -413,15 +494,43 @@ public class QLLM extends javax.swing.JPanel {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane2)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(btnTiemkiem)
+                .addGap(62, 62, 62)
+                .addComponent(btnThem)
+                .addGap(18, 18, 18)
+                .addComponent(btnXoa)
+                .addGap(8, 8, 8)
+                .addComponent(btnSua)
+                .addGap(18, 18, 18)
+                .addComponent(btnLamMoi)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTiemkiem)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnThem)
+                            .addComponent(btnXoa)
+                            .addComponent(btnSua)
+                            .addComponent(btnLamMoi))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -465,19 +574,68 @@ public class QLLM extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnDau2ActionPerformed
 
+    private void tblLoaiMonAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblLoaiMonAncestorAdded
+        // TODO add your handling code here:
+        DefaultTableModel model = new DefaultTableModel(
+            new Object[]{"Mã Loại", "Tên Loại", "Tên Mùa"},
+            0
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        tblLoaiMon.setModel(model);
+
+        fillToTable();
+    }//GEN-LAST:event_tblLoaiMonAncestorAdded
+
+    private void btnTiemkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiemkiemActionPerformed
+        // TODO add your handling code here:
+        fillToTableTheoDieuKien();
+    }//GEN-LAST:event_btnTiemkiemActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+
+        create();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+
+        delete();
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+
+        update();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        clear();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCuoi;
     private javax.swing.JButton btnCuoi1;
     private javax.swing.JButton btnDau1;
     private javax.swing.JButton btnDau2;
+    private javax.swing.JButton btnLamMoi;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnTiemkiem;
     private javax.swing.JButton btnTien1;
     private javax.swing.JButton btnTien2;
     private javax.swing.JButton btnTruoc1;
     private javax.swing.JButton btnTruoc2;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -496,14 +654,189 @@ public class QLLM extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tblLoaiMon;
+    private javax.swing.JTextField txtFind;
+    private javax.swing.JTextField txtMaLoai;
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JTextField txtMaNV1;
     private javax.swing.JTextField txtMaNV2;
-    private javax.swing.JTextField txtMaNV3;
-    private javax.swing.JTextField txtMaNV4;
+    private javax.swing.JTextField txtTenLoai;
+    private javax.swing.JTextField txtTenMua;
     private javax.swing.JTextField txtTenNV;
     private javax.swing.JTextField txtTenNV1;
-    private javax.swing.JTextField txtTenNV2;
     // End of variables declaration//GEN-END:variables
+@Override
+public void setForm(LoaiMon entity) {
+    txtMaLoai.setText(String.valueOf(entity.getMaLoai()));
+    txtTenLoai.setText(entity.getTenLoai());
+    txtTenMua.setText(entity.getTenMua());
+}
+
+@Override
+public LoaiMon getForm() {
+    LoaiMon l = new LoaiMon();
+    try {
+        l.setMaLoai(Integer.parseInt(txtMaLoai.getText().trim()));
+    } catch (NumberFormatException e) {
+        l.setMaLoai(0); // hoặc để 0 nếu đang thêm mới (tự tăng)
+    }
+    l.setTenLoai(txtTenLoai.getText().trim());
+    l.setTenMua(txtTenMua.getText().trim());
+    return l;
+}
+@Override
+public void fillToTable() {
+    DefaultTableModel model = (DefaultTableModel) tblLoaiMon.getModel();
+    model.setRowCount(0);
+    items = dao.findAll();
+
+    for (LoaiMon l : items) {
+        Object[] row = {
+            l.getMaLoai(),
+            l.getTenLoai(),
+            l.getTenMua()
+        };
+        model.addRow(row);
+    }
+}
+@Override
+public void create() {
+    if (!Checkall()) return;
+    if (UDialog.confirm("Bạn chắc chắn muốn thêm loại món này?")) {
+        LoaiMon l = getForm();
+        dao.create(l);
+        fillToTable();
+        clear();
+        UDialog.alert("Thêm thành công");
+    }
+}
+
+@Override
+public void update() {
+    if (!Checkall()) return;
+    if (UDialog.confirm("Bạn chắc chắn muốn cập nhật loại món này?")) {
+        LoaiMon l = getForm();
+        dao.update(l);
+        fillToTable();
+        clear();
+        UDialog.alert("Cập nhật thành công");
+    }
+}
+
+@Override
+public void delete() {
+    int row = tblLoaiMon.getSelectedRow();
+    if (row == -1) {
+        UDialog.alert("Vui lòng chọn dòng cần xóa!");
+        return;
+    }
+    int ma = Integer.parseInt(tblLoaiMon.getValueAt(row, 0).toString());
+    if (UDialog.confirm("Bạn chắc chắn muốn xóa loại món này?")) {
+        dao.deleteById(ma);
+        fillToTable();
+        clear();
+        UDialog.alert("Xóa thành công");
+    }
+}
+@Override
+public void moveFirst() {
+    int index = tblLoaiMon.getSelectedRow();
+    if (index == 0) {
+        UDialog.alert("Đã ở vị trí đầu tiên!");
+    } else {
+        this.moveTo(0);
+    }
+}
+
+@Override
+public void movePrevious() {
+    this.moveTo(tblLoaiMon.getSelectedRow() - 1);
+}
+
+@Override
+public void moveNext() {
+    this.moveTo(tblLoaiMon.getSelectedRow() + 1);
+}
+
+@Override
+public void moveLast() {
+    this.moveTo(tblLoaiMon.getRowCount() - 1);
+}
+
+@Override
+public void moveTo(int index) {
+    if (index < 0) {
+        this.moveLast();
+    } else if (index >= tblLoaiMon.getRowCount()) {
+        this.moveFirst();
+    } else {
+        tblLoaiMon.setRowSelectionInterval(index, index);
+        this.edit();
+    }
+}
+@Override
+public boolean Checkall() {
+    if (txtTenLoai.getText().trim().isEmpty()) {
+        UDialog.alert("Vui lòng nhập tên loại món!");
+        txtTenLoai.requestFocus();
+        return false;
+    }
+    return true;
+}
+public void fillToTableTheoDieuKien() {
+    try {
+        LoaiMonImpl dao = new LoaiMonImpl();
+        String keyword = txtFind.getText().trim();
+       List<LoaiMon> list = dao.findByKeyword(keyword);
+
+        DefaultTableModel model = (DefaultTableModel) tblLoaiMon.getModel();
+        model.setRowCount(0);
+
+        if (list.isEmpty()) {
+            UDialog.alert("Không tìm thấy loại món nào.");
+            return;
+        }
+
+        for (LoaiMon loai : list) {
+            Object[] row = {
+                loai.getMaLoai(),
+                loai.getTenLoai()
+            };
+            model.addRow(row);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        UDialog.alert("Lỗi khi tìm loại món!");
+    }
+}
+@Override
+public void edit() {
+    LoaiMon entity = items.get(tblLoaiMon.getSelectedRow());
+    this.setForm(entity);
+}
+public List<LoaiMon> findByKeyword(String keyword) {
+    String sql = """
+        SELECT 
+            MaLoai,
+            TenLoai,
+            TenMua
+        FROM LoaiMon
+        WHERE CAST(MaLoai AS VARCHAR) LIKE ? 
+           OR TenLoai LIKE ? 
+           OR TenMua LIKE ?;
+    """;
+
+    String value = "%" + keyword + "%";
+    return UQuery.getBeanList(LoaiMon.class, sql, value, value, value);
+}
+
+    @Override
+    public void open() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void clear() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
