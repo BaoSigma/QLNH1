@@ -121,24 +121,21 @@ public class menu extends javax.swing.JFrame {
                 setView(new IN4());
             }
         });
-//        lblThoat.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                setView(new PhanLoai(false));
-//            }
-//        });
-//        lblDangXuat.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                setView(new PhanLoai(false));
-//            }
-//        });
-//        lblVanDon.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                setView(new PhanLoai(false));
-//            }
-//        });
+        lblThoat.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                dispose();
+            }
+        });
+        lblDangXuat.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                dispose();
+                new login().setVisible(true);
+                
+            }
+        });
+
         lblDatBan.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
