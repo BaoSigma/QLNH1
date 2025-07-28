@@ -91,15 +91,15 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtMaDat = new javax.swing.JTextField();
-        tPGioDat = new com.github.lgooddatepicker.components.TimePicker();
         cboMaBan = new javax.swing.JComboBox<>();
+        tPGioDat = new com.github.lgooddatepicker.components.TimePicker();
 
         jPanel3.setBackground(new java.awt.Color(173, 139, 115));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Quản lý Đặt Bàn");
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Quản lý Đặt Bàn");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -161,32 +161,32 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
         ));
         jScrollPane2.setViewportView(tblDatBan);
 
-        btnCuoi1.setText("Về cuối");
         btnCuoi1.setBackground(new java.awt.Color(173, 139, 115));
+        btnCuoi1.setText("Về cuối");
         btnCuoi1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCuoi1ActionPerformed(evt);
             }
         });
 
-        btnTien1.setText("Tiến");
         btnTien1.setBackground(new java.awt.Color(173, 139, 115));
+        btnTien1.setText("Tiến");
         btnTien1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTien1ActionPerformed(evt);
             }
         });
 
-        btnTruoc1.setText("Trước");
         btnTruoc1.setBackground(new java.awt.Color(173, 139, 115));
+        btnTruoc1.setText("Trước");
         btnTruoc1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTruoc1ActionPerformed(evt);
             }
         });
 
-        btnDau1.setText("Về đầu");
         btnDau1.setBackground(new java.awt.Color(173, 139, 115));
+        btnDau1.setText("Về đầu");
         btnDau1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDau1ActionPerformed(evt);
@@ -226,8 +226,8 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jLabel9.setText("Số người:");
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setText("Số người:");
 
         btnDatMonTruoc.setText("Đặt món");
         btnDatMonTruoc.addActionListener(new java.awt.event.ActionListener() {
@@ -236,23 +236,23 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
             }
         });
 
-        jLabel4.setText("Mã đặt:");
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setText("Mã đặt:");
 
-        jLabel6.setText("Mã bàn:");
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setText("Mã bàn:");
 
-        jLabel7.setText("Ngày đặt:");
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setText("Ngày đặt:");
 
-        jLabel5.setText("Mã khách hàng:");
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setText("Mã khách hàng:");
 
-        jLabel8.setText("Giờ đặt:");
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setText("Giờ đặt:");
 
-        jLabel10.setText("Trạng thái");
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setText("Trạng thái");
 
         cboMaBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -280,8 +280,8 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
                                     .addComponent(txtMaDat)
                                     .addComponent(txtSoNguoi)
                                     .addComponent(txtNgayDat, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                                    .addComponent(tPGioDat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cboMaBan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(cboMaBan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tPGioDat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -332,7 +332,7 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(tPGioDat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
+                        .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(txtSoNguoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
