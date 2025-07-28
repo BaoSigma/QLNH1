@@ -114,7 +114,7 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
                 {null, null, null, null, null}
             },
             new String [] {
-                "Mã khách hàng", "Họ tên", "Số điện thoại", "Tổng chi tiêu", "Hành khách"
+                "Mã khách hàng", "Họ tên", "Số điện thoại", "Tổng chi tiêu", "Hạng khách"
             }
         ));
         tblKhachHang.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -178,7 +178,7 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         jPanel1.add(txtSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 270, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setText("Hành khách:");
+        jLabel10.setText("Hạng khách:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 580, 96, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
