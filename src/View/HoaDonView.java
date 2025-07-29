@@ -8,6 +8,7 @@ import Controller.ModelController.HoaDonController;
 import DAO.ModelDAO.HoaDonDAO;
 import DAO.impl.HoaDonImpl;
 import DAO.impl.NhanVienImpl;
+import Model.HoaDon;
 import Model.NhanVien;
 import Util.UDialog;
 import java.util.ArrayList;
@@ -18,13 +19,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author User
  */
-public class HoaDon extends javax.swing.JPanel implements HoaDonController{
+public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     HoaDonDAO dao = new HoaDonImpl();
     List<HoaDon> items = new ArrayList<>();
     /**
      * Creates new form HoaDon
      */
-    public HoaDon() {
+    public HoaDonView() {
         initComponents();
     }
 
@@ -103,6 +104,15 @@ public class HoaDon extends javax.swing.JPanel implements HoaDonController{
                 "Mã hóa đơn", "Mã bàn", "Mã nhân viên", "Ngày lập", "Tổng tiền", "Hình thức TT"
             }
         ));
+        tblhoadon.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tblhoadonAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jScrollPane1.setViewportView(tblhoadon);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1320, 300));
@@ -276,6 +286,11 @@ public class HoaDon extends javax.swing.JPanel implements HoaDonController{
         // TODO add your handling code here:
         create();
     }//GEN-LAST:event_btnlammoiActionPerformed
+
+    private void tblhoadonAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblhoadonAncestorAdded
+        // TODO add your handling code here:
+        fillToTable();
+    }//GEN-LAST:event_tblhoadonAncestorAdded
     
     public void fillToTableTheoDieuKien() {
     try {
@@ -356,7 +371,20 @@ public class HoaDon extends javax.swing.JPanel implements HoaDonController{
 
     @Override
     public void fillToTable() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        DefaultTableModel model = (DefaultTableModel) tblhoadon.getModel();
+        model.setRowCount(0);
+        items = dao.findAll();
+        items.forEach(item -> {
+            Object[] rowData = {
+                item.getMaHD(),
+                item.getMaBan(),
+                item.getMaNV(),
+                item.getNgayLap(),
+                item.getTongTien(),
+                item.getHinhThucTT(),
+            };
+            model.addRow(rowData);
+        });
     }
 
     @Override

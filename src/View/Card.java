@@ -55,7 +55,7 @@ public class Card extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 204, 204));
 
-        lbIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/revenue.png"))); // NOI18N
+        lbIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/revenue.png"))); // NOI18N
 
         lbValues.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lbValues.setForeground(new java.awt.Color(255, 255, 255));

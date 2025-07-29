@@ -1,10 +1,11 @@
 package RTDRestaurant.View.Swing.Chart;
 
-import RTDRestaurant.Model.ModelChart;
-import RTDRestaurant.Model.ModelLegend;
-import RTDRestaurant.View.Swing.Chart.BlankChart.BlankPlotChart;
-import RTDRestaurant.View.Swing.Chart.BlankChart.BlankPlotChatRender;
-import RTDRestaurant.View.Swing.Chart.BlankChart.SeriesSize;
+import Model.ModelChart;
+import Model.ModelLegend;
+import View.BlankPlotChart;
+import Controller.BlankPlotChatRender;
+import View.LegendItem;
+import View.SeriesSize;
 import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -24,8 +25,10 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-public class LineChart extends javax.swing.JPanel {
 
+
+public class LineChart extends javax.swing.JPanel {
+    
     DecimalFormat df = new DecimalFormat("#,##0.##");
     private List<ModelLegend> legends = new ArrayList<>();
     private List<ModelChart> model = new ArrayList<>();
@@ -50,6 +53,7 @@ public class LineChart extends javax.swing.JPanel {
         animator.setResolution(0);
         animator.setAcceleration(0.5f);
         animator.setDeceleration(0.5f);
+        blankPlotChart = new BlankPlotChart();
         blankPlotChart.setBlankPlotChatRender(new BlankPlotChatRender() {
             @Override
             public int getMaxLegend() {
@@ -171,6 +175,7 @@ public class LineChart extends javax.swing.JPanel {
     private void initComponents() {
 
         panelLegend = new javax.swing.JPanel();
+        blankPlotChart = new View.BlankPlotChart();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -185,17 +190,20 @@ public class LineChart extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(panelLegend, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(blankPlotChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(342, 342, 342)
+                .addComponent(blankPlotChart, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelLegend, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private View.BlankPlotChart blankPlotChart;
     private javax.swing.JPanel panelLegend;
     // End of variables declaration//GEN-END:variables
 }

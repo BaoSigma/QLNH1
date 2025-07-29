@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.BlankPlotChatRender;
 import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;

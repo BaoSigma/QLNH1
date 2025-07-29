@@ -89,13 +89,13 @@ public class menu extends javax.swing.JFrame {
                 setView(new QLLM());
             }
         });
-//        lblHoaDon.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                setView(new HoaDonPanel(false));
-//        }
-//        });
-//
+        lblHoaDon.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                setView(new HoaDonView());
+        }
+        });
+
         lblCTDB.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

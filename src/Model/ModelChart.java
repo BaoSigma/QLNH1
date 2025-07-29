@@ -9,19 +9,40 @@ package Model;
  * @author baoha
  */
 public class ModelChart {
-    private String label;     // Ví dụ: "Tháng 1", "Tháng 2"
-    private double value;     // Giá trị doanh thu
-
-    public ModelChart(String label, double value) {
-        this.label = label;
-        this.value = value;
-    }
-
     public String getLabel() {
         return label;
     }
 
-    public double getValue() {
-        return value;
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public double[] getValues() {
+        return values;
+    }
+
+    public void setValues(double[] values) {
+        this.values = values;
+    }
+
+    public ModelChart(String label, double[] values) {
+        this.label = label;
+        this.values = values;
+    }
+
+    public ModelChart() {
+    }
+
+    private String label;
+    private double values[];
+
+    public double getMaxValues() {
+        double max = 0;
+        for (double v : values) {
+            if (v > max) {
+                max = v;
+            }
+        }
+        return max;
     }
 }
