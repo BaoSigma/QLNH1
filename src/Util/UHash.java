@@ -23,10 +23,7 @@ public class UHash {
         }
     }
 
-    // Không thể giải mã MD5 nên hàm này bị vô hiệu hóa
-    public static String decrypt(String encryptedText) {
-        throw new UnsupportedOperationException("MD5 là hàm băm một chiều, không thể giải mã.");
-    }
+
 
     // So sánh mật khẩu khi đăng nhập
     public static boolean match(String inputPassword, String encryptedFromDatabase) {

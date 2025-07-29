@@ -1,82 +1,102 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model;
 
-/**
- *
- * @author Admin
- */
 public class doanhthu {
-      private String maHoaDon;
-    private String tenKhachHang;
-    private String tenNhanVien;
-    private java.time.LocalDateTime ngayLap;
-    private double tongTien;
-    private String theoNgay; // dd/MM/yyyy
-    private String theoThang; // MM/yyyy
-    private String maKhachHang;
-    private String maNhanVien;
+    private HoaDon hd;
+    private KhachHang kh;
+    private NhanVien nv;
+    private String theoNgay;  
+    private String theoThang; 
+    
 
-    public doanhthu(String maHoaDon, String tenKhachHang, String tenNhanVien,
-                         java.time.LocalDateTime ngayLap, double tongTien,
-                         String theoNgay, String theoThang,
-                         String maKhachHang, String maNhanVien) {
-        this.maHoaDon = maHoaDon;
-        this.tenKhachHang = tenKhachHang;
-        this.tenNhanVien = tenNhanVien;
-        this.ngayLap = ngayLap;
-        this.tongTien = tongTien;
-        this.theoNgay = theoNgay;
-        this.theoThang = theoThang;
-        this.maKhachHang = maKhachHang;
-        this.maNhanVien = maNhanVien;
+    public doanhthu() {
+        this.hd = new HoaDon();
+        this.kh = new KhachHang();
+        this.nv = new NhanVien();
     }
 
-    // Getter & Setter (có thể sinh tự động trong NetBeans)
-    public String getMaHoaDon() 
-    { return maHoaDon; }
-    public void setMaHoaDon(String maHoaDon) 
-    { this.maHoaDon = maHoaDon; }
+    // Mã hóa đơn
+    public String getMaHoaDon() {
+        return hd != null ? hd.getMaHD() : null;
+    }
 
-    public String getTenKhachHang()
-    { return tenKhachHang; }
-    public void setTenKhachHang(String tenKhachHang) 
-    { this.tenKhachHang = tenKhachHang; }
+    public void setMaHoaDon(String maHoaDon) {
+        if (hd == null) hd = new HoaDon();
+        hd.setMaHD(maHoaDon);
+    }
 
-    public String getTenNhanVien() 
-    { return tenNhanVien; }
-    public void setTenNhanVien(String tenNhanVien)
-    { this.tenNhanVien = tenNhanVien; }
+    // Tên khách hàng
+    public String getTenKhachHang() {
+        return kh != null ? kh.getHangKhach() : null;
+    }
 
-    public java.time.LocalDateTime getNgayLap() 
-    { return ngayLap; }
-    public void setNgayLap(java.time.LocalDateTime ngayLap)
-    { this.ngayLap = ngayLap; }
+    public void setTenKhachHang(String tenKhachHang) {
+        if (kh == null) kh = new KhachHang();
+        kh.setHangKhach(tenKhachHang);
+    }
 
-    public double getTongTien()
-    { return tongTien; }
-    public void setTongTien(double tongTien) 
-    { this.tongTien = tongTien; }
+    // Tên nhân viên
+    public String getTenNhanVien() {
+        return nv != null ? nv.getHoTen() : null;
+    }
 
-    public String getTheoNgay() 
-    { return theoNgay; }
-    public void setTheoNgay(String theoNgay)
-    { this.theoNgay = theoNgay; }
+    public void setTenNhanVien(String tenNhanVien) {
+        if (nv == null) nv = new NhanVien();
+        nv.setHoTen(tenNhanVien);
+    }
 
-    public String getTheoThang() 
-    { return theoThang; }
-    public void setTheoThang(String theoThang)
-    { this.theoThang = theoThang; }
+    // Ngày lập hóa đơn
+    public java.util.Date getNgayLap() {
+        return hd != null ? hd.getNgayLap() : null;
+    }
 
-    public String getMaKhachHang() 
-    { return maKhachHang; }
-    public void setMaKhachHang(String maKhachHang)
-    { this.maKhachHang = maKhachHang; }
+    public void setNgayLap(java.util.Date ngayLap) {
+        if (hd == null) hd = new HoaDon();
+        hd.setNgayLap(ngayLap);
+    }
 
-    public String getMaNhanVien()
-    { return maNhanVien; }
-    public void setMaNhanVien(String maNhanVien) 
-    { this.maNhanVien = maNhanVien; }
+    // Tổng tiền
+    public double getTongTien() {
+        return hd != null ? hd.getTongTien() : 0.0;
+    }
+
+    public void setTongTien(double tongTien) {
+        if (hd == null) hd = new HoaDon();
+        hd.setTongTien(tongTien);
+    }
+
+    // Theo ngày
+    public String getTheoNgay() {
+        return theoNgay;
+    }
+
+    public void setTheoNgay(String theoNgay) {
+        this.theoNgay = theoNgay;
+    }
+
+    // Theo tháng
+    public String getTheoThang() {
+        return theoThang;
+    }
+
+    public void setTheoThang(String theoThang) {
+        this.theoThang = theoThang;
+    }
+
+    // Mã KH
+    public String getMaKhachHang() {
+        return kh.getMaKH();
+    }
+
+    public void setMaKhachHang(String maKhachHang) {
+        kh.setMaKH(maKhachHang);
+    }
+
+    // Mã NV
+    public String getMaNhanVien() {
+        return nv.getMaNV();
+    }
+
+    public void setMaNhanVien(String maNhanVien) {
+        nv.setMaNV(maNhanVien);
+    }
 }

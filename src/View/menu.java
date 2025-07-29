@@ -6,7 +6,7 @@ package View;
 
 import Util.UAuth;
 import Util.UDialog;
-import View.doanhthu;
+import View.doanhThuView;
 import View.goimon;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -61,7 +61,7 @@ public class menu extends javax.swing.JFrame {
         lblDoanhThu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new doanhthu());
+                setView(new doanhThuView());
             }
         });
         lblBanAn.addMouseListener(new MouseAdapter() {
