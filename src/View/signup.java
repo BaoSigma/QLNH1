@@ -71,7 +71,7 @@ public class signup extends javax.swing.JFrame implements SignInController{
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtUser.setBorder(null);
         txtUser.addActionListener(new java.awt.event.ActionListener() {
@@ -79,10 +79,10 @@ public class signup extends javax.swing.JFrame implements SignInController{
                 txtUserActionPerformed(evt);
             }
         });
-        add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 380, 30));
+        getContentPane().add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 380, 30));
 
         txtEmail.setBorder(null);
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 380, 30));
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 380, 30));
 
         jButton1.setBackground(new java.awt.Color(170, 120, 70));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -90,33 +90,33 @@ public class signup extends javax.swing.JFrame implements SignInController{
         jButton1.setText("Đăng nhập");
         jButton1.setBorder(null);
         jButton1.setOpaque(true);
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 170, 50));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 170, 50));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Mã nhân viên");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 150, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 150, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Mật khẩu");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 130, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 130, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Ngày sinh");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 120, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 120, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Email");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 130, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 130, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("ĐĂNG KÝ");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 840, 60));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 840, 60));
 
         jButton2.setBackground(new java.awt.Color(170, 120, 70));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -129,7 +129,7 @@ public class signup extends javax.swing.JFrame implements SignInController{
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 170, 50));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 170, 50));
 
         jButton3.setBackground(new java.awt.Color(170, 120, 70));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -137,20 +137,20 @@ public class signup extends javax.swing.JFrame implements SignInController{
         jButton3.setText("Đóng");
         jButton3.setBorder(null);
         jButton3.setOpaque(true);
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 520, 170, 50));
-        add(DcNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 292, 380, 30));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 520, 170, 50));
+        getContentPane().add(DcNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 292, 380, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         txtPass.setBorder(null);
-        add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 380, 30));
+        getContentPane().add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 380, 30));
 
         jCheckBox2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, -1, 30));
+        getContentPane().add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, -1, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background (1).jpg"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 650));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/backgroundchivaythoi.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 650));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed

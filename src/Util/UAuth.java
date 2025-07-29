@@ -17,16 +17,17 @@ public class UAuth {
     }
 
     public static boolean QuanLy() {
-        return isLogin() && user.getMaVaiTro() == 3;
-    }
+    return isLogin() && user.getVt().getMaVaiTro() == 3;
+}
 
-    public static boolean NhanVien() {
-        return isLogin() && user.getMaVaiTro() == 2;
-    }
+public static boolean NhanVien() {
+    return isLogin() && user.getVt().getMaVaiTro() == 2;
+}
 
-    public static boolean PhucVu() {
-        return isLogin() && user.getMaVaiTro() == 1;
-    }
+public static boolean PhucVu() {
+    return isLogin() && user.getVt().getMaVaiTro() == 1;
+}
+
 
     public static void save(NhanVien nv) {
         try (PrintWriter pw = new PrintWriter(FILE_PATH)) {

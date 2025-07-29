@@ -13,13 +13,44 @@ public class BanAn {
     private int soBan;
     private String trangThai;
     private String maKV;
+    private DatBan db = new DatBan();
+    private KhuVuc kv = new KhuVuc();
+    public BanAn(String maBan, int soBan, String trangThai, String maKV) {
+        this.maBan = maBan;
+        this.soBan = soBan;
+        this.trangThai = trangThai;
+        this.maKV = maKV;
+    }
 
+    public BanAn() {
+    }
+    public String getTenKV() {
+        return kv.getTenKV();
+    }
+    public void setTenKV(String tenKV) {
+        kv.setTenKV(tenKV);
+    }
     public String getMaBan() {
         return maBan;
     }
-
+    
     public void setMaBan(String maBan) {
         this.maBan = maBan;
+    }
+    public java.sql.Date getNgayDat() {
+        return db.getNgayDat();
+    }
+
+    public void setNgayDat(java.sql.Date ngayDat) {
+        db.setNgayDat(ngayDat);
+    }
+
+    public java.sql.Time getGioDat() {
+        return db.getGioDat();
+    }
+
+    public void setGioDat(java.sql.Time gioDat) {
+        db.setGioDat(gioDat);
     }
 
     public int getSoBan() {

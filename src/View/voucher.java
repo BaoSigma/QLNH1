@@ -109,7 +109,7 @@ public class voucher extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 660, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/qruci.png"))); // NOI18N
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, 200, 200));
     }// </editor-fold>//GEN-END:initComponents
     
 

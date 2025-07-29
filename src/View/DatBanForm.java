@@ -96,10 +96,10 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
 
         jPanel3.setBackground(new java.awt.Color(173, 139, 115));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Quản lý Đặt Bàn");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -161,32 +161,32 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
         ));
         jScrollPane2.setViewportView(tblDatBan);
 
-        btnCuoi1.setBackground(new java.awt.Color(173, 139, 115));
         btnCuoi1.setText("Về cuối");
+        btnCuoi1.setBackground(new java.awt.Color(173, 139, 115));
         btnCuoi1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCuoi1ActionPerformed(evt);
             }
         });
 
-        btnTien1.setBackground(new java.awt.Color(173, 139, 115));
         btnTien1.setText("Tiến");
+        btnTien1.setBackground(new java.awt.Color(173, 139, 115));
         btnTien1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTien1ActionPerformed(evt);
             }
         });
 
-        btnTruoc1.setBackground(new java.awt.Color(173, 139, 115));
         btnTruoc1.setText("Trước");
+        btnTruoc1.setBackground(new java.awt.Color(173, 139, 115));
         btnTruoc1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTruoc1ActionPerformed(evt);
             }
         });
 
-        btnDau1.setBackground(new java.awt.Color(173, 139, 115));
         btnDau1.setText("Về đầu");
+        btnDau1.setBackground(new java.awt.Color(173, 139, 115));
         btnDau1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDau1ActionPerformed(evt);
@@ -226,8 +226,8 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Số người:");
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         btnDatMonTruoc.setText("Đặt món");
         btnDatMonTruoc.addActionListener(new java.awt.event.ActionListener() {
@@ -236,23 +236,25 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Mã đặt:");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Mã bàn:");
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Ngày đặt:");
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Mã khách hàng:");
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Giờ đặt:");
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Trạng thái");
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        txtMaDat.setEnabled(false);
 
         cboMaBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -301,7 +303,7 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
                                 .addComponent(btnXoa)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -310,7 +312,7 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 68, Short.MAX_VALUE)
+                        .addGap(18, 148, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(txtMaDat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -329,10 +331,10 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
                             .addComponent(jLabel7)
                             .addComponent(txtNgayDat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8)
                             .addComponent(tPGioDat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
+                        .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(txtSoNguoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -461,22 +463,47 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
     
 
     @Override
-    public DatBan getForm() {
-        String maDat = txtMaDat.getText().trim();
-    String maKH = txtMaKH.getText().trim();
-    String maBan = cboMaBan.getSelectedItem().toString().trim();
+public DatBan getForm() {
+    String maDat = txtMaDat.getText().trim();
+String maKH = txtMaKH.getText().trim();
+String maBan = cboMaBan.getSelectedItem().toString().trim();
+Date ngayDatUtil = txtNgayDat.getDate(); // java.util.Date
 
-    Date ngayDat = txtNgayDat.getDate();
+// Lấy giờ từ TimePicker, định dạng "HH:mm"
+LocalTime gio = tPGioDat.getTime();
+java.sql.Time gioDat = (gio != null) ? java.sql.Time.valueOf(gio) : null;
 
-    // Lấy giờ từ TimePicker, format "HH:mm"
-    LocalTime gio = tPGioDat.getTime();
-    String gioDat = (gio != null) ? gio.format(DateTimeFormatter.ofPattern("HH:mm")) : "";
+String soNguoiText = txtSoNguoi.getText().trim();
+int soNguoi = 0;
+try {
+    soNguoi = Integer.parseInt(soNguoiText);
+} catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(null, "Số người phải là số nguyên!");
+}
 
-    String soNguoi = txtSoNguoi.getText().trim();
-    String trangThai = txtTrangThai.getText().trim();
+String trangThai = txtTrangThai.getText().trim();
 
-    return new DatBan();
-    }
+// Gán dữ liệu vào đối tượng DatBan
+DatBan entity = new DatBan();
+entity.setMaDat(maDat);
+entity.setMaKH(maKH);
+entity.setMaBan(maBan);
+
+// ✅ Chuyển từ java.util.Date sang java.sql.Date đúng cách
+if (ngayDatUtil != null) {
+    entity.setNgayDat(new java.sql.Date(ngayDatUtil.getTime()));
+} else {
+    entity.setNgayDat(null); // hoặc xử lý tùy bạn
+}
+
+entity.setGioDat(gioDat);
+entity.setSoNguoi(soNguoi);
+entity.setTrangThai(trangThai);
+
+return entity;
+
+}
+
 
     @Override
     public void fillToTable() {
@@ -591,11 +618,7 @@ public class DatBanForm extends javax.swing.JPanel implements DatBanController{
 
     @Override
     public boolean Checkall() {
-       if (txtMaDat.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Chưa nhập mã đặt bàn");
-        txtMaDat.requestFocus();
-        return false;
-    }
+       
     if (txtMaKH.getText().trim().isEmpty()) {
         JOptionPane.showMessageDialog(this, "Chưa nhập mã khách hàng");
         txtMaKH.requestFocus();

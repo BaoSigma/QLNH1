@@ -16,7 +16,13 @@ import java.util.List;
  * @author baoha
  */
 public class DatBanimpl implements DatBanDAO{
-    public static final String datbanam = "EXEC sp_ThemDatBan ?, ?, ?, ?, ?, ?";
+    public static final String datbanam = "EXEC sp_ThemDatBan\n" +
+"    @MaKH = '?',\n" +
+"    @MaBan = '?',\n" +
+"    @NgayDat = '?',\n" +
+"    @GioDat = '?',\n" +
+"    @SoNguoi = ?,\n" +
+"    @TrangThai = '?';";
     public static final String xoaDatBanAn = "Delete form DatBan where MaDat = ?";
     public static final String suaDatBan = "UPDATE DatBan\n" +
 "SET \n" +
