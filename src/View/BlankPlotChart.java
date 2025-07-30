@@ -21,10 +21,6 @@ import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.border.EmptyBorder;
 
-/**
- *
- * @author baoha
- */
 public class BlankPlotChart extends JComponent {
 
     public BlankPlotChatRender getBlankPlotChatRender() {
@@ -269,4 +265,3 @@ public class BlankPlotChart extends JComponent {
         this.niceScale = niceScale;
     }
 }
-

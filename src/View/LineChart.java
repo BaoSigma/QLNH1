@@ -1,4 +1,4 @@
-package RTDRestaurant.View.Swing.Chart;
+package View;
 
 import Model.ModelChart;
 import Model.ModelLegend;
@@ -28,7 +28,7 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
 
 
 public class LineChart extends javax.swing.JPanel {
-    
+
     DecimalFormat df = new DecimalFormat("#,##0.##");
     private List<ModelLegend> legends = new ArrayList<>();
     private List<ModelChart> model = new ArrayList<>();
@@ -53,7 +53,6 @@ public class LineChart extends javax.swing.JPanel {
         animator.setResolution(0);
         animator.setAcceleration(0.5f);
         animator.setDeceleration(0.5f);
-        blankPlotChart = new BlankPlotChart();
         blankPlotChart.setBlankPlotChatRender(new BlankPlotChatRender() {
             @Override
             public int getMaxLegend() {
@@ -169,7 +168,6 @@ public class LineChart extends javax.swing.JPanel {
         Rectangle2D r2 = ft.getStringBounds(text, g2);
         return new Dimension((int) r2.getWidth(), (int) r2.getHeight());
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -181,6 +179,9 @@ public class LineChart extends javax.swing.JPanel {
 
         panelLegend.setOpaque(false);
         panelLegend.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
+
+        blankPlotChart.setForeground(new java.awt.Color(0, 0, 0));
+        blankPlotChart.setDoubleBuffered(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -195,7 +196,7 @@ public class LineChart extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(blankPlotChart, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(blankPlotChart, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelLegend, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
