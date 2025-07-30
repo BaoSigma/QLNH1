@@ -50,32 +50,32 @@ public class BanAnView extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        btnDau.setBackground(new java.awt.Color(173, 139, 115));
         btnDau.setText("Về đầu");
+        btnDau.setBackground(new java.awt.Color(173, 139, 115));
         btnDau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDauActionPerformed(evt);
             }
         });
 
-        btnTruoc.setBackground(new java.awt.Color(173, 139, 115));
         btnTruoc.setText("Trước");
+        btnTruoc.setBackground(new java.awt.Color(173, 139, 115));
         btnTruoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTruocActionPerformed(evt);
             }
         });
 
-        btnTien.setBackground(new java.awt.Color(173, 139, 115));
         btnTien.setText("Tiến");
+        btnTien.setBackground(new java.awt.Color(173, 139, 115));
         btnTien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTienActionPerformed(evt);
             }
         });
 
-        btnCuoi.setBackground(new java.awt.Color(173, 139, 115));
         btnCuoi.setText("Về cuối");
+        btnCuoi.setBackground(new java.awt.Color(173, 139, 115));
         btnCuoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCuoiActionPerformed(evt);
@@ -84,10 +84,10 @@ public class BanAnView extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(173, 139, 115));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Quản lý bàn ăn");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
 

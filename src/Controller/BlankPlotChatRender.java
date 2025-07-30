@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.Path2D;
 import java.util.List;
 
-public abstract class BlankPlotChatRender {
+    public abstract class BlankPlotChatRender {
 
     public abstract String getLabelText(int index);
 

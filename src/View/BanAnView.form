@@ -79,10 +79,10 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnDau">
       <Properties>
-        <Property name="text" type="java.lang.String" value="V&#x1ec1; &#x111;&#x1ea7;u"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="73" green="8b" red="ad" type="rgb"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="V&#x1ec1; &#x111;&#x1ea7;u"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDauActionPerformed"/>
@@ -90,10 +90,10 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnTruoc">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tr&#x1b0;&#x1edb;c"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="73" green="8b" red="ad" type="rgb"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="Tr&#x1b0;&#x1edb;c"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTruocActionPerformed"/>
@@ -101,10 +101,10 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnTien">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ti&#x1ebf;n"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="73" green="8b" red="ad" type="rgb"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="Ti&#x1ebf;n"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTienActionPerformed"/>
@@ -112,10 +112,10 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnCuoi">
       <Properties>
-        <Property name="text" type="java.lang.String" value="V&#x1ec1; cu&#x1ed1;i"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="73" green="8b" red="ad" type="rgb"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="V&#x1ec1; cu&#x1ed1;i"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCuoiActionPerformed"/>
@@ -161,14 +161,14 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; b&#xe0;n &#x103;n"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="30" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; b&#xe0;n &#x103;n"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">

@@ -6,7 +6,14 @@ public class doanhthu {
     private NhanVien nv;
     private String theoNgay;  
     private String theoThang; 
-    
+    private double tongNgay;
+private double tongNhanVien;
+
+public double getTongNgay() { return tongNgay; }
+public void setTongNgay(double tongNgay) { this.tongNgay = tongNgay; }
+
+public double getTongNhanVien() { return tongNhanVien; }
+public void setTongNhanVien(double tongNhanVien) { this.tongNhanVien = tongNhanVien; }
 
     public doanhthu() {
         this.hd = new HoaDon();

@@ -10,18 +10,18 @@ import java.util.*;
 
 public class DoanhThuImpl {
 
-    // Lấy tháng có doanh thu cao nhất
-    public List<doanhthu> getDoanhThuTheoThang() {
+    // 1. Doanh thu theo tháng cao nhất
+    public List<doanhthu> getDoanhThuTheoThangCaoNhat() {
         List<doanhthu> list = new ArrayList<>();
         String sql = """
             SELECT TOP 1
                 FORMAT(NgayLap, 'MM/yyyy') AS TheoThang,
                 SUM(TongTien) AS TongTien
             FROM HoaDon
+            WHERE NgayLap IS NOT NULL
             GROUP BY FORMAT(NgayLap, 'MM/yyyy')
             ORDER BY SUM(TongTien) DESC
         """;
-
         try (ResultSet rs = UJdbc.executeQuery(sql)) {
             while (rs.next()) {
                 doanhthu d = new doanhthu();
@@ -35,8 +35,8 @@ public class DoanhThuImpl {
         return list;
     }
 
-    // Lấy ngày có doanh thu cao nhất trong tuần hiện tại
-    public List<doanhthu> getNgayCaoNhat() {
+    // 2. Doanh thu theo ngày cao nhất trong tuần
+    public List<doanhthu> getDoanhThuNgayCaoNhatTrongTuan() {
         List<doanhthu> list = new ArrayList<>();
         String sql = """
             SELECT TOP 1
@@ -61,8 +61,8 @@ public class DoanhThuImpl {
         return list;
     }
 
-    // Lấy nhân viên có doanh thu cao nhất
-    public List<doanhthu> getDoanhThuTheoNhanVien() {
+    // 3. Nhân viên có doanh thu cao nhất
+    public List<doanhthu> getNhanVienDoanhThuCaoNhat() {
         List<doanhthu> list = new ArrayList<>();
         String sql = """
             SELECT TOP 1
@@ -87,108 +87,52 @@ public class DoanhThuImpl {
         }
         return list;
     }
-
-    // Lấy khách hàng có doanh thu cao nhất
-    public List<doanhthu> getDoanhThuTheoKhachHang() {
-        List<doanhthu> list = new ArrayList<>();
-        String sql = """
-           SELECT TOP 1
-                kh.MaKH,
-                kh.HoTen AS TenKhachHang,
-                SUM(hd.TongTien) AS TongTien
-            FROM HoaDon hd
-            JOIN KhachHang kh ON hd.MaKH = kh.MaKH
-            GROUP BY kh.MaKH, kh.HoTen
-            ORDER BY SUM(hd.TongTien) DESC
-        """;
-        try (ResultSet rs = UJdbc.executeQuery(sql)) {
-            while (rs.next()) {
-                doanhthu d = new doanhthu();
-                d.setMaKhachHang(rs.getString("MaKH"));
-                d.setTenKhachHang(rs.getString("TenKhachHang"));
-                d.setTongTien(rs.getDouble("TongTien"));
-                list.add(d);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
-    // Dữ liệu biểu đồ line: 4 loại doanh thu theo tháng
-public List<ModelChart> getRevenue_byAll_byMonth() {
-    List<ModelChart> list = new ArrayList<>();
-
-    String sqlThang = """
-        SELECT FORMAT(NgayLap, 'MM/yyyy') AS Thang,
-               SUM(TongTien) AS TongThang
-        FROM HoaDon
+public ArrayList<ModelChart> getThongTinDoanhThuTuyChinh() {
+    ArrayList<ModelChart> list = new ArrayList<>();
+    String sql = """
+        SELECT 
+            FORMAT(NgayLap, 'MM/yyyy') AS Thang,
+            SUM(TongTien) AS TongThang,
+            (
+                SELECT MAX(TongNgay)
+                FROM (
+                    SELECT SUM(TongTien) AS TongNgay
+                    FROM HoaDon hd2
+                    WHERE FORMAT(hd2.NgayLap, 'MM/yyyy') = FORMAT(hd.NgayLap, 'MM/yyyy')
+                    GROUP BY CAST(hd2.NgayLap AS DATE)
+                ) AS Sub
+            ) AS DoanhThuNgayCaoNhat,
+            (
+                SELECT MAX(TongNV)
+                FROM (
+                    SELECT SUM(TongTien) AS TongNV
+                    FROM HoaDon hd3
+                    WHERE FORMAT(hd3.NgayLap, 'MM/yyyy') = FORMAT(hd.NgayLap, 'MM/yyyy')
+                    GROUP BY MaNV
+                ) AS Sub
+            ) AS DoanhThuNVCaoNhat
+        FROM HoaDon hd
         WHERE NgayLap >= DATEADD(MONTH, -5, GETDATE())
         GROUP BY FORMAT(NgayLap, 'MM/yyyy')
-        ORDER BY MIN(NgayLap)
+        ORDER BY MIN(CONVERT(DATE, '01/' + FORMAT(NgayLap, 'MM/yyyy'), 103))
     """;
 
-    String sqlNgay = """
-        SELECT FORMAT(NgayLap, 'MM/yyyy') AS Thang,
-               MAX(TongTien) AS TongNgay
-        FROM HoaDon
-        WHERE NgayLap >= DATEADD(MONTH, -5, GETDATE())
-        GROUP BY FORMAT(NgayLap, 'MM/yyyy')
-    """;
-
-    String sqlNV = """
-        SELECT FORMAT(NgayLap, 'MM/yyyy') AS Thang,
-               MAX(TongTien) AS TongNV
-        FROM HoaDon
-        WHERE NgayLap >= DATEADD(MONTH, -5, GETDATE())
-        GROUP BY FORMAT(NgayLap, 'MM/yyyy')
-    """;
-
-    String sqlKH = """
-        SELECT FORMAT(NgayLap, 'MM/yyyy') AS Thang,
-               MAX(TongTien) AS TongKH
-        FROM HoaDon
-        WHERE NgayLap >= DATEADD(MONTH, -5, GETDATE())
-        GROUP BY FORMAT(NgayLap, 'MM/yyyy')
-    """;
-
-    try (
-        ResultSet rsThang = UJdbc.executeQuery(sqlThang);
-        ResultSet rsNgay  = UJdbc.executeQuery(sqlNgay);
-        ResultSet rsNV    = UJdbc.executeQuery(sqlNV);
-        ResultSet rsKH    = UJdbc.executeQuery(sqlKH)
-    ) {
-        Map<String, Double> mapNgay = new HashMap<>();
-        Map<String, Double> mapNV   = new HashMap<>();
-        Map<String, Double> mapKH   = new HashMap<>();
-
-        while (rsNgay.next()) {
-            mapNgay.put(rsNgay.getString("Thang"), rsNgay.getDouble("TongNgay"));
+    try (ResultSet rs = UJdbc.executeQuery(sql)) {
+        while (rs.next()) {
+            String thang = rs.getString("Thang");
+            double tongThang = rs.getDouble("TongThang");
+            double tongNgay = rs.getDouble("DoanhThuNgayCaoNhat");
+            double tongNV = rs.getDouble("DoanhThuNVCaoNhat");
+            
+            list.add(new ModelChart(thang, new double[]{tongThang, tongNgay, tongNV}));
         }
-        while (rsNV.next()) {
-            mapNV.put(rsNV.getString("Thang"), rsNV.getDouble("TongNV"));
-        }
-        while (rsKH.next()) {
-            mapKH.put(rsKH.getString("Thang"), rsKH.getDouble("TongKH"));
-        }
-
-        while (rsThang.next()) {
-            String thang = rsThang.getString("Thang");
-            double doanhThuThang = rsThang.getDouble("TongThang");
-            double doanhThuNgay  = mapNgay.getOrDefault(thang, 0.0);
-            double doanhThuNV    = mapNV.getOrDefault(thang, 0.0);
-            double doanhThuKH    = mapKH.getOrDefault(thang, 0.0);
-
-            list.add(new ModelChart(thang, new double[]{
-                doanhThuThang, doanhThuNgay, doanhThuNV, doanhThuKH
-            }));
-        }
-
     } catch (SQLException e) {
         e.printStackTrace();
     }
-
     return list;
 }
+
+
+
 
 }

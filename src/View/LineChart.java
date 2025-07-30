@@ -32,8 +32,8 @@ public class LineChart extends javax.swing.JPanel {
     DecimalFormat df = new DecimalFormat("#,##0.##");
     private List<ModelLegend> legends = new ArrayList<>();
     private List<ModelChart> model = new ArrayList<>();
-    private final int seriesSize = 18;
-    private final int seriesSpace = 0;
+    private final int seriesSize = 22;
+    private final int seriesSpace = 10;
     private final Animator animator;
     private float animate;
     private String showLabel;
@@ -65,66 +65,67 @@ public class LineChart extends javax.swing.JPanel {
             }
 
             @Override
-            public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index) {
-            }
+public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index) {
+    List<Path2D.Double> gra = new ArrayList<>();
+    for (int i = 0; i < legends.size(); i++) {
+        gra.add(new Path2D.Double());
+    }
 
-            @Override
-            public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index, List<Path2D.Double> gra) {
-                double totalSeriesWidth = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
-                double x = (size.getWidth() - totalSeriesWidth) / 2;
-                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
-                int ss = seriesSize / 2;
-                for (int i = 0; i < legends.size(); i++) {
-                    double seriesValues = chart.getSeriesValuesOf(model.get(index).getValues()[i], size.getHeight()) * animate;
-                    if (index == 0) {
-                        gra.get(i).moveTo(size.getX() + x + ss, size.getY() + size.getHeight() - seriesValues);
-                    } else {
-                        gra.get(i).lineTo(size.getX() + x + ss, size.getY() + size.getHeight() - seriesValues);
-                    }
-                    x += seriesSpace + seriesSize;
-                }
-                if (showLabel != null) {
-                    g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
-                    Dimension s = getLabelWidth(showLabel, g2);
-                    int space = 3;
-                    int spaceTop = 0;
-                    g2.setColor(new Color(30, 30, 30));
-                    g2.fillRoundRect(labelLocation.x - s.width / 2 - 3, labelLocation.y - s.height - space * 2 - spaceTop, s.width + space * 2, s.height + space * 2, 10, 10);
-                    g2.setColor(new Color(200, 200, 200));
-                    g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
-                    g2.drawString(showLabel, labelLocation.x - s.width / 2, labelLocation.y - spaceTop - space * 2);
-                }
-                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
-            }
+   
+    renderSeries(chart, g2, size, index, gra);   
+    renderGraphics(g2, gra);                     
+}
+@Override
+public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index, List<Path2D.Double> gra) {
+     double totalSeriesWidth = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
+    double x = size.getX() + (size.getWidth() - totalSeriesWidth) / 2;
+
+    for (int i = 0; i < legends.size(); i++) {
+        double value = model.get(index).getValues()[i] * animate;
+        double height = chart.getSeriesValuesOf(value, size.getHeight());
+        double y = size.getY() + size.getHeight() - height;
+
+        // Rounded rectangle with corner radius
+        int arc = 12; // độ cong góc
+        g2.setPaint(new GradientPaint(0, 0, legends.get(i).getColor(), 0, (int) height, legends.get(i).getColorLight()));
+        g2.fillRoundRect((int) x, (int) y, seriesSize, (int) height, arc, arc);
+
+        x += seriesSize + seriesSpace;
+    }
+}
+
 
             @Override
             public void renderGraphics(Graphics2D g2, List<Path2D.Double> gra) {
-                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.7f));
-                g2.setStroke(new BasicStroke(4f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER));
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+                g2.setStroke(new BasicStroke(10f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER));
                 for (int i = 0; i < gra.size(); i++) {
                     g2.setPaint(new GradientPaint(0, 0, legends.get(i).getColor(), getWidth(), 0, legends.get(i).getColorLight()));
                     g2.draw(gra.get(i));
                 }
+                System.out.println("🎨 renderGraphics: " + gra.size() + " paths");
+                
             }
 
             @Override
             public boolean mouseMoving(BlankPlotChart chart, MouseEvent evt, Graphics2D g2, SeriesSize size, int index) {
-                double totalSeriesWidth = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
-                double x = (size.getWidth() - totalSeriesWidth) / 2;
+                double totalSeriesHeight = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
+                double y = (size.getHeight() - totalSeriesHeight) / 2;
                 for (int i = 0; i < legends.size(); i++) {
-                    double seriesValues = chart.getSeriesValuesOf(model.get(index).getValues()[i], size.getHeight()) * animate;
+                    double seriesValue = chart.getSeriesValuesOf(model.get(index).getValues()[i], size.getWidth()) * animate;
                     int s = seriesSize / 2;
-                    int sy = seriesSize / 3;
-                    int px[] = {(int) (size.getX() + x), (int) (size.getX() + x + s), (int) (size.getX() + x + seriesSize), (int) (size.getX() + x + seriesSize), (int) (size.getX() + x + s), (int) (size.getX() + x)};
-                    int py[] = {(int) (size.getY() + size.getHeight() - seriesValues), (int) (size.getY() + size.getHeight() - seriesValues - sy), (int) (size.getY() + size.getHeight() - seriesValues), (int) (size.getY() + size.getHeight()), (int) (size.getY() + size.getHeight() + sy), (int) (size.getY() + size.getHeight())};
+                    int sx = seriesSize / 3;
+                    int py[] = {(int) (size.getY() + y), (int) (size.getY() + y + s), (int) (size.getY() + y + seriesSize), (int) (size.getY() + y + seriesSize), (int) (size.getY() + y + s), (int) (size.getY() + y)};
+                    int px[] = {(int) (size.getX() + seriesValue), (int) (size.getX() + seriesValue + sx), (int) (size.getX() + seriesValue), (int) (size.getX()), (int) (size.getX() - sx), (int) (size.getX())};
+
                     if (new Polygon(px, py, px.length).contains(evt.getPoint())) {
                         double data = model.get(index).getValues()[i];
                         showLabel = df.format(data);
-                        labelLocation.setLocation((int) (size.getX() + x + s), (int) (size.getY() + size.getHeight() - seriesValues - sy));
+                        labelLocation.setLocation((int) (size.getX() + seriesValue + sx), (int) (size.getY() + y + s));
                         chart.repaint();
                         return true;
                     }
-                    x += seriesSpace + seriesSize;
+                    y += seriesSpace + seriesSize;
                 }
                 return false;
             }

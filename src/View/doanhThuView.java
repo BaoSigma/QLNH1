@@ -18,6 +18,7 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -30,116 +31,88 @@ import javax.swing.ImageIcon;
 public class doanhThuView extends javax.swing.JPanel {
 
     private DoanhThuImpl doanhThuDao;
-   
-   private DecimalFormat df = new DecimalFormat("##,###,###");
-
-
+    private DecimalFormat df = new DecimalFormat("##,###,###");
+    private ArrayList<ModelChart> list;
     public doanhThuView() {
         initComponents();
         doanhThuDao = new DoanhThuImpl();
         initCard("Tháng");
-            initChart()
-        df = new DecimalFormat("##,###,###");
+        initCard("Ngày");
+        initCard("Nhân viên");
+        initChart();
     }
-// Hàm load icon từ đường dẫn
-    private ImageIcon loadIcon(String path) {
-    java.net.URL location = getClass().getResource(path);
-    if (location == null) {
-        System.err.println("Không tìm thấy ảnh: " + path);
-        return new ImageIcon(); // hoặc return null;
-    }
-    return new ImageIcon(location);
-}
 
+    private ImageIcon loadIcon(String path) {
+        java.net.URL location = getClass().getResource(path);
+        if (location == null) {
+            System.err.println("Không tìm thấy ảnh: " + path);
+            return new ImageIcon(); // hoặc return null;
+        }
+        return new ImageIcon(location);
+    }
 
     public void initCard(String filter) {
         try {
-            DoanhThuImpl doanhThuDao = new DoanhThuImpl();
-            DecimalFormat df = new DecimalFormat("##,###,###");
-
             double total = 0;
             String title = "";
             String iconPath = "";
 
             if ("Tháng".equals(filter)) {
-                List<doanhthu> list = doanhThuDao.getDoanhThuTheoThang();
+                List<doanhthu> list = doanhThuDao.getDoanhThuTheoThangCaoNhat();
                 for (doanhthu d : list) {
                     total += d.getTongTien();
                 }
-                title = "Doanh Thu Tháng";
+                title = "Doanh Thu Tháng cao nhất";
                 iconPath = "/img/revenue.png";
                 Thang.setData(new ModelCard(loadIcon(iconPath), title, df.format(total) + "đ", ". . ."));
+
             } else if ("Ngày".equals(filter)) {
-                List<doanhthu> list = doanhThuDao.getNgayCaoNhat();
+                List<doanhthu> list = doanhThuDao.getDoanhThuNgayCaoNhatTrongTuan();
                 for (doanhthu d : list) {
                     total += d.getTongTien();
                 }
                 title = "Doanh Thu Ngày cao nhất trong tuần";
                 iconPath = "/img/expenses.png";
                 Ngay.setData(new ModelCard(loadIcon(iconPath), title, df.format(total) + "đ", ". . ."));
+
             } else if ("Nhân viên".equals(filter)) {
-                List<doanhthu> list = doanhThuDao.getDoanhThuTheoNhanVien();
+                List<doanhthu> list = doanhThuDao.getNhanVienDoanhThuCaoNhat();
                 for (doanhthu d : list) {
                     total += d.getTongTien();
                 }
                 title = "Doanh Thu Nhân Viên cao nhất";
                 iconPath = "/img/profit.png";
                 NhanVien.setData(new ModelCard(loadIcon(iconPath), title, df.format(total) + "đ", ". . ."));
-            } else if ("Khách hàng".equals(filter)) {
-                List<doanhthu> list = doanhThuDao.getDoanhThuTheoKhachHang();
-                for (doanhthu d : list) {
-                    total += d.getTongTien();
-                }
-                title = "Doanh Thu Khách Hàng cao nhất";
-                iconPath = "/img/customer.png";
-                KhachHang.setData(new ModelCard(loadIcon(iconPath), title, df.format(total) + "đ", ". . ."));
-            } else {
-                System.out.println("Không hợp lệ: " + filter);
             }
+
             Thang.repaint();
             Ngay.repaint();
             NhanVien.repaint();
-            KhachHang.repaint();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 public void initChart() {
-    DoanhThuImpl doanhThuDao = new DoanhThuImpl();
+    lineChart.clear();  // ✨ Xóa dữ liệu cũ nếu có
 
-    // Add legend
-    lineChart.addLegend("Doanh Thu theo Tháng", new Color(79,172,254), new Color(79,172,254));
-    lineChart.addLegend("Doanh Thu theo Ngày", new Color(109, 222, 202), new Color(109, 222, 202));
-    lineChart.addLegend("Doanh Thu theo Nhân Viên", new Color(0,0,0), new Color(0,0,0));
-    lineChart.addLegend("Doanh Thu theo Khách Hàng", new Color(36,243,68), new Color(36,243,68));
+    // Thêm legend (mỗi loại là 1 đường biểu đồ)
+    lineChart.addLegend("Doanh Thu theo Tháng", new Color(79,172,254), new Color(79,172,254, 80));
+    lineChart.addLegend("Doanh Thu theo Ngày cao nhất", new Color(109, 222, 202), new Color(109, 222, 202, 80));
+    lineChart.addLegend("Doanh Thu theo Nhân Viên cao nhất", new Color(255, 153, 0), new Color(255, 153, 0, 80));
 
-    try {
-        List<ModelChart> list = doanhThuDao.getRevenue_byAll_byMonth();
-        for (ModelChart data : list) {
-            lineChart.addData(data);
-            System.out.println("Tháng: " + data.getLabel());
-            System.out.println("Giá trị: " + Arrays.toString(data.getValues()));
-        }
-        lineChart.start();
-        
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-    
-    
+    // Lấy dữ liệu từ DAO và truyền vào biểu đồ
+    list = doanhThuDao.getThongTinDoanhThuTuyChinh();
+    for (ModelChart data : list) {
+    double[] values = data.getValues();  // lấy mảng giá trị [tháng, ngày, nhân viên]
+    System.out.println("✔ " + data.getLabel() + ": " + values[0] + " - " + values[1] + " - " + values[2]);
+    lineChart.addData(data);
 }
 
 
-
-
-
-
-
-
-
-    /**
+    lineChart.start(); // Bắt đầu animation
+}
+  /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
@@ -156,7 +129,6 @@ public void initChart() {
         NhanVien = new View.Card();
         Thang = new View.Card();
         Ngay = new View.Card();
-        KhachHang = new View.Card();
         filter = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         lineChart = new View.LineChart();
@@ -177,7 +149,7 @@ public void initChart() {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(171, 171, 171)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 851, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
@@ -202,12 +174,9 @@ public void initChart() {
         Ngay.setColor1(new java.awt.Color(79, 172, 254));
         Ngay.setColor2(new java.awt.Color(0, 242, 254));
 
-        KhachHang.setColor1(new java.awt.Color(36, 243, 68));
-
         jLayeredPane1.setLayer(NhanVien, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(Thang, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(Ngay, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(KhachHang, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -219,16 +188,16 @@ public void initChart() {
                 .addComponent(Thang, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Ngay, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(KhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(NhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(Thang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(Ngay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(KhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Thang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Ngay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         filter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng", "Ngày", "Nhân viên", "Khách hàng" }));
@@ -256,9 +225,9 @@ public void initChart() {
                         .addComponent(filter, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 18, Short.MAX_VALUE))))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addComponent(lineChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -285,7 +254,6 @@ public void initChart() {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private View.Card KhachHang;
     private View.Card Ngay;
     private View.Card NhanVien;
     private View.Card Thang;
