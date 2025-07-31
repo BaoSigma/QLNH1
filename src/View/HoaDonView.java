@@ -294,34 +294,32 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     
     public void fillToTableTheoDieuKien() {
     try {
-        NhanVienImpl dao = new NhanVienImpl(); 
+         HoaDonImpl dao = new HoaDonImpl(); 
         String keyword = txtFind.getText().trim();
-        List<NhanVien> list = dao.findByKeyword(keyword);
+        List<HoaDon> list = dao.findByKeyword(keyword);
 
         DefaultTableModel model = (DefaultTableModel) tblhoadon.getModel();
         model.setRowCount(0);
 
         if (list.isEmpty()) {
-            UDialog.alert("Không tìm thấy nhân viên nào.");
+            UDialog.alert("Không tìm thấy .");
             return;
         }
 
-        for (NhanVien nv : list) {
+        for (HoaDon hd : list) {
             Object[] row = {
-                nv.getMaNV(),
-                nv.getHoTen(),
-                nv.getTenVaiTro(),
-                nv.getMatKhau(),
-                nv.getEmail(),
-                nv.getLuongCoBan(),
-                nv.getNgaySinh(),
-                nv.getAnh()
+              hd.getMaHD(),
+                hd.getMaBan(),
+                hd.getMaNV(),
+                hd.getNgayLap(),
+                hd.getTongTien(),
+                hd.getHinhThucTT()
             };
             model.addRow(row);
         }
     } catch (Exception e) {
         e.printStackTrace();
-        UDialog.alert("Lỗi khi tìm nhân viên!");
+        UDialog.alert("Lỗi khi tìm!");
     }
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -361,17 +359,29 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
 
     @Override
     public void setForm(Model.HoaDon entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         txtmahoadon.setText(entity.getMaHD());
+    txtmanv.setText(entity.getMaNV());
+    txtmaban.setText(entity.getMaBan());
+    txttongtien.setText(String.valueOf(entity.getHinhThucTT()));
+    txthinhthuctt.setText(entity.getHinhThucTT());
     }
 
     @Override
     public Model.HoaDon getForm() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+             HoaDon hd = new HoaDon();
+    HoaDonImpl vtDao = new HoaDonImpl();
+
+    hd.setMaHD(txtmahoadon.getText().trim());
+    hd.setMaNV(txtmanv.getText().trim());
+    hd.setMaBan(txtmaban.getText().trim());
+    hd.setTongTien(Double.parseDouble(txttongtien.getText().trim()));
+    hd.setHinhThucTT(txthinhthuctt.getText().trim());
+    return hd;
     }
 
     @Override
     public void fillToTable() {
-        DefaultTableModel model = (DefaultTableModel) tblhoadon.getModel();
+         DefaultTableModel model = (DefaultTableModel) tblhoadon.getModel();
         model.setRowCount(0);
         items = dao.findAll();
         items.forEach(item -> {
@@ -397,7 +407,7 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     public void create() {
         if (!Checkall()) return; 
 
-        if (UDialog.confirm("Bạn thực sự muốn thêm nhân viên này?")) {
+        if (UDialog.confirm("Bạn thực sự muốn thêm?")) {
             HoaDon entity = this.getForm();
             dao.create(entity);
             this.fillToTable();
@@ -410,7 +420,7 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     public void update() {
         if (!Checkall()) return;
 
-        if (UDialog.confirm("Bạn thực sự muốn cập nhật thông tin nhân viên này?")) {
+        if (UDialog.confirm("Bạn thực sự muốn cập nhật thông tin này?")) {
             HoaDon hd = this.getForm();
             dao.update(hd);
             this.fillToTable();
@@ -423,16 +433,16 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     public void delete() {
         int row = tblhoadon.getSelectedRow();
     if (row == -1) {
-        UDialog.alert("Vui lòng chọn nhân viên cần xóa!");
+        UDialog.alert("Vui lòng chọn hóa đơn cần xóa!");
         return;
     }
 
     String maNV = tblhoadon.getValueAt(row, 0).toString();
-    if (UDialog.confirm("Bạn chắc chắn muốn xóa nhân viên này?")) {
+    if (UDialog.confirm("Bạn chắc chắn muốn xóa hóa đơn này?")) {
         dao.deleteById(maNV);
         this.fillToTable();
         this.clear();
-        UDialog.alert("Xóa nhân viên thành công!");
+        UDialog.alert("Xóa thành công!");
     }
     }
 
