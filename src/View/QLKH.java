@@ -86,13 +86,13 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
 
         tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã khách hàng", "Họ tên", "Số điện thoại", "Tổng chi tiêu", "Hạng khách"
+                "Mã khách hàng", "Họ tên", "Tổng chi tiêu", "Hạng khách", "Email", "Mã vai trò", "Mật khẩu"
             }
         ));
         tblKhachHang.addAncestorListener(new javax.swing.event.AncestorListener() {
