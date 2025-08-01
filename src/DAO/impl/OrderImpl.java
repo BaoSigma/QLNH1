@@ -75,27 +75,32 @@ public class OrderImpl {
         throw new RuntimeException("Lỗi khi tạo hóa đơn: " + e.getMessage(), e);
     }
 }
-public void insertChiTietHoaDon(String MaHD, String MaMon, int SoLuong, String GhiChu, String TrangThai, String MaVanDon) {
-    if (MaHD == null || MaHD.isEmpty()) {
-        throw new IllegalArgumentException(" MaHD không được null khi thêm chi tiết hóa đơn");
+public void goiMonTheoBan(String maBan, String maMon, int soLuong, String ghiChu) {
+    if (maBan == null || maBan.trim().isEmpty()) {
+    throw new IllegalArgumentException("Mã bàn (MaBan) không được null hoặc rỗng.");
     }
+    if (maMon == null || maMon.trim().isEmpty()) {
+    throw new IllegalArgumentException("Mã món (MaMon) không được null hoặc rỗng.");
+    }
+    if (soLuong <= 0) {
+    throw new IllegalArgumentException("Số lượng phải lớn hơn 0.");
+    }
+    String sql = "{CALL sp_GoiMonTuBan(?, ?, ?, ?)}";
 
     try (Connection con = UJdbc.openConnection();
-         CallableStatement cs = con.prepareCall("{call sp_ThemChiTietHoaDon(?, ?, ?, ?, ?, ?)}")) {
+         CallableStatement cs = con.prepareCall(sql)) {
 
-        cs.setString(1, MaHD);
-        cs.setString(2, MaMon);
-        cs.setInt(3, SoLuong);
-        cs.setString(4, GhiChu);
-        cs.setString(5, TrangThai);
-        cs.setString(6, MaVanDon);
+        cs.setString(1, maBan);
+        cs.setString(2, maMon);
+        cs.setInt(3, soLuong);
+        cs.setString(4, (ghiChu == null || ghiChu.trim().isEmpty()) ? null : ghiChu.trim());
 
         cs.executeUpdate();
 
     } catch (SQLException e) {
-        throw new RuntimeException("Lỗi khi thêm chi tiết hóa đơn: " + e.getMessage(), e);
+        throw new RuntimeException("Lỗi khi gọi món theo bàn: " + e.getMessage(), e);
     }
-}
+    }
 
 
         public List<MonAn> timkiemdouong(String keyword) {

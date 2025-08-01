@@ -903,50 +903,46 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
 @Override
 public void XacNhan() {
     if (!UAuth.isLogin()) {
-        UDialog.alert("Bạn cần đăng nhập để tạo hóa đơn!");
-        return;
-    }
+UDialog.alert("Bạn cần đăng nhập để tạo hóa đơn!");
+return;
+}
 
-    if (!UDialog.confirm("Bạn thực sự muốn thêm hóa đơn?")) {
-        return; // Hủy nếu người dùng không xác nhận
-    }
+if (!UDialog.confirm("Bạn thực sự muốn thêm hóa đơn?")) {
+return;
+}
 
-    try {
-        // Tạo đối tượng hóa đơn mới
-        HoaDon entity = new HoaDon();
-        entity.setMaNV(UAuth.user.getMaNV()); // Lấy mã NV từ người dùng đăng nhập
-        entity.setHinhThucTT(String.valueOf(cboPTTT.getSelectedItem())); // Lấy hình thức thanh toán
+try {
+// Khởi tạo hóa đơn
+HoaDon entity = new HoaDon();
+entity.setMaNV(UAuth.user.getMaNV()); // Mã nhân viên từ người đăng nhập
+entity.setHinhThucTT(String.valueOf(cboPTTT.getSelectedItem())); // Hình thức thanh toán
+String selected = String.valueOf(cboBanAn.getSelectedItem());
+String maBan = selected.split(" - ")[0];
+entity.setMaBan(maBan);
 
-        // Lấy mã bàn từ comboBox (giả sử định dạng là "B01 - Bàn 1")
-        String selected = String.valueOf(cboBanAn.getSelectedItem());
-        String maBan = selected.split(" - ")[0];
-        entity.setMaBan(maBan);
+// Tạo hóa đơn trong CSDL và lấy lại entity chứa MaHD
+entity = dao.create(entity);
 
-        // Tạo hóa đơn trong CSDL và lấy mã HD vừa tạo
-        entity = dao.create(entity);
+// Lấy dữ liệu từ bảng gọi món
+DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
 
-        // Lấy bảng gọi món
-        DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
+for (int i = 0; i < model.getRowCount(); i++) {
+    String maSP = model.getValueAt(i, 0).toString();
+    int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString());
 
-        // Duyệt qua từng dòng trong bảng gọi món để thêm chi tiết hóa đơn
-        for (int i = 0; i < model.getRowCount(); i++) {
-            String maSP = model.getValueAt(i, 0).toString();
-            int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString());
-            // Các giá trị bổ sung nếu cần
-            String ghiChu = "";
-            String trangThai = "";
-            String maVanDon = null;
+    String ghiChu = "";    // Bạn có thể lấy ghi chú từ cột khác nếu có
+    String trangThai = ""; // Nếu có cột trạng thái có thể sửa
 
-            // Gọi DAO thêm chi tiết hóa đơn
-            dao.insertChiTietHoaDon(entity.getMaHD(), maSP, soLuong, ghiChu, trangThai, maVanDon);
-        }
+    // Thêm chi tiết hóa đơn (không còn maVanDon)
+    dao.goiMonTheoBan(maBan, maSP, soLuong, ghiChu);
 
-        UDialog.alert("Thêm hóa đơn thành công! Mã hóa đơn: " + entity.getMaHD());
+}
 
-    } catch (Exception e) {
-        e.printStackTrace();
-        UDialog.alert("Đã xảy ra lỗi khi tạo hóa đơn!");
-    }
+UDialog.alert("Thêm hóa đơn thành công! Mã hóa đơn: " + entity.getMaHD());
+} catch (Exception e) {
+e.printStackTrace();
+UDialog.alert("Đã xảy ra lỗi khi tạo hóa đơn!");
+}
 }
   
 
