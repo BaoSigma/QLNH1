@@ -7,13 +7,15 @@ public class KhachHang {
     private String matKhau;
     private String anh;
     private String email;
-    private String maVaiTro;
-
+    private int maVaiTro;
+    private String HangKhach;
+    
     // Constructor không tham số
     public KhachHang() {}
 
     // Constructor đầy đủ
-    public KhachHang(String maKH, String hoTen, double tongChiTieu, String matKhau, String anh, String email, String maVaiTro) {
+
+    public KhachHang(String maKH, String hoTen, double tongChiTieu, String matKhau, String anh, String email, int maVaiTro, String HangKhach) {
         this.maKH = maKH;
         this.hoTen = hoTen;
         this.tongChiTieu = tongChiTieu;
@@ -21,10 +23,13 @@ public class KhachHang {
         this.anh = anh;
         this.email = email;
         this.maVaiTro = maVaiTro;
+        this.HangKhach = HangKhach;
     }
+    public void setHangKhach(String hangKhach) {
+    this.HangKhach = hangKhach;
+}
 
     // Getter & Setter
-
     public String getMaKH() {
         return maKH;
     }
@@ -88,11 +93,11 @@ public class KhachHang {
         this.email = email;
     }
 
-    public String getMaVaiTro() {
+    public int getMaVaiTro() {
         return maVaiTro;
     }
 
-    public void setMaVaiTro(String maVaiTro) {
+    public void setMaVaiTro(int maVaiTro) {
         this.maVaiTro = maVaiTro;
     }
 }
