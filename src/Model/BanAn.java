@@ -4,6 +4,9 @@
  */
 package Model;
 
+import Util.UQuery;
+import java.util.List;
+
 /**
  *
  * @author Admin
@@ -76,5 +79,13 @@ public class BanAn {
     public void setMaKV(String maKV) {
         this.maKV = maKV;
     }
+    public List<BanAn> findByMaBan(String maBan) {
+    String sql = """
+        SELECT MaBan, SoBan, TrangThai
+        FROM BanAn
+        WHERE MaBan = ?;
+    """;
+    return UQuery.getBeanList(BanAn.class, sql, maBan);
+}
 
 }
