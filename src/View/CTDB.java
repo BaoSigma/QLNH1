@@ -67,7 +67,6 @@ public class CTDB extends javax.swing.JPanel implements ChiTietDatBanController{
         btnCuoi = new javax.swing.JButton();
         txtSoLuong = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtGhiChu = new javax.swing.JTextField();
         txtMaMon = new javax.swing.JTextField();
         btnLamMoi = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -78,6 +77,8 @@ public class CTDB extends javax.swing.JPanel implements ChiTietDatBanController{
         txtMaDat = new javax.swing.JTextField();
         btnSua = new javax.swing.JButton();
         btnTiemkiem = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txatGhiChu = new javax.swing.JTextArea();
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1080, 560));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -192,8 +193,12 @@ public class CTDB extends javax.swing.JPanel implements ChiTietDatBanController{
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Số lượng:");
+<<<<<<< Upstream, based on origin/master
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 740, 96, -1));
         jPanel1.add(txtGhiChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 780, 270, -1));
+=======
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 96, -1));
+>>>>>>> ca7b4d1 Merge origin/master
 
         txtMaMon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -265,6 +270,12 @@ public class CTDB extends javax.swing.JPanel implements ChiTietDatBanController{
             }
         });
         jPanel1.add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, -1, -1));
+
+        txatGhiChu.setColumns(20);
+        txatGhiChu.setRows(5);
+        jScrollPane2.setViewportView(txatGhiChu);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 280, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -374,9 +385,10 @@ public class CTDB extends javax.swing.JPanel implements ChiTietDatBanController{
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblChiTietDatBan;
+    private javax.swing.JTextArea txatGhiChu;
     private javax.swing.JTextField txtFind;
-    private javax.swing.JTextField txtGhiChu;
     private javax.swing.JTextField txtMaDat;
     private javax.swing.JTextField txtMaMon;
     private javax.swing.JTextField txtSoLuong;
@@ -391,7 +403,7 @@ public void setForm(ChiTietDatBan entity) {
     txtMaDat.setText(entity.getMaDat());
     txtMaMon.setText(entity.getMaMon());
     txtSoLuong.setText(String.valueOf(entity.getSoLuong()));
-    txtGhiChu.setText(entity.getGhiChu());
+    txatGhiChu.setText(entity.getGhiChu());
 }
 
 @Override
@@ -407,7 +419,7 @@ public ChiTietDatBan getForm() {
         ct.setSoLuong(0); // hoặc báo lỗi
     }
 
-    ct.setGhiChu(txtGhiChu.getText().trim());
+    ct.setGhiChu(txatGhiChu.getText().trim());
 
     return ct;
 }

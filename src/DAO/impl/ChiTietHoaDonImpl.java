@@ -18,29 +18,28 @@ import java.util.List;
 public class ChiTietHoaDonImpl implements ChiTietHoaDonDAO {
 
     private static final String sqlInsert = """
-        EXEC sp_ThemChiTietHoaDon ?, ?, ?, ?, ?, ?;
+        EXEC sp_ThemChiTietHoaDon ?, ?, ?, ?, ?;
     """;
-
-    private static final String sqlUpdate = """
-        UPDATE ChiTietHoaDon
-        SET SoLuong = ?, GhiChu = ?, TrangThai = ?, MaVanDon = ?
-        WHERE MaHD = ? AND MaMon = ?;
-    """;
-
     private static final String sqlDelete = """
-        DELETE FROM ChiTietHoaDon
-        WHERE MaHD = ? AND MaMon = ?;
-    """;
-
+    DELETE FROM ChiTietHoaDon
+    WHERE MaCTHD = ?;
+""";
     private static final String sqlFindAll = """
-        SELECT MaHD, MaMon, SoLuong, GhiChu, TrangThai, MaVanDon FROM ChiTietHoaDon;
-    """;
-
+    SELECT MaCTHD, MaHD, MaMon, SoLuong, GhiChu, TrangThai
+    FROM ChiTietHoaDon;
+""";
     private static final String sqlFindById = """
-        SELECT MaHD, MaMon, SoLuong, GhiChu, TrangThai, MaVanDon
-        FROM ChiTietHoaDon
-        WHERE MaHD = ? AND MaMon = ?;
-    """;
+    SELECT MaCTHD, MaHD, MaMon, SoLuong, GhiChu, TrangThai
+    FROM ChiTietHoaDon
+    WHERE MaCTHD = ?;
+""";
+private static final String sqlUpdate = """
+    UPDATE ChiTietHoaDon
+    SET SoLuong = ?, GhiChu = ?, TrangThai = ?
+    WHERE MaCTHD = ?;
+""";
+
+    
 
     @Override
     public ChiTietHoaDon create(ChiTietHoaDon ct) {
@@ -49,8 +48,7 @@ public class ChiTietHoaDonImpl implements ChiTietHoaDonDAO {
             ct.getMaMon(),
             ct.getSoLuong(),
             ct.getGhiChu(),
-            ct.getTrangThai(),
-            ct.getMaVanDon()
+            ct.getTrangThai()
         };
         UJdbc.executeUpdate(sqlInsert, values);
         return ct;
@@ -62,7 +60,6 @@ public class ChiTietHoaDonImpl implements ChiTietHoaDonDAO {
             ct.getSoLuong(),
             ct.getGhiChu(),
             ct.getTrangThai(),
-            ct.getMaVanDon(),
             ct.getMaHD(),
             ct.getMaMon()
         };
@@ -84,21 +81,32 @@ public class ChiTietHoaDonImpl implements ChiTietHoaDonDAO {
     }
 
     @Override
-    public ChiTietHoaDon findById(Object id) {
-        if (id instanceof String[] ids && ids.length == 2) {
-            return UQuery.getSingleBean(ChiTietHoaDon.class, sqlFindById, ids[0], ids[1]);
-        }
-        return null;
+    public ChiTietHoaDon findById(Object id) {  
+    return UQuery.getSingleBean(ChiTietHoaDon.class, sqlFindById);
     }
 
-    public List<ChiTietHoaDon> findByMaHD(String maHD) {
-        String sql = """
-            SELECT MaHD, MaMon, SoLuong, GhiChu, TrangThai, MaVanDon
-            FROM ChiTietHoaDon
-            WHERE MaHD = ?;
-        """;
-        return UQuery.getBeanList(ChiTietHoaDon.class, sql, maHD);
-    }
+    public List<ChiTietHoaDon> findByKeyword(String keyword) {
+    String sql = """
+        SELECT 
+            MaCTHD,
+            MaHD,
+            MaMon,
+            SoLuong,
+            GhiChu,
+            TrangThai
+        FROM ChiTietHoaDon
+        WHERE MaCTHD LIKE ? 
+           OR MaHD LIKE ? 
+           OR MaMon LIKE ? 
+           OR GhiChu LIKE ? 
+           OR TrangThai LIKE ? 
+           OR CAST(SoLuong AS VARCHAR) LIKE ?
+    """;
+
+    String value = "%" + keyword + "%";
+    return UQuery.getBeanList(ChiTietHoaDon.class, sql, value, value, value, value, value, value);
+}
+
 }
 
 

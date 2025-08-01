@@ -80,18 +80,16 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
         btnSua = new javax.swing.JButton();
         txtTrangThai = new javax.swing.JTextField();
         btnTiemkiem = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        txtMaVanDon = new javax.swing.JTextField();
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1080, 560));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(173, 139, 115));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Chi tiết hóa đơn");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
 
@@ -267,11 +265,6 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
         });
         jPanel1.add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 102, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setText("Mã vận đơn:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 620, 96, -1));
-        jPanel1.add(txtMaVanDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 620, 270, -1));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -381,7 +374,6 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
     private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -396,7 +388,6 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
     private javax.swing.JTextField txtGhiChu;
     private javax.swing.JTextField txtMaHD;
     private javax.swing.JTextField txtMaMon;
-    private javax.swing.JTextField txtMaVanDon;
     private javax.swing.JTextField txtSoLuong;
     private javax.swing.JTextField txtTrangThai;
     // End of variables declaration//GEN-END:variables
@@ -407,7 +398,7 @@ public void setForm(ChiTietHoaDon entity) {
     txtSoLuong.setText(String.valueOf(entity.getSoLuong()));
     txtGhiChu.setText(entity.getGhiChu());
     txtTrangThai.setText(entity.getTrangThai());
-    txtMaVanDon.setText(entity.getMaVanDon());
+    
 }
 
 @Override
@@ -425,7 +416,7 @@ public ChiTietHoaDon getForm() {
 
     ct.setGhiChu(txtGhiChu.getText().trim());
     ct.setTrangThai(txtTrangThai.getText().trim());
-    ct.setMaVanDon(txtMaVanDon.getText().trim());
+    
 
     return ct;
 }
@@ -442,8 +433,7 @@ public void fillToTable() {
             ct.getMaMon(),
             ct.getSoLuong(),
             ct.getGhiChu(),
-            ct.getTrangThai(),
-            ct.getMaVanDon()
+            ct.getTrangThai()
         };
         model.addRow(row);
     }
@@ -539,11 +529,6 @@ public boolean Checkall() {
         return false;
     }
 
-    if (txtMaVanDon.getText().trim().isEmpty()) {
-        UDialog.alert("Vui lòng nhập mã vận đơn!");
-        txtMaVanDon.requestFocus();
-        return false;
-    }
 
     return true;
 }
@@ -589,7 +574,7 @@ public void fillToTableTheoDieuKien() {
     try {
         ChiTietHoaDonImpl dao = new ChiTietHoaDonImpl(); 
         String keyword = txtFind.getText().trim();
-        List<ChiTietHoaDon> list = dao.findByMaHD(keyword);
+        List<ChiTietHoaDon> list = dao.findByKeyword(keyword);
 
         DefaultTableModel model = (DefaultTableModel) tblChiTietHoaDon.getModel();
         model.setRowCount(0);
@@ -606,7 +591,7 @@ public void fillToTableTheoDieuKien() {
                 ct.getSoLuong(),
                 ct.getGhiChu(),
                 ct.getTrangThai(),
-                ct.getMaVanDon()
+                
             };
             model.addRow(row);
         }

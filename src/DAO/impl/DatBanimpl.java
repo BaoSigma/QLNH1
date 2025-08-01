@@ -16,33 +16,42 @@ import java.util.List;
  * @author baoha
  */
 public class DatBanimpl implements DatBanDAO{
-    public static final String datbanam = "EXEC sp_ThemDatBan\n" +
-"    @MaKH = '?',\n" +
-"    @MaBan = '?',\n" +
-"    @NgayDat = '?',\n" +
-"    @GioDat = '?',\n" +
-"    @SoNguoi = ?,\n" +
-"    @TrangThai = '?';";
-    public static final String xoaDatBanAn = "Delete form DatBan where MaDat = ?";
-    public static final String suaDatBan = "UPDATE DatBan\n" +
-"SET \n" +
-"    MaKH = ?,\n" +
-"    MaBan = ?,\n" +
-"    NgayDat = ?,\n" +
-"    GioDat = ?,\n" +
-"    SoNguoi = ?,\n" +
-"    TrangThai = ?\n" +
-"WHERE MaDat = ?';";
-       
-    public static final String timkietDatBan = "SELECT TOP (1000) [MaDat]\n" +
-"      ,[MaKH]\n" +
-"      ,[MaBan]\n" +
-"      ,[NgayDat]\n" +
-"      ,[GioDat]\n" +
-"      ,[SoNguoi]\n" +
-"      ,[TrangThai]\n" +
-"  FROM [QuanLyNhaHang].[dbo].[DatBan]";
-    public static final String timkiemcodieukien = timkietDatBan + "Where MaDat = ?";
+// Thêm đặt bàn (sử dụng đúng tham số, không dùng dấu nháy đơn)
+public static final String datbanam = """
+    EXEC sp_ThemDatBan
+        @MaKH = ?,
+        @MaBan = ?,
+        @NgayDat = ?,
+        @GioDat = ?,
+        @SoNguoi = ?,
+        @TrangThai = ?
+""";
+
+// Xoá đặt bàn
+public static final String xoaDatBan = "DELETE FROM DatBan WHERE MaDat = ?";
+
+// Sửa đặt bàn
+public static final String suaDatBan = """
+    UPDATE DatBan
+    SET 
+        MaKH = ?,
+        MaBan = ?,
+        NgayDat = ?,
+        GioDat = ?,
+        SoNguoi = ?,
+        TrangThai = ?
+    WHERE MaDat = ?
+""";
+
+// Truy vấn tất cả đặt bàn
+public static final String timkietDatBan = """
+    SELECT TOP (1000) MaDat, MaKH, MaBan, NgayDat, GioDat, SoNguoi, TrangThai
+    FROM DatBan
+""";
+
+// Tìm kiếm theo điều kiện (ví dụ theo MaDat)
+public static final String timkiemcodieukien = timkietDatBan + " WHERE MaDat = ?";
+
     @Override
     public DatBan create(DatBan entity) {
          Object[] values = {
@@ -73,7 +82,7 @@ public class DatBanimpl implements DatBanDAO{
 
     @Override
     public void deleteById(Object id) {
-        UJdbc.executeUpdate(xoaDatBanAn, id);
+        UJdbc.executeUpdate(xoaDatBan, id);
         }
 
     @Override

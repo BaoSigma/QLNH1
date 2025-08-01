@@ -42,7 +42,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
     public QLNV() {
         initComponents();
         
-
+ 
     }
 
     /**

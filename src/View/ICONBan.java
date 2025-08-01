@@ -37,7 +37,7 @@ public class ICONBan extends javax.swing.JPanel {
         init();
     }
     private void showOrderDetail() {
-        KhuVucImp dao = new KhuVucImp();
+    KhuVucImp dao = new KhuVucImp();
     String maDat = dao.getMaDatChuaThanhToan(b.getMaBan());
 
     if (maDat == null) {
@@ -54,17 +54,20 @@ public class ICONBan extends javax.swing.JPanel {
 
     StringBuilder sb = new StringBuilder("Chi tiết món đã đặt:\n");
     for (ChiTietDatBan ct : dsMon) {
-        sb.append("- ").append(ct.getMaMon()) // đã đổi sang tên món trong DAO
-          .append(" x").append(ct.getSoLuong());
+        sb.append("- Mã Đặt: ").append(ct.getMaDat())
+          .append(", Mã Món: ").append(ct.getMaMon())
+          .append(", Số lượng: ").append(ct.getSoLuong());
 
         if (ct.getGhiChu() != null && !ct.getGhiChu().isBlank()) {
-            sb.append(" (").append(ct.getGhiChu()).append(")");
+            sb.append(", Ghi chú: ").append(ct.getGhiChu());
         }
+
         sb.append("\n");
     }
 
     JOptionPane.showMessageDialog(this, sb.toString(), "Chi tiết đặt món", JOptionPane.INFORMATION_MESSAGE);
 }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

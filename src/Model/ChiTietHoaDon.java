@@ -9,27 +9,26 @@ package Model;
  * @author Admin
  */
 public class ChiTietHoaDon {
-    private String maHD;
-    private String maMon;
+    private HoaDon hd;
+    private MonAn ma;
     private int soLuong;
     private String ghiChu;
     private String trangThai;
-    private String maVanDon;
 
-    public String getMaHD() {
-        return maHD;
+   public String getMaHD() {
+        return hd.getMaHD();
     }
 
     public void setMaHD(String maHD) {
-        this.maHD = maHD;
+        setMaHD(maHD);
     }
 
     public String getMaMon() {
-        return maMon;
+        return ma.getMaMon();
     }
 
     public void setMaMon(String maMon) {
-        this.maMon = maMon;
+        ma.setMaMon(maMon);
     }
 
     public int getSoLuong() {
@@ -56,12 +55,5 @@ public class ChiTietHoaDon {
         this.trangThai = trangThai;
     }
 
-    public String getMaVanDon() {
-        return maVanDon;
-    }
-
-    public void setMaVanDon(String maVanDon) {
-        this.maVanDon = maVanDon;
-    }
 
 }
