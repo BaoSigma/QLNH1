@@ -85,10 +85,10 @@ public class CTDB extends javax.swing.JPanel implements ChiTietDatBanController{
 
         jPanel2.setBackground(new java.awt.Color(173, 139, 115));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Chi tiết đặt bàn");
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
 
@@ -97,24 +97,26 @@ public class CTDB extends javax.swing.JPanel implements ChiTietDatBanController{
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2))
+                .addGap(47, 47, 47)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1086, Short.MAX_VALUE)
+                .addGap(81, 81, 81)
+                .addComponent(jLabel2)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel1)))
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, -1));
 
         tblChiTietDatBan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,62 +145,53 @@ public class CTDB extends javax.swing.JPanel implements ChiTietDatBanController{
         });
         jScrollPane1.setViewportView(tblChiTietDatBan);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 1350, 350));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 1320, 210));
 
-        jLabel8.setText("Tìm kiếm:");
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-        jPanel1.add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 258, 40));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setText("Tìm kiếm :");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 102, -1, -1));
+        jPanel1.add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 102, 258, -1));
 
-        btnDau.setText("Về đầu");
         btnDau.setBackground(new java.awt.Color(173, 139, 115));
-        btnDau.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnDau.setText("Về đầu");
         btnDau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDauActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 570, 120, 50));
+        jPanel1.add(btnDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 83, 32));
 
-        btnTruoc.setText("Trước");
         btnTruoc.setBackground(new java.awt.Color(173, 139, 115));
-        btnTruoc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnTruoc.setText("Trước");
         btnTruoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTruocActionPerformed(evt);
             }
         });
-        jPanel1.add(btnTruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, 120, 50));
+        jPanel1.add(btnTruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 83, 32));
 
-        btnTien.setText("Tiến");
         btnTien.setBackground(new java.awt.Color(173, 139, 115));
-        btnTien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnTien.setText("Tiến");
         btnTien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTienActionPerformed(evt);
             }
         });
-        jPanel1.add(btnTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 570, 120, 50));
+        jPanel1.add(btnTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 83, 32));
 
-        btnCuoi.setText("Về cuối");
         btnCuoi.setBackground(new java.awt.Color(173, 139, 115));
-        btnCuoi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnCuoi.setText("Về cuối");
         btnCuoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCuoiActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 570, 120, 50));
-        jPanel1.add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 740, 270, -1));
+        jPanel1.add(btnCuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 83, 33));
+        jPanel1.add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 270, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Số lượng:");
-<<<<<<< Upstream, based on origin/master
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 740, 96, -1));
-        jPanel1.add(txtGhiChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 780, 270, -1));
-=======
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 96, -1));
->>>>>>> ca7b4d1 Merge origin/master
 
         txtMaMon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -210,58 +203,54 @@ public class CTDB extends javax.swing.JPanel implements ChiTietDatBanController{
                 txtMaMonActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMaMon, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 700, 270, -1));
+        jPanel1.add(txtMaMon, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, 270, -1));
 
         btnLamMoi.setText("LÀM MỚI");
-        btnLamMoi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLamMoiActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 120, 110, -1));
+        jPanel1.add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 110, -1, -1));
 
         btnXoa.setText("XÓA");
-        btnXoa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 90, -1));
+        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Mã đặt:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 660, 110, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 110, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Mã món:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 700, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, -1));
 
         btnThem.setText("THÊM");
-        btnThem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
-        jPanel1.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 90, -1));
+        jPanel1.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Ghi chú:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 780, 96, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, 96, -1));
 
         txtMaDat.setEnabled(false);
-        jPanel1.add(txtMaDat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 660, 270, -1));
+        jPanel1.add(txtMaDat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 270, -1));
 
         btnSua.setText("SỬA");
-        btnSua.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 120, 90, -1));
+        jPanel1.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, -1, -1));
 
         btnTiemkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/find.png"))); // NOI18N
         btnTiemkiem.addActionListener(new java.awt.event.ActionListener() {
@@ -269,23 +258,28 @@ public class CTDB extends javax.swing.JPanel implements ChiTietDatBanController{
                 btnTiemkiemActionPerformed(evt);
             }
         });
-        jPanel1.add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, -1, -1));
+        jPanel1.add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 102, -1, -1));
 
         txatGhiChu.setColumns(20);
         txatGhiChu.setRows(5);
         jScrollPane2.setViewportView(txatGhiChu);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 280, -1));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 270, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1351, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

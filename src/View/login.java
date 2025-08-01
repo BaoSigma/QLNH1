@@ -277,10 +277,28 @@ public void loginn() {
         UAuth.clear();
     }
 
-    dispose();
-    new menu().setVisible(true);
+    dispose(); 
+
+    
+    int role = user.getVt().getMaVaiTro(); // Lấy mã vai trò
+    switch (role) {
+        case 1:
+            new menuKH().setVisible(true); // Vai trò khách hàng
+            break;
+        case 2:
+            new menu().setVisible(true); // Vai trò nhân viên/phục vụ
+            break;
+        case 3:
+            new menuQL().setVisible(true); // Vai trò quản lý
+            break;
+        default:
+            UDialog.alert("Không xác định vai trò người dùng!");
+            return;
+    }
+
     UDialog.alert("Đăng nhập thành công!");
 }
+
     
 
 

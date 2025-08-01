@@ -1,21 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package DAO.impl;
 
 import DAO.ModelDAO.KhachHangDAO;
 import Model.KhachHang;
 import Util.UJdbc;
 import Util.UQuery;
-import java.sql.ResultSet;
 import java.util.List;
-
-/**
- *
- * @author Dong Khanh
- */
 
 public class KhachHangImpl implements KhachHangDAO {
 
@@ -23,28 +12,49 @@ public class KhachHangImpl implements KhachHangDAO {
         SELECT 
             MaKH,
             HoTen,
-            SDT,
             TongChiTieu,
-            HangKhach
+            HangKhach,
+            MatKhau,
+            Anh,
+            Email,
+            maVaiTro
         FROM KhachHang;
     """;
 
     private static final String createsql = """
         EXEC sp_ThemVaTraKhachHang
             @HoTen = ?,
-            @SDT = ?,
             @TongChiTieu = ?,
-            @HangKhach = ?;
+            @HangKhach = ?,
+            @MatKhau = ?,
+            @Anh = ?,
+            @Email = ?,
+            @maVaiTro = ?;
     """;
 
     private static final String updatesql = """
         UPDATE KhachHang
         SET 
             HoTen = ?,
-            SDT = ?,
             TongChiTieu = ?,
-            HangKhach = ?
+            HangKhach = ?,
+            MatKhau = ?,
+            Anh = ?,
+            Email = ?,
+            maVaiTro = ?
         WHERE MaKH = ?;
+    """;
+
+    private static final String updateHangKhachSql = """
+        UPDATE KhachHang
+        SET HangKhach = 
+            CASE 
+                WHEN TongChiTieu >= 60000000 THEN N'Kim Cương'
+                WHEN TongChiTieu >= 45000000 THEN N'Vàng'
+                WHEN TongChiTieu >= 30000000 THEN N'Bạc'
+                WHEN TongChiTieu >= 15000000 THEN N'Thanh toán nhiều'
+                ELSE N'Thường'
+            END;
     """;
 
     private static final String deletesql = "DELETE FROM KhachHang WHERE MaKH = ?;";
@@ -53,9 +63,12 @@ public class KhachHangImpl implements KhachHangDAO {
         SELECT 
             MaKH,
             HoTen,
-            SDT,
             TongChiTieu,
-            HangKhach
+            HangKhach,
+            MatKhau,
+            Anh,
+            Email,
+            maVaiTro
         FROM KhachHang
         WHERE MaKH = ?;
     """;
@@ -64,24 +77,32 @@ public class KhachHangImpl implements KhachHangDAO {
     public KhachHang create(KhachHang entity) {
         Object[] values = {
             entity.getHoTen(),
-            entity.getSdt(),
             entity.getTongChiTieu(),
-            entity.getHangKhach()
+            entity.getHangKhach(),
+            entity.getMatKhau(),
+            entity.getAnh(),
+            entity.getEmail(),
+            entity.getMaVaiTro()
         };
         UJdbc.executeUpdate(createsql, values);
+        UJdbc.executeUpdate(updateHangKhachSql);
         return entity;
     }
 
     @Override
     public void update(KhachHang entity) {
-        Object[] values = { 
+        Object[] values = {
             entity.getHoTen(),
-            entity.getSdt(),
             entity.getTongChiTieu(),
             entity.getHangKhach(),
+            entity.getMatKhau(),
+            entity.getAnh(),
+            entity.getEmail(),
+            entity.getMaVaiTro(),
             entity.getMaKH()
         };
         UJdbc.executeUpdate(updatesql, values);
+        UJdbc.executeUpdate(updateHangKhachSql);
     }
 
     @Override
@@ -104,20 +125,21 @@ public class KhachHangImpl implements KhachHangDAO {
             SELECT 
                 MaKH,
                 HoTen,
-                SDT,
                 TongChiTieu,
-                HangKhach
+                HangKhach,
+                MatKhau,
+                Anh,
+                Email,
+                maVaiTro
             FROM KhachHang
             WHERE MaKH LIKE ? 
                OR HoTen LIKE ?
-               OR SDT LIKE ?
                OR HangKhach LIKE ?
+               OR MatKhau LIKE ?
+               OR Email LIKE ?
                OR CAST(TongChiTieu AS VARCHAR) LIKE ?;
         """;
-
         String value = "%" + keyword + "%";
-        return UQuery.getBeanList(KhachHang.class, sql, value, value, value, value, value);
+        return UQuery.getBeanList(KhachHang.class, sql, value, value, value, value, value, value);
     }
 }
-
-

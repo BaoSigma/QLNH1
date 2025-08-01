@@ -38,7 +38,7 @@ public void setTongNhanVien(double tongNhanVien) { this.tongNhanVien = tongNhanV
 
     public void setTenKhachHang(String tenKhachHang) {
         if (kh == null) kh = new KhachHang();
-        kh.setHangKhach(tenKhachHang);
+        kh.setHoTen(tenKhachHang);
     }
 
     // Tên nhân viên

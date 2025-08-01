@@ -24,7 +24,7 @@ public static boolean NhanVien() {
     return isLogin() && user.getVt().getMaVaiTro() == 2;
 }
 
-public static boolean PhucVu() {
+public static boolean KhachHang () {
     return isLogin() && user.getVt().getMaVaiTro() == 1;
 }
 

@@ -399,9 +399,19 @@ public void open() {
 public void setForm(KhachHang entity) {
     txtMaKH.setText(entity.getMaKH());
     txtHoTen.setText(entity.getHoTen());
-    txtSdt.setText(entity.getSdt());
     txtTongChiTieu.setText(String.valueOf(entity.getTongChiTieu()));
-    txtHanhKhach.setText(entity.getHangKhach());
+    txtHangKhach.setText(entity.getHangKhach());
+    txtMatKhau.setText(entity.getMatKhau());
+    txtEmail.setText(entity.getEmail());
+    cboVaiTro.setSelectedItem(entity.getMaVaiTro());
+
+    if (entity.getAnh() != null) {
+        lblAnh.setToolTipText(entity.getAnh());
+        lblAnh.setIcon(UImage.read(entity.getAnh()));
+    } else {
+        lblAnh.setIcon(null);
+        lblAnh.setToolTipText(null);
+    }
 }
 
 @Override
@@ -410,19 +420,20 @@ public KhachHang getForm() {
 
     kh.setMaKH(txtMaKH.getText().trim());
     kh.setHoTen(txtHoTen.getText().trim());
-    kh.setSdt(txtSdt.getText().trim());
 
     try {
         kh.setTongChiTieu(Double.parseDouble(txtTongChiTieu.getText().trim()));
     } catch (NumberFormatException e) {
-        kh.setTongChiTieu(0.0); // hoặc thông báo lỗi
+        kh.setTongChiTieu(0.0); // fallback
     }
 
-    kh.setHangKhach(txtHanhKhach.getText().trim());
+    kh.setMatKhau(new String(txtMatKhau.getPassword()).trim());
+    kh.setEmail(txtEmail.getText().trim());
+    kh.setAnh(lblAnh.getToolTipText());
+    kh.setMaVaiTro(cboVaiTro.getSelectedItem().toString());
 
     return kh;
 }
-
 
 @Override
 public void fillToTable() {
@@ -434,14 +445,16 @@ public void fillToTable() {
         Object[] row = {
             kh.getMaKH(),
             kh.getHoTen(),
-            kh.getSdt(),
             kh.getTongChiTieu(),
-            kh.getHangKhach()
+            kh.getHangKhach(),
+            kh.getMatKhau(),
+            kh.getAnh(),
+            kh.getEmail(),
+            kh.getMaVaiTro()
         };
         model.addRow(row);
     }
 }
-
 
 @Override
 public void edit() {
@@ -499,40 +512,38 @@ public void clear() {
 
 @Override
 public void moveFirst() {
-    int currentIndex = tblKhachHang.getSelectedRow();
-    if (currentIndex == 0) {
-        UDialog.alert("Đã ở vị trí đầu tiên rồi!");
-    } else {
-        this.moveTo(0);
+    if (tblKhachHang.getRowCount() > 0) {
+        moveTo(0);
     }
 }
 
 @Override
 public void movePrevious() {
-    this.moveTo(tblKhachHang.getSelectedRow() - 1);
+    int row = tblKhachHang.getSelectedRow();
+    if (row > 0) {
+        moveTo(row - 1);
+    }
 }
 
 @Override
 public void moveNext() {
-    this.moveTo(tblKhachHang.getSelectedRow() + 1);
+    int row = tblKhachHang.getSelectedRow();
+    if (row < tblKhachHang.getRowCount() - 1) {
+        moveTo(row + 1);
+    }
 }
 
 @Override
 public void moveLast() {
-    this.moveTo(tblKhachHang.getRowCount() - 1);
+    moveTo(tblKhachHang.getRowCount() - 1);
 }
 
 @Override
 public void moveTo(int rowIndex) {
-    if (rowIndex < 0) {
-        this.moveLast();
-    } else if (rowIndex >= tblKhachHang.getRowCount()) {
-        this.moveFirst();
-    } else {
-        tblKhachHang.clearSelection();
-        tblKhachHang.setRowSelectionInterval(rowIndex, rowIndex);
-        this.edit();
-    }
+    if (rowIndex < 0 || rowIndex >= tblKhachHang.getRowCount()) return;
+
+    tblKhachHang.setRowSelectionInterval(rowIndex, rowIndex);
+    edit();
 }
 
 @Override
@@ -540,12 +551,6 @@ public boolean Checkall() {
     if (txtHoTen.getText().trim().isEmpty()) {
         UDialog.alert("Vui lòng nhập tên khách hàng!");
         txtHoTen.requestFocus();
-        return false;
-    }
-
-    if (txtSdt.getText().trim().isEmpty()) {
-        UDialog.alert("Vui lòng nhập số điện thoại!");
-        txtSdt.requestFocus();
         return false;
     }
 
@@ -563,14 +568,27 @@ public boolean Checkall() {
         return false;
     }
 
-    if (txtHanhKhach.getText().trim().isEmpty()) {
-        UDialog.alert("Vui lòng nhập hạng khách!");
-        txtHanhKhach.requestFocus();
+    if (txtMatKhau.getPassword().length == 0) {
+        UDialog.alert("Vui lòng nhập mật khẩu!");
+        txtMatKhau.requestFocus();
+        return false;
+    }
+
+    if (txtEmail.getText().trim().isEmpty()) {
+        UDialog.alert("Vui lòng nhập email!");
+        txtEmail.requestFocus();
+        return false;
+    }
+
+    if (cboVaiTro.getSelectedItem() == null) {
+        UDialog.alert("Vui lòng chọn vai trò!");
+        cboVaiTro.requestFocus();
         return false;
     }
 
     return true;
 }
+
 public void fillToTableTheoDieuKien() {
     try {
         KhachHangImpl dao = new KhachHangImpl(); 
@@ -589,9 +607,12 @@ public void fillToTableTheoDieuKien() {
             Object[] row = {
                 kh.getMaKH(),
                 kh.getHoTen(),
-                kh.getSdt(),
                 kh.getTongChiTieu(),
-                kh.getHangKhach()
+                kh.getHangKhach(),
+                kh.getMatKhau(),
+                kh.getAnh(),
+                kh.getEmail(),
+                kh.getMaVaiTro()
             };
             model.addRow(row);
         }
@@ -600,4 +621,5 @@ public void fillToTableTheoDieuKien() {
         UDialog.alert("Lỗi khi tìm khách hàng!");
     }
 }
+
 }
