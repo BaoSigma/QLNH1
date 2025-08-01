@@ -56,16 +56,16 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblKhachHang = new javax.swing.JTable();
-        txtSdt = new javax.swing.JTextField();
+        txtTongChiTieu = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtTongChiTieu = new javax.swing.JTextField();
+        txtHangKhach = new javax.swing.JTextField();
         txtHoTen = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtMaKH = new javax.swing.JTextField();
-        txtHanhKhach = new javax.swing.JTextField();
+        txtMatKhau = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -80,6 +80,13 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         btnTruoc = new javax.swing.JButton();
         btnTien = new javax.swing.JButton();
         btnCuoi = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        txtMaVaiTro = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        lblAnh = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1080, 560));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,17 +118,17 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         });
         jScrollPane1.setViewportView(tblKhachHang);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 1360, 360));
-        jPanel1.add(txtSdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 720, 270, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 1360, 220));
+        jPanel1.add(txtTongChiTieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 570, 270, 20));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel10.setText("Hạng khách:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 800, 130, -1));
+        jLabel10.setText("Mật khẩu:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 730, 130, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setText("Số điện thoại:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 720, 130, -1));
-        jPanel1.add(txtTongChiTieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 760, 270, -1));
+        jLabel5.setText("Tổng chi tiêu:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 570, 130, 30));
+        jPanel1.add(txtHangKhach, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, 270, 20));
 
         txtHoTen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -133,23 +140,23 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
                 txtHoTenActionPerformed(evt);
             }
         });
-        jPanel1.add(txtHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 680, 270, -1));
+        jPanel1.add(txtHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, 270, 20));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Mã khách hàng:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 640, 140, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 140, 30));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Họ tên khách hàng:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 680, 200, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, 200, 30));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel9.setText("Tổng chi tiêu:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 760, 130, -1));
+        jLabel9.setText("Hạng khách:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 610, 130, 30));
 
         txtMaKH.setEnabled(false);
-        jPanel1.add(txtMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 640, 270, -1));
-        jPanel1.add(txtHanhKhach, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 800, 270, -1));
+        jPanel1.add(txtMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, 270, 20));
+        jPanel1.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 740, 270, 20));
 
         jPanel2.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -241,7 +248,7 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
                 btnDauActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 570, 120, 50));
+        jPanel1.add(btnDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 120, 50));
 
         btnTruoc.setBackground(new java.awt.Color(173, 139, 115));
         btnTruoc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -251,7 +258,7 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
                 btnTruocActionPerformed(evt);
             }
         });
-        jPanel1.add(btnTruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, 120, 50));
+        jPanel1.add(btnTruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 420, 120, 50));
 
         btnTien.setBackground(new java.awt.Color(173, 139, 115));
         btnTien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -261,7 +268,7 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
                 btnTienActionPerformed(evt);
             }
         });
-        jPanel1.add(btnTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 570, 120, 50));
+        jPanel1.add(btnTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 120, 50));
 
         btnCuoi.setBackground(new java.awt.Color(173, 139, 115));
         btnCuoi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -271,7 +278,46 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
                 btnCuoiActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 570, 120, 50));
+        jPanel1.add(btnCuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 420, 120, 50));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setText("Email:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 650, 130, 30));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setText("Mã vai trò:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 690, 130, 30));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 660, 270, 20));
+        jPanel1.add(txtMaVaiTro, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 700, 270, 20));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 198, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 174, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, 200, 176));
+
+        jButton2.setText("Chọn ảnh");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 700, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -281,7 +327,7 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -360,6 +406,40 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         moveLast();
     }//GEN-LAST:event_btnCuoiActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Chọn ảnh từ máy");
+        chooser.setFileFilter(new FileNameExtensionFilter("Hình ảnh", "jpg", "png", "jpeg", "gif"));
+
+        int result = chooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File fileChon = chooser.getSelectedFile();
+            String tenFile = fileChon.getName();
+
+            File thuMucLuu = new File("src/img");
+            if (!thuMucLuu.exists()) {
+                thuMucLuu.mkdirs();
+            }
+
+            File fileDich = new File(thuMucLuu, tenFile);
+            try {
+                // Copy ảnh vào thư mục dự án
+                Files.copy(fileChon.toPath(), fileDich.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                tenAnh = tenFile;
+
+                // Hiển thị ảnh với kích thước 150x150
+                ImageIcon icon = new ImageIcon("src/img/" + tenFile);
+                Image img = icon.getImage().getScaledInstance(198, 174, Image.SCALE_SMOOTH);
+                lblAnh.setIcon(new ImageIcon(img));
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Lỗi khi sao chép ảnh!");
+            }
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCuoi;
@@ -371,8 +451,11 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
     private javax.swing.JButton btnTien;
     private javax.swing.JButton btnTruoc;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -381,13 +464,17 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAnh;
     private javax.swing.JTable tblKhachHang;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFind;
-    private javax.swing.JTextField txtHanhKhach;
+    private javax.swing.JTextField txtHangKhach;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtMaKH;
-    private javax.swing.JTextField txtSdt;
+    private javax.swing.JTextField txtMaVaiTro;
+    private javax.swing.JTextField txtMatKhau;
     private javax.swing.JTextField txtTongChiTieu;
     // End of variables declaration//GEN-END:variables
 @Override
@@ -399,11 +486,16 @@ public void open() {
 public void setForm(KhachHang entity) {
     txtMaKH.setText(entity.getMaKH());
     txtHoTen.setText(entity.getHoTen());
-    txtTongChiTieu.setText(String.valueOf(entity.getTongChiTieu()));
+    txtHangKhach.setText(String.valueOf(entity.getTongChiTieu()));
     txtHangKhach.setText(entity.getHangKhach());
     txtMatKhau.setText(entity.getMatKhau());
     txtEmail.setText(entity.getEmail());
-    cboVaiTro.setSelectedItem(entity.getMaVaiTro());
+
+    if (entity.getMaVaiTro().equals("Admin")) {
+        rdoAdmin.setSelected(true);
+    } else {
+        rdoUser.setSelected(true);
+    }
 
     if (entity.getAnh() != null) {
         lblAnh.setToolTipText(entity.getAnh());
@@ -422,15 +514,21 @@ public KhachHang getForm() {
     kh.setHoTen(txtHoTen.getText().trim());
 
     try {
-        kh.setTongChiTieu(Double.parseDouble(txtTongChiTieu.getText().trim()));
+        kh.setTongChiTieu(Double.parseDouble(txtHangKhach.getText().trim()));
     } catch (NumberFormatException e) {
-        kh.setTongChiTieu(0.0); // fallback
+        kh.setTongChiTieu(0.0); // fallback nếu lỗi parse
     }
 
+    kh.setHangKhach(txtHangKhach.getText().trim());
     kh.setMatKhau(new String(txtMatKhau.getPassword()).trim());
     kh.setEmail(txtEmail.getText().trim());
     kh.setAnh(lblAnh.getToolTipText());
-    kh.setMaVaiTro(cboVaiTro.getSelectedItem().toString());
+
+    if (rdoAdmin.isSelected()) {
+        kh.setMaVaiTro("Admin");
+    } else {
+        kh.setMaVaiTro("User");
+    }
 
     return kh;
 }
@@ -447,10 +545,9 @@ public void fillToTable() {
             kh.getHoTen(),
             kh.getTongChiTieu(),
             kh.getHangKhach(),
-            kh.getMatKhau(),
-            kh.getAnh(),
             kh.getEmail(),
-            kh.getMaVaiTro()
+            kh.getMaVaiTro(),
+            kh.getMatKhau()
         };
         model.addRow(row);
     }
@@ -554,17 +651,17 @@ public boolean Checkall() {
         return false;
     }
 
-    if (txtTongChiTieu.getText().trim().isEmpty()) {
+    if (txtHangKhach.getText().trim().isEmpty()) {
         UDialog.alert("Vui lòng nhập tổng chi tiêu!");
-        txtTongChiTieu.requestFocus();
+        txtHangKhach.requestFocus();
         return false;
     }
 
     try {
-        Double.parseDouble(txtTongChiTieu.getText().trim());
+        Double.parseDouble(txtHangKhach.getText().trim());
     } catch (NumberFormatException e) {
         UDialog.alert("Tổng chi tiêu phải là số!");
-        txtTongChiTieu.requestFocus();
+        txtHangKhach.requestFocus();
         return false;
     }
 
@@ -580,14 +677,14 @@ public boolean Checkall() {
         return false;
     }
 
-    if (cboVaiTro.getSelectedItem() == null) {
+    if (!rdoAdmin.isSelected() && !rdoUser.isSelected()) {
         UDialog.alert("Vui lòng chọn vai trò!");
-        cboVaiTro.requestFocus();
         return false;
     }
 
     return true;
 }
+
 
 public void fillToTableTheoDieuKien() {
     try {
