@@ -4,11 +4,15 @@
  */
 package DAO.ModelDAO;
 
+import DAO.CrudDAO;
+import Model.voucher;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author User
  */
-public interface VoucherDAO {
-    void capNhatTongChiTieu(String maKH, double tongTien);
-    double layTongChiTieu(String maKH);
+public interface VoucherDAO extends CrudDAO<voucher, Object>{
+    List<voucher> vc = new ArrayList<>();           
 }

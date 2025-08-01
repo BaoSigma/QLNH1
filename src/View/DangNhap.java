@@ -4,6 +4,9 @@
  */
 package View;
 
+import Util.UAuth;
+import javax.swing.UIManager;
+
 /**
  *
  * @author micro
@@ -100,9 +103,21 @@ public class DangNhap extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new DangNhap().setVisible(true));
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                UAuth.load();
+                try {
+                    UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatLightLaf());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                new DangNhap().setVisible(true);
+            }
+
+
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

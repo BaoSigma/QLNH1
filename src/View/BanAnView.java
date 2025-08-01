@@ -453,7 +453,6 @@ public void fillToTable() {
     }
 }
 
-@Override
 public void fillToTableTheoDieuKien() {
     try {
         BanAnImpl dao = new BanAnImpl(); 
@@ -574,7 +573,6 @@ public void moveTo(int rowIndex) {
     }
 }
 
-@Override
 public boolean checkAll() {
     if (txtMaBan.getText().trim().isEmpty()) {
         UDialog.alert("Vui lòng nhập mã bàn!");

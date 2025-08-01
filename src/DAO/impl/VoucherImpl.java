@@ -5,50 +5,130 @@
 package DAO.impl;
 
 import DAO.ModelDAO.VoucherDAO;
+import Model.voucher;
 import Util.UJdbc;
+import Util.UQuery;
+import View.Voucher;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 /**
  *
  * @author User
  */
 public class VoucherImpl implements VoucherDAO {
-    public void capNhatTongChiTieu(String maKH, double tongTien) {
-        String sql = "UPDATE KhachHang SET TongChiTieu = TongChiTieu + ? WHERE MaKH = ?";
+    private static final String findall = """
+        SELECT 
+            MaVoucher,
+            TenVoucher,
+            GiaTri,
+            Loai,
+            HanDung,
+            MaHD                   
+        FROM Voucher;
+    """;
 
-        try (Connection conn = UJdbc.openConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+    private static final String createsql = """
+        EXEC sp_ThemVoucher
+            @MaVoucher = ?,
+            @TenVoucher = ?,
+            @GiaTri = ?,
+            @Loai = ?,
+            @HanDung=?,
+            @MaHD =?;                                                            
+    """;
 
-            stmt.setDouble(1, tongTien);
-            stmt.setString(2, maKH);
+    private static final String updatesql = """
+        UPDATE Voucher
+        SET 
+            MaVoucher = ?,
+            TenVoucher = ?,
+            GiaTri = ?,
+            Loai = ?,
+            HanDung=?,
+            MaHD =?
+        WHERE MaVoucher = ?;
+    """;
 
-            int rowsUpdated = stmt.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println(" Đã cập nhật tổng chi tiêu cho khách hàng: " + maKH);
-            } else {
-                System.out.println("️ Không tìm thấy khách hàng có mã: " + maKH);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println(" Lỗi khi cập nhật tổng chi tiêu.");
-        }
+    private static final String deletesql = "DELETE FROM KhachHang WHERE MaVoucher = ?;";
+
+    private static final String findbyid = """
+        SELECT 
+           MaVoucher,
+           TenVoucher,
+           GiaTri,
+           Loai,
+           HanDung,
+           MaHD         
+        FROM Voucher
+        WHERE Voucher = ?;
+    """;
+    @Override
+    public voucher create(voucher entity) {
+        Object[] values = {
+            entity.getMaVoucher(),
+            entity.getTenVoucher(),
+            entity.getGiaTri(),
+            entity.getLoai(),
+            entity.getHanDung(),
+            entity.getMaHD()
+        };
+        UJdbc.executeUpdate(createsql, values);
+        return entity;
     }
-    public double layTongChiTieu(String maKH) {
-    String sql = "SELECT TongChiTieu FROM KhachHang WHERE MaKH = ?";
-    try (Connection conn = UJdbc.openConnection();
-         PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-        stmt.setString(1, maKH);
-        var rs = stmt.executeQuery();
-        if (rs.next()) {
-            return rs.getDouble("TongChiTieu");
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
+    @Override
+    public void update(voucher entity) {
+         Object[] values = {
+            entity.getMaVoucher(),
+            entity.getTenVoucher(),
+            entity.getGiaTri(),
+            entity.getLoai(),
+            entity.getHanDung(),
+            entity.getMaHD()
+        };
+          UJdbc.executeUpdate(updatesql, values);
     }
-    return 0;
-}
-    
+
+    @Override
+    public void deleteById(Object id) {
+        UJdbc.executeUpdate(deletesql, id);
+    }
+
+    @Override
+    public List<voucher> findAll() {
+         return UQuery.getBeanList(voucher.class, findall);
+    }
+
+    @Override
+    public voucher findById(Object id) {
+        return UQuery.getSingleBean(voucher.class, findbyid, id);
+    }
+   public List<voucher> findByKeyword(String keyword) {
+        String sql = """
+            SELECT 
+                 MaVoucher,
+                 TenVoucher,
+                 GiaTri,
+                 Loai,
+                 HanDung,
+                 MaHD       
+            FROM Voucher
+            WHERE MaVoucher LIKE ? 
+               OR TenVoucher LIKE ?
+               OR GiaTri LIKE ?
+               OR Loai LIKE ?
+               OR HanDung LIKE ?
+               OR MaHD LIKE ?;
+        """;
+
+        String value = "%" + keyword + "%";
+        return UQuery.getBeanList(voucher.class, sql, value, value, value, value, value);
+    }
+
+//    public List<voucher> findByKeyword(String keyword) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
 }
