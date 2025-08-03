@@ -15,6 +15,7 @@ import java.util.List;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.*;
+import java.time.LocalTime;
 /**
  *
  * @author Admin
@@ -135,27 +136,28 @@ public ArrayList<BanAn> MenuTable(String tenKV) {
             String soBan = r.getString("SoBan");
             String trangThai = r.getString("TrangThai");
             String maKV = r.getString("MaKV");
-            String gioDat = r.getString("GioDat"); // Có thể null
-            Date ngayDat = r.getDate("NgayDat");   // Có thể null
+            Time gioDatSql = r.getTime("GioDat"); // java.sql.Time
+            Date ngayDat = r.getDate("NgayDat");  // java.sql.Date
 
             BanAn ban = new BanAn();
             ban.setMaBan(maBan);
             ban.setSoBan(Integer.parseInt(soBan));
             ban.setTrangThai(trangThai);
             ban.setMaKV(maKV);
-            if (gioDat != null) {
-                ban.setGioDat(Time.valueOf(gioDat));
+
+            if (gioDatSql != null) {
+                ban.setGioDat(gioDatSql.toLocalTime()); // chuyển sang LocalTime
             }
-            ban.setNgayDat(ngayDat);
+            ban.setNgayDat(ngayDat); // vẫn là java.sql.Date hoặc LocalDate nếu bạn convert
 
             list.add(ban);
         }
     } catch (SQLException e) {
         e.printStackTrace();
     }
-
     return list;
 }
+
 
 
     public List<KhuVuc> findByKeyword(String keyword) {

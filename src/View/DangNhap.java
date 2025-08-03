@@ -69,9 +69,10 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background đăng nhập.jpg"))); // NOI18N
         jLabel1.setText("Đăng Nhập");
-        jLabel1.setMaximumSize(new java.awt.Dimension(1516, 597));
-        jLabel1.setMinimumSize(new java.awt.Dimension(1516, 597));
+        jLabel1.setMaximumSize(new java.awt.Dimension(1316, 597));
+        jLabel1.setMinimumSize(new java.awt.Dimension(1316, 597));
         jLabel1.setOpaque(true);
+        jLabel1.setPreferredSize(new java.awt.Dimension(1316, 597));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();

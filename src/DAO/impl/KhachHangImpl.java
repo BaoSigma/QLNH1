@@ -14,22 +14,16 @@ public class KhachHangImpl implements KhachHangDAO {
             HoTen,
             TongChiTieu,
             HangKhach,
-            MatKhau,
-            Anh,
-            Email,
-            maVaiTro
+            Anh
         FROM KhachHang;
     """;
 
     private static final String createsql = """
-        EXEC sp_ThemVaTraKhachHang
+        EXEC sp_ThemKhachHang
             @HoTen = ?,
             @TongChiTieu = ?,
             @HangKhach = ?,
-            @MatKhau = ?,
-            @Anh = ?,
-            @Email = ?,
-            @maVaiTro = ?;
+            @Anh = ?;
     """;
 
     private static final String updatesql = """
@@ -38,10 +32,7 @@ public class KhachHangImpl implements KhachHangDAO {
             HoTen = ?,
             TongChiTieu = ?,
             HangKhach = ?,
-            MatKhau = ?,
-            Anh = ?,
-            Email = ?,
-            maVaiTro = ?
+            Anh = ?
         WHERE MaKH = ?;
     """;
 
@@ -65,10 +56,7 @@ public class KhachHangImpl implements KhachHangDAO {
             HoTen,
             TongChiTieu,
             HangKhach,
-            MatKhau,
-            Anh,
-            Email,
-            maVaiTro
+            Anh
         FROM KhachHang
         WHERE MaKH = ?;
     """;
@@ -79,10 +67,7 @@ public class KhachHangImpl implements KhachHangDAO {
             entity.getHoTen(),
             entity.getTongChiTieu(),
             entity.getHangKhach(),
-            entity.getMatKhau(),
-            entity.getAnh(),
-            entity.getEmail(),
-            entity.getMaVaiTro()
+            entity.getAnh()
         };
         UJdbc.executeUpdate(createsql, values);
         UJdbc.executeUpdate(updateHangKhachSql);
@@ -95,10 +80,7 @@ public class KhachHangImpl implements KhachHangDAO {
             entity.getHoTen(),
             entity.getTongChiTieu(),
             entity.getHangKhach(),
-            entity.getMatKhau(),
             entity.getAnh(),
-            entity.getEmail(),
-            entity.getMaVaiTro(),
             entity.getMaKH()
         };
         UJdbc.executeUpdate(updatesql, values);
@@ -127,19 +109,14 @@ public class KhachHangImpl implements KhachHangDAO {
                 HoTen,
                 TongChiTieu,
                 HangKhach,
-                MatKhau,
-                Anh,
-                Email,
-                maVaiTro
+                Anh
             FROM KhachHang
             WHERE MaKH LIKE ? 
                OR HoTen LIKE ?
                OR HangKhach LIKE ?
-               OR MatKhau LIKE ?
-               OR Email LIKE ?
                OR CAST(TongChiTieu AS VARCHAR) LIKE ?;
         """;
         String value = "%" + keyword + "%";
-        return UQuery.getBeanList(KhachHang.class, sql, value, value, value, value, value, value);
+        return UQuery.getBeanList(KhachHang.class, sql, value, value, value, value);
     }
 }

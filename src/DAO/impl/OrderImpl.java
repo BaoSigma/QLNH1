@@ -52,7 +52,6 @@ public class OrderImpl {
         cs.setTimestamp(3, new java.sql.Timestamp(System.currentTimeMillis())); // Ngày lập
         cs.setDouble(4, 0); // Tổng tiền ban đầu
         cs.setString(5, entity.getHinhThucTT());
-
         boolean hasResult = cs.execute();
 
         if (hasResult) {
@@ -75,7 +74,39 @@ public class OrderImpl {
         throw new RuntimeException("Lỗi khi tạo hóa đơn: " + e.getMessage(), e);
     }
 }
-public void goiMonTheoBan(String maBan, String maMon, int soLuong, String ghiChu) {
+    public HoaDon createDB(HoaDon entity) {
+    try (Connection con = UJdbc.openConnection();
+         CallableStatement cs = con.prepareCall("{call sp_ThemHoaDon(?, ?, ?, ?, ?, ?)}")) {
+
+        cs.setString(1, entity.getMaBan());
+        cs.setString(2, entity.getMaNV());
+        cs.setTimestamp(3, new java.sql.Timestamp(System.currentTimeMillis())); // Ngày lập
+        cs.setDouble(4, 0); // Tổng tiền ban đầu
+        cs.setString(5, entity.getHinhThucTT());
+        cs.setString(6, entity.getMaHD());
+        boolean hasResult = cs.execute();
+
+        if (hasResult) {
+            try (ResultSet rs = cs.getResultSet()) {
+                if (rs.next()) {
+                    String newMaHD = rs.getString("MaHD");
+                    entity.setMaHD(newMaHD);
+                    System.out.println(" Mã hóa đơn mới tạo: " + newMaHD); // Debug
+                } else {
+                    System.err.println(" Không nhận được MaHD từ sp_ThemHoaDon");
+                }
+            }
+        } else {
+            System.err.println(" sp_ThemHoaDon không trả về kết quả");
+        }
+
+        return entity;
+
+    } catch (SQLException e) {
+        throw new RuntimeException("Lỗi khi tạo hóa đơn: " + e.getMessage(), e);
+    }
+}
+    public void goiMonTheoBan(String maBan, String maMon, int soLuong, String ghiChu) {
     if (maBan == null || maBan.trim().isEmpty()) {
     throw new IllegalArgumentException("Mã bàn (MaBan) không được null hoặc rỗng.");
     }
@@ -85,7 +116,7 @@ public void goiMonTheoBan(String maBan, String maMon, int soLuong, String ghiChu
     if (soLuong <= 0) {
     throw new IllegalArgumentException("Số lượng phải lớn hơn 0.");
     }
-    String sql = "{CALL sp_GoiMonTuBan(?, ?, ?, ?)}";
+    String sql = "{CALL sp_GoiMonTuBan  (?, ?, ?, ?)}";
 
     try (Connection con = UJdbc.openConnection();
          CallableStatement cs = con.prepareCall(sql)) {

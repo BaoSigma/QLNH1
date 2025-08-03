@@ -99,22 +99,18 @@ public class IN4 extends javax.swing.JPanel{
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(91, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(51, 51, 51))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(437, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -210,7 +206,7 @@ public class IN4 extends javax.swing.JPanel{
                     .addComponent(dcNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSUa)
-                .addContainerGap(370, Short.MAX_VALUE))
+                .addContainerGap(426, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(173, 135, 115));
@@ -227,7 +223,7 @@ public class IN4 extends javax.swing.JPanel{
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(623, Short.MAX_VALUE)
+                .addContainerGap(665, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(211, 211, 211)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,32 +267,34 @@ public class IN4 extends javax.swing.JPanel{
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser();
-    chooser.setDialogTitle("Chọn ảnh từ máy");
-    chooser.setFileFilter(new FileNameExtensionFilter("Hình ảnh", "jpg", "png", "jpeg", "gif"));
+        chooser.setDialogTitle("Chọn ảnh từ máy");
+        chooser.setFileFilter(new FileNameExtensionFilter("Hình ảnh", "jpg", "png", "jpeg", "gif"));
 
-    int result = chooser.showOpenDialog(this);
-    if (result == JFileChooser.APPROVE_OPTION) {
-        File fileChon = chooser.getSelectedFile();
-        String tenFile = fileChon.getName();
+        int result = chooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File fileChon = chooser.getSelectedFile();
+            String tenFile = fileChon.getName();
 
-        File thuMucLuu = new File("src/img");
-        if (!thuMucLuu.exists()) {
-            thuMucLuu.mkdirs();
+            File thuMucLuu = new File("src/img");
+            if (!thuMucLuu.exists()) {
+                thuMucLuu.mkdirs();
+            }
+
+            File fileDich = new File(thuMucLuu, tenFile);
+            try {
+                // Copy ảnh vào thư mục dự án
+                Files.copy(fileChon.toPath(), fileDich.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                tenAnh = tenFile;
+
+                // Hiển thị ảnh với kích thước 150x150
+                ImageIcon icon = new ImageIcon("src/img/" + tenFile);
+                Image img = icon.getImage().getScaledInstance(206,206, Image.SCALE_SMOOTH);
+                lblAnh.setIcon(new ImageIcon(img));
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Lỗi khi sao chép ảnh!");
+            }
         }
-
-        File fileDich = new File(thuMucLuu, tenFile);
-        try {
-            // Copy ảnh vào thư mục dự án
-            Files.copy(fileChon.toPath(), fileDich.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            tenAnh = tenFile;
-
-            // Hiển thị ảnh
-            hienThiAnh("src/img/" + tenFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Lỗi khi sao chép ảnh!");
-        }
-    }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnSUaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSUaActionPerformed
@@ -334,7 +332,7 @@ public class IN4 extends javax.swing.JPanel{
     // End of variables declaration//GEN-END:variables
 private void hienThiAnh(String duongDan) {
     ImageIcon icon = new ImageIcon(duongDan);
-    Image img = icon.getImage().getScaledInstance(213, 194, Image.SCALE_SMOOTH);
+    Image img = icon.getImage().getScaledInstance(206,206, Image.SCALE_SMOOTH);
     lblAnh.setIcon(new ImageIcon(img));
     }
 
@@ -365,7 +363,7 @@ public void setForm() {
 
         if (file.exists()) {
             ImageIcon icon = new ImageIcon(fullPath);
-            Image img = icon.getImage().getScaledInstance(147, 124, Image.SCALE_SMOOTH);
+            Image img = icon.getImage().getScaledInstance(206,206, Image.SCALE_SMOOTH);
             lblAnh.setIcon(new ImageIcon(img));
         } else {
             lblAnh.setIcon(null);

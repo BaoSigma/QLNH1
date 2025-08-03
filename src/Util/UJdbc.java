@@ -16,7 +16,9 @@ import java.sql.SQLException;
  */
 public class UJdbc {
      private static Connection connection;
-
+     static {
+        System.setProperty("mssql.config.retrylogic.disabled", "true");
+    }
     public static Connection openConnection() {
         var driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         var dburl = "jdbc:sqlserver://26.243.116.169:1433;database=QuanLyNhaHang;encrypt=true;trustServerCertificate=true;";
@@ -25,6 +27,9 @@ public class UJdbc {
         try {
             if (!UJdbc.isReady()) {
                 Class.forName(driver);
+                
+               
+
                 connection = DriverManager.getConnection(dburl, username, password);
             }
         } catch (ClassNotFoundException | SQLException e) {

@@ -57,14 +57,12 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         jScrollPane1 = new javax.swing.JScrollPane();
         tblKhachHang = new javax.swing.JTable();
         txtTongChiTieu = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtHoTen = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtMaKH = new javax.swing.JTextField();
-        txtMatKhau = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -79,9 +77,6 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         btnTruoc = new javax.swing.JButton();
         btnTien = new javax.swing.JButton();
         btnCuoi = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         lblAnh = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -90,20 +85,19 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         rdoBac = new javax.swing.JRadioButton();
         rdoVang = new javax.swing.JRadioButton();
         rdoKimCuong = new javax.swing.JRadioButton();
-        txtMaVaiTro = new javax.swing.JLabel();
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1080, 560));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Mã khách hàng", "Họ tên", "Tổng chi tiêu", "Hạng khách", "Email", "Mã vai trò", "Mật khẩu"
+                "Mã khách hàng", "Họ tên", "Tổng chi tiêu", "Hạng khách", "ảnh"
             }
         ));
         tblKhachHang.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -124,10 +118,6 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 1360, 220));
         jPanel1.add(txtTongChiTieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 570, 270, 20));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel10.setText("Mật khẩu:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 730, 130, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Tổng chi tiêu:");
@@ -159,9 +149,6 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
 
         txtMaKH.setEnabled(false);
         jPanel1.add(txtMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, 270, 20));
-
-        txtMatKhau.setEnabled(false);
-        jPanel1.add(txtMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 740, 270, 20));
 
         jPanel2.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -285,15 +272,6 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
         });
         jPanel1.add(btnCuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 420, 120, 50));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel11.setText("Email:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 650, 130, 30));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel12.setText("Mã vai trò:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 690, 130, 30));
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 660, 270, 20));
-
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -342,9 +320,6 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
 
         rdoKimCuong.setText("Kim cương");
         jPanel1.add(rdoKimCuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 610, -1, -1));
-
-        txtMaVaiTro.setText("0");
-        jPanel1.add(txtMaVaiTro, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 700, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -484,9 +459,6 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -504,12 +476,9 @@ public class QLKH extends javax.swing.JPanel implements KhachHangController{
     private javax.swing.JRadioButton rdoThuong;
     private javax.swing.JRadioButton rdoVang;
     private javax.swing.JTable tblKhachHang;
-    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFind;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtMaKH;
-    private javax.swing.JLabel txtMaVaiTro;
-    private javax.swing.JTextField txtMatKhau;
     private javax.swing.JTextField txtTongChiTieu;
     // End of variables declaration//GEN-END:variables
 @Override
@@ -521,8 +490,6 @@ public void open() {
 public void setForm(KhachHang entity) {
 txtMaKH.setText(entity.getMaKH());
 txtHoTen.setText(entity.getHoTen());
-txtEmail.setText(entity.getEmail());
-txtMatKhau.setText(entity.getMatKhau());
 txtTongChiTieu.setText(String.valueOf(entity.getTongChiTieu())); // Nếu có
 
 // Cập nhật hạng khách dựa trên giá trị entity.getHangKhach()
@@ -581,7 +548,6 @@ if (tenAnh != null && !tenAnh.isEmpty()) {
     lblAnh.setIcon(null);
     lblAnh.setToolTipText(null);
 }
-txtMaVaiTro.setText(String.valueOf(entity.getMaVaiTro()));
 }
 
 @Override
@@ -611,14 +577,7 @@ if (rdoThuong.isSelected()) {
 } else {
     kh.setHangKhach(null); // fallback nếu chưa chọn
 }
-
-
-kh.setEmail(txtEmail.getText().trim());
-kh.setAnh(lblAnh.getToolTipText());  // Tên file ảnh
-
-kh.setMaVaiTro(Integer.parseInt(txtMaVaiTro.getText()));
 return kh;
-
 }
 
 @Override
@@ -633,13 +592,12 @@ public void fillToTable() {
             kh.getHoTen(),
             kh.getTongChiTieu(),
             kh.getHangKhach(),
-            kh.getEmail(),
-            kh.getMaVaiTro(),
-            kh.getMatKhau()
+            kh.getAnh() // Nếu bạn muốn hiển thị ảnh hoặc có thể để null
         };
         model.addRow(row);
     }
 }
+
 
 @Override
 public void edit() {
@@ -760,25 +718,7 @@ try {
 }
 
 
-if (txtEmail.getText().trim().isEmpty()) {
-    UDialog.alert("Vui lòng nhập email!");
-    txtEmail.requestFocus();
-    return false;
-}
 
-if (txtMaVaiTro.getText().trim().isEmpty()) {
-    UDialog.alert("Vui lòng nhập mã vai trò!");
-    txtMaVaiTro.requestFocus();
-    return false;
-}
-
-try {
-    Integer.parseInt(txtMaVaiTro.getText().trim());
-} catch (NumberFormatException e) {
-    UDialog.alert("Mã vai trò phải là số!");
-    txtMaVaiTro.requestFocus();
-    return false;
-}
 
 return true;
 
@@ -806,10 +746,7 @@ public void fillToTableTheoDieuKien() {
                 kh.getHoTen(),
                 kh.getTongChiTieu(),
                 kh.getHangKhach(),
-                kh.getMatKhau(),
                 kh.getAnh(),
-                kh.getEmail(),
-                kh.getMaVaiTro()
             };
             model.addRow(row);
         }

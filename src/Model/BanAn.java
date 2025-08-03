@@ -5,6 +5,7 @@
 package Model;
 
 import Util.UQuery;
+import java.time.LocalTime;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class BanAn {
     private int soBan;
     private String trangThai;
     private String maKV;
-    private DatBan db = new DatBan();
+    private DatBan db;
     private KhuVuc kv = new KhuVuc();
     public BanAn(String maBan, int soBan, String trangThai, String maKV) {
         this.maBan = maBan;
@@ -40,19 +41,19 @@ public class BanAn {
     public void setMaBan(String maBan) {
         this.maBan = maBan;
     }
-    public java.sql.Date getNgayDat() {
+    public java.util.Date getNgayDat() {
         return db.getNgayDat();
     }
 
-    public void setNgayDat(java.sql.Date ngayDat) {
+    public void setNgayDat(java.util.Date ngayDat) {
         db.setNgayDat(ngayDat);
     }
 
-    public java.sql.Time getGioDat() {
+    public LocalTime getGioDat() {
         return db.getGioDat();
     }
 
-    public void setGioDat(java.sql.Time gioDat) {
+    public void setGioDat(LocalTime gioDat) {
         db.setGioDat(gioDat);
     }
 

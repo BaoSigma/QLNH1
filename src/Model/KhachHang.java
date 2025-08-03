@@ -1,5 +1,12 @@
 package Model;
 
+import lombok.*;
+
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class KhachHang {
     private String maKH;
     private String hoTen;
@@ -7,54 +14,11 @@ public class KhachHang {
     private String matKhau;
     private String anh;
     private String email;
-    private int maVaiTro;
     private String HangKhach;
-    
-    // Constructor không tham số
-    public KhachHang() {}
+    @Builder.Default
+    private VaiTro vt = new VaiTro(); // Mặc định có VaiTro mới
 
-    // Constructor đầy đủ
-
-    public KhachHang(String maKH, String hoTen, double tongChiTieu, String matKhau, String anh, String email, int maVaiTro, String HangKhach) {
-        this.maKH = maKH;
-        this.hoTen = hoTen;
-        this.tongChiTieu = tongChiTieu;
-        this.matKhau = matKhau;
-        this.anh = anh;
-        this.email = email;
-        this.maVaiTro = maVaiTro;
-        this.HangKhach = HangKhach;
-    }
-    public void setHangKhach(String hangKhach) {
-    this.HangKhach = hangKhach;
-}
-
-    // Getter & Setter
-    public String getMaKH() {
-        return maKH;
-    }
-
-    public void setMaKH(String maKH) {
-        this.maKH = maKH;
-    }
-
-    public String getHoTen() {
-        return hoTen;
-    }
-
-    public void setHoTen(String hoTen) {
-        this.hoTen = hoTen;
-    }
-
-    public double getTongChiTieu() {
-        return tongChiTieu;
-    }
-
-    public void setTongChiTieu(double tongChiTieu) {
-        this.tongChiTieu = tongChiTieu;
-    }
-
-    // HangKhach được tính tự động theo TongChiTieu
+    // Tính hạng khách theo chi tiêu
     public String getHangKhach() {
         if (tongChiTieu >= 60000000) {
             return "Kim Cương";
@@ -69,35 +33,22 @@ public class KhachHang {
         }
     }
 
-    public String getMatKhau() {
-        return matKhau;
+    // Getter & Setter cho VaiTro (ẩn trong class KhachHang)
+    public String getTenVaiTro() {
+        return vt.getTenVaiTro();
     }
 
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
-    }
-
-    public String getAnh() {
-        return anh;
-    }
-
-    public void setAnh(String anh) {
-        this.anh = anh;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTenVaiTro(String tenVaiTro) {    
+        vt.setTenVaiTro(tenVaiTro);
     }
 
     public int getMaVaiTro() {
-        return maVaiTro;
+        return vt.getMaVaiTro();
     }
 
     public void setMaVaiTro(int maVaiTro) {
-        this.maVaiTro = maVaiTro;
+        vt.setMaVaiTro(maVaiTro);
     }
+
+
 }

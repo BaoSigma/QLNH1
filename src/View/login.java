@@ -12,6 +12,8 @@ import Model.NhanVien;
 import Util.UAuth;
 import Util.UDialog;
 import Util.UHash;
+import View.menu;
+import View.menuQL;
 import java.awt.Cursor;
 import java.awt.Font;
 import javax.swing.UIManager;
@@ -35,7 +37,7 @@ public class login extends javax.swing.JFrame implements LoginController    {
         
         // Giải mã mật khẩu
         try {
-            String decryptedPassword = UHash.encrypt(UAuth.user.getMatKhau());
+            String ecryptedPassword = UHash.encrypt(UAuth.user.getMatKhau());
             txtPass.setText(UAuth.user.getMatKhau());
         } catch (Exception e) {
             txtPass.setText(""); // Nếu lỗi giải mã
@@ -274,27 +276,21 @@ public void loginn() {
     if (chkRemember.isSelected()) {
         UAuth.save(user); 
     } else {
-        UAuth.clear();
+        UAuth.savexn(user);
     }
 
     dispose(); 
 
     
-    int role = user.getVt().getMaVaiTro(); // Lấy mã vai trò
-    switch (role) {
-        case 1:
-            new menuKH().setVisible(true); // Vai trò khách hàng
-            break;
-        case 2:
-            new menu().setVisible(true); // Vai trò nhân viên/phục vụ
-            break;
-        case 3:
-            new menuQL().setVisible(true); // Vai trò quản lý
-            break;
-        default:
-            UDialog.alert("Không xác định vai trò người dùng!");
-            return;
-    }
+        if(UAuth.QuanLy()){
+            new menuQL().setVisible(true); // Vai trò nhân viên/phục vụ
+            
+        }
+         if(UAuth.NhanVien()){
+            new menu().setVisible(true); // Vai trò quản lý
+          }
+        
+    
 
     UDialog.alert("Đăng nhập thành công!");
 }

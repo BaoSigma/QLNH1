@@ -4,8 +4,9 @@
  */
 package Model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Time;
+import java.time.LocalTime;
 
 /**
  *
@@ -13,17 +14,15 @@ import java.sql.Time;
  */
 public class DatBan {
     private String maDat;
-    private String maKH;
-    private String maBan;
-    private java.sql.Date ngayDat;
-    private java.sql.Time gioDat;
+    private KhachHang kh = new KhachHang();
+    private BanAn b = new BanAn();
+    private java.util.Date ngayDat;
+    private LocalTime gioDat;
     private int soNguoi;
     private String trangThai;
 
-    public DatBan(String maDat, String maKH, String maBan, Date ngayDat, Time gioDat, int soNguoi, String trangThai) {
+    public DatBan(String maDat, java.util.Date ngayDat, LocalTime gioDat, int soNguoi, String trangThai) {
         this.maDat = maDat;
-        this.maKH = maKH;
-        this.maBan = maBan;
         this.ngayDat = ngayDat;
         this.gioDat = gioDat;
         this.soNguoi = soNguoi;
@@ -42,34 +41,34 @@ public class DatBan {
     }
 
     public String getMaKH() {
-        return maKH;
+        return kh.getMaKH();
     }
 
     public void setMaKH(String maKH) {
-        this.maKH = maKH;
+        kh.setMaKH(maKH);
     }
 
     public String getMaBan() {
-        return maBan;
+        return b.getMaBan();
     }
 
     public void setMaBan(String maBan) {
-        this.maBan = maBan;
+        b.setMaBan(maBan);
     }
 
-    public java.sql.Date getNgayDat() {
+    public java.util.Date getNgayDat() {
         return ngayDat;
     }
 
-    public void setNgayDat(java.sql.Date ngayDat) {
+    public void setNgayDat(java.util.Date ngayDat) {
         this.ngayDat = ngayDat;
     }
 
-    public java.sql.Time getGioDat() {
+    public LocalTime getGioDat() {
         return gioDat;
     }
 
-    public void setGioDat(java.sql.Time gioDat) {
+    public void setGioDat(LocalTime gioDat) {
         this.gioDat = gioDat;
     }
 
