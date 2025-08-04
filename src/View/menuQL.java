@@ -331,6 +331,7 @@ private JPanel currentPanel;
         lblChiTietDatBan.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblChiTietDatBan.setForeground(new java.awt.Color(255, 255, 255));
         lblChiTietDatBan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblChiTietDatBan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon chi tiết đặt bàn.png"))); // NOI18N
         lblChiTietDatBan.setText("Chi tiết đặt bàn");
 
         lblKhachHang.setBackground(new java.awt.Color(255, 255, 255));
@@ -344,6 +345,7 @@ private JPanel currentPanel;
         lblBanAn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblBanAn.setForeground(new java.awt.Color(255, 255, 255));
         lblBanAn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBanAn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon bàn ăn.png"))); // NOI18N
         lblBanAn.setText("Bàn ăn");
 
         lblVoucher.setBackground(new java.awt.Color(255, 255, 255));
@@ -380,6 +382,7 @@ private JPanel currentPanel;
         lblThoat.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblThoat.setForeground(new java.awt.Color(255, 255, 255));
         lblThoat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon thoát.png"))); // NOI18N
         lblThoat.setText("Thoát");
 
         lblDoanhThu.setBackground(new java.awt.Color(255, 255, 255));
@@ -400,14 +403,14 @@ private JPanel currentPanel;
         lblMA.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblMA.setForeground(new java.awt.Color(255, 255, 255));
         lblMA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon thống kê doanh thu.png"))); // NOI18N
+        lblMA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon món ăn.png"))); // NOI18N
         lblMA.setText("Món ăn");
 
         lblLM.setBackground(new java.awt.Color(255, 255, 255));
         lblLM.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblLM.setForeground(new java.awt.Color(255, 255, 255));
         lblLM.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon thống kê doanh thu.png"))); // NOI18N
+        lblLM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon loại món.png"))); // NOI18N
         lblLM.setText("Loại món");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -464,11 +467,11 @@ private JPanel currentPanel;
                 .addComponent(lblChiTietDatBan)
                 .addGap(18, 18, 18)
                 .addComponent(lblDoanhThu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblLM)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMA)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))

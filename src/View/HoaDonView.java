@@ -45,7 +45,6 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txthinhthuctt = new javax.swing.JTextField();
         txtmahoadon = new javax.swing.JTextField();
         txtmaban = new javax.swing.JTextField();
         txtmanv = new javax.swing.JTextField();
@@ -61,16 +60,17 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         btnsua = new javax.swing.JButton();
         btnlammoi = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        txtngaylap = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txttongtien = new javax.swing.JTextField();
+        cboHTTT = new javax.swing.JComboBox<>();
+        dcNgayLap = new com.toedter.calendar.JDateChooser();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("HÓA ĐƠN");
 
@@ -79,19 +79,19 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(587, 587, 587)
+                .addGap(582, 582, 582)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(615, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 80));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1390, 80));
 
         tblhoadon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -113,9 +113,14 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+        tblhoadon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblhoadonMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblhoadon);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1320, 300));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1390, 300));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Mã hóa đơn:");
@@ -128,7 +133,6 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Hình thức TT:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 700, -1, -1));
-        add(txthinhthuctt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 700, 360, 20));
         add(txtmahoadon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 500, 360, 20));
         add(txtmaban, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 540, 360, 20));
         add(txtmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 580, 360, 20));
@@ -229,7 +233,6 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Mã bàn:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, -1, -1));
-        add(txtngaylap, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 620, 360, 20));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Mã nhân viên:");
@@ -239,6 +242,10 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         jLabel8.setText("Tổng tiền:");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 660, -1, -1));
         add(txttongtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 660, 360, 20));
+
+        cboHTTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(cboHTTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 700, 360, -1));
+        add(dcNgayLap, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 620, 360, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnvedauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvedauActionPerformed
@@ -291,6 +298,11 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         // TODO add your handling code here:
         fillToTable();
     }//GEN-LAST:event_tblhoadonAncestorAdded
+
+    private void tblhoadonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblhoadonMouseClicked
+        // TODO add your handling code here:
+        edit();
+    }//GEN-LAST:event_tblhoadonMouseClicked
     
     public void fillToTableTheoDieuKien() {
     try {
@@ -332,6 +344,8 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     private javax.swing.JButton btnvecuoi;
     private javax.swing.JButton btnvedau;
     private javax.swing.JButton btnxoa;
+    private javax.swing.JComboBox<String> cboHTTT;
+    private com.toedter.calendar.JDateChooser dcNgayLap;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -344,11 +358,9 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblhoadon;
     private javax.swing.JTextField txtFind;
-    private javax.swing.JTextField txthinhthuctt;
     private javax.swing.JTextField txtmaban;
     private javax.swing.JTextField txtmahoadon;
     private javax.swing.JTextField txtmanv;
-    private javax.swing.JTextField txtngaylap;
     private javax.swing.JTextField txttongtien;
     // End of variables declaration//GEN-END:variables
 
@@ -363,7 +375,8 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     txtmanv.setText(entity.getMaNV());
     txtmaban.setText(entity.getMaBan());
     txttongtien.setText(String.valueOf(entity.getHinhThucTT()));
-    txthinhthuctt.setText(entity.getHinhThucTT());
+    dcNgayLap.setDate(entity.getNgayLap());
+    cboHTTT.setSelectedItem(entity.getHinhThucTT());
     }
 
     @Override
@@ -375,7 +388,9 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     hd.setMaNV(txtmanv.getText().trim());
     hd.setMaBan(txtmaban.getText().trim());
     hd.setTongTien(Double.parseDouble(txttongtien.getText().trim()));
-    hd.setHinhThucTT(txthinhthuctt.getText().trim());
+    hd.setNgayLap(dcNgayLap.getDate());
+    String httt = cboHTTT.getSelectedItem().toString();
+    hd.setHinhThucTT(httt);
     return hd;
     }
 
@@ -488,6 +503,7 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         this.edit();
     }
     }
+
 
     @Override
     public boolean Checkall() {

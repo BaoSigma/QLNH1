@@ -336,6 +336,11 @@ public class menu extends javax.swing.JFrame {
         lblHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon hóa đơn.png"))); // NOI18N
         lblHoaDon.setText("Hóa đơn");
+        lblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHoaDonMouseClicked(evt);
+            }
+        });
 
         lblCTDB.setBackground(new java.awt.Color(255, 255, 255));
         lblCTDB.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -361,6 +366,7 @@ public class menu extends javax.swing.JFrame {
         lblKhuVuc.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblKhuVuc.setForeground(new java.awt.Color(255, 255, 255));
         lblKhuVuc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblKhuVuc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon khu vực.png"))); // NOI18N
         lblKhuVuc.setText("Khu vực");
 
         jLabel63.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -375,6 +381,7 @@ public class menu extends javax.swing.JFrame {
         lblThoat.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblThoat.setForeground(new java.awt.Color(255, 255, 255));
         lblThoat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon thoát.png"))); // NOI18N
         lblThoat.setText("Thoát");
 
         lblGoiMon.setBackground(new java.awt.Color(0, 0, 0));
@@ -394,6 +401,7 @@ public class menu extends javax.swing.JFrame {
         lblBanAn1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblBanAn1.setForeground(new java.awt.Color(255, 255, 255));
         lblBanAn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBanAn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon bàn ăn.png"))); // NOI18N
         lblBanAn1.setText("Bàn ăn");
 
         lblDatBan.setBackground(new java.awt.Color(255, 255, 255));
@@ -453,9 +461,9 @@ public class menu extends javax.swing.JFrame {
                 .addComponent(lblLoaiMon)
                 .addGap(18, 18, 18)
                 .addComponent(lblCTDB)
-                .addGap(82, 82, 82)
+                .addGap(18, 18, 18)
                 .addComponent(lblThongTinCaNhan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(70, 70, 70)
                 .addComponent(lblThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblDangXuat)
@@ -653,6 +661,10 @@ public class menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         closemenu();
     }//GEN-LAST:event_jLabel63MouseClicked
+
+    private void lblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblHoaDonMouseClicked
 
     /**
      * @param args the command line arguments
