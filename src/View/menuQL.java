@@ -166,7 +166,6 @@ private JPanel currentPanel;
         addHoverTextEffect(lblThoat, normal, hover);
         addHoverTextEffect(lblDangXuat, normal, hover);
         addHoverTextEffect(lblLM, normal, hover);
-        addHoverTextEffect(lblVoucher, normal, hover);
         addHoverTextEffect(lblChiTietDatBan, normal, hover);
 
     }
@@ -255,7 +254,6 @@ private JPanel currentPanel;
         lblChiTietDatBan = new javax.swing.JLabel();
         lblKhachHang = new javax.swing.JLabel();
         lblBanAn = new javax.swing.JLabel();
-        lblVoucher = new javax.swing.JLabel();
         lblCTHD = new javax.swing.JLabel();
         lblDangXuat = new javax.swing.JLabel();
         lblNhanVien = new javax.swing.JLabel();
@@ -348,13 +346,6 @@ private JPanel currentPanel;
         lblBanAn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon bàn ăn.png"))); // NOI18N
         lblBanAn.setText("Bàn ăn");
 
-        lblVoucher.setBackground(new java.awt.Color(255, 255, 255));
-        lblVoucher.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblVoucher.setForeground(new java.awt.Color(255, 255, 255));
-        lblVoucher.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVoucher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon voucher.png"))); // NOI18N
-        lblVoucher.setText("Voucher");
-
         lblCTHD.setBackground(new java.awt.Color(255, 255, 255));
         lblCTHD.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblCTHD.setForeground(new java.awt.Color(255, 255, 255));
@@ -428,7 +419,6 @@ private JPanel currentPanel;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel65)
                 .addGap(16, 16, 16))
-            .addComponent(lblVoucher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblCTHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblDoanhThu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -459,9 +449,7 @@ private JPanel currentPanel;
                 .addComponent(lblBanAn)
                 .addGap(18, 18, 18)
                 .addComponent(lblKhuvuc)
-                .addGap(18, 18, 18)
-                .addComponent(lblVoucher)
-                .addGap(18, 18, 18)
+                .addGap(68, 68, 68)
                 .addComponent(lblCTHD)
                 .addGap(18, 18, 18)
                 .addComponent(lblChiTietDatBan)
@@ -739,6 +727,5 @@ private JPanel currentPanel;
     private javax.swing.JLabel lblNhanVien;
     private javax.swing.JLabel lblThoat;
     private javax.swing.JLabel lblThongTinCaNhan;
-    private javax.swing.JLabel lblVoucher;
     // End of variables declaration//GEN-END:variables
 }

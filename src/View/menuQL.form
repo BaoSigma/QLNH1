@@ -58,7 +58,6 @@
                   <Component id="jLabel65" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               </Group>
-              <Component id="lblVoucher" alignment="0" max="32767" attributes="0"/>
               <Component id="lblCTHD" alignment="0" max="32767" attributes="0"/>
               <Component id="lblNhanVien" alignment="0" max="32767" attributes="0"/>
               <Component id="lblDoanhThu" alignment="0" max="32767" attributes="0"/>
@@ -92,9 +91,7 @@
                   <Component id="lblBanAn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblKhuvuc" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="lblVoucher" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                   <Component id="lblCTHD" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblChiTietDatBan" min="-2" max="-2" attributes="0"/>
@@ -216,24 +213,6 @@
               <Image iconType="3" name="/img/icon b&#xe0;n &#x103;n.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="B&#xe0;n &#x103;n"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblVoucher">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="24" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/icon voucher.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Voucher"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCTHD">

@@ -132,7 +132,7 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Hình thức TT:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 700, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 700, 100, -1));
         add(txtmahoadon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 500, 360, 20));
         add(txtmaban, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 540, 360, 20));
         add(txtmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 580, 360, 20));
@@ -196,7 +196,7 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
                 btnTiemkiemActionPerformed(evt);
             }
         });
-        add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
+        add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, 30));
 
         btnthem.setText("Thêm");
         btnthem.addActionListener(new java.awt.event.ActionListener() {
@@ -243,7 +243,7 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 660, -1, -1));
         add(txttongtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 660, 360, 20));
 
-        cboHTTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboHTTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "chuyển khoản" }));
         add(cboHTTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 700, 360, -1));
         add(dcNgayLap, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 620, 360, -1));
     }// </editor-fold>//GEN-END:initComponents
@@ -376,7 +376,12 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     txtmaban.setText(entity.getMaBan());
     txttongtien.setText(String.valueOf(entity.getHinhThucTT()));
     dcNgayLap.setDate(entity.getNgayLap());
-    cboHTTT.setSelectedItem(entity.getHinhThucTT());
+    String httt = entity.getHinhThucTT();
+    if(httt.equals("Tiền mặt")){
+        cboHTTT.setSelectedItem("Tiền mặt");
+    }else{
+        cboHTTT.setSelectedItem("Chuyển khoản");
+    }
     }
 
     @Override

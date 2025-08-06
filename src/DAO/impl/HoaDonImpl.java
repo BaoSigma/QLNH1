@@ -79,22 +79,24 @@ public class HoaDonImpl implements HoaDonDAO{
     }
     public List<HoaDon> findByKeyword(String keyword) {
     String sql = """
-        SELECT 
+        SELECT TOP (1000)
             MaHD,
             MaBan,
             MaNV,
             NgayLap,
             TongTien,
-            HinhThucTT
+            HinhThucTT,
+            MaKH
         FROM HoaDon
         WHERE MaHD LIKE ?
-            OR MaBan LIKE ?
-            OR MaNV LIKE ?
-            OR HinhThucTT LIKE ?
-            
+           OR MaBan LIKE ?
+           OR MaNV LIKE ?
+           OR HinhThucTT LIKE ?
+           OR MaKH LIKE ?
     """;
 
     String value = "%" + keyword + "%";
-    return UQuery.getBeanList(HoaDon.class, sql, value, value, value, value);
+    return UQuery.getBeanList(HoaDon.class, sql, value, value, value, value, value);
 }
+
 }

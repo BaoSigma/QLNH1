@@ -46,14 +46,39 @@ public class goimon extends javax.swing.JPanel implements OrderController {
     public goimon() {
     initComponents();
     filltoCombo();
+    chinhsuatrencot();
+    }
+    public void chinhsuatrencot(){
+// Dừng chỉnh sửa khi người dùng rời ô nhập
+tblGoimon.putClientProperty("terminateEditOnFocusLost", true);
 
+// Lắng nghe sự kiện sửa bảng
+tblGoimon.getModel().addTableModelListener(new TableModelListener() {
+    @Override
+    public void tableChanged(TableModelEvent e) {
+        if (e.getType() == TableModelEvent.UPDATE) {
+            int row = e.getFirstRow();
+            int column = e.getColumn();
 
+            if (column == 2) { // Cột số lượng
+                DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
+                try {
+                    int soLuong = Integer.parseInt(model.getValueAt(row, 2).toString());
+                    double tongTienCu = Double.parseDouble(model.getValueAt(row, 3).toString());
+                    double donGia = tongTienCu / (soLuong == 0 ? 1 : soLuong); // Tính đơn giá tạm
+                    double thanhTien = soLuong * donGia;
+                    model.setValueAt(thanhTien, row, 3);
+                } catch (Exception ex) {
+                    System.err.println("Lỗi cập nhật thành tiền tại dòng " + row + ": " + ex.getMessage());
+                }
+            }
 
+            capNhatTongTien(); // Luôn cập nhật tổng tiền
+        }
+    }
+});
 
-
-
-}
-
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -624,7 +649,7 @@ if (row != -1) {
 
     private void tblGoimonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGoimonMouseClicked
         // TODO add your handling code here:
-tinhTongTien();
+
     }//GEN-LAST:event_tblGoimonMouseClicked
 
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
@@ -689,23 +714,23 @@ if (selectedRow != -1) {
     UDialog.alert("Vui lòng chọn món cần xóa!");
 }
     }
-    public void capNhatTongTien() {
-        DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
-double tong = 0;
-
-for (int i = 0; i < model.getRowCount(); i++) {
-    Object val = model.getValueAt(i, 3); 
-    if (val != null) {
-        try {
-            tong += Double.parseDouble(val.toString()); 
-        } catch (NumberFormatException e) {
+public void capNhatTongTien() {
+    DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
+    double tong = 0;
+    for (int i = 0; i < model.getRowCount(); i++) {
+        Object val = model.getValueAt(i, 3); 
+        if (val != null) {
+            try {
+                tong += Double.parseDouble(val.toString()); 
+            } catch (NumberFormatException e) {}
         }
     }
+    lblTongTien.setText(String.format("%.1f", tong));
 }
 
-lblTongTien.setText(String.format("%.1f", tong));
 
-}
+
+
 
     @Override
     public void filltoTableDoUong() {
@@ -1036,9 +1061,9 @@ public void filltoTableGoiMon(String MaMon, String TenMon, double Gia) {
     boolean found = false;
 
     for (int i = 0; i < model.getRowCount(); i++) {
-        String existingTenMon = model.getValueAt(i, 1).toString();
-        if (existingTenMon.equals(TenMon)) {
-            int soLuong = (int) model.getValueAt(i, 2);
+        String existingMaMon = model.getValueAt(i, 0).toString();
+        if (existingMaMon.equals(MaMon)) { // Ưu tiên so sánh theo MaMon
+            int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString());
             soLuong++;
             model.setValueAt(soLuong, i, 2);
             model.setValueAt(Gia * soLuong, i, 3);
@@ -1056,29 +1081,27 @@ public void filltoTableGoiMon(String MaMon, String TenMon, double Gia) {
 }
 
 
+
 @Override
 public double tinhTongTien() {
     DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
     double tong = 0;
 
     for (int i = 0; i < model.getRowCount(); i++) {
-        Object val = model.getValueAt(i, 3);
-        if (val instanceof Number) {
-            tong += ((Number) val).doubleValue();
-        } else if (val != null) {
-            try {
-                String cleaned = val.toString().replace(",", "").trim();
-                tong += Double.parseDouble(cleaned);
-            } catch (NumberFormatException e) {
-                System.err.println("Lỗi parse tổng tiền tại dòng " + i + ": " + val);
-            }
+        Object val = model.getValueAt(i, 3); // Thành tiền
+
+        try {
+            double tien = Double.parseDouble(val.toString().replace(",", "").trim());
+            tong += tien;
+        } catch (Exception e) {
+            System.err.println("Lỗi tại dòng " + i + ": " + val);
         }
     }
 
     lblTongTien.setText(String.format("%,.0f", tong));
     return tong;
 }
-
+    
     public void filltoCombo(){
     cboBanAn.removeAllItems();
     items = dao.CBOBan(); 
