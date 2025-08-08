@@ -1,10 +1,10 @@
 package Util;
 
-import DAO.ModelDAO.KhachHangDAO;
+
 import DAO.ModelDAO.NhanVienDAO;
-import DAO.impl.KhachHangImpl;
+
 import DAO.impl.NhanVienImpl;
-import Model.KhachHang;
+
 import Model.NhanVien;
 
 import java.io.*;

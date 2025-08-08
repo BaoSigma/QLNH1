@@ -10,17 +10,14 @@ import Model.BanAn;
 import Util.UJdbc;
 import Util.UQuery;
 import java.util.List;
-
+import java.sql.*;
 /**
  *
  * @author Dong Khanh
  */
 public class BanAnImpl implements BanAnDAO {
-    private static final String sqlInsert = """
-        INSERT INTO BanAn (MaBan, SoBan, TrangThai, MaKV)
-        VALUES (?, ?, ?, ?);
-    """;
 
+    public static final String sqlTang = "SELECT * FROM KhuVuc";
     private static final String sqlUpdate = """
         UPDATE BanAn
         SET SoBan = ?, TrangThai = ?, MaKV = ?
@@ -33,7 +30,7 @@ public class BanAnImpl implements BanAnDAO {
     """;
 
     private static final String sqlFindAll = """
-        SELECT MaBan, SoBan, TrangThai, MaKV FROM BanAn;
+        SELECT MaBan, SoBan, TrangThai, MaKV FROM BanAn;    
     """;
 
     private static final String sqlFindById = """
@@ -42,17 +39,24 @@ public class BanAnImpl implements BanAnDAO {
         WHERE MaBan = ?;
     """;
 
-    @Override
-    public BanAn create(BanAn ba) {
+private static final String sqlInsert = """
+    EXEC sp_ThemBanAn @TrangThai = ?, @MaKV = ?
+""";
+
+
+@Override
+public BanAn create(BanAn ba) {
+    for (int i = 0; i < ba.getSoBan(); i++) {
         Object[] values = {
-            ba.getMaBan(),
-            ba.getSoBan(),
-            ba.getTrangThai(),
-            ba.getMaKV()
+            ba.getTrangThai(),  // "Trống"
+            ba.getMaKV()        // KV01...
         };
         UJdbc.executeUpdate(sqlInsert, values);
-        return ba;
     }
+    return ba;
+}
+
+
 
     @Override
     public void update(BanAn ba) {
@@ -74,7 +78,11 @@ public class BanAnImpl implements BanAnDAO {
     public List<BanAn> findAll() {
         return UQuery.getBeanList(BanAn.class, sqlFindAll);
     }
-
+    
+    public List<BanAn> findAllTang() {
+        return UQuery.getBeanList(BanAn.class, sqlTang);
+    }
+    
     @Override
     public BanAn findById(Object id) {
         return UQuery.getSingleBean(BanAn.class, sqlFindById, id);
@@ -84,10 +92,10 @@ public class BanAnImpl implements BanAnDAO {
         String sql = """
             SELECT MaBan, SoBan, TrangThai, MaKV
             FROM BanAn
-            WHERE MaBan LIKE ? OR MaKV LIKE ?;
+            WHERE MaBan LIKE ? OR MaKV LIKE ? Or TrangThai = ?;
         """;
         String search = "%" + keyword + "%";
-        return UQuery.getBeanList(BanAn.class, sql, search, search);
+        return UQuery.getBeanList(BanAn.class, sql, search, search,search);
     }
 }
 

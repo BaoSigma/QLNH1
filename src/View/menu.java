@@ -51,7 +51,7 @@ public class menu extends javax.swing.JFrame {
            public void mouseClicked(MouseEvent e) {
 
                    
-                   setView(new IN4());
+                   setView(new IN4(false));
                
            }
         });
@@ -59,59 +59,65 @@ public class menu extends javax.swing.JFrame {
         lblKhuVuc.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new BanAnView());
+                setView(new BanAnView(false));
             }
         });
 
         lblCTHD.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new CTHD()); 
+                setView(new CTHD(false)); 
             }
         });
         lblGoiMon.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new goimon());
+                setView(new goimon(false));
             }
         });
         lblLoaiMon.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new QLLM());
+                setView(new QLLM(false));
             }
         });
         lblHoaDon.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new HoaDonView());
+                setView(new HoaDonView(false));
         }
         });
 
         lblCTDB.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new CTDB()); 
+                setView(new CTDB(false)); 
             }
         });
 
         lblMonAn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new QLMA()); 
+                setView(new QLMA(false)); 
+            }
+        });
+        lblBanAn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                setView(new BanAnView(false)); 
             }
         });
 
         lblKhuVuc.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new QLKV());
+                setView(new QLKV(false));
             }
         });
         lblLoaiMon.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new QLLM());
+                setView(new QLLM(false));
             }
         });
         lblThoat.addMouseListener(new MouseAdapter() {
@@ -132,7 +138,7 @@ public class menu extends javax.swing.JFrame {
         lblDatBan.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new DBFORM());
+                setView(new DBFORM(false));
             }
         });
 
@@ -161,6 +167,7 @@ public class menu extends javax.swing.JFrame {
         addHoverTextEffect(lblHoaDon, normal, hover);
         addHoverTextEffect(lblCTHD, normal, hover);
         addHoverTextEffect(lblMonAn, normal, hover);
+        addHoverTextEffect(lblGoiMon, normal, hover);
 
         addHoverTextEffect(lblLoaiMon, normal, hover);
         addHoverTextEffect(lblThoat, normal, hover);
@@ -182,22 +189,26 @@ public class menu extends javax.swing.JFrame {
     }
 
     public void openmenu() {
-//        if (currentPanel instanceof NhanVienPanel nv) {
-//            nv.setButtonVisible(true);
-//        } else if (currentPanel instanceof CaLamPanel cl) {
-//            cl.setButtonVisible(true);
-//        } else if (currentPanel instanceof TheDDPanel the) {
-//            the.setButtonVisible(true);
-//        } else if (currentPanel instanceof HoaDonPanel hd) {
-//            hd.setButtonVisible(true);
-//        } else if (currentPanel instanceof ChiTietPanel ct) {
-//            ct.setButtonVisible(true);
-//        } else if (currentPanel instanceof SanPhamPanel sp) {
-//            sp.setButtonVisible(true);
-//        } else if (currentPanel instanceof PhanLoai pl) {
-//            pl.setButtonVisible(true);
-//        }
-//        
+        if (currentPanel instanceof QLKV kv) {
+            kv.setButtonVisible(true);
+        } else if (currentPanel instanceof HoaDonView hd) {
+            hd.setButtonVisible(true);
+        } else if (currentPanel instanceof CTHD ct) {
+            ct.setButtonVisible(true);
+        } else if (currentPanel instanceof QLMA ma) {
+            ma.setButtonVisible(true);
+        } else if (currentPanel instanceof goimon gm) {
+            gm.setButtonVisible(true);
+        } else if (currentPanel instanceof QLLM lm) {
+            lm.setButtonVisible(true);
+        }else if (currentPanel instanceof IN4 ttcn) {
+            ttcn.setButtonVisible(true);
+        } else if (currentPanel instanceof CTDB ctdb) {
+            ctdb.setButtonVisible(true);
+        } else if (currentPanel instanceof DBFORM db) {
+            db.setButtonVisible(true);
+        }
+        
         new Thread(() -> {
             jPanel2.getParent().setComponentZOrder(jPanel2, 0);
 
@@ -214,21 +225,25 @@ public class menu extends javax.swing.JFrame {
     }
 
     public void closemenu() {
-//       // if (currentPanel instanceof NhanVienPanel nv) {
-//            nv.setButtonVisible(false);
-//        } else if (currentPanel instanceof CaLamPanel cl) {
-//            cl.setButtonVisible(false);
-//        } else if (currentPanel instanceof TheDDPanel the) {
-//            the.setButtonVisible(false);
-//        } else if (currentPanel instanceof HoaDonPanel hd) {
-//            hd.setButtonVisible(false);
-//        } else if (currentPanel instanceof ChiTietPanel ct) {
-//            ct.setButtonVisible(false);
-//        } else if (currentPanel instanceof SanPhamPanel sp) {
-//            sp.setButtonVisible(false);
-//        } else if (currentPanel instanceof PhanLoai pl) {
-//            pl.setButtonVisible(false);
-//        }
+    if (currentPanel instanceof QLKV kv) {
+        kv.setButtonVisible(false);
+    } else if (currentPanel instanceof HoaDonView hd) {
+        hd.setButtonVisible(false);
+    } else if (currentPanel instanceof CTHD ct) {
+        ct.setButtonVisible(false);
+    } else if (currentPanel instanceof QLMA ma) {
+        ma.setButtonVisible(false);
+    } else if (currentPanel instanceof goimon gm) {
+        gm.setButtonVisible(false);
+    } else if (currentPanel instanceof QLLM lm) {
+        lm.setButtonVisible(false);
+    }else if (currentPanel instanceof IN4 ttcn) {
+        ttcn.setButtonVisible(false);
+    } else if (currentPanel instanceof CTDB ctdb) {
+        ctdb.setButtonVisible(false);
+    } else if (currentPanel instanceof DBFORM db) {
+        db.setButtonVisible(false);
+    }
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -266,7 +281,7 @@ public class menu extends javax.swing.JFrame {
         lblThoat = new javax.swing.JLabel();
         lblGoiMon = new javax.swing.JLabel();
         lblThongTinCaNhan = new javax.swing.JLabel();
-        lblBanAn1 = new javax.swing.JLabel();
+        lblBanAn = new javax.swing.JLabel();
         lblDatBan = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -397,12 +412,12 @@ public class menu extends javax.swing.JFrame {
         lblThongTinCaNhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon thông tin cá nhân.png"))); // NOI18N
         lblThongTinCaNhan.setText("Thông tin cá nhân");
 
-        lblBanAn1.setBackground(new java.awt.Color(255, 255, 255));
-        lblBanAn1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblBanAn1.setForeground(new java.awt.Color(255, 255, 255));
-        lblBanAn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBanAn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon bàn ăn.png"))); // NOI18N
-        lblBanAn1.setText("Bàn ăn");
+        lblBanAn.setBackground(new java.awt.Color(255, 255, 255));
+        lblBanAn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblBanAn.setForeground(new java.awt.Color(255, 255, 255));
+        lblBanAn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBanAn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon bàn ăn.png"))); // NOI18N
+        lblBanAn.setText("Bàn ăn");
 
         lblDatBan.setBackground(new java.awt.Color(255, 255, 255));
         lblDatBan.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -426,7 +441,7 @@ public class menu extends javax.swing.JFrame {
             .addComponent(lblKhuVuc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblCTHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblGoiMon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblBanAn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblBanAn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblDatBan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -446,7 +461,7 @@ public class menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblKhuVuc)
                 .addGap(21, 21, 21)
-                .addComponent(lblBanAn1)
+                .addComponent(lblBanAn)
                 .addGap(18, 18, 18)
                 .addComponent(lblMonAn)
                 .addGap(18, 18, 18)
@@ -740,7 +755,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JLabel lblBanAn1;
+    private javax.swing.JLabel lblBanAn;
     private javax.swing.JLabel lblCTDB;
     private javax.swing.JLabel lblCTHD;
     private javax.swing.JLabel lblDangXuat;

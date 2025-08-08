@@ -50,7 +50,7 @@ public class MonAnImpl implements MonAnDAO {
             m.getTenMon(),
             m.getDonGia(),
             m.getMoTa(),
-            m.getHinhAnh(),
+            m.getAnh(),
             m.l.getMaLoai()
         };
         UJdbc.executeUpdate(sqlInsert, values);
@@ -63,7 +63,7 @@ public class MonAnImpl implements MonAnDAO {
             m.getTenMon(),
             m.getDonGia(),
             m.getMoTa(),
-            m.getHinhAnh(),
+            m.getAnh(),
             m.l.getMaLoai(),
             m.getMaMon()
         };

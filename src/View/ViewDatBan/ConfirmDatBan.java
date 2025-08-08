@@ -93,7 +93,7 @@ public void showConfirmDatBan(List<DatBanINFOR> list) {
             for (DatBanINFOR info : list) {
                 try {
                     service.executeProcedureDatBan(
-                        info.getMaKH(),
+                        info.getTenKH(),
                         info.getMaBan(),
                         new java.sql.Date(info.getNgayDat().getTime()),
                         java.sql.Time.valueOf(info.getGioDat()),

@@ -39,12 +39,14 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
     /**
      * Creates new form QLNV
      */
-    public QLNV() {
+    public QLNV(boolean visible) {
         initComponents();
         
- 
+ setButtonVisible(visible);
     }
-
+    public void setButtonVisible(boolean visible) {
+    jButton1.setVisible(visible);
+} 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,6 +57,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
     private void initComponents() {
 
         rdoGroupVaiTro = new javax.swing.ButtonGroup();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -91,6 +94,12 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
 
         setPreferredSize(new java.awt.Dimension(1080, 560));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setContentAreaFilled(false);
+        jButton1.setEnabled(false);
+        jButton1.setFocusable(false);
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 800));
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -446,6 +455,7 @@ if (result == JFileChooser.APPROVE_OPTION) {
     private javax.swing.JButton btnTruoc3;
     private javax.swing.JButton btnXoa;
     private com.toedter.calendar.JDateChooser dcNgaySinh;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

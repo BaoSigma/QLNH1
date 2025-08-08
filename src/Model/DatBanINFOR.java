@@ -12,7 +12,7 @@ import java.time.LocalTime;
  */
 public class DatBanINFOR {
     
-    public KhachHang kh = new KhachHang();
+    public String tenKH ;
     public BanAn ba = new BanAn();
     public NhanVien nv = new NhanVien();
     public ChiTietDatBan ctdb = new ChiTietDatBan();
@@ -21,9 +21,7 @@ public class DatBanINFOR {
     public DatBan db = new DatBan();
     public ChiTietHoaDon cthd = new ChiTietHoaDon();
 
-    public String getMaKH() {
-    return kh.getMaKH();
-}
+
 
 public String getMaBan() {
     return ba.getMaBan();
@@ -61,10 +59,18 @@ public String getGhiChu() {
     return ctdb.getGhiChu();
 }
 
+    public String getTenKH() {
+        return tenKH;
+    }
 
-    public DatBanINFOR(String maKH, String maBan, java.util.Date ngayDat, LocalTime gioDat,
+    public void setTenKH(String tenKH) {
+        this.tenKH = tenKH;
+    }
+
+
+    public DatBanINFOR(String tenKH, String maBan, java.util.Date ngayDat, LocalTime gioDat,
                       int soNguoi, String maNV, String HTTT, String maMon, int soLuong, String ghiChu) {
-        kh.setMaKH(maKH);
+        this.tenKH=tenKH;
         ba.setMaBan(maBan);
         db.setNgayDat(ngayDat);
         db.setGioDat(gioDat);

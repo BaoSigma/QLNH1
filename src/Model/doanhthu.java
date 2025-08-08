@@ -2,7 +2,6 @@ package Model;
 
 public class doanhthu {
     private HoaDon hd;
-    private KhachHang kh;
     private NhanVien nv;
     private String theoNgay;  
     private String theoThang; 
@@ -17,7 +16,6 @@ public void setTongNhanVien(double tongNhanVien) { this.tongNhanVien = tongNhanV
 
     public doanhthu() {
         this.hd = new HoaDon();
-        this.kh = new KhachHang();
         this.nv = new NhanVien();
     }
 
@@ -31,15 +29,6 @@ public void setTongNhanVien(double tongNhanVien) { this.tongNhanVien = tongNhanV
         hd.setMaHD(maHoaDon);
     }
 
-    // Tên khách hàng
-    public String getTenKhachHang() {
-        return kh != null ? kh.getHangKhach() : null;
-    }
-
-    public void setTenKhachHang(String tenKhachHang) {
-        if (kh == null) kh = new KhachHang();
-        kh.setHoTen(tenKhachHang);
-    }
 
     // Tên nhân viên
     public String getTenNhanVien() {
@@ -89,14 +78,6 @@ public void setTongNhanVien(double tongNhanVien) { this.tongNhanVien = tongNhanV
         this.theoThang = theoThang;
     }
 
-    // Mã KH
-    public String getMaKhachHang() {
-        return kh.getMaKH();
-    }
-
-    public void setMaKhachHang(String maKhachHang) {
-        kh.setMaKH(maKhachHang);
-    }
 
     // Mã NV
     public String getMaNhanVien() {

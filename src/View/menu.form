@@ -58,7 +58,7 @@
               <Component id="lblKhuVuc" alignment="1" max="32767" attributes="0"/>
               <Component id="lblCTHD" alignment="0" max="32767" attributes="0"/>
               <Component id="lblGoiMon" alignment="0" max="32767" attributes="0"/>
-              <Component id="lblBanAn1" alignment="0" max="32767" attributes="0"/>
+              <Component id="lblBanAn" alignment="0" max="32767" attributes="0"/>
               <Component id="lblDatBan" alignment="0" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
@@ -81,7 +81,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblKhuVuc" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                  <Component id="lblBanAn1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblBanAn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblMonAn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -311,7 +311,7 @@
             <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin c&#xe1; nh&#xe2;n"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblBanAn1">
+        <Component class="javax.swing.JLabel" name="lblBanAn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

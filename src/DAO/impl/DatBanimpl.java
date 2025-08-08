@@ -25,7 +25,7 @@ public class DatBanimpl implements DatBanDAO{
     
             DECLARE @MaDatMoi VARCHAR(10);
             EXEC sp_ThemDatBan_TuSinhMa 
-                @MaKH = ?,
+                @tenKH = ?,
                 @MaBan = ?,
                 @NgayDat = ?,
                 @GioDat = ?,
@@ -63,7 +63,7 @@ public static final String timkietDatBancoTang = """
 // Tìm kiếm theo điều kiện (ví dụ theo MaDat)
 public static final String timkiemcodieukien = timkietDatBan + " WHERE MaDat = ?";
 public static String datbantruocgoimon = "EXEC sp_DatBanVaTaoHoaDon_GoiMon_MaTuyChinh \n" +
-"    @MaKH = ?,\n" +
+"    @TenKH = ?,\n" +
 "    @MaBan = ?,\n" +
 "    @NgayDat = ?,\n" +
 "    @GioDat = ?,\n" +
@@ -77,7 +77,7 @@ public static String datbantruocgoimon = "EXEC sp_DatBanVaTaoHoaDon_GoiMon_MaTuy
     @Override   
 public DatBan create(DatBan entity) {
     Object[] values = {
-        entity.getMaKH(),
+        entity.getTenKH(),
         entity.getMaBan(),
         entity.getNgayDat(),
         entity.getGioDat(),
@@ -142,7 +142,7 @@ public DatBan create(DatBan entity) {
     @Override
     public void update(DatBan entity) {
             Object[] values = {
-            entity.getMaKH(),
+            entity.getTenKH(),
            entity.getMaBan(),
            entity.getNgayDat(),
            entity.getGioDat(),

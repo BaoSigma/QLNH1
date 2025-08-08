@@ -12,16 +12,19 @@ public class HoaDon {
     private String maHD;
     private String maBan;
     private String maNV;
-    private KhachHang kh = new KhachHang();
+    private String tenKH;
     private java.util.Date ngayLap;
     private double tongTien;
     private String hinhThucTT;
-    public String getMaKH(){
-        return kh.getMaKH();
+
+    public String getTenKH() {
+        return tenKH;
     }
-    public void setMaKH(String maKH){
-        kh.setMaKH(maKH);
+
+    public void setTenKH(String tenKH) {
+        this.tenKH = tenKH;
     }
+
     public String getMaHD() {
         return maHD;
     }

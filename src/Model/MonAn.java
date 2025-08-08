@@ -13,7 +13,7 @@ public class MonAn  {
     private String tenMon;
     private double donGia;
     private String moTa;
-    private String hinhAnh;
+    private String Anh;
     public LoaiMon l = new LoaiMon();
     public MonAn(String maMon, String tenMon, double donGia, String moTa, String hinhAnh, int maLoai, String tenLoai, String tenMua) {
        
@@ -21,7 +21,7 @@ public class MonAn  {
         this.tenMon = tenMon;
         this.donGia = donGia;
         this.moTa = moTa;
-        this.hinhAnh = hinhAnh;
+        this.Anh = hinhAnh;
     }
     public String getTenLoai(){
         return l.getTenLoai();
@@ -61,11 +61,15 @@ public class MonAn  {
     public void setMoTa(String moTa) {
         this.moTa = moTa;
     }
-    public String getHinhAnh() {
-        return hinhAnh;
+
+    public String getAnh() {
+        return Anh;
     }
-    public void setHinhAnh(String hinhAnh) {
-        this.hinhAnh = hinhAnh;
+
+    public void setAnh(String Anh) {
+        this.Anh = Anh;
     }
+
+
 
 }

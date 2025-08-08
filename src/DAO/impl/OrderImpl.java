@@ -34,11 +34,12 @@ public class OrderImpl {
     public static final String sqlBanAn = "SELECT MaBan, SoBan, TrangThai\n" +
 "FROM BanAn";
     public static final String sqlHoaDon = "EXEC sp_ThemHoaDon \n" +
-"    @MaBan = ? ,\n" +
-"    @MaNV = ?,\n" +
+"    @MaBan = ?, \n" +
+"    @MaNV = ?, \n" +
 "    @NgayLap = ?,\n" +
 "    @TongTien = ?,\n" +
-"    @HinhThucTT = ?;";
+"    @HinhThucTT = ?,\n" +
+"    @TenKH = N'Vãng lai';";
 
     public static final String timkiemall = "SELECT L.TenLoai AS LoaiMon, M.TenMon, M.DonGia, M.HinhAnh\n" +
 "FROM MonAn M\n" +

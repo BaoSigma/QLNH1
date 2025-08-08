@@ -25,7 +25,7 @@ public class ChiTietHoaDonImpl implements ChiTietHoaDonDAO {
     WHERE MaCTHD = ?;
 """;
     private static final String sqlFindAll = """
-    SELECT MaCTHD, MaHD, MaMon, SoLuong, GhiChu, TrangThai
+    SELECT MaHD, MaMon, SoLuong, GhiChu, TrangThai
     FROM ChiTietHoaDon;
 """;
     private static final String sqlFindById = """

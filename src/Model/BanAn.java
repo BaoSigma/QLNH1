@@ -1,24 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package Model;
+    package Model;
 
 import Util.UQuery;
 import java.time.LocalTime;
 import java.util.List;
 
-/**
- *
- * @author Admin
- */
 public class BanAn {
     private String maBan;
     private int soBan;
     private String trangThai;
     private String maKV;
-    private DatBan db;
+    private DatBan db; // KHÔNG khởi tạo ngay
     private KhuVuc kv = new KhuVuc();
+
     public BanAn(String maBan, int soBan, String trangThai, String maKV) {
         this.maBan = maBan;
         this.soBan = soBan;
@@ -26,67 +19,45 @@ public class BanAn {
         this.maKV = maKV;
     }
 
-    public BanAn() {
-    }
-    public String getTenKV() {
-        return kv.getTenKV();
-    }
-    public void setTenKV(String tenKV) {
-        kv.setTenKV(tenKV);
-    }
-    public String getMaBan() {
-        return maBan;
-    }
-    
-    public void setMaBan(String maBan) {
-        this.maBan = maBan;
-    }
+    public BanAn() {}
+
+    public String getTenKV() { return kv.getTenKV(); }
+    public void setTenKV(String tenKV) { kv.setTenKV(tenKV); }
+
+    public String getMaBan() { return maBan; }
+    public void setMaBan(String maBan) { this.maBan = maBan; }
+
     public java.util.Date getNgayDat() {
-        return db.getNgayDat();
+        return db != null ? db.getNgayDat() : null;
     }
 
     public void setNgayDat(java.util.Date ngayDat) {
+        if (db == null) db = new DatBan();
         db.setNgayDat(ngayDat);
     }
 
     public LocalTime getGioDat() {
-        return db.getGioDat();
+        return db != null ? db.getGioDat() : null;
     }
 
     public void setGioDat(LocalTime gioDat) {
+        if (db == null) db = new DatBan();
         db.setGioDat(gioDat);
     }
 
-    public int getSoBan() {
-        return soBan;
-    }
+    public int getSoBan() { return soBan; }
+    public void setSoBan(int soBan) { this.soBan = soBan; }
 
-    public void setSoBan(int soBan) {
-        this.soBan = soBan;
-    }
+    public String getTrangThai() { return trangThai; }
+    public void setTrangThai(String trangThai) { this.trangThai = trangThai; }
 
-    public String getTrangThai() {
-        return trangThai;
-    }
+    public String getMaKV() { return maKV; }
+    public void setMaKV(String maKV) { this.maKV = maKV; }
 
-    public void setTrangThai(String trangThai) {
-        this.trangThai = trangThai;
-    }
-
-    public String getMaKV() {
-        return maKV;
-    }
-
-    public void setMaKV(String maKV) {
-        this.maKV = maKV;
-    }
     public List<BanAn> findByMaBan(String maBan) {
-    String sql = """
-        SELECT MaBan, SoBan, TrangThai
-        FROM BanAn
-        WHERE MaBan = ?;
-    """;
-    return UQuery.getBeanList(BanAn.class, sql, maBan);
-}
-
+        String sql = """
+            SELECT MaBan, SoBan, TrangThai FROM BanAn WHERE MaBan = ?;
+        """;
+        return UQuery.getBeanList(BanAn.class, sql, maBan);
+    }
 }

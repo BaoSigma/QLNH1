@@ -40,10 +40,14 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
     /**
      * Creates new form BanAn
      */
-    public BanAnView() {
+    public BanAnView(boolean visible) {
         initComponents();
+        filltoCombo();
+        setButtonVisible(visible);
     }
-
+    public void setButtonVisible(boolean visible) {
+    jButton1.setVisible(visible);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,6 +57,8 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBanAn = new javax.swing.JTable();
         btnDau = new javax.swing.JButton();
@@ -62,7 +68,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cboTrangThaifill = new javax.swing.JComboBox<>();
+        cboMaKV = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         txtFind = new javax.swing.JTextField();
         btnTiemkiem = new javax.swing.JButton();
@@ -70,12 +76,16 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        txtMaBan = new javax.swing.JTextField();
-        txtSoBan = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtTrangThai = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtSoluongBan = new javax.swing.JTextField();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setContentAreaFilled(false);
+        jButton1.setEnabled(false);
+        jButton1.setFocusable(false);
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 620));
 
         tblBanAn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,7 +95,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 {null, null, null, null}
             },
             new String [] {
-                "Mã khu vực", "Tên khu vực", "Mã bàn", "Tên bàn"
+                "Mã bàn", "Số bàn", "Trạng thái", "Mã khu vực"
             }
         ));
         tblBanAn.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -97,7 +107,14 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+        tblBanAn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBanAnMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblBanAn);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 172, 1460, 447));
 
         btnDau.setBackground(new java.awt.Color(173, 139, 115));
         btnDau.setText("Về đầu");
@@ -106,6 +123,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnDauActionPerformed(evt);
             }
         });
+        add(btnDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(627, 143, 83, -1));
 
         btnTruoc.setBackground(new java.awt.Color(173, 139, 115));
         btnTruoc.setText("Trước");
@@ -114,6 +132,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnTruocActionPerformed(evt);
             }
         });
+        add(btnTruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 143, 83, -1));
 
         btnTien.setBackground(new java.awt.Color(173, 139, 115));
         btnTien.setText("Tiến");
@@ -122,6 +141,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnTienActionPerformed(evt);
             }
         });
+        add(btnTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(805, 143, 83, -1));
 
         btnCuoi.setBackground(new java.awt.Color(173, 139, 115));
         btnCuoi.setText("Về cuối");
@@ -130,6 +150,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnCuoiActionPerformed(evt);
             }
         });
+        add(btnCuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 143, 83, -1));
 
         jPanel4.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -146,7 +167,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1232, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1342, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addContainerGap())
@@ -164,10 +185,14 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        cboTrangThaifill.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, -1));
+
+        add(cboMaKV, new org.netbeans.lib.awtextra.AbsoluteConstraints(481, 143, 134, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Tìm kiếm :");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 112, -1, -1));
+        add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 112, 258, -1));
 
         btnTiemkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/find.png"))); // NOI18N
         btnTiemkiem.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +200,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnTiemkiemActionPerformed(evt);
             }
         });
+        add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 97, -1, -1));
 
         btnThem.setText("THÊM");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -182,6 +208,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnThemActionPerformed(evt);
             }
         });
+        add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 143, -1, -1));
 
         btnXoa.setText("XÓA");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -189,6 +216,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnXoaActionPerformed(evt);
             }
         });
+        add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 143, -1, -1));
 
         btnSua.setText("SỬA");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +224,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnSuaActionPerformed(evt);
             }
         });
+        add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 143, -1, -1));
 
         btnLamMoi.setText("LÀM MỚI");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -203,118 +232,12 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnLamMoiActionPerformed(evt);
             }
         });
+        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 143, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Mã bàn:");
-
-        txtMaBan.setEnabled(false);
-
-        txtSoBan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtSoBanMouseClicked(evt);
-            }
-        });
-        txtSoBan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSoBanActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Số bàn:");
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Trạng thái:");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(btnTiemkiem)
-                        .addGap(62, 62, 62)
-                        .addComponent(btnThem)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnXoa)
-                        .addGap(8, 8, 8)
-                        .addComponent(btnSua)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLamMoi))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(txtMaBan, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDau, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnTruoc, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
-                                .addComponent(btnTien, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCuoi, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(57, 57, 57)
-                                .addComponent(cboTrangThaifill, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))
-                                .addGap(44, 44, 44)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSoBan, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTiemkiem)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnThem)
-                            .addComponent(btnXoa)
-                            .addComponent(btnSua)
-                            .addComponent(btnLamMoi))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDau, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTruoc, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTien, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCuoi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboTrangThaifill, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtMaBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(txtSoBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(txtTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setText("Số lượng bàn:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 146, -1, -1));
+        add(txtSoluongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 143, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDauActionPerformed
@@ -363,14 +286,6 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         clear();
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
-    private void txtSoBanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSoBanMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSoBanMouseClicked
-
-    private void txtSoBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoBanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSoBanActionPerformed
-
     private void tblBanAnAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblBanAnAncestorAdded
         // TODO add your handling code here:
         DefaultTableModel model = new DefaultTableModel(
@@ -387,6 +302,11 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         fillToTable();
     }//GEN-LAST:event_tblBanAnAncestorAdded
 
+    private void tblBanAnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBanAnMouseClicked
+        // TODO add your handling code here:
+        edit();
+    }//GEN-LAST:event_tblBanAnMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCuoi;
@@ -398,44 +318,49 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
     private javax.swing.JButton btnTien;
     private javax.swing.JButton btnTruoc;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JComboBox<String> cboTrangThaifill;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cboMaKV;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblBanAn;
     private javax.swing.JTextField txtFind;
-    private javax.swing.JTextField txtMaBan;
-    private javax.swing.JTextField txtSoBan;
-    private javax.swing.JTextField txtTrangThai;
+    private javax.swing.JTextField txtSoluongBan;
     // End of variables declaration//GEN-END:variables
 @Override
 public void setForm(BanAn entity) {
-    txtMaBan.setText(entity.getMaBan());
-    txtSoBan.setText(String.valueOf(entity.getSoBan()));
-    txtTrangThai.setText(entity.getTrangThai());
+    for (int i = 0; i < cboMaKV.getItemCount(); i++) {
+        String item = cboMaKV.getItemAt(i); // VD: "KV01 - Tầng 1"
+        if (item.startsWith(entity.getMaKV())) {
+            cboMaKV.setSelectedIndex(i);
+            break;
+        }
+    }
+
+    // Không cần set txtSoluongBan nếu không cập nhật số lượng nữa
 }
 
 @Override
 public BanAn getForm() {
     BanAn ba = new BanAn();
 
-    ba.setMaBan(txtMaBan.getText().trim());
+    String maKVFull = cboMaKV.getSelectedItem().toString(); // VD: KV01 - Tầng 1
+    String[] parts = maKVFull.split(" - ");
+    String maKV = parts[0];
 
-    try {
-        ba.setSoBan(Integer.parseInt(txtSoBan.getText().trim()));
-    } catch (NumberFormatException e) {
-        ba.setSoBan(0); // hoặc hiển thị cảnh báo
-    }
+    ba.setMaKV(maKV);
+    ba.setTrangThai("Trống");
 
-    ba.setTrangThai(txtTrangThai.getText().trim());
+    int soBan = Integer.parseInt(txtSoluongBan.getText());
+    ba.setSoBan(soBan);
 
     return ba;
 }
+
 
 @Override
 public void fillToTable() {
@@ -446,8 +371,9 @@ public void fillToTable() {
     for (BanAn ba : items) {
         Object[] row = {
             ba.getMaBan(),
-            "Bàn số " + ba.getSoBan(),
-            ba.getTrangThai()
+            ba.getSoBan(),
+            ba.getTrangThai(),
+            ba.getMaKV()
         };
         model.addRow(row);
     }
@@ -471,7 +397,8 @@ public void fillToTableTheoDieuKien() {
             Object[] row = {
                 ba.getMaBan(),
                 ba.getSoBan(),
-                ba.getTrangThai()
+                ba.getTrangThai(),
+                ba.getMaKV()
             };
             model.addRow(row);
         }
@@ -574,35 +501,37 @@ public void moveTo(int rowIndex) {
 }
 
 public boolean checkAll() {
-    if (txtMaBan.getText().trim().isEmpty()) {
-        UDialog.alert("Vui lòng nhập mã bàn!");
-        txtMaBan.requestFocus();
-        return false;
-    }
-
-    if (txtSoBan.getText().trim().isEmpty()) {
-        UDialog.alert("Vui lòng nhập số bàn!");
-        txtSoBan.requestFocus();
+    if (txtSoluongBan.getText().trim().isEmpty()) {
+        UDialog.alert("Vui lòng nhập số lượng bàn muốn thêm!");
+        txtSoluongBan.requestFocus();
         return false;
     }
 
     try {
-        Integer.parseInt(txtSoBan.getText().trim());
+        int soLuong = Integer.parseInt(txtSoluongBan.getText().trim());
+        if (soLuong <= 0) {
+            UDialog.alert("Số lượng bàn phải lớn hơn 0!");
+            txtSoluongBan.requestFocus();
+            return false;
+        }
     } catch (NumberFormatException e) {
-        UDialog.alert("Số bàn phải là số!");
-        txtSoBan.requestFocus();
-        return false;
-    }
-
-    if (txtTrangThai.getText().trim().isEmpty()) {
-        UDialog.alert("Vui lòng nhập trạng thái bàn!");
-        txtTrangThai.requestFocus();
+        UDialog.alert("Số lượng bàn phải là số nguyên!");
+        txtSoluongBan.requestFocus();
         return false;
     }
 
     return true;
 }
 
+    public void filltoCombo(){
+        BanAnImpl dao = new BanAnImpl();
+    cboMaKV.removeAllItems();
+    items = dao.findAllTang(); 
+    items.forEach(item -> {
+        String display = item.getMaKV()+ " - " + item.getTenKV();
+        cboMaKV.addItem(display);
+    });
+    }
     @Override
     public void open() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

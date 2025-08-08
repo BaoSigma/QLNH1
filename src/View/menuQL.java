@@ -49,66 +49,60 @@ private JPanel currentPanel;
            public void mouseClicked(MouseEvent e) {
 
                    
-                   setView(new QLNV());
+                   setView(new QLNV(false));
                
            }
         });
         lblDoanhThu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new doanhThuView());
+                setView(new doanhThuView(false));
             }
         });
         lblBanAn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new BanAnView());
+                setView(new BanAnView(false));
             }
         });
 
         lblCTHD.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new CTHD()); 
+                setView(new CTHD(false)); 
             }
         });
 
         lblHoaDon.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new HoaDonView());
+                setView(new HoaDonView(false));
         }
         });
 
         lblChiTietDatBan.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new CTDB()); // đoán: ICT là chi tiết
-            }
-        });
-        lblKhachHang.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                setView(new QLKH()); // đoán: ICT là chi tiết
+                setView(new CTDB(false)); // đoán: ICT là chi tiết
             }
         });
         lblMA.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new QLMA()); // đoán: ISP là sản phẩm
+                setView(new QLMA(false)); // đoán: ISP là sản phẩm
             }
         });
 
         lblKhuvuc.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new QLKV());
+                setView(new QLKV(false));
             }
         });
         lblThongTinCaNhan.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new IN4());
+                setView(new IN4(false));
             }
         });
         lblThoat.addMouseListener(new MouseAdapter() {
@@ -129,7 +123,7 @@ private JPanel currentPanel;
         lblMA.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                setView(new QLLM());
+                setView(new QLLM(false));
             }
 
   });
@@ -145,7 +139,7 @@ private JPanel currentPanel;
 
     }
     int rong = 240;
-    int dai = 850;
+    int dai = 810;
 
     /**
      * Creates new form Menu
@@ -160,13 +154,13 @@ private JPanel currentPanel;
         addHoverTextEffect(lblCTHD, normal, hover);
         addHoverTextEffect(lblMA, normal, hover);
         addHoverTextEffect(lblKhuvuc, normal, hover);
-        addHoverTextEffect(lblKhachHang, normal, hover);
         addHoverTextEffect(lblDoanhThu, normal, hover);
         addHoverTextEffect(lblThongTinCaNhan, normal, hover);
         addHoverTextEffect(lblThoat, normal, hover);
         addHoverTextEffect(lblDangXuat, normal, hover);
         addHoverTextEffect(lblLM, normal, hover);
         addHoverTextEffect(lblChiTietDatBan, normal, hover);
+        addHoverTextEffect(lblCTHD, normal, hover);
 
     }
 
@@ -181,22 +175,28 @@ private JPanel currentPanel;
     }
 
     public void openmenu() {
-//        if (currentPanel instanceof NhanVienPanel nv) {
-//            nv.setButtonVisible(true);
-//        } else if (currentPanel instanceof CaLamPanel cl) {
-//            cl.setButtonVisible(true);
-//        } else if (currentPanel instanceof TheDDPanel the) {
-//            the.setButtonVisible(true);
-//        } else if (currentPanel instanceof HoaDonPanel hd) {
-//            hd.setButtonVisible(true);
-//        } else if (currentPanel instanceof ChiTietPanel ct) {
-//            ct.setButtonVisible(true);
-//        } else if (currentPanel instanceof SanPhamPanel sp) {
-//            sp.setButtonVisible(true);
-//        } else if (currentPanel instanceof PhanLoai pl) {
-//            pl.setButtonVisible(true);
-//        }
-//        
+if (currentPanel instanceof QLNV nv) {
+    nv.setButtonVisible(true);
+} else if (currentPanel instanceof doanhThuView dt) {
+    dt.setButtonVisible(true);
+} else if (currentPanel instanceof BanAnView ba) {
+    ba.setButtonVisible(true);
+} else if (currentPanel instanceof HoaDonView hd) {
+    hd.setButtonVisible(true);
+} else if (currentPanel instanceof CTHD ct) {
+    ct.setButtonVisible(true);
+} else if (currentPanel instanceof CTDB ctdb) {
+    ctdb.setButtonVisible(true);
+} else if (currentPanel instanceof QLKV kv) {
+    kv.setButtonVisible(true);
+} else if (currentPanel instanceof IN4 ttcn) {
+    ttcn.setButtonVisible(true);
+}else if (currentPanel instanceof QLLM lm) {
+    lm.setButtonVisible(true);
+} else if (currentPanel instanceof QLMA ma) {
+    ma.setButtonVisible(true);
+}
+      
         new Thread(() -> {
             jPanel2.getParent().setComponentZOrder(jPanel2, 0);
 
@@ -213,21 +213,27 @@ private JPanel currentPanel;
     }
 
     public void closemenu() {
-//       // if (currentPanel instanceof NhanVienPanel nv) {
-//            nv.setButtonVisible(false);
-//        } else if (currentPanel instanceof CaLamPanel cl) {
-//            cl.setButtonVisible(false);
-//        } else if (currentPanel instanceof TheDDPanel the) {
-//            the.setButtonVisible(false);
-//        } else if (currentPanel instanceof HoaDonPanel hd) {
-//            hd.setButtonVisible(false);
-//        } else if (currentPanel instanceof ChiTietPanel ct) {
-//            ct.setButtonVisible(false);
-//        } else if (currentPanel instanceof SanPhamPanel sp) {
-//            sp.setButtonVisible(false);
-//        } else if (currentPanel instanceof PhanLoai pl) {
-//            pl.setButtonVisible(false);
-//        }
+if (currentPanel instanceof QLNV nv) {
+    nv.setButtonVisible(false);
+} else if (currentPanel instanceof doanhThuView dt) {
+    dt.setButtonVisible(false);
+} else if (currentPanel instanceof BanAnView ba) {
+    ba.setButtonVisible(false);
+} else if (currentPanel instanceof HoaDonView hd) {
+    hd.setButtonVisible(false);
+} else if (currentPanel instanceof CTHD ct) {
+    ct.setButtonVisible(false);
+} else if (currentPanel instanceof CTDB ctdb) {
+    ctdb.setButtonVisible(false);
+} else if (currentPanel instanceof QLKV kv) {
+    kv.setButtonVisible(false);
+} else if (currentPanel instanceof IN4 ttcn) {
+    ttcn.setButtonVisible(false);
+}else if (currentPanel instanceof QLLM lm) {
+    lm.setButtonVisible(false);
+} else if (currentPanel instanceof QLMA ma) {
+    ma.setButtonVisible(false);
+}
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -252,7 +258,6 @@ private JPanel currentPanel;
         lblKhuvuc = new javax.swing.JLabel();
         lblHoaDon = new javax.swing.JLabel();
         lblChiTietDatBan = new javax.swing.JLabel();
-        lblKhachHang = new javax.swing.JLabel();
         lblBanAn = new javax.swing.JLabel();
         lblCTHD = new javax.swing.JLabel();
         lblDangXuat = new javax.swing.JLabel();
@@ -332,13 +337,6 @@ private JPanel currentPanel;
         lblChiTietDatBan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon chi tiết đặt bàn.png"))); // NOI18N
         lblChiTietDatBan.setText("Chi tiết đặt bàn");
 
-        lblKhachHang.setBackground(new java.awt.Color(255, 255, 255));
-        lblKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblKhachHang.setForeground(new java.awt.Color(255, 255, 255));
-        lblKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon khách hàng.png"))); // NOI18N
-        lblKhachHang.setText("Khách hàng");
-
         lblBanAn.setBackground(new java.awt.Color(255, 255, 255));
         lblBanAn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblBanAn.setForeground(new java.awt.Color(255, 255, 255));
@@ -411,7 +409,6 @@ private JPanel currentPanel;
             .addComponent(lblDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel45, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblChiTietDatBan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblBanAn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblKhuvuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -443,9 +440,7 @@ private JPanel currentPanel;
                 .addComponent(lblHoaDon)
                 .addGap(18, 18, 18)
                 .addComponent(lblNhanVien)
-                .addGap(18, 18, 18)
-                .addComponent(lblKhachHang)
-                .addGap(18, 18, 18)
+                .addGap(68, 68, 68)
                 .addComponent(lblBanAn)
                 .addGap(18, 18, 18)
                 .addComponent(lblKhuvuc)
@@ -455,7 +450,7 @@ private JPanel currentPanel;
                 .addComponent(lblChiTietDatBan)
                 .addGap(18, 18, 18)
                 .addComponent(lblDoanhThu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(lblLM)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMA)
@@ -720,7 +715,6 @@ private JPanel currentPanel;
     private javax.swing.JLabel lblDangXuat;
     private javax.swing.JLabel lblDoanhThu;
     private javax.swing.JLabel lblHoaDon;
-    private javax.swing.JLabel lblKhachHang;
     private javax.swing.JLabel lblKhuvuc;
     private javax.swing.JLabel lblLM;
     private javax.swing.JLabel lblMA;

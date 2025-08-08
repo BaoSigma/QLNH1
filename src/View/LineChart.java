@@ -32,8 +32,8 @@ public class LineChart extends javax.swing.JPanel {
     DecimalFormat df = new DecimalFormat("#,##0.##");
     private List<ModelLegend> legends = new ArrayList<>();
     private List<ModelChart> model = new ArrayList<>();
-    private final int seriesSize = 22;
-    private final int seriesSpace = 10;
+private final int seriesSize = 50;
+private final int seriesSpace = 5;
     private final Animator animator;
     private float animate;
     private String showLabel;
@@ -77,68 +77,103 @@ public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, i
 }
 @Override
 public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index, List<Path2D.Double> gra) {
-     double totalSeriesWidth = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
+    double totalSeriesWidth = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
     double x = size.getX() + (size.getWidth() - totalSeriesWidth) / 2;
 
+    double[] values = model.get(index).getValues();
+
     for (int i = 0; i < legends.size(); i++) {
-        double value = model.get(index).getValues()[i] * animate;
+        // ✅ Kiểm tra an toàn mảng
+        double value = (i < values.length) ? values[i] * animate : 0;
         double height = chart.getSeriesValuesOf(value, size.getHeight());
         double y = size.getY() + size.getHeight() - height;
 
-        // Rounded rectangle with corner radius
-        int arc = 12; // độ cong góc
+        int arc = 12;
         g2.setPaint(new GradientPaint(0, 0, legends.get(i).getColor(), 0, (int) height, legends.get(i).getColorLight()));
         g2.fillRoundRect((int) x, (int) y, seriesSize, (int) height, arc, arc);
 
         x += seriesSize + seriesSpace;
     }
 }
+    
+
+
 
 
             @Override
             public void renderGraphics(Graphics2D g2, List<Path2D.Double> gra) {
                 g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
-                g2.setStroke(new BasicStroke(10f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER));
+                g2.setStroke(new BasicStroke(70f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER));
                 for (int i = 0; i < gra.size(); i++) {
                     g2.setPaint(new GradientPaint(0, 0, legends.get(i).getColor(), getWidth(), 0, legends.get(i).getColorLight()));
                     g2.draw(gra.get(i));
                 }
-                System.out.println("🎨 renderGraphics: " + gra.size() + " paths");
                 
             }
 
-            @Override
-            public boolean mouseMoving(BlankPlotChart chart, MouseEvent evt, Graphics2D g2, SeriesSize size, int index) {
-                double totalSeriesHeight = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
-                double y = (size.getHeight() - totalSeriesHeight) / 2;
-                for (int i = 0; i < legends.size(); i++) {
-                    double seriesValue = chart.getSeriesValuesOf(model.get(index).getValues()[i], size.getWidth()) * animate;
-                    int s = seriesSize / 2;
-                    int sx = seriesSize / 3;
-                    int py[] = {(int) (size.getY() + y), (int) (size.getY() + y + s), (int) (size.getY() + y + seriesSize), (int) (size.getY() + y + seriesSize), (int) (size.getY() + y + s), (int) (size.getY() + y)};
-                    int px[] = {(int) (size.getX() + seriesValue), (int) (size.getX() + seriesValue + sx), (int) (size.getX() + seriesValue), (int) (size.getX()), (int) (size.getX() - sx), (int) (size.getX())};
+           @Override
+public boolean mouseMoving(BlankPlotChart chart, MouseEvent evt, Graphics2D g2, SeriesSize size, int index) {
+    double totalSeriesHeight = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
+    double y = (size.getHeight() - totalSeriesHeight) / 2;
 
-                    if (new Polygon(px, py, px.length).contains(evt.getPoint())) {
-                        double data = model.get(index).getValues()[i];
-                        showLabel = df.format(data);
-                        labelLocation.setLocation((int) (size.getX() + seriesValue + sx), (int) (size.getY() + y + s));
-                        chart.repaint();
-                        return true;
-                    }
-                    y += seriesSpace + seriesSize;
-                }
-                return false;
-            }
+    double[] values = model.get(index).getValues();
+
+    for (int i = 0; i < legends.size(); i++) {
+        // ✅ Lấy giá trị an toàn, nếu không có thì = 0
+        double value = (i < values.length) ? values[i] : 0;
+        double seriesValue = chart.getSeriesValuesOf(value, size.getWidth()) * animate;
+
+        int s = seriesSize / 2;
+        int sx = seriesSize / 3;
+        int[] py = {
+            (int) (size.getY() + y),
+            (int) (size.getY() + y + s),
+            (int) (size.getY() + y + seriesSize),
+            (int) (size.getY() + y + seriesSize),
+            (int) (size.getY() + y + s),
+            (int) (size.getY() + y)
+        };
+        int[] px = {
+            (int) (size.getX() + seriesValue),
+            (int) (size.getX() + seriesValue + sx),
+            (int) (size.getX() + seriesValue),
+            (int) (size.getX()),
+            (int) (size.getX() - sx),
+            (int) (size.getX())
+        };
+
+        if (new Polygon(px, py, px.length).contains(evt.getPoint())) {
+            showLabel = df.format(value);
+            labelLocation.setLocation((int) (size.getX() + seriesValue + sx), (int) (size.getY() + y + s));
+            chart.repaint();
+            return true;
+        }
+
+        y += seriesSpace + seriesSize;
+    }
+
+    return false;
+}
+
         });
     }
 
     public void addLegend(String name, Color color, Color color1) {
-        ModelLegend data = new ModelLegend(name, color, color1);
-        legends.add(data);
-        panelLegend.add(new LegendItem(data));
-        panelLegend.repaint();
-        panelLegend.revalidate();
-    }
+    // Xóa hết legend cũ để chỉ hiển thị một legend duy nhất
+    legends.clear();
+    panelLegend.removeAll();
+
+    // Tạo và thêm legend mới
+    ModelLegend data = new ModelLegend(name, color, color1);
+    legends.add(data);
+    panelLegend.add(new LegendItem(data));
+
+    // Cập nhật giao diện
+    panelLegend.repaint();
+    panelLegend.revalidate();
+}
+
+
 
     public void addData(ModelChart data) {
         model.add(data);

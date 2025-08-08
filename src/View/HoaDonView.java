@@ -10,6 +10,7 @@ import DAO.impl.HoaDonImpl;
 import DAO.impl.NhanVienImpl;
 import Model.HoaDon;
 import Model.NhanVien;
+import Util.UAuth;
 import Util.UDialog;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +26,13 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     /**
      * Creates new form HoaDon
      */
-    public HoaDonView() {
+    public HoaDonView(boolean visible) {
         initComponents();
+    setButtonVisible(visible);
     }
-
+    public void setButtonVisible(boolean visible) {
+    jButton1.setVisible(visible);
+} 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,6 +42,7 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -65,8 +70,16 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         txttongtien = new javax.swing.JTextField();
         cboHTTT = new javax.swing.JComboBox<>();
         dcNgayLap = new com.toedter.calendar.JDateChooser();
+        jLabel9 = new javax.swing.JLabel();
+        txtTenKhach = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setContentAreaFilled(false);
+        jButton1.setEnabled(false);
+        jButton1.setFocusable(false);
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 800));
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -128,11 +141,11 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Ngày lập:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 620, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 660, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Hình thức TT:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 700, 100, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 740, 100, -1));
         add(txtmahoadon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 500, 360, 20));
         add(txtmaban, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 540, 360, 20));
         add(txtmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 580, 360, 20));
@@ -240,12 +253,17 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Tổng tiền:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 660, -1, -1));
-        add(txttongtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 660, 360, 20));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 700, -1, -1));
+        add(txttongtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 700, 360, 20));
 
         cboHTTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "chuyển khoản" }));
-        add(cboHTTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 700, 360, -1));
-        add(dcNgayLap, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 620, 360, -1));
+        add(cboHTTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 740, 360, -1));
+        add(dcNgayLap, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 660, 360, -1));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setText("Tên khách:");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 620, -1, -1));
+        add(txtTenKhach, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 620, 360, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnvedauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvedauActionPerformed
@@ -274,11 +292,6 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         fillToTableTheoDieuKien();
     }//GEN-LAST:event_btnTiemkiemActionPerformed
 
-    private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
-        // TODO add your handling code here:
-        create();
-    }//GEN-LAST:event_btnthemActionPerformed
-
     private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
         // TODO add your handling code here:
         delete();
@@ -291,7 +304,7 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
 
     private void btnlammoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlammoiActionPerformed
         // TODO add your handling code here:
-        create();
+        clear();
     }//GEN-LAST:event_btnlammoiActionPerformed
 
     private void tblhoadonAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblhoadonAncestorAdded
@@ -303,6 +316,11 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         // TODO add your handling code here:
         edit();
     }//GEN-LAST:event_tblhoadonMouseClicked
+
+    private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
+        // TODO add your handling code here:
+        create();
+    }//GEN-LAST:event_btnthemActionPerformed
     
     public void fillToTableTheoDieuKien() {
     try {
@@ -346,6 +364,7 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     private javax.swing.JButton btnxoa;
     private javax.swing.JComboBox<String> cboHTTT;
     private com.toedter.calendar.JDateChooser dcNgayLap;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -354,10 +373,12 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblhoadon;
     private javax.swing.JTextField txtFind;
+    private javax.swing.JTextField txtTenKhach;
     private javax.swing.JTextField txtmaban;
     private javax.swing.JTextField txtmahoadon;
     private javax.swing.JTextField txtmanv;
@@ -372,7 +393,8 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     @Override
     public void setForm(Model.HoaDon entity) {
          txtmahoadon.setText(entity.getMaHD());
-    txtmanv.setText(entity.getMaNV());
+         txtTenKhach.setText(entity.getTenKH());
+    txtmanv.setText(UAuth.user.getMaNV());
     txtmaban.setText(entity.getMaBan());
     txttongtien.setText(String.valueOf(entity.getHinhThucTT()));
     dcNgayLap.setDate(entity.getNgayLap());
@@ -388,7 +410,7 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     public Model.HoaDon getForm() {
              HoaDon hd = new HoaDon();
     HoaDonImpl vtDao = new HoaDonImpl();
-
+    hd.setTenKH(txtTenKhach.getText().trim());
     hd.setMaHD(txtmahoadon.getText().trim());
     hd.setMaNV(txtmanv.getText().trim());
     hd.setMaBan(txtmaban.getText().trim());

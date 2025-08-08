@@ -29,88 +29,67 @@ import javax.swing.ImageIcon;
  * @author baoha
  */
 public class doanhThuView extends javax.swing.JPanel {
+private DoanhThuImpl doanhThuDao;
+private DecimalFormat df = new DecimalFormat("#,###.##");
 
-    private DoanhThuImpl doanhThuDao;
-    private DecimalFormat df = new DecimalFormat("##,###,###");
-    private ArrayList<ModelChart> list;
-    public doanhThuView() {
-        initComponents();
-        doanhThuDao = new DoanhThuImpl();
-        initCard("Tháng");
-        initCard("Ngày");
-        initCard("Nhân viên");
-        initChart();
+
+// Giao diện label để hiển thị doanh thu tháng được chọn
+
+public doanhThuView(boolean visible) {
+    initComponents();
+    doanhThuDao = new DoanhThuImpl();
+    fillCboThang();         // Load danh sách tháng vào comboBox
+    addEventForComboBox();  // Bắt sự kiện chọn tháng
+    add(lblDoanhThuThang);  // Thêm label vào giao diện (đặt vị trí phù hợp trong layout)
+    // Gọi biểu đồ với tháng đầu tiên khi mở form
+    setButtonVisible(visible);
     }
-
-    private ImageIcon loadIcon(String path) {
-        java.net.URL location = getClass().getResource(path);
-        if (location == null) {
-            System.err.println("Không tìm thấy ảnh: " + path);
-            return new ImageIcon(); // hoặc return null;
-        }
-        return new ImageIcon(location);
+    public void setButtonVisible(boolean visible) {
+    jButton1.setVisible(visible);
+} 
+private void fillCboThang() {
+    List<String> danhSachThang = doanhThuDao.getDanhSachThang();
+    cboThang.removeAllItems();
+    for (String thang : danhSachThang) {
+        cboThang.addItem(thang);
     }
-
-    public void initCard(String filter) {
-        try {
-            double total = 0;
-            String title = "";
-            String iconPath = "";
-
-            if ("Tháng".equals(filter)) {
-                List<doanhthu> list = doanhThuDao.getDoanhThuTheoThangCaoNhat();
-                for (doanhthu d : list) {
-                    total += d.getTongTien();
-                }
-                title = "Doanh Thu Tháng cao nhất";
-                iconPath = "/img/revenue.png";
-                Thang.setData(new ModelCard(loadIcon(iconPath), title, df.format(total) + "đ", ". . ."));
-
-            } else if ("Ngày".equals(filter)) {
-                List<doanhthu> list = doanhThuDao.getDoanhThuNgayCaoNhatTrongTuan();
-                for (doanhthu d : list) {
-                    total += d.getTongTien();
-                }
-                title = "Doanh Thu Ngày cao nhất trong tuần";
-                iconPath = "/img/expenses.png";
-                Ngay.setData(new ModelCard(loadIcon(iconPath), title, df.format(total) + "đ", ". . ."));
-
-            } else if ("Nhân viên".equals(filter)) {
-                List<doanhthu> list = doanhThuDao.getNhanVienDoanhThuCaoNhat();
-                for (doanhthu d : list) {
-                    total += d.getTongTien();
-                }
-                title = "Doanh Thu Nhân Viên cao nhất";
-                iconPath = "/img/profit.png";
-                NhanVien.setData(new ModelCard(loadIcon(iconPath), title, df.format(total) + "đ", ". . ."));
-            }
-
-            Thang.repaint();
-            Ngay.repaint();
-            NhanVien.repaint();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    if (!danhSachThang.isEmpty()) {
+        cboThang.setSelectedIndex(0); // Hiển thị doanh thu tháng đầu tiên
     }
-public void initChart() {
-    lineChart.clear();  // ✨ Xóa dữ liệu cũ nếu có
+}
 
-    // Thêm legend (mỗi loại là 1 đường biểu đồ)
-    lineChart.addLegend("Doanh Thu theo Tháng", new Color(79,172,254), new Color(79,172,254, 80));
-    lineChart.addLegend("Doanh Thu theo Ngày cao nhất", new Color(109, 222, 202), new Color(109, 222, 202, 80));
-    lineChart.addLegend("Doanh Thu theo Nhân Viên cao nhất", new Color(255, 153, 0), new Color(255, 153, 0, 80));
+private void initChart(String thang) {
+    // Xóa dữ liệu cũ
+    lineChart.clear();
 
-    // Lấy dữ liệu từ DAO và truyền vào biểu đồ
-    list = doanhThuDao.getThongTinDoanhThuTuyChinh();
-    for (ModelChart data : list) {
-    double[] values = data.getValues();  // lấy mảng giá trị [tháng, ngày, nhân viên]
-    System.out.println("✔ " + data.getLabel() + ": " + values[0] + " - " + values[1] + " - " + values[2]);
-    lineChart.addData(data);
+    // Thêm legend
+    lineChart.addLegend("Doanh thu", new Color(245, 189, 135), new Color(245, 189, 135, 200));
+
+    // Lấy doanh thu của tháng được chọn
+    double tong = doanhThuDao.getTongDoanhThuTheoThang(thang);
+
+    // Thêm dữ liệu cho biểu đồ
+    lineChart.addData(new ModelChart("Tháng " + thang, new double[]{tong}));
+
+    // Hiển thị biểu đồ
+    lineChart.start();
 }
 
 
-    lineChart.start(); // Bắt đầu animation
+
+private void addEventForComboBox() {
+    String thangNam = (String) cboThang.getSelectedItem();
+    cboThang.addActionListener(e -> {
+        if (thangNam != null) {
+    double tong = doanhThuDao.getTongDoanhThuTheoThang(thangNam);
+    if (tong > 0) {
+        lblDoanhThuThang.setText("Tổng doanh thu tháng " + thangNam + ": " + df.format(tong) + " VNĐ");
+    } else {
+        lblDoanhThuThang.setText("Không có dữ liệu doanh thu cho tháng " + thangNam);
+    }
+}
+
+    });
 }
   /**
      * This method is called from within the constructor to initialize the form.
@@ -121,6 +100,7 @@ public void initChart() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -129,16 +109,25 @@ public void initChart() {
         NhanVien = new View.Card();
         Thang = new View.Card();
         Ngay = new View.Card();
-        filter = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         lineChart = new View.LineChart();
+        cboThang = new javax.swing.JComboBox<>();
+        lblDoanhThuThang = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setContentAreaFilled(false);
+        jButton1.setEnabled(false);
+        jButton1.setFocusable(false);
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 800));
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Doanh Thu");
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Doanh Thu");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
 
@@ -164,9 +153,12 @@ public void initChart() {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/expenses.png"))); // NOI18N
         jLabel2.setText("THỐNG KÊ DOANH THU");
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 98, 254, 43));
 
         Thang.setColor1(new java.awt.Color(227, 127, 20));
         Thang.setColor2(new java.awt.Color(240, 222, 132));
@@ -200,70 +192,51 @@ public void initChart() {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        filter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng", "Ngày", "Nhân viên", "Khách hàng" }));
-        filter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filterActionPerformed(evt);
-            }
-        });
+        add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 171, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/revenue.png"))); // NOI18N
         jLabel3.setText("Biểu đồ");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 350, 254, 43));
+        add(lineChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 399, 1338, 413));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(filter, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addComponent(lineChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(filter, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lineChart, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE))
-        );
+        cboThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboThang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboThangActionPerformed(evt);
+            }
+        });
+        add(cboThang, new org.netbeans.lib.awtextra.AbsoluteConstraints(1076, 91, 134, 62));
+
+        lblDoanhThuThang.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblDoanhThuThang.setText("Tổng doanh thu: ");
+        add(lblDoanhThuThang, new org.netbeans.lib.awtextra.AbsoluteConstraints(837, 361, 501, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterActionPerformed
+    private void cboThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboThangActionPerformed
         // TODO add your handling code here:
-        initCard(filter.getSelectedItem().toString());
-    }//GEN-LAST:event_filterActionPerformed
+        String thangDuocChon = (String) cboThang.getSelectedItem();
+        if (thangDuocChon != null) {
+            double tongDoanhThu = new DoanhThuImpl().getTongDoanhThuTheoThang(thangDuocChon);
+            lblDoanhThuThang.setText("Tổng doanh thu tháng " + thangDuocChon + ": " + df.format(tongDoanhThu) + " VNĐ");
+            initChart(thangDuocChon);
+        }
+    }//GEN-LAST:event_cboThangActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private View.Card Ngay;
     private View.Card NhanVien;
     private View.Card Thang;
-    private javax.swing.JComboBox<String> filter;
+    private javax.swing.JComboBox<String> cboThang;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblDoanhThuThang;
     private View.LineChart lineChart;
     // End of variables declaration//GEN-END:variables
 }

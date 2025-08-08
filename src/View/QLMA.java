@@ -42,10 +42,13 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
     /**
      * Creates new form QLMA
      */
-    public QLMA() {
+    public QLMA(boolean visible) {
         initComponents();
+    setButtonVisible(visible);
     }
-
+    public void setButtonVisible(boolean visible) {
+    jButton1.setVisible(visible);
+} 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,6 +61,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
         btnTien = new javax.swing.JButton();
         btnTruoc = new javax.swing.JButton();
         btnDau = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -76,7 +80,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
         btnTien1 = new javax.swing.JButton();
         btnTruoc1 = new javax.swing.JButton();
         btnDau1 = new javax.swing.JButton();
-        lblHinhAnh = new javax.swing.JLabel();
+        lblAnh = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMonAn = new javax.swing.JTable();
@@ -112,6 +116,14 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
             }
         });
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setContentAreaFilled(false);
+        jButton1.setEnabled(false);
+        jButton1.setFocusable(false);
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 1310, 800));
+
         jPanel4.setBackground(new java.awt.Color(173, 139, 115));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -144,6 +156,8 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         txtMaMon.setEnabled(false);
 
@@ -194,8 +208,8 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
             }
         });
 
-        lblHinhAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHinhAnh.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        lblAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAnh.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jButton2.setText("Chọn ảnh");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -244,19 +258,18 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
                         .addComponent(txtMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(73, 73, 73)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,11 +298,13 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
                             .addComponent(btnTruoc1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnTien1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 152, 1392, -1));
 
         tblMonAn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -313,8 +328,12 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
         });
         jScrollPane1.setViewportView(tblMonAn);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 1392, 437));
+
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Tìm kiếm :");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 109, -1, -1));
+        add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 109, 258, -1));
 
         btnTiemkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/find.png"))); // NOI18N
         btnTiemkiem.addActionListener(new java.awt.event.ActionListener() {
@@ -322,6 +341,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
                 btnTiemkiemActionPerformed(evt);
             }
         });
+        add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 109, -1, -1));
 
         btnThem.setText("THÊM");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -329,6 +349,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
                 btnThemActionPerformed(evt);
             }
         });
+        add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 117, -1, -1));
 
         btnXoa.setText("XÓA");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -336,6 +357,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
                 btnXoaActionPerformed(evt);
             }
         });
+        add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(546, 117, -1, -1));
 
         btnSua.setText("SỬA");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -343,6 +365,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
                 btnSuaActionPerformed(evt);
             }
         });
+        add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(626, 117, -1, -1));
 
         btnLamMoi.setText("LÀM MỚI");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -350,52 +373,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
                 btnLamMoiActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(btnTiemkiem)
-                .addGap(62, 62, 62)
-                .addComponent(btnThem)
-                .addGap(18, 18, 18)
-                .addComponent(btnXoa)
-                .addGap(8, 8, 8)
-                .addComponent(btnSua)
-                .addGap(18, 18, 18)
-                .addComponent(btnLamMoi)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTiemkiem)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnThem)
-                            .addComponent(btnXoa)
-                            .addComponent(btnSua)
-                            .addComponent(btnLamMoi))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE))
-        );
+        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 117, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoiActionPerformed
@@ -499,8 +477,8 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
 
                 // Hiển thị ảnh với kích thước 150x150
                 ImageIcon icon = new ImageIcon("src/img/" + tenFile);
-                Image img = icon.getImage().getScaledInstance(198, 174, Image.SCALE_SMOOTH);
-                lblHinhAnh.setIcon(new ImageIcon(img));
+                Image img = icon.getImage().getScaledInstance(200, 174, Image.SCALE_SMOOTH);
+                lblAnh.setIcon(new ImageIcon(img));
             } catch (IOException e) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(this, "Lỗi khi sao chép ảnh!");
@@ -522,6 +500,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
     private javax.swing.JButton btnTruoc;
     private javax.swing.JButton btnTruoc1;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
@@ -534,7 +513,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblHinhAnh;
+    private javax.swing.JLabel lblAnh;
     private javax.swing.JTable tblMonAn;
     private javax.swing.JTextField txtDonGia;
     private javax.swing.JTextField txtFind;
@@ -543,15 +522,38 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
     private javax.swing.JTextField txtMoTa;
     private javax.swing.JTextField txtTenMon;
     // End of variables declaration//GEN-END:variables
-@Override
+private void hienThiAnh(String duongDan) {
+    ImageIcon icon = new ImageIcon(duongDan);
+    Image img = icon.getImage().getScaledInstance(200, 174, Image.SCALE_SMOOTH);
+    lblAnh.setIcon(new ImageIcon(img));
+    }
+    @Override
 public void setForm(MonAn entity) {
     txtMaMon.setText(entity.getMaMon());
     txtTenMon.setText(entity.getTenMon());
     txtDonGia.setText(String.valueOf(entity.getDonGia()));
     txtMoTa.setText(entity.getMoTa());
     txtMaLoai.setText(String.valueOf(entity.l.getMaLoai()));
-    lblHinhAnh.setToolTipText(entity.getHinhAnh());
-}
+    String tenAnh = entity.getAnh(); // chỉ là tên file, ví dụ: nv01.jpg
+
+    if (tenAnh != null && !tenAnh.isEmpty()) {
+        String fullPath = "src/img/" + tenAnh; // Đường dẫn mới
+        File file = new File(fullPath);
+
+        if (file.exists()) {
+            ImageIcon icon = new ImageIcon(fullPath);
+            Image img = icon.getImage().getScaledInstance(206, 176, Image.SCALE_SMOOTH);
+            lblAnh.setIcon(new ImageIcon(img));
+        } else {
+            lblAnh.setIcon(null);
+            System.out.println("Không tìm thấy ảnh: " + fullPath);
+        }
+    } else {
+        lblAnh.setIcon(null);
+    }
+
+    }
+
 
 @Override
 public MonAn getForm() {
@@ -564,7 +566,7 @@ public MonAn getForm() {
         m.setDonGia(0);
     }
     m.setMoTa(txtMoTa.getText().trim());
-    m.setHinhAnh(lblHinhAnh.getToolTipText());
+     m.setAnh(tenAnh); 
     m.l.setMaLoai(Integer.parseInt(txtMaLoai.getText().trim()));
     return m;
 }
@@ -714,7 +716,7 @@ public void fillToTableTheoDieuKien(){
                 mon.getTenMon(),
                 mon.getDonGia(),
                 mon.getMoTa(),
-                mon.getHinhAnh(),
+                mon.getAnh(),
                 mon.getMaLoai()
             };
             model.addRow(row);

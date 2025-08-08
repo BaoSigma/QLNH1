@@ -41,10 +41,13 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
     /**
      * Creates new form QLLM
      */
-    public QLLM() {
+    public QLLM(boolean visible) {
         initComponents();
+    setButtonVisible(visible);
     }
-
+    public void setButtonVisible(boolean visible) {
+    jButton1.setVisible(visible);
+} 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,6 +78,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         txtMaLoai = new javax.swing.JTextField();
         txtTenLoai = new javax.swing.JTextField();
@@ -281,6 +285,14 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setContentAreaFilled(false);
+        jButton1.setEnabled(false);
+        jButton1.setFocusable(false);
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 800));
+
         txtMaLoai.setEnabled(false);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -345,7 +357,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                         .addComponent(btnTien2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36)
                 .addComponent(btnCuoi1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(874, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,6 +378,8 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                     .addComponent(btnTien2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 234, 1392, -1));
 
         tblLoaiMon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -388,6 +402,8 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
             }
         });
         jScrollPane2.setViewportView(tblLoaiMon);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 471, 1392, 340));
 
         jPanel5.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -422,8 +438,12 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("Tìm kiếm :");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 109, -1, -1));
+        add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 109, 258, -1));
 
         btnTiemkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/find.png"))); // NOI18N
         btnTiemkiem.addActionListener(new java.awt.event.ActionListener() {
@@ -431,6 +451,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                 btnTiemkiemActionPerformed(evt);
             }
         });
+        add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 109, -1, -1));
 
         btnThem.setText("THÊM");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -438,6 +459,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                 btnThemActionPerformed(evt);
             }
         });
+        add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 117, -1, -1));
 
         btnXoa.setText("XÓA");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -445,6 +467,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                 btnXoaActionPerformed(evt);
             }
         });
+        add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(546, 117, -1, -1));
 
         btnSua.setText("SỬA");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -452,6 +475,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                 btnSuaActionPerformed(evt);
             }
         });
+        add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(626, 117, -1, -1));
 
         btnLamMoi.setText("LÀM MỚI");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -459,68 +483,14 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                 btnLamMoiActionPerformed(evt);
             }
         });
+        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 117, -1, -1));
 
         txtTenMua.setEnabled(false);
+        add(txtTenMua, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 206, 270, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setText("Mùa:");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane2)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel12)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(btnTiemkiem)
-                        .addGap(62, 62, 62)
-                        .addComponent(btnThem)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnXoa)
-                        .addGap(8, 8, 8)
-                        .addComponent(btnSua)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLamMoi))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(363, 363, 363)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTenMua, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTiemkiem)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnThem)
-                            .addComponent(btnXoa)
-                            .addComponent(btnSua)
-                            .addComponent(btnLamMoi))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTenMua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 206, 96, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoiActionPerformed
@@ -621,6 +591,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
     private javax.swing.JButton btnTruoc1;
     private javax.swing.JButton btnTruoc2;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

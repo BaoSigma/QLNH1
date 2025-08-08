@@ -11,7 +11,6 @@ import Model.BanAn;
 import Model.DatBan;
 import Model.DatBanINFOR;
 import Model.HoaDon;
-import Model.KhachHang;
 import Model.MonAn;
 import Util.UAuth;
 import Util.UDialog;
@@ -35,7 +34,6 @@ import javax.swing.JOptionPane;
 public class carddatban extends javax.swing.JPanel {
 private DatBan data;
 OrderImpl daor = new OrderImpl();
-private KhachHang kh;
 private BanAn b = new BanAn();
 private ConfirmDatBan obj;
 private DatBanDAO dao = new DatBanimpl();
@@ -45,7 +43,6 @@ private DBFORM dbf;
 public carddatban(BanAn b, DBFORM dbf) {
     this.b = b;
     this.dbf = dbf;  // dùng tham chiếu DBFORM có sẵn, không tạo mới
-    this.kh = new KhachHang();
     this.data = new DatBan();
     initComponents();
     init(); // Truyền mã KH
@@ -67,7 +64,7 @@ public void gandulieu() {
     btnXacNhan.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            String maKH = txtMaKH.getText();
+            String maKH = txttenKH.getText();
             String maBan = b.getMaBan();  // đảm bảo b != null
             Date ngayDat = txtNgayDat.getDate();
             LocalTime gioDat = tPGioDat.getTime();
@@ -132,7 +129,7 @@ public void gandulieu() {
         tPGioDat = new com.github.lgooddatepicker.components.TimePicker();
         txtNgayDat = new com.toedter.calendar.JDateChooser();
         jLabel5 = new javax.swing.JLabel();
-        txtMaKH = new javax.swing.JTextField();
+        txttenKH = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -198,10 +195,10 @@ public void gandulieu() {
         add(tPGioDat, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 90, -1));
         add(txtNgayDat, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 90, 20));
 
-        jLabel5.setText("Mã khách hàng:");
+        jLabel5.setText("Tên khách hàng");
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
-        add(txtMaKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 100, -1));
+        add(txttenKH, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 100, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -239,8 +236,8 @@ public void gandulieu() {
     private javax.swing.JLabel lblBan;
     private javax.swing.JLabel lblNumber;
     private com.github.lgooddatepicker.components.TimePicker tPGioDat;
-    private javax.swing.JTextField txtMaKH;
     private com.toedter.calendar.JDateChooser txtNgayDat;
     private View.MyTextField txtSonguoi;
+    private javax.swing.JTextField txttenKH;
     // End of variables declaration//GEN-END:variables
 }

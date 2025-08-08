@@ -16,13 +16,18 @@ import java.util.List;
  */
 public class HoaDonImpl implements HoaDonDAO{
     private static final String sqlInsert = """
-        INSERT INTO HoaDon (MaHD, MaBan, MaNV, NgayLap, TongTien, HinhThucTT)
-        VALUES (?, ?, ?, ?, ?, ?);
+        EXEC sp_ThemHoaDon 
+            @MaBan = '?', 
+            @MaNV = '?', 
+            @NgayLap = '?',
+            @TongTien = '?',
+            @HinhThucTT = '?',
+            @TenKH = '?';
     """;
 
     private static final String sqlUpdate = """
         UPDATE HoaDon
-        SET MaBan = ?, MaNV = ?, NgayLap = ?, TongTien = ?, HinhThucTT = ?
+        SET MaBan = ?, MaNV = ?, NgayLap = ?, TongTien = ?, HinhThucTT = ?, TenKH = ?
         WHERE MaHD = ?;
     """;
 

@@ -27,12 +27,16 @@ public class QLKV extends javax.swing.JPanel {
     /**
      * Creates new form QLKV
      */
-    public QLKV() {
+    public QLKV(boolean visible) {
         initComponents();
         
         hover();
         
+    setButtonVisible(visible);
     }
+    public void setButtonVisible(boolean visible) {
+    jButton1.setVisible(visible);
+} 
     private JLabel selectedLabel = null;
 
 public void addHoverAndClickEffect(JLabel label, Color normalColor, Color hoverColor, Color selectedColor) {
@@ -83,7 +87,7 @@ public void hover() {
 }
 
     public void BanA(){
-         String tang = "Khu A";
+            String tang = "Khu A";
     jPanel2.removeAll();
     try {
         KhuVucImp dao = new KhuVucImp();
@@ -132,6 +136,7 @@ public void hover() {
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -195,6 +200,12 @@ public void hover() {
         );
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setContentAreaFilled(false);
+        jButton1.setEnabled(false);
+        jButton1.setFocusable(false);
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 800));
 
         jPanel5.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -333,6 +344,7 @@ public void hover() {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JPanel jPanel1;
