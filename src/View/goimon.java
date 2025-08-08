@@ -131,7 +131,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jButton1.setContentAreaFilled(false);
         jButton1.setEnabled(false);
         jButton1.setFocusable(false);
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 800));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 800));
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -358,7 +358,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         });
         jScrollPane2.setViewportView(tblGoimon);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 135, 679, 302));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 679, 302));
 
         btnDongY.setBackground(new java.awt.Color(173, 139, 115));
         btnDongY.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -369,7 +369,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
                 btnDongYActionPerformed(evt);
             }
         });
-        add(btnDongY, new org.netbeans.lib.awtextra.AbsoluteConstraints(1266, 724, 151, 61));
+        add(btnDongY, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 640, 151, 61));
 
         btnHuyBo.setBackground(new java.awt.Color(173, 139, 115));
         btnHuyBo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -380,7 +380,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
                 btnHuyBoActionPerformed(evt);
             }
         });
-        add(btnHuyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 724, 162, 61));
+        add(btnHuyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 640, 162, 61));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("TÌM KIẾM :");
@@ -401,12 +401,12 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("THÀNH TIỀN:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 597, 135, 54));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 520, 135, 54));
 
         lblTongTien.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTongTien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongTien.setText("0.0");
-        add(lblTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 597, 110, 54));
+        add(lblTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 520, 110, 54));
 
         cboBanAn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboBanAn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -419,21 +419,21 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
                 cboBanAnActionPerformed(evt);
             }
         });
-        add(cboBanAn, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 529, 234, 62));
+        add(cboBanAn, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, 234, 62));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Bàn ăn:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 487, 68, 34));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 410, 68, 34));
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1269, 443, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Phương thức thanh toán:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1196, 489, 183, 34));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 410, 230, 34));
 
         cboPTTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "chuyển khoản", "khác" }));
-        add(cboPTTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(1196, 529, 221, 62));
+        add(cboPTTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 450, 221, 62));
 
         btnDel.setBackground(new java.awt.Color(173, 139, 115));
         btnDel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -445,7 +445,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
                 btnDelActionPerformed(evt);
             }
         });
-        add(btnDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 657, 679, 61));
+        add(btnDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 570, 679, 61));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed

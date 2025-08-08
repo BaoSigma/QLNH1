@@ -291,7 +291,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
         jButton1.setContentAreaFilled(false);
         jButton1.setEnabled(false);
         jButton1.setFocusable(false);
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 800));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1240, 800));
 
         txtMaLoai.setEnabled(false);
 
@@ -486,11 +486,11 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
         add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 117, -1, -1));
 
         txtTenMua.setEnabled(false);
-        add(txtTenMua, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 206, 270, -1));
+        add(txtTenMua, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 270, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setText("Mùa:");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 206, 96, -1));
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 40, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoiActionPerformed
@@ -536,7 +536,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
     private void tblLoaiMonAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblLoaiMonAncestorAdded
         // TODO add your handling code here:
         DefaultTableModel model = new DefaultTableModel(
-            new Object[]{"Mã Loại", "Tên Loại", "Tên Mùa"},
+            new Object[]{"Mã Loại", "Tên Loại"},
             0
         ) {
             @Override
