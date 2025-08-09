@@ -60,6 +60,7 @@ public class HoaDonImpl implements HoaDonDAO{
             entity.getNgayLap(),
             entity.getTongTien(),
             entity.getHinhThucTT(),
+            entity.getTenKH(),
             entity.getMaHD()
         };
         UJdbc.executeUpdate(sqlUpdate, values);
@@ -84,20 +85,20 @@ public class HoaDonImpl implements HoaDonDAO{
     }
     public List<HoaDon> findByKeyword(String keyword) {
     String sql = """
-        SELECT TOP (1000)
+        SELECT 
             MaHD,
             MaBan,
             MaNV,
             NgayLap,
             TongTien,
             HinhThucTT,
-            MaKH
+            TenKH
         FROM HoaDon
         WHERE MaHD LIKE ?
            OR MaBan LIKE ?
            OR MaNV LIKE ?
            OR HinhThucTT LIKE ?
-           OR MaKH LIKE ?
+           OR TenKH LIKE ?
     """;
 
     String value = "%" + keyword + "%";

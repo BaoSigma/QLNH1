@@ -61,10 +61,6 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBanAn = new javax.swing.JTable();
-        btnDau = new javax.swing.JButton();
-        btnTruoc = new javax.swing.JButton();
-        btnTien = new javax.swing.JButton();
-        btnCuoi = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -78,6 +74,10 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         btnLamMoi = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtSoluongBan = new javax.swing.JTextField();
+        btnvecuoi = new javax.swing.JButton();
+        btntien = new javax.swing.JButton();
+        btntruoc = new javax.swing.JButton();
+        btnvedau = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -85,7 +85,12 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         jButton1.setContentAreaFilled(false);
         jButton1.setEnabled(false);
         jButton1.setFocusable(false);
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 620));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1190, 620));
 
         tblBanAn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,42 +120,6 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         jScrollPane1.setViewportView(tblBanAn);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 172, 1460, 447));
-
-        btnDau.setBackground(new java.awt.Color(173, 139, 115));
-        btnDau.setText("Về đầu");
-        btnDau.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDauActionPerformed(evt);
-            }
-        });
-        add(btnDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(627, 143, 83, -1));
-
-        btnTruoc.setBackground(new java.awt.Color(173, 139, 115));
-        btnTruoc.setText("Trước");
-        btnTruoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTruocActionPerformed(evt);
-            }
-        });
-        add(btnTruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 143, 83, -1));
-
-        btnTien.setBackground(new java.awt.Color(173, 139, 115));
-        btnTien.setText("Tiến");
-        btnTien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTienActionPerformed(evt);
-            }
-        });
-        add(btnTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(805, 143, 83, -1));
-
-        btnCuoi.setBackground(new java.awt.Color(173, 139, 115));
-        btnCuoi.setText("Về cuối");
-        btnCuoi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCuoiActionPerformed(evt);
-            }
-        });
-        add(btnCuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 143, 83, -1));
 
         jPanel4.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -238,27 +207,55 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         jLabel1.setText("Số lượng bàn:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 146, -1, -1));
         add(txtSoluongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 143, -1, -1));
+
+        btnvecuoi.setBackground(new java.awt.Color(173, 139, 115));
+        btnvecuoi.setText("Về cuối");
+        btnvecuoi.setMaximumSize(new java.awt.Dimension(50, 20));
+        btnvecuoi.setMinimumSize(new java.awt.Dimension(50, 20));
+        btnvecuoi.setPreferredSize(new java.awt.Dimension(50, 20));
+        btnvecuoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvecuoiActionPerformed(evt);
+            }
+        });
+        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 140, 100, 30));
+
+        btntien.setBackground(new java.awt.Color(173, 139, 115));
+        btntien.setText("Tiến");
+        btntien.setMaximumSize(new java.awt.Dimension(50, 20));
+        btntien.setMinimumSize(new java.awt.Dimension(50, 20));
+        btntien.setPreferredSize(new java.awt.Dimension(50, 20));
+        btntien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntienActionPerformed(evt);
+            }
+        });
+        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 140, 100, 30));
+
+        btntruoc.setBackground(new java.awt.Color(173, 139, 115));
+        btntruoc.setText("Trước");
+        btntruoc.setMaximumSize(new java.awt.Dimension(50, 20));
+        btntruoc.setMinimumSize(new java.awt.Dimension(50, 20));
+        btntruoc.setPreferredSize(new java.awt.Dimension(50, 20));
+        btntruoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntruocActionPerformed(evt);
+            }
+        });
+        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, 90, 30));
+
+        btnvedau.setBackground(new java.awt.Color(173, 139, 115));
+        btnvedau.setText("Về đầu");
+        btnvedau.setMaximumSize(new java.awt.Dimension(50, 20));
+        btnvedau.setMinimumSize(new java.awt.Dimension(50, 20));
+        btnvedau.setPreferredSize(new java.awt.Dimension(50, 20));
+        btnvedau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvedauActionPerformed(evt);
+            }
+        });
+        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, 90, 30));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnDauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDauActionPerformed
-        // TODO add your handling code here:
-     
-    }//GEN-LAST:event_btnDauActionPerformed
-
-    private void btnTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTruocActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnTruocActionPerformed
-
-    private void btnTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTienActionPerformed
-        // TODO add your handling code here:
-    
-    }//GEN-LAST:event_btnTienActionPerformed
-
-    private void btnCuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoiActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnCuoiActionPerformed
 
     private void btnTiemkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiemkiemActionPerformed
         // TODO add your handling code here:
@@ -289,7 +286,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
     private void tblBanAnAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblBanAnAncestorAdded
         // TODO add your handling code here:
         DefaultTableModel model = new DefaultTableModel(
-            new Object[]{"Mã Khu Vực", "Tên Khu Vực", "Mã Bàn", "Tên Bàn"},
+            new Object[]{"Mã Bàn", "Số Bàn", "Trạng Thái", "Mã Khu Vực"},
             0
         ) {
             @Override
@@ -307,17 +304,42 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         edit();
     }//GEN-LAST:event_tblBanAnMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnvecuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvecuoiActionPerformed
+        // TODO add your handling code here:
+        moveLast();
+    }//GEN-LAST:event_btnvecuoiActionPerformed
+
+    private void btntienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntienActionPerformed
+        // TODO add your handling code here:
+        moveNext();
+    }//GEN-LAST:event_btntienActionPerformed
+
+    private void btntruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntruocActionPerformed
+        // TODO add your handling code here:
+        movePrevious();
+    }//GEN-LAST:event_btntruocActionPerformed
+
+    private void btnvedauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvedauActionPerformed
+        // TODO add your handling code here:
+        moveFirst();
+
+    }//GEN-LAST:event_btnvedauActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCuoi;
-    private javax.swing.JButton btnDau;
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnTiemkiem;
-    private javax.swing.JButton btnTien;
-    private javax.swing.JButton btnTruoc;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btntien;
+    private javax.swing.JButton btntruoc;
+    private javax.swing.JButton btnvecuoi;
+    private javax.swing.JButton btnvedau;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cboMaKV;
     private javax.swing.JButton jButton1;

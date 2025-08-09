@@ -79,7 +79,12 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         jButton1.setContentAreaFilled(false);
         jButton1.setEnabled(false);
         jButton1.setFocusable(false);
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 800));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 980, 400));
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -108,13 +113,13 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
 
         tblhoadon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã hóa đơn", "Mã bàn", "Mã nhân viên", "Ngày lập", "Tổng tiền", "Hình thức TT"
+                "Mã hóa đơn", "Mã bàn", "Mã nhân viên", "Ngày lập", "Tổng tiền", "Hình thức TT", "Tên khách hàng"
             }
         ));
         tblhoadon.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -137,15 +142,18 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Mã hóa đơn:");
+        jLabel2.setEnabled(false);
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Ngày lập:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 660, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 500, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Hình thức TT:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 740, 100, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 580, 100, -1));
+
+        txtmahoadon.setEnabled(false);
         add(txtmahoadon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 500, 360, 20));
         add(txtmaban, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 540, 360, 20));
         add(txtmanv, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 580, 360, 20));
@@ -253,12 +261,17 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Tổng tiền:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 700, -1, -1));
-        add(txttongtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 700, 360, 20));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 540, -1, -1));
+        add(txttongtien, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 540, 360, 20));
 
-        cboHTTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "chuyển khoản" }));
-        add(cboHTTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 740, 360, -1));
-        add(dcNgayLap, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 660, 360, -1));
+        cboHTTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "Chuyển khoản" }));
+        cboHTTT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboHTTTActionPerformed(evt);
+            }
+        });
+        add(cboHTTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 580, 360, -1));
+        add(dcNgayLap, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 500, 360, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Tên khách:");
@@ -321,8 +334,17 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         // TODO add your handling code here:
         create();
     }//GEN-LAST:event_btnthemActionPerformed
+
+    private void cboHTTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboHTTTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboHTTTActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     public void fillToTableTheoDieuKien() {
+       
     try {
          HoaDonImpl dao = new HoaDonImpl(); 
         String keyword = txtFind.getText().trim();
@@ -343,7 +365,8 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
                 hd.getMaNV(),
                 hd.getNgayLap(),
                 hd.getTongTien(),
-                hd.getHinhThucTT()
+                hd.getHinhThucTT(),
+                hd.getTenKH()
             };
             model.addRow(row);
         }
@@ -396,14 +419,15 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
          txtTenKhach.setText(entity.getTenKH());
     txtmanv.setText(UAuth.user.getMaNV());
     txtmaban.setText(entity.getMaBan());
-    txttongtien.setText(String.valueOf(entity.getHinhThucTT()));
+    txttongtien.setText(String.valueOf(entity.getTongTien()));
     dcNgayLap.setDate(entity.getNgayLap());
     String httt = entity.getHinhThucTT();
-    if(httt.equals("Tiền mặt")){
+    if ("Tiền mặt".equals(httt)) {
         cboHTTT.setSelectedItem("Tiền mặt");
-    }else{
+    } else {
         cboHTTT.setSelectedItem("Chuyển khoản");
     }
+
     }
 
     @Override
@@ -434,6 +458,7 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
                 item.getNgayLap(),
                 item.getTongTien(),
                 item.getHinhThucTT(),
+                item.getTenKH()
             };
             model.addRow(rowData);
         });
@@ -460,8 +485,6 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
 
     @Override
     public void update() {
-        if (!Checkall()) return;
-
         if (UDialog.confirm("Bạn thực sự muốn cập nhật thông tin này?")) {
             HoaDon hd = this.getForm();
             dao.update(hd);
