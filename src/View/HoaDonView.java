@@ -42,9 +42,11 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblhoadon = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -73,6 +75,8 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         jLabel9 = new javax.swing.JLabel();
         txtTenKhach = new javax.swing.JTextField();
 
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
+
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
@@ -84,32 +88,39 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 980, 400));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 690));
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("HÓA ĐƠN");
+        jLabel1.setText("Hóa đơn");
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(582, 582, 582)
+                .addContainerGap(644, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(615, Short.MAX_VALUE))
+                .addGap(498, 498, 498)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1390, 80));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1410, 80));
 
         tblhoadon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,7 +149,7 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
         });
         jScrollPane1.setViewportView(tblhoadon);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1390, 300));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1410, 300));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Mã hóa đơn:");
@@ -389,6 +400,8 @@ public class HoaDonView extends javax.swing.JPanel implements HoaDonController{
     private com.toedter.calendar.JDateChooser dcNgayLap;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -90,7 +90,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1190, 620));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 690));
 
         tblBanAn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,11 +119,11 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         });
         jScrollPane1.setViewportView(tblBanAn);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 172, 1460, 447));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 172, 1420, 520));
 
         jPanel4.setBackground(new java.awt.Color(173, 139, 115));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Quản lý bàn ăn");
@@ -135,28 +135,28 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1342, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(114, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addContainerGap())
+                .addGap(57, 57, 57))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, -1));
 
-        add(cboMaKV, new org.netbeans.lib.awtextra.AbsoluteConstraints(481, 143, 134, -1));
+        add(cboMaKV, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 134, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Tìm kiếm :");
@@ -177,7 +177,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnThemActionPerformed(evt);
             }
         });
-        add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 143, -1, -1));
+        add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, -1));
 
         btnXoa.setText("XÓA");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +185,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnXoaActionPerformed(evt);
             }
         });
-        add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 143, -1, -1));
+        add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
 
         btnSua.setText("SỬA");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +193,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnSuaActionPerformed(evt);
             }
         });
-        add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 143, -1, -1));
+        add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
 
         btnLamMoi.setText("LÀM MỚI");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -201,12 +201,12 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnLamMoiActionPerformed(evt);
             }
         });
-        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 143, -1, -1));
+        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Số lượng bàn:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 146, -1, -1));
-        add(txtSoluongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 143, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        add(txtSoluongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
 
         btnvecuoi.setBackground(new java.awt.Color(173, 139, 115));
         btnvecuoi.setText("Về cuối");
@@ -218,7 +218,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnvecuoiActionPerformed(evt);
             }
         });
-        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 140, 100, 30));
+        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 130, 100, 30));
 
         btntien.setBackground(new java.awt.Color(173, 139, 115));
         btntien.setText("Tiến");
@@ -230,7 +230,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btntienActionPerformed(evt);
             }
         });
-        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 140, 100, 30));
+        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 130, 100, 30));
 
         btntruoc.setBackground(new java.awt.Color(173, 139, 115));
         btntruoc.setText("Trước");
@@ -242,7 +242,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btntruocActionPerformed(evt);
             }
         });
-        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, 90, 30));
+        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, 90, 30));
 
         btnvedau.setBackground(new java.awt.Color(173, 139, 115));
         btnvedau.setText("Về đầu");
@@ -254,7 +254,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnvedauActionPerformed(evt);
             }
         });
-        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, 90, 30));
+        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 130, 90, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTiemkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiemkiemActionPerformed

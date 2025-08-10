@@ -115,7 +115,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
+                .addContainerGap(104, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(jLabel4)
@@ -132,7 +132,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 .addGap(15, 15, 15))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1410, -1));
 
         tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,7 +161,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         });
         jScrollPane1.setViewportView(tblNhanVien);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 145, 1390, 210));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 145, 1410, 210));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Tìm kiếm :");
