@@ -37,71 +37,77 @@ public class UAuth {
 
 
 
-    // Lưu thông tin đăng nhập nhân viên
-    public static void save(NhanVien nv) {
-        try (PrintWriter pw = new PrintWriter(FILE_NV)) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            pw.println(safe(nv.getMaNV()));
-            pw.println(safe(nv.getMatKhau()));
-            pw.println(safe(nv.getHoTen()));
-            pw.println(safe(nv.getEmail()));
-            pw.println(safe(nv.getTenVaiTro()));
-            pw.println(nv.getNgaySinh() != null ? sdf.format(nv.getNgaySinh()) : "");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+// Lưu thông tin đăng nhập nhân viên
+public static void save(NhanVien nv) {
+    try (PrintWriter pw = new PrintWriter(FILE_NV)) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        pw.println(safe(nv.getMaNV()));
+        pw.println(safe(nv.getMatKhau()));
+        pw.println(safe(nv.getHoTen()));
+        pw.println(safe(nv.getEmail()));
+        pw.println(safe(nv.getTenVaiTro()));
+        pw.println(nv.getNgaySinh() != null ? sdf.format(nv.getNgaySinh()) : "");
+        pw.println(safe(nv.getAnh())); // ✅ Lưu ảnh (đường dẫn hoặc tên file)
+    } catch (IOException e) {
+        e.printStackTrace();
     }
-    public static void savexn(NhanVien nv) {
-        try (PrintWriter pw = new PrintWriter(FILE_NV)) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            pw.println(safe(nv.getMaNV()));
-            pw.println(safe(nv.getHoTen()));
-            pw.println(safe(nv.getEmail()));
-            pw.println(safe(nv.getTenVaiTro()));
-            pw.println(nv.getNgaySinh() != null ? sdf.format(nv.getNgaySinh()) : "");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+}
+
+public static void savexn(NhanVien nv) {
+    try (PrintWriter pw = new PrintWriter(FILE_NV)) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        pw.println(safe(nv.getMaNV()));
+        pw.println(safe(nv.getHoTen()));
+        pw.println(safe(nv.getEmail()));
+        pw.println(safe(nv.getTenVaiTro()));
+        pw.println(nv.getNgaySinh() != null ? sdf.format(nv.getNgaySinh()) : "");
+        pw.println(safe(nv.getAnh())); // ✅ Lưu ảnh luôn
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
+
 
 
     // Load thông tin đăng nhập nhân viên
     public static void load() {
-        File file = new File(FILE_NV);
-        if (!file.exists()) return;
+    File file = new File(FILE_NV);
+    if (!file.exists()) return;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String maNV = br.readLine();
-            String matKhau = br.readLine();
-            String hoTen = br.readLine();
-            String email = br.readLine();
-            String tenVaiTro = br.readLine();
-            String namSinhStr = br.readLine();
+    try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+        String maNV = br.readLine();
+        String matKhau = br.readLine();
+        String hoTen = br.readLine();
+        String email = br.readLine();
+        String tenVaiTro = br.readLine();
+        String namSinhStr = br.readLine();
+        String anh = br.readLine(); // ✅ Đọc ảnh
 
-            if (safe(maNV).isEmpty() || safe(matKhau).isEmpty()) return;
+        if (safe(maNV).isEmpty() || safe(matKhau).isEmpty()) return;
 
-            NhanVienDAO dao = new NhanVienImpl();
-            NhanVien nv = dao.findById(maNV);
+        NhanVienDAO dao = new NhanVienImpl();
+        NhanVien nv = dao.findById(maNV);
 
-            if (nv != null && matKhau.equals(nv.getMatKhau())) {
-                nv.setHoTen(hoTen);
-                nv.setEmail(email);
-                nv.setTenVaiTro(tenVaiTro);
+        if (nv != null && matKhau.equals(nv.getMatKhau())) {
+            nv.setHoTen(hoTen);
+            nv.setEmail(email);
+            nv.setTenVaiTro(tenVaiTro);
+            nv.setAnh(anh); // ✅ Gán ảnh
 
-                if (namSinhStr != null && !namSinhStr.isEmpty()) {
-                    try {
-                        Date ns = new SimpleDateFormat("yyyy-MM-dd").parse(namSinhStr);
-                        nv.setNgaySinh(ns);
-                    } catch (Exception ignored) {}
-                }
-
-                user = nv;
+            if (namSinhStr != null && !namSinhStr.isEmpty()) {
+                try {
+                    Date ns = new SimpleDateFormat("yyyy-MM-dd").parse(namSinhStr);
+                    nv.setNgaySinh(ns);
+                } catch (Exception ignored) {}
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            user = nv;
         }
+
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
 
   
 
