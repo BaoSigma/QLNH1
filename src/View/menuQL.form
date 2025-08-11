@@ -51,39 +51,26 @@
                   <Component id="jLabel65" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               </Group>
-              <Group type="102" attributes="0">
+              <Component id="lblBanAn" alignment="1" max="32767" attributes="0"/>
+              <Component id="lblNhanVien" alignment="1" max="32767" attributes="0"/>
+              <Component id="lblHoaDon" alignment="1" max="32767" attributes="0"/>
+              <Component id="lblThongTinCaNhan" alignment="1" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblHoaDon" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblThongTinCaNhan" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNhanVien" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblBanAn" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblKhuvuc" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblCTHD" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblCTHD" max="32767" attributes="0"/>
+                          <Component id="lblKhuvuc" max="32767" attributes="0"/>
+                          <Component id="lblDangXuat" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblThoat" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblMA" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblLM" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblDoanhThu" pref="277" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblThoat" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblLM" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblMA" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDoanhThu" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDangXuat" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblChiTietDatBan" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="lblChiTietDatBan" alignment="1" min="-2" pref="277" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                  <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
+              <Component id="jLabel45" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -112,11 +99,10 @@
                   <Component id="lblLM" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblMA" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace pref="382" max="32767" attributes="0"/>
                   <Component id="lblThoat" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblDangXuat" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="352" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -133,7 +119,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="text" type="java.lang.String" value="Menu"/>
           </Properties>
         </Component>
