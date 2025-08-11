@@ -427,7 +427,7 @@ if (currentPanel instanceof QLNV nv) {
                             .addComponent(lblBanAn)
                             .addComponent(lblKhuvuc)
                             .addComponent(lblCTHD))
-                        .addGap(0, 26, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

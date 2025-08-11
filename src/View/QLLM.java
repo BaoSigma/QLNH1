@@ -291,6 +291,11 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
         jButton1.setContentAreaFilled(false);
         jButton1.setEnabled(false);
         jButton1.setFocusable(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 1080));
 
         txtMaLoai.setEnabled(false);
@@ -588,6 +593,10 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
         // TODO add your handling code here:
         edit();
     }//GEN-LAST:event_tblLoaiMonMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

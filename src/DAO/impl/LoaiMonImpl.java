@@ -87,23 +87,16 @@ public class LoaiMonImpl implements LoaiMonDAO {
     public List<LoaiMon> findByKeyword(String keyword) {
     String sql = """
         SELECT 
-            MaMon,
-            TenMon,
-            DonGia,
-            MoTa,
-            HinhAnh,
-            MaLoai
-        FROM MonAn
-        WHERE MaMon LIKE ? 
-           OR TenMon LIKE ? 
-           OR MoTa LIKE ? 
-           OR HinhAnh LIKE ? 
-           OR CAST(DonGia AS VARCHAR) LIKE ? 
-           OR CAST(MaLoai AS VARCHAR) LIKE ?;
+            MaLoai,
+            TenLoai
+        FROM LoaiMon
+        WHERE MaLoai LIKE ? 
+           OR TenLoai LIKE ? 
+           ;
     """;
 
     String value = "%" + keyword + "%";
-    return UQuery.getBeanList(LoaiMon.class, sql, value, value, value, value, value, value);
+    return UQuery.getBeanList(LoaiMon.class, sql, value, value);
 }
 }
 
