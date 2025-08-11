@@ -98,8 +98,6 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jtabSP = new javax.swing.JTabbedPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblDoUong = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblMonLau = new javax.swing.JTable();
@@ -109,6 +107,8 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         tblMonNhe = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblDoUong = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblGoimon = new javax.swing.JTable();
         btnDongY = new javax.swing.JButton();
@@ -131,13 +131,15 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jButton1.setContentAreaFilled(false);
         jButton1.setEnabled(false);
         jButton1.setFocusable(false);
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 800));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 70));
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Gọi Món");
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("GỌI MÓN");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
 
@@ -146,11 +148,11 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(637, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(486, 486, 486)
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1779, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18))
+                .addGap(15, 15, 15))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,36 +165,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
                 .addGap(16, 16, 16))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1423, -1));
-
-        tblDoUong.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Mã món", "Tên", "Giá", "Ảnh"
-            }
-        ));
-        tblDoUong.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tblDoUongAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        tblDoUong.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblDoUongMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblDoUong);
-
-        jtabSP.addTab("Đồ uống", jScrollPane1);
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, -1));
 
         tblMonLau.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -225,15 +198,19 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 726, Short.MAX_VALUE)
+            .addGap(0, 1404, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1404, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 615, Short.MAX_VALUE)
+            .addGap(0, 876, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 876, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         jtabSP.addTab("Món lẩu", jPanel2);
@@ -269,7 +246,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 732, Short.MAX_VALUE)
+            .addGap(0, 1080, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,9 +254,9 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 615, Short.MAX_VALUE)
+            .addGap(0, 876, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE))
         );
 
         jtabSP.addTab("Món nướng", jPanel3);
@@ -315,20 +292,49 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 726, Short.MAX_VALUE)
+            .addGap(0, 1080, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1080, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 615, Short.MAX_VALUE)
+            .addGap(0, 876, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE))
         );
 
         jtabSP.addTab("Món nhẹ", jPanel4);
 
-        add(jtabSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 135, 726, -1));
+        tblDoUong.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Mã món", "Tên", "Giá", "Ảnh"
+            }
+        ));
+        tblDoUong.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tblDoUongAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        tblDoUong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDoUongMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblDoUong);
+
+        jtabSP.addTab("Đồ uống", jScrollPane1);
+
+        add(jtabSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 1080, -1));
 
         tblGoimon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -358,55 +364,55 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         });
         jScrollPane2.setViewportView(tblGoimon);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 679, 302));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1129, 102, 780, 600));
 
+        btnDongY.setText("XÁC NHẬN");
         btnDongY.setBackground(new java.awt.Color(173, 139, 115));
         btnDongY.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDongY.setForeground(new java.awt.Color(255, 255, 255));
-        btnDongY.setText("XÁC NHẬN");
         btnDongY.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDongYActionPerformed(evt);
             }
         });
-        add(btnDongY, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 640, 151, 61));
+        add(btnDongY, new org.netbeans.lib.awtextra.AbsoluteConstraints(1720, 970, 151, 61));
 
+        btnHuyBo.setText("HỦY BỎ");
         btnHuyBo.setBackground(new java.awt.Color(173, 139, 115));
         btnHuyBo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnHuyBo.setForeground(new java.awt.Color(255, 255, 255));
-        btnHuyBo.setText("HỦY BỎ");
         btnHuyBo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHuyBoActionPerformed(evt);
             }
         });
-        add(btnHuyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 640, 162, 61));
+        add(btnHuyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 970, 162, 61));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("TÌM KIẾM :");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 94, -1, -1));
-        add(txtTimkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 98, 294, -1));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        add(txtTimkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 294, -1));
 
+        btnXacNhan.setText("Xác nhận");
         btnXacNhan.setBackground(new java.awt.Color(173, 139, 115));
         btnXacNhan.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnXacNhan.setForeground(new java.awt.Color(255, 255, 255));
-        btnXacNhan.setText("Xác nhận");
         btnXacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXacNhanActionPerformed(evt);
             }
         });
-        add(btnXacNhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 97, -1, 26));
+        add(btnXacNhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, 26));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("THÀNH TIỀN:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 520, 135, 54));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 820, 135, 54));
 
-        lblTongTien.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTongTien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongTien.setText("0.0");
-        add(lblTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 520, 110, 54));
+        lblTongTien.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        add(lblTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(1720, 820, 110, 54));
 
         cboBanAn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboBanAn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -419,33 +425,33 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
                 cboBanAnActionPerformed(evt);
             }
         });
-        add(cboBanAn, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, 234, 62));
+        add(cboBanAn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 750, 234, 62));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Bàn ăn:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 410, 68, 34));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 710, 68, 34));
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1269, 443, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Phương thức thanh toán:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 410, 230, 34));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1650, 710, 230, 34));
 
         cboPTTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "chuyển khoản", "khác" }));
-        add(cboPTTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 450, 221, 62));
+        add(cboPTTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(1650, 750, 221, 62));
 
+        btnDel.setText("Xóa bỏ");
         btnDel.setBackground(new java.awt.Color(173, 139, 115));
+        btnDel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         btnDel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDel.setForeground(new java.awt.Color(255, 255, 255));
-        btnDel.setText("Xóa bỏ");
-        btnDel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         btnDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDelActionPerformed(evt);
             }
         });
-        add(btnDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 570, 679, 61));
+        add(btnDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 900, 679, 61));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed

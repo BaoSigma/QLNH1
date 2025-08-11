@@ -76,13 +76,13 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
         btnTruoc = new javax.swing.JButton();
         btnTien = new javax.swing.JButton();
         btnCuoi = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        txtFind = new javax.swing.JTextField();
+        btnLamMoi = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
         btnTiemkiem = new javax.swing.JButton();
-        btnthem = new javax.swing.JButton();
-        btnxoa = new javax.swing.JButton();
-        btnsua = new javax.swing.JButton();
-        btnlammoi = new javax.swing.JButton();
+        txtFind = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1080, 560));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -91,7 +91,12 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
         jButton1.setContentAreaFilled(false);
         jButton1.setEnabled(false);
         jButton1.setFocusable(false);
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 820));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 70));
 
         jPanel2.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -100,18 +105,18 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Chi tiết hóa đơn");
+        jLabel1.setText("Chi Tiết Hóa Đơn");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(196, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1037, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
+                .addContainerGap(173, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1622, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(13, 13, 13))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,7 +129,7 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1420, 80));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 80));
 
         tblChiTietHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -153,17 +158,17 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
         });
         jScrollPane1.setViewportView(tblChiTietHoaDon);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 1410, 210));
-        jPanel1.add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 270, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 1920, 600));
+        jPanel1.add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 930, 270, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("Trạng thái:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 620, 96, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 1010, 96, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Số lượng:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 540, 96, -1));
-        jPanel1.add(txtGhiChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 580, 270, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 930, 96, -1));
+        jPanel1.add(txtGhiChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 970, 270, -1));
 
         txtMaMon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -175,23 +180,23 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
                 txtMaMonActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMaMon, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, 270, -1));
+        jPanel1.add(txtMaMon, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 890, 270, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Mã hóa đơn:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, 110, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 850, 110, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Mã món:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 890, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("Ghi chú:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 96, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 970, 96, -1));
 
         txtMaHD.setEnabled(false);
-        jPanel1.add(txtMaHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 270, -1));
-        jPanel1.add(txtTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 620, 270, -1));
+        jPanel1.add(txtMaHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 850, 270, -1));
+        jPanel1.add(txtTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 1010, 270, -1));
 
         btnDau.setBackground(new java.awt.Color(173, 139, 115));
         btnDau.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -201,7 +206,7 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
                 btnDauActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 120, 50));
+        jPanel1.add(btnDau, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 770, 120, 50));
 
         btnTruoc.setBackground(new java.awt.Color(173, 139, 115));
         btnTruoc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -211,7 +216,7 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
                 btnTruocActionPerformed(evt);
             }
         });
-        jPanel1.add(btnTruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 120, 50));
+        jPanel1.add(btnTruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 770, 120, 50));
 
         btnTien.setBackground(new java.awt.Color(173, 139, 115));
         btnTien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -221,7 +226,7 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
                 btnTienActionPerformed(evt);
             }
         });
-        jPanel1.add(btnTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 120, 50));
+        jPanel1.add(btnTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 770, 120, 50));
 
         btnCuoi.setBackground(new java.awt.Color(173, 139, 115));
         btnCuoi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -231,12 +236,43 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
                 btnCuoiActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, 120, 50));
+        jPanel1.add(btnCuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 770, 120, 50));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setText("Tìm kiếm:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
-        jPanel1.add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 260, -1));
+        btnLamMoi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnLamMoi.setText("LÀM MỚI");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 100, -1, -1));
+
+        btnSua.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnSua.setText("SỬA");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, -1, -1));
+
+        btnXoa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnXoa.setText("XÓA");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, -1, -1));
+
+        btnThem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnThem.setText("THÊM");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, -1, -1));
 
         btnTiemkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/find.png"))); // NOI18N
         btnTiemkiem.addActionListener(new java.awt.event.ActionListener() {
@@ -244,39 +280,12 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
                 btnTiemkiemActionPerformed(evt);
             }
         });
-        jPanel1.add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, 30));
+        jPanel1.add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, -1, -1));
+        jPanel1.add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 102, 340, 30));
 
-        btnthem.setText("Thêm");
-        btnthem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnthemActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnthem, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 80, 30));
-
-        btnxoa.setText("Xóa");
-        btnxoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnxoaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnxoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, 80, 30));
-
-        btnsua.setText("Sửa");
-        btnsua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsuaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnsua, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, 80, 30));
-
-        btnlammoi.setText("Làm mới");
-        btnlammoi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnlammoiActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnlammoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 100, -1, 30));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel8.setText("Tìm kiếm:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -340,42 +349,48 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
         moveLast();
     }//GEN-LAST:event_btnCuoiActionPerformed
 
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        clear();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+
+        update();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+
+        delete();
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+
+        create();
+    }//GEN-LAST:event_btnThemActionPerformed
+
     private void btnTiemkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiemkiemActionPerformed
         // TODO add your handling code here:
         fillToTableTheoDieuKien();
     }//GEN-LAST:event_btnTiemkiemActionPerformed
 
-    private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        create();
-    }//GEN-LAST:event_btnthemActionPerformed
-
-    private void btnxoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoaActionPerformed
-        // TODO add your handling code here:
-        delete();
-    }//GEN-LAST:event_btnxoaActionPerformed
-
-    private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
-        // TODO add your handling code here:
-        update();
-    }//GEN-LAST:event_btnsuaActionPerformed
-
-    private void btnlammoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlammoiActionPerformed
-        // TODO add your handling code here:
-        clear();
-    }//GEN-LAST:event_btnlammoiActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCuoi;
     private javax.swing.JButton btnDau;
+    private javax.swing.JButton btnLamMoi;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
     private javax.swing.JButton btnTiemkiem;
     private javax.swing.JButton btnTien;
     private javax.swing.JButton btnTruoc;
-    private javax.swing.JButton btnlammoi;
-    private javax.swing.JButton btnsua;
-    private javax.swing.JButton btnthem;
-    private javax.swing.JButton btnxoa;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -383,7 +398,7 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

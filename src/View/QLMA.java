@@ -122,14 +122,14 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
         jButton1.setContentAreaFilled(false);
         jButton1.setEnabled(false);
         jButton1.setFocusable(false);
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 1310, 680));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 1300, 1070));
 
         jPanel4.setBackground(new java.awt.Color(173, 139, 115));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Quản lý món ăn");
+        jLabel3.setText("Quản Lý Món Ăn");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
 
@@ -139,7 +139,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1292, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1802, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -157,7 +157,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1410, -1));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, -1));
 
         txtMaMon.setEnabled(false);
 
@@ -328,7 +328,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
         });
         jScrollPane1.setViewportView(tblMonAn);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 1410, 310));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 1920, 710));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Tìm kiếm :");

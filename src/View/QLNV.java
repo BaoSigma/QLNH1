@@ -99,14 +99,14 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         jButton1.setContentAreaFilled(false);
         jButton1.setEnabled(false);
         jButton1.setFocusable(false);
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 800));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 1080));
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Quản lý nhân viên");
+        jLabel1.setText("Quản Lý Nhân Viên");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
 
@@ -115,8 +115,8 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(104, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1736, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(jLabel4)
                 .addContainerGap())
@@ -132,7 +132,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 .addGap(15, 15, 15))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1410, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, -1));
 
         tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,48 +161,48 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         });
         jScrollPane1.setViewportView(tblNhanVien);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 145, 1410, 210));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 145, 1910, 590));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Tìm kiếm :");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 102, -1, -1));
         add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 102, 258, -1));
 
-        btnDau3.setBackground(new java.awt.Color(173, 139, 115));
         btnDau3.setText("Về đầu");
+        btnDau3.setBackground(new java.awt.Color(173, 139, 115));
         btnDau3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDau3ActionPerformed(evt);
             }
         });
-        add(btnDau3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 83, 32));
+        add(btnDau3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 760, 83, 32));
 
-        btnTruoc3.setBackground(new java.awt.Color(173, 139, 115));
         btnTruoc3.setText("Trước");
+        btnTruoc3.setBackground(new java.awt.Color(173, 139, 115));
         btnTruoc3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTruoc3ActionPerformed(evt);
             }
         });
-        add(btnTruoc3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 83, 32));
+        add(btnTruoc3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 760, 83, 32));
 
-        btnTien3.setBackground(new java.awt.Color(173, 139, 115));
         btnTien3.setText("Tiến");
+        btnTien3.setBackground(new java.awt.Color(173, 139, 115));
         btnTien3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTien3ActionPerformed(evt);
             }
         });
-        add(btnTien3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 83, 32));
+        add(btnTien3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 760, 83, 32));
 
-        btnCuoi3.setBackground(new java.awt.Color(173, 139, 115));
         btnCuoi3.setText("Về cuối");
+        btnCuoi3.setBackground(new java.awt.Color(173, 139, 115));
         btnCuoi3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCuoi3ActionPerformed(evt);
             }
         });
-        add(btnCuoi3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 83, 33));
+        add(btnCuoi3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 760, 83, 33));
 
         btnTiemkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/find.png"))); // NOI18N
         btnTiemkiem.addActionListener(new java.awt.event.ActionListener() {
@@ -217,16 +217,16 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 txtEmailActionPerformed(evt);
             }
         });
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 270, -1));
-        add(dcNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 610, 270, -1));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 920, 270, -1));
+        add(dcNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 1000, 270, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Ngày sinh:");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, 96, -1));
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 1000, 96, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Email:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 96, -1));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 920, 96, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -247,13 +247,13 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 200, 176));
-        add(txtLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 570, 270, -1));
-        add(txtTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 270, -1));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 810, 200, 176));
+        add(txtLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 960, 270, -1));
+        add(txtTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 850, 270, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Tên vai trò:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 96, -1));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 890, 96, -1));
 
         btnLamMoi.setText("LÀM MỚI");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -271,9 +271,9 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         });
         add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Mã nhân viên:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 96, -1));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 810, 96, -1));
 
         jButton2.setText("Chọn ảnh");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -281,11 +281,11 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 610, -1, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 1000, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Tên nhân viên:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 850, -1, -1));
 
         btnThem.setText("THÊM");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -295,12 +295,12 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         });
         add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Lương cơ bản:");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 570, 96, -1));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 960, 96, -1));
 
         txtMaNV.setEnabled(false);
-        add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 270, -1));
+        add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 810, 270, -1));
 
         btnSua.setText("SỬA");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -317,15 +317,15 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 rdoQuanLyActionPerformed(evt);
             }
         });
-        add(rdoQuanLy, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, -1, -1));
+        add(rdoQuanLy, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 890, -1, -1));
 
         rdoGroupVaiTro.add(rdoNhanVien);
         rdoNhanVien.setText("Nhân Viên");
-        add(rdoNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 500, -1, -1));
+        add(rdoNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 890, -1, -1));
 
         rdoGroupVaiTro.add(rdoPhucVu);
         rdoPhucVu.setText("Phục vụ");
-        add(rdoPhucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, -1, -1));
+        add(rdoPhucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 890, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVienMouseClicked
