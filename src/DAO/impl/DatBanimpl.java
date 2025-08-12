@@ -47,7 +47,7 @@ public static final String capnhatTrangThai = "UPDATE BanAn SET TrangThai = N'Đ
 
 // Truy vấn tất cả đặt bàn
 public static final String timkietDatBan = """
-        SELECT  MaDat,MaKH, MaBan, NgayDat, GioDat, SoNguoi, TrangThai
+        SELECT  MaDat,TenKH, MaBan, NgayDat, GioDat, SoNguoi, TrangThai
               FROM DatBan WHERE TrangThai = N'Trống'
 """;
 public static final String timkietDatBancoTang = """
@@ -89,7 +89,7 @@ public DatBan create(DatBan entity) {
     return entity;
 }
    public static void executeProcedureDatBan(
-    String maKH, String MaBan, java.sql.Date NgayDat, Time GioDat,
+    String TenKH, String MaBan, java.sql.Date NgayDat, Time GioDat,
     int soNguoi, String maNV, String HTTT, String maMon, int SoLuong, String ghiChu) {
 
     String call =datbantruocgoimon;
@@ -97,7 +97,7 @@ public DatBan create(DatBan entity) {
     try (Connection con = UJdbc.openConnection(); 
          CallableStatement cs = con.prepareCall(call)) {
 
-        cs.setString(1, maKH);
+        cs.setString(1, TenKH);
         cs.setString(2, MaBan);
         cs.setDate(3, NgayDat);
         cs.setTime(4, GioDat);

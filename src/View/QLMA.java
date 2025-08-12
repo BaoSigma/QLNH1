@@ -326,6 +326,11 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+        tblMonAn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMonAnMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblMonAn);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 1920, 710));
@@ -485,6 +490,11 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tblMonAnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMonAnMouseClicked
+        // TODO add your handling code here:
+        edit();
+    }//GEN-LAST:event_tblMonAnMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

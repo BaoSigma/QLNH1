@@ -292,7 +292,7 @@ public void loginn() {
         
     
 
-    UDialog.alert("Đăng nhập thành công!");
+    UDialog.alert("Xin chào "+ UAuth.user.getHoTen()+ " :"+ UAuth.user.getTenVaiTro());
 }
 
     
