@@ -62,10 +62,10 @@
                           <Component id="lblCTHD" max="32767" attributes="0"/>
                           <Component id="lblKhuvuc" max="32767" attributes="0"/>
                           <Component id="lblDangXuat" alignment="0" max="32767" attributes="0"/>
-                          <Component id="lblThoat" alignment="0" max="32767" attributes="0"/>
                           <Component id="lblMA" alignment="0" max="32767" attributes="0"/>
                           <Component id="lblLM" alignment="0" max="32767" attributes="0"/>
                           <Component id="lblDoanhThu" pref="277" max="32767" attributes="0"/>
+                          <Component id="lblThoat" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <Component id="lblChiTietDatBan" alignment="1" min="-2" pref="277" max="-2" attributes="0"/>
                   </Group>
@@ -99,10 +99,11 @@
                   <Component id="lblLM" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblMA" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="382" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                   <Component id="lblThoat" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblDangXuat" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="273" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
