@@ -16,7 +16,7 @@ public class Loading extends javax.swing.JPanel {
     public Loading() {
         initComponents();
     }
-
+    noodle
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,7 +28,6 @@ public class Loading extends javax.swing.JPanel {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -45,7 +44,6 @@ public class Loading extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Đánh thức vị giác, lay động cảm xúc");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 1320, -1));
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, 1010, 40));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
@@ -64,6 +62,5 @@ public class Loading extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

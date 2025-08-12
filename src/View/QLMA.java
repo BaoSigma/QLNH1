@@ -724,10 +724,11 @@ public void fillToTableTheoDieuKien(){
             Object[] row = {
                 mon.getMaMon(),
                 mon.getTenMon(),
+                mon.getMaLoai(),
                 mon.getDonGia(),
                 mon.getMoTa(),
                 mon.getAnh(),
-                mon.getMaLoai()
+                
             };
             model.addRow(row);
         }
