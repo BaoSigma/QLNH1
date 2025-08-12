@@ -114,6 +114,7 @@ public class DangNhap extends javax.swing.JFrame {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                new splashscreen.SplashScreen(null, true).setVisible(true);
                 new DangNhap().setVisible(true);
             }
 

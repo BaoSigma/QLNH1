@@ -284,15 +284,16 @@ public void loginn() {
     
         if(UAuth.QuanLy()){
             new menuQL().setVisible(true); // Vai trò nhân viên/phục vụ
-            
+            UDialog.alert("Xin chào "+ UAuth.user.getHoTen()+ " : Quản lý");
         }
          if(UAuth.NhanVien()){
             new menu().setVisible(true); // Vai trò quản lý
+            UDialog.alert("Xin chào "+ UAuth.user.getHoTen()+ " : Nhân viên");
           }
         
     
 
-    UDialog.alert("Xin chào "+ UAuth.user.getHoTen()+ " :"+ UAuth.user.getTenVaiTro());
+    
 }
 
     

@@ -25,7 +25,7 @@ public class MonAnImpl implements MonAnDAO {
 
     private static final String sqlUpdate = """
         UPDATE MonAn
-        SET TenMon = ?, DonGia = ?, MoTa = ?, HinhAnh = ?, MaLoai = ?
+        SET TenMon = ?,MaLoai = ?, DonGia = ?, MoTa = ?, HinhAnh = ?
         WHERE MaMon = ?;
     """;
 
@@ -34,7 +34,7 @@ public class MonAnImpl implements MonAnDAO {
     """;
 
     private static final String sqlFindAll = """
-        SELECT MaMon, TenMon, DonGia, MoTa, HinhAnh, MaLoai FROM MonAn;
+        SELECT * FROM MonAn;
     """;
 
     private static final String sqlFindById = """
@@ -48,10 +48,11 @@ public class MonAnImpl implements MonAnDAO {
         Object[] values = {
             m.getMaMon(),
             m.getTenMon(),
+            m.l.getMaLoai(),
             m.getDonGia(),
             m.getMoTa(),
-            m.getAnh(),
-            m.l.getMaLoai()
+            m.getHinhAnh()
+            
         };
         UJdbc.executeUpdate(sqlInsert, values);
         return m;
@@ -61,10 +62,11 @@ public class MonAnImpl implements MonAnDAO {
     public void update(MonAn m) {
         Object[] values = {
             m.getTenMon(),
+            m.l.getMaLoai(),
             m.getDonGia(),
             m.getMoTa(),
-            m.getAnh(),
-            m.l.getMaLoai(),
+            m.getHinhAnh(),
+            
             m.getMaMon()
         };
         UJdbc.executeUpdate(sqlUpdate, values);
@@ -96,12 +98,8 @@ public class MonAnImpl implements MonAnDAO {
     public List<MonAn> findByKeyword(String keyword) {
     String sql = """
         SELECT 
-            MaMon,
-            TenMon,
-            DonGia,
-            MoTa,
-            HinhAnh,
-            MaLoai
+            *
+            
         FROM MonAn
         WHERE MaMon LIKE ? 
            OR TenMon LIKE ? 

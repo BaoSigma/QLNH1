@@ -13,15 +13,15 @@ public class MonAn  {
     private String tenMon;
     private double donGia;
     private String moTa;
-    private String Anh;
+    private String HinhAnh;
     public LoaiMon l = new LoaiMon();
-    public MonAn(String maMon, String tenMon, double donGia, String moTa, String hinhAnh, int maLoai, String tenLoai, String tenMua) {
+    public MonAn(String maMon, String tenMon, double donGia, String moTa, String HinhAnh, int maLoai, String tenLoai, String tenMua) {
        
         this.maMon = maMon;
         this.tenMon = tenMon;
         this.donGia = donGia;
         this.moTa = moTa;
-        this.Anh = hinhAnh;
+        this.HinhAnh = HinhAnh;
     }
     public String getTenLoai(){
         return l.getTenLoai();
@@ -32,8 +32,8 @@ public class MonAn  {
     public int getMaLoai(){
         return l.getMaLoai();
     }
-    public void setMaLoai(String TenLoai){
-        l.setTenLoai(TenLoai);
+    public void setMaLoai(int MaLoai){
+        l.setMaLoai(MaLoai);
     }
     public MonAn() {
     }
@@ -62,12 +62,12 @@ public class MonAn  {
         this.moTa = moTa;
     }
 
-    public String getAnh() {
-        return Anh;
+    public String getHinhAnh() {
+        return HinhAnh;
     }
 
-    public void setAnh(String Anh) {
-        this.Anh = Anh;
+    public void setHinhAnh(String HinhAnh) {
+        this.HinhAnh = HinhAnh;
     }
 
 

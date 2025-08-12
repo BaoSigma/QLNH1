@@ -82,8 +82,6 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
         btnDau1 = new javax.swing.JButton();
         lblAnh = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblMonAn = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         txtFind = new javax.swing.JTextField();
         btnTiemkiem = new javax.swing.JButton();
@@ -91,6 +89,8 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblMonAn = new javax.swing.JTable();
 
         btnTien.setBackground(new java.awt.Color(173, 139, 115));
         btnTien.setText("Tiến");
@@ -122,7 +122,12 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
         jButton1.setContentAreaFilled(false);
         jButton1.setEnabled(false);
         jButton1.setFocusable(false);
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 1300, 1070));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 1830, 1070));
 
         jPanel4.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -306,35 +311,6 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 152, 1392, -1));
 
-        tblMonAn.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Mã món", "Tên món", "Mã loại", "Đơn giá", "Mô tả"
-            }
-        ));
-        tblMonAn.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tblMonAnAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        tblMonAn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblMonAnMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblMonAn);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 1920, 710));
-
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Tìm kiếm :");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 109, -1, -1));
@@ -379,6 +355,35 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
             }
         });
         add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 117, -1, -1));
+
+        tblMonAn.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Mã món", "Tên món", "Đơn giá", "Mô tả", "Hình ảnh", "Mã loại"
+            }
+        ));
+        tblMonAn.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tblMonAnAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        tblMonAn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMonAnMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblMonAn);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 1920, 710));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoiActionPerformed
@@ -414,22 +419,6 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
         // TODO add your handling code here:
 
     }//GEN-LAST:event_btnDau1ActionPerformed
-
-    private void tblMonAnAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblMonAnAncestorAdded
-        // TODO add your handling code here:
-        DefaultTableModel model = new DefaultTableModel(
-            new Object[]{"Mã Món", "Tên Món", "Mã Loại", "Đơn Giá", "Mô Tả"},
-            0
-        ) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false; // Không cho sửa bất kỳ ô nào
-            }
-        };
-        tblMonAn.setModel(model);
-
-        fillToTable();
-    }//GEN-LAST:event_tblMonAnAncestorAdded
 
     private void btnTiemkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiemkiemActionPerformed
         // TODO add your handling code here:
@@ -491,6 +480,26 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tblMonAnAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblMonAnAncestorAdded
+        // TODO add your handling code here:
+         DefaultTableModel model = new DefaultTableModel(
+            new Object[]{"Mã món", "Tên món", "Đơn giá","Mô tả","Hình ảnh", "Mã loại"},
+            0
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Không cho sửa bất kỳ ô nào
+            }
+        };
+        tblMonAn.setModel(model);
+
+        fillToTable();
+    }//GEN-LAST:event_tblMonAnAncestorAdded
+
     private void tblMonAnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMonAnMouseClicked
         // TODO add your handling code here:
         edit();
@@ -522,7 +531,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAnh;
     private javax.swing.JTable tblMonAn;
     private javax.swing.JTextField txtDonGia;
@@ -544,7 +553,7 @@ public void setForm(MonAn entity) {
     txtDonGia.setText(String.valueOf(entity.getDonGia()));
     txtMoTa.setText(entity.getMoTa());
     txtMaLoai.setText(String.valueOf(entity.l.getMaLoai()));
-    String tenAnh = entity.getAnh(); // chỉ là tên file, ví dụ: nv01.jpg
+    String tenAnh = entity.getHinhAnh(); // chỉ là tên file, ví dụ: nv01.jpg
 
     if (tenAnh != null && !tenAnh.isEmpty()) {
         String fullPath = "src/img/" + tenAnh; // Đường dẫn mới
@@ -576,7 +585,7 @@ public MonAn getForm() {
         m.setDonGia(0);
     }
     m.setMoTa(txtMoTa.getText().trim());
-     m.setAnh(tenAnh); 
+    m.setHinhAnh(tenAnh); 
     m.l.setMaLoai(Integer.parseInt(txtMaLoai.getText().trim()));
     return m;
 }
@@ -587,16 +596,17 @@ public void fillToTable() {
     model.setRowCount(0);
     items = dao.findAll();
 
-    for (MonAn m : items) {
+   items.forEach(mon -> {
         Object[] row = {
-            m.getMaMon(),
-            m.getTenMon(),
-            m.l.getMaLoai(),
-            m.getDonGia(),
-            m.getMoTa()
+                mon.getMaMon(),
+                mon.getTenMon(),
+                mon.getDonGia(),
+                mon.getMoTa(),
+                mon.getHinhAnh(),
+                mon.l.getMaLoai(),
         };
         model.addRow(row);
-    }
+    });
 }
 
 @Override
@@ -724,10 +734,11 @@ public void fillToTableTheoDieuKien(){
             Object[] row = {
                 mon.getMaMon(),
                 mon.getTenMon(),
-                mon.getMaLoai(),
                 mon.getDonGia(),
                 mon.getMoTa(),
-                mon.getAnh(),
+                mon.getHinhAnh(),
+                mon.l.getMaLoai(),
+
                 
             };
             model.addRow(row);
@@ -750,6 +761,6 @@ public void edit() {
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.setForm(new MonAn());
     }
 }
