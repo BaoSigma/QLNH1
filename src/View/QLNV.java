@@ -63,13 +63,6 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhanVien = new javax.swing.JTable();
-        jLabel8 = new javax.swing.JLabel();
-        txtFind = new javax.swing.JTextField();
-        btnDau3 = new javax.swing.JButton();
-        btnTruoc3 = new javax.swing.JButton();
-        btnTien3 = new javax.swing.JButton();
-        btnCuoi3 = new javax.swing.JButton();
-        btnTiemkiem = new javax.swing.JButton();
         txtEmail = new javax.swing.JTextField();
         dcNgaySinh = new com.toedter.calendar.JDateChooser();
         jLabel10 = new javax.swing.JLabel();
@@ -79,18 +72,26 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         txtLuong = new javax.swing.JTextField();
         txtTenNV = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        btnLamMoi = new javax.swing.JButton();
-        btnXoa = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        btnThem = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtMaNV = new javax.swing.JTextField();
-        btnSua = new javax.swing.JButton();
         rdoQuanLy = new javax.swing.JRadioButton();
         rdoNhanVien = new javax.swing.JRadioButton();
         rdoPhucVu = new javax.swing.JRadioButton();
+        btnThem = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnLamMoi = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        txtFind = new javax.swing.JTextField();
+        btnTiemkiem = new javax.swing.JButton();
+        btnvecuoi = new javax.swing.JButton();
+        btntien = new javax.swing.JButton();
+        btntruoc = new javax.swing.JButton();
+        btnvedau = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1080, 560));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,7 +100,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         jButton1.setContentAreaFilled(false);
         jButton1.setEnabled(false);
         jButton1.setFocusable(false);
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 1080));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 80));
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -161,72 +162,25 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         });
         jScrollPane1.setViewportView(tblNhanVien);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 145, 1910, 590));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Tìm kiếm :");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 102, -1, -1));
-        add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 102, 258, -1));
-
-        btnDau3.setText("Về đầu");
-        btnDau3.setBackground(new java.awt.Color(173, 139, 115));
-        btnDau3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDau3ActionPerformed(evt);
-            }
-        });
-        add(btnDau3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 760, 83, 32));
-
-        btnTruoc3.setText("Trước");
-        btnTruoc3.setBackground(new java.awt.Color(173, 139, 115));
-        btnTruoc3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTruoc3ActionPerformed(evt);
-            }
-        });
-        add(btnTruoc3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 760, 83, 32));
-
-        btnTien3.setText("Tiến");
-        btnTien3.setBackground(new java.awt.Color(173, 139, 115));
-        btnTien3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTien3ActionPerformed(evt);
-            }
-        });
-        add(btnTien3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 760, 83, 32));
-
-        btnCuoi3.setText("Về cuối");
-        btnCuoi3.setBackground(new java.awt.Color(173, 139, 115));
-        btnCuoi3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCuoi3ActionPerformed(evt);
-            }
-        });
-        add(btnCuoi3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 760, 83, 33));
-
-        btnTiemkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/find.png"))); // NOI18N
-        btnTiemkiem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTiemkiemActionPerformed(evt);
-            }
-        });
-        add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 102, -1, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 1910, 520));
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
             }
         });
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 920, 270, -1));
-        add(dcNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 1000, 270, -1));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 890, 270, 30));
+        add(dcNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 990, 270, 30));
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Ngày sinh:");
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 1000, 96, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 990, 170, -1));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Email:");
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 920, 96, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 890, 160, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -247,68 +201,42 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 810, 200, 176));
-        add(txtLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 960, 270, -1));
-        add(txtTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 850, 270, -1));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 770, 200, 176));
+        add(txtLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 940, 270, 30));
+        add(txtTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 790, 270, 30));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Tên vai trò:");
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 890, 96, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 840, 170, -1));
 
-        btnLamMoi.setText("LÀM MỚI");
-        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLamMoiActionPerformed(evt);
-            }
-        });
-        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 110, -1, -1));
-
-        btnXoa.setText("XÓA");
-        btnXoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaActionPerformed(evt);
-            }
-        });
-        add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, -1, -1));
-
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Mã nhân viên:");
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 810, 96, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 740, 170, -1));
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon thêm ảnh.png"))); // NOI18N
         jButton2.setText("Chọn ảnh");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 1000, -1, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 960, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Tên nhân viên:");
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 850, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 790, -1, -1));
 
-        btnThem.setText("THÊM");
-        btnThem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemActionPerformed(evt);
-            }
-        });
-        add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
-
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Lương cơ bản:");
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 960, 96, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 940, 170, -1));
 
         txtMaNV.setEnabled(false);
-        add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 810, 270, -1));
-
-        btnSua.setText("SỬA");
-        btnSua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaActionPerformed(evt);
-            }
-        });
-        add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, -1, -1));
+        add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 740, 270, 30));
 
         rdoGroupVaiTro.add(rdoQuanLy);
         rdoQuanLy.setText("Quản lý");
@@ -317,15 +245,139 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 rdoQuanLyActionPerformed(evt);
             }
         });
-        add(rdoQuanLy, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 890, -1, -1));
+        add(rdoQuanLy, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 850, -1, -1));
 
         rdoGroupVaiTro.add(rdoNhanVien);
         rdoNhanVien.setText("Nhân Viên");
-        add(rdoNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 890, -1, -1));
+        add(rdoNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 850, -1, -1));
 
         rdoGroupVaiTro.add(rdoPhucVu);
         rdoPhucVu.setText("Phục vụ");
-        add(rdoPhucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 890, -1, -1));
+        add(rdoPhucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 850, -1, -1));
+
+        btnThem.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon thêm.png"))); // NOI18N
+        btnThem.setText("THÊM");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+        add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 120, 110, 40));
+
+        btnXoa.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon xóa.png"))); // NOI18N
+        btnXoa.setText("XÓA");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+        add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 120, 110, 40));
+
+        btnSua.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon sửa.png"))); // NOI18N
+        btnSua.setText("SỬA");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+        add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(1450, 120, 110, 40));
+
+        btnLamMoi.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon làm mới.png"))); // NOI18N
+        btnLamMoi.setText("LÀM MỚI");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
+        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 120, 130, 40));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel14.setText("Tìm kiếm:");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
+        add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 280, 40));
+
+        btnTiemkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/find.png"))); // NOI18N
+        btnTiemkiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTiemkiemActionPerformed(evt);
+            }
+        });
+        add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, -1, -1));
+
+        btnvecuoi.setBackground(new java.awt.Color(173, 139, 115));
+        btnvecuoi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnvecuoi.setForeground(new java.awt.Color(255, 255, 255));
+        btnvecuoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon về cuối.png"))); // NOI18N
+        btnvecuoi.setText("Về cuối");
+        btnvecuoi.setMaximumSize(new java.awt.Dimension(50, 20));
+        btnvecuoi.setMinimumSize(new java.awt.Dimension(50, 20));
+        btnvecuoi.setPreferredSize(new java.awt.Dimension(50, 20));
+        btnvecuoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvecuoiActionPerformed(evt);
+            }
+        });
+        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1550, 770, 130, 40));
+
+        btntien.setBackground(new java.awt.Color(173, 139, 115));
+        btntien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btntien.setForeground(new java.awt.Color(255, 255, 255));
+        btntien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon tiến.png"))); // NOI18N
+        btntien.setText("Tiến");
+        btntien.setMaximumSize(new java.awt.Dimension(50, 20));
+        btntien.setMinimumSize(new java.awt.Dimension(50, 20));
+        btntien.setPreferredSize(new java.awt.Dimension(50, 20));
+        btntien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntienActionPerformed(evt);
+            }
+        });
+        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(1390, 770, 130, 40));
+
+        btntruoc.setBackground(new java.awt.Color(173, 139, 115));
+        btntruoc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btntruoc.setForeground(new java.awt.Color(255, 255, 255));
+        btntruoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon trước.png"))); // NOI18N
+        btntruoc.setText("Trước");
+        btntruoc.setMaximumSize(new java.awt.Dimension(50, 20));
+        btntruoc.setMinimumSize(new java.awt.Dimension(50, 20));
+        btntruoc.setPreferredSize(new java.awt.Dimension(50, 20));
+        btntruoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntruocActionPerformed(evt);
+            }
+        });
+        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 770, 120, 40));
+
+        btnvedau.setBackground(new java.awt.Color(173, 139, 115));
+        btnvedau.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnvedau.setForeground(new java.awt.Color(255, 255, 255));
+        btnvedau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon về đầu.png"))); // NOI18N
+        btnvedau.setText("Về đầu");
+        btnvedau.setMaximumSize(new java.awt.Dimension(50, 20));
+        btnvedau.setMinimumSize(new java.awt.Dimension(50, 20));
+        btnvedau.setPreferredSize(new java.awt.Dimension(50, 20));
+        btnvedau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvedauActionPerformed(evt);
+            }
+        });
+        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 770, 120, 40));
+
+        jButton3.setBackground(new java.awt.Color(0, 0, 0));
+        jButton3.setContentAreaFilled(false);
+        jButton3.setEnabled(false);
+        jButton3.setFocusable(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1670, 1080));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVienMouseClicked
@@ -388,53 +440,6 @@ if (result == JFileChooser.APPROVE_OPTION) {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void btnDau3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDau3ActionPerformed
-        // TODO add your handling code here:
-        moveFirst();
-    }//GEN-LAST:event_btnDau3ActionPerformed
-
-    private void btnTruoc3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTruoc3ActionPerformed
-        // TODO add your handling code here:
-        movePrevious();
-    }//GEN-LAST:event_btnTruoc3ActionPerformed
-
-    private void btnTien3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTien3ActionPerformed
-        // TODO add your handling code here:
-        moveNext();
-    }//GEN-LAST:event_btnTien3ActionPerformed
-
-    private void btnCuoi3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoi3ActionPerformed
-        // TODO add your handling code here:
-        moveLast();
-    }//GEN-LAST:event_btnCuoi3ActionPerformed
-
-    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
-        // TODO add your handling code here:
-        clear();
-    }//GEN-LAST:event_btnLamMoiActionPerformed
-
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        // TODO add your handling code here:
-
-        update();
-    }//GEN-LAST:event_btnSuaActionPerformed
-
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
-
-        delete();
-    }//GEN-LAST:event_btnXoaActionPerformed
-
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-
-        create();
-    }//GEN-LAST:event_btnThemActionPerformed
-
-    private void btnTiemkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiemkiemActionPerformed
-        // TODO add your handling code here:
-        fillToTableTheoDieuKien();
-    }//GEN-LAST:event_btnTiemkiemActionPerformed
-
     private void rdoQuanLyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoQuanLyActionPerformed
         // TODO add your hang code here:
     }//GEN-LAST:event_rdoQuanLyActionPerformed
@@ -443,28 +448,79 @@ if (result == JFileChooser.APPROVE_OPTION) {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
 
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+
+        create();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+
+        delete();
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        update();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        clear();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void btnTiemkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiemkiemActionPerformed
+        // TODO add your handling code here:
+        fillToTableTheoDieuKien();
+    }//GEN-LAST:event_btnTiemkiemActionPerformed
+
+    private void btnvecuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvecuoiActionPerformed
+        // TODO add your handling code here:
+        moveLast();
+    }//GEN-LAST:event_btnvecuoiActionPerformed
+
+    private void btntienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntienActionPerformed
+        // TODO add your handling code here:
+        moveNext();
+    }//GEN-LAST:event_btntienActionPerformed
+
+    private void btntruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntruocActionPerformed
+        // TODO add your handling code here:
+        movePrevious();
+    }//GEN-LAST:event_btntruocActionPerformed
+
+    private void btnvedauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvedauActionPerformed
+        // TODO add your handling code here:
+        moveFirst();
+    }//GEN-LAST:event_btnvedauActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCuoi3;
-    private javax.swing.JButton btnDau3;
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnTiemkiem;
-    private javax.swing.JButton btnTien3;
-    private javax.swing.JButton btnTruoc3;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btntien;
+    private javax.swing.JButton btntruoc;
+    private javax.swing.JButton btnvecuoi;
+    private javax.swing.JButton btnvedau;
     private com.toedter.calendar.JDateChooser dcNgaySinh;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

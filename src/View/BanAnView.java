@@ -90,7 +90,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 690));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1790, 1080));
 
         tblBanAn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,7 +119,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         });
         jScrollPane1.setViewportView(tblBanAn);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 172, 1920, 910));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 1920, 700));
 
         jPanel4.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -135,8 +135,8 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1802, Short.MAX_VALUE)
+                .addContainerGap(99, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1709, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addContainerGap())
@@ -155,12 +155,18 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, -1));
 
-        add(cboMaKV, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 134, -1));
+        cboMaKV.setFont(new java.awt.Font("Segoe UI", 0, 25)); // NOI18N
+        cboMaKV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMaKVActionPerformed(evt);
+            }
+        });
+        add(cboMaKV, new org.netbeans.lib.awtextra.AbsoluteConstraints(1680, 140, 200, 50));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Tìm kiếm :");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 112, -1, -1));
-        add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 112, 258, -1));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel8.setText("Tìm kiếm:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
+        add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 280, 40));
 
         btnTiemkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/find.png"))); // NOI18N
         btnTiemkiem.addActionListener(new java.awt.event.ActionListener() {
@@ -168,46 +174,57 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnTiemkiemActionPerformed(evt);
             }
         });
-        add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 97, -1, -1));
+        add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, -1, -1));
 
+        btnThem.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon thêm.png"))); // NOI18N
         btnThem.setText("THÊM");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemActionPerformed(evt);
             }
         });
-        add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, -1));
+        add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 150, 110, 40));
 
+        btnXoa.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon xóa.png"))); // NOI18N
         btnXoa.setText("XÓA");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaActionPerformed(evt);
             }
         });
-        add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
+        add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 150, 110, 40));
 
+        btnSua.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon sửa.png"))); // NOI18N
         btnSua.setText("SỬA");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
             }
         });
-        add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
+        add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(1380, 150, 110, 40));
 
+        btnLamMoi.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon làm mới.png"))); // NOI18N
         btnLamMoi.setText("LÀM MỚI");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLamMoiActionPerformed(evt);
             }
         });
-        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
+        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1520, 150, 130, 40));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel1.setText("Số lượng bàn:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
-        add(txtSoluongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
+        add(txtSoluongBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 280, 40));
 
         btnvecuoi.setBackground(new java.awt.Color(173, 139, 115));
+        btnvecuoi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnvecuoi.setForeground(new java.awt.Color(255, 255, 255));
+        btnvecuoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon về cuối.png"))); // NOI18N
         btnvecuoi.setText("Về cuối");
         btnvecuoi.setMaximumSize(new java.awt.Dimension(50, 20));
         btnvecuoi.setMinimumSize(new java.awt.Dimension(50, 20));
@@ -217,9 +234,12 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnvecuoiActionPerformed(evt);
             }
         });
-        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 130, 100, 30));
+        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 990, 130, 40));
 
         btntien.setBackground(new java.awt.Color(173, 139, 115));
+        btntien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btntien.setForeground(new java.awt.Color(255, 255, 255));
+        btntien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon tiến.png"))); // NOI18N
         btntien.setText("Tiến");
         btntien.setMaximumSize(new java.awt.Dimension(50, 20));
         btntien.setMinimumSize(new java.awt.Dimension(50, 20));
@@ -229,9 +249,12 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btntienActionPerformed(evt);
             }
         });
-        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 130, 100, 30));
+        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 990, 130, 40));
 
         btntruoc.setBackground(new java.awt.Color(173, 139, 115));
+        btntruoc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btntruoc.setForeground(new java.awt.Color(255, 255, 255));
+        btntruoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon trước.png"))); // NOI18N
         btntruoc.setText("Trước");
         btntruoc.setMaximumSize(new java.awt.Dimension(50, 20));
         btntruoc.setMinimumSize(new java.awt.Dimension(50, 20));
@@ -241,9 +264,12 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btntruocActionPerformed(evt);
             }
         });
-        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, 90, 30));
+        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 990, 120, 40));
 
         btnvedau.setBackground(new java.awt.Color(173, 139, 115));
+        btnvedau.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnvedau.setForeground(new java.awt.Color(255, 255, 255));
+        btnvedau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon về đầu.png"))); // NOI18N
         btnvedau.setText("Về đầu");
         btnvedau.setMaximumSize(new java.awt.Dimension(50, 20));
         btnvedau.setMinimumSize(new java.awt.Dimension(50, 20));
@@ -253,18 +279,13 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnvedauActionPerformed(evt);
             }
         });
-        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 130, 90, 30));
+        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 990, 120, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTiemkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiemkiemActionPerformed
         // TODO add your handling code here:
         fillToTableTheoDieuKien();
     }//GEN-LAST:event_btnTiemkiemActionPerformed
-
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-
-        create();
-    }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
@@ -327,6 +348,15 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         moveFirst();
 
     }//GEN-LAST:event_btnvedauActionPerformed
+
+    private void cboMaKVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMaKVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboMaKVActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+
+        create();
+    }//GEN-LAST:event_btnThemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

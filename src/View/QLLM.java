@@ -79,29 +79,28 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        txtMaLoai = new javax.swing.JTextField();
-        txtTenLoai = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        btnCuoi1 = new javax.swing.JButton();
-        btnTien2 = new javax.swing.JButton();
-        btnTruoc2 = new javax.swing.JButton();
-        btnDau2 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblLoaiMon = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        txtFind = new javax.swing.JTextField();
-        btnTiemkiem = new javax.swing.JButton();
+        txtTenMua = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
-        txtTenMua = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        txtFind = new javax.swing.JTextField();
+        btnTiemkiem = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtMaLoai = new javax.swing.JTextField();
+        txtTenLoai = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblLoaiMon = new javax.swing.JTable();
+        btnvecuoi = new javax.swing.JButton();
+        btntien = new javax.swing.JButton();
+        btntruoc = new javax.swing.JButton();
+        btnvedau = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -296,127 +295,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 1080));
-
-        txtMaLoai.setEnabled(false);
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setText("Mã loại :");
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setText("Tên loại :");
-
-        btnCuoi1.setBackground(new java.awt.Color(173, 139, 115));
-        btnCuoi1.setText("Về cuối");
-        btnCuoi1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCuoi1ActionPerformed(evt);
-            }
-        });
-
-        btnTien2.setBackground(new java.awt.Color(173, 139, 115));
-        btnTien2.setText("Tiến");
-        btnTien2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTien2ActionPerformed(evt);
-            }
-        });
-
-        btnTruoc2.setBackground(new java.awt.Color(173, 139, 115));
-        btnTruoc2.setText("Trước");
-        btnTruoc2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTruoc2ActionPerformed(evt);
-            }
-        });
-
-        btnDau2.setBackground(new java.awt.Color(173, 139, 115));
-        btnDau2.setText("Về đầu");
-        btnDau2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDau2ActionPerformed(evt);
-            }
-        });
-
-        tblLoaiMon.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Mã loại ", "Tên loại "
-            }
-        ));
-        tblLoaiMon.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tblLoaiMonAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        tblLoaiMon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblLoaiMonMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(tblLoaiMon);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(txtMaLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnDau2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(btnTruoc2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(btnTien2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(btnCuoi1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtTenLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1919, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(txtMaLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
-                    .addComponent(txtTenLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCuoi1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDau2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTruoc2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTien2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1760, 1080));
 
         jPanel5.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -453,10 +332,58 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
 
         add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setText("Tìm kiếm :");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 109, -1, -1));
-        add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 109, 258, -1));
+        txtTenMua.setEnabled(false);
+        add(txtTenMua, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 270, 30));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel13.setText("Mùa:");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 110, -1));
+
+        btnThem.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon thêm.png"))); // NOI18N
+        btnThem.setText("THÊM");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+        add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 120, 110, 40));
+
+        btnXoa.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon xóa.png"))); // NOI18N
+        btnXoa.setText("XÓA");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+        add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 120, 110, 40));
+
+        btnSua.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon sửa.png"))); // NOI18N
+        btnSua.setText("SỬA");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
+        add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(1450, 120, 110, 40));
+
+        btnLamMoi.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon làm mới.png"))); // NOI18N
+        btnLamMoi.setText("LÀM MỚI");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
+        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 120, 130, 40));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel14.setText("Tìm kiếm:");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
+        add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 280, 40));
 
         btnTiemkiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/find.png"))); // NOI18N
         btnTiemkiem.addActionListener(new java.awt.event.ActionListener() {
@@ -464,46 +391,110 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                 btnTiemkiemActionPerformed(evt);
             }
         });
-        add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 109, -1, -1));
+        add(btnTiemkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, -1, -1));
 
-        btnThem.setText("THÊM");
-        btnThem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemActionPerformed(evt);
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setText("Mã loại :");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 110, -1));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel11.setText("Tên loại :");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 110, -1));
+
+        txtMaLoai.setEnabled(false);
+        add(txtMaLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 270, 30));
+        add(txtTenLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 270, 30));
+
+        tblLoaiMon.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Mã loại ", "Tên loại "
+            }
+        ));
+        tblLoaiMon.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tblLoaiMonAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 117, -1, -1));
-
-        btnXoa.setText("XÓA");
-        btnXoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaActionPerformed(evt);
+        tblLoaiMon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblLoaiMonMouseClicked(evt);
             }
         });
-        add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(546, 117, -1, -1));
+        jScrollPane2.setViewportView(tblLoaiMon);
 
-        btnSua.setText("SỬA");
-        btnSua.addActionListener(new java.awt.event.ActionListener() {
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 1920, 540));
+
+        btnvecuoi.setBackground(new java.awt.Color(173, 139, 115));
+        btnvecuoi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnvecuoi.setForeground(new java.awt.Color(255, 255, 255));
+        btnvecuoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon về cuối.png"))); // NOI18N
+        btnvecuoi.setText("Về cuối");
+        btnvecuoi.setMaximumSize(new java.awt.Dimension(50, 20));
+        btnvecuoi.setMinimumSize(new java.awt.Dimension(50, 20));
+        btnvecuoi.setPreferredSize(new java.awt.Dimension(50, 20));
+        btnvecuoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaActionPerformed(evt);
+                btnvecuoiActionPerformed(evt);
             }
         });
-        add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(626, 117, -1, -1));
+        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 960, 130, 40));
 
-        btnLamMoi.setText("LÀM MỚI");
-        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+        btntien.setBackground(new java.awt.Color(173, 139, 115));
+        btntien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btntien.setForeground(new java.awt.Color(255, 255, 255));
+        btntien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon tiến.png"))); // NOI18N
+        btntien.setText("Tiến");
+        btntien.setMaximumSize(new java.awt.Dimension(50, 20));
+        btntien.setMinimumSize(new java.awt.Dimension(50, 20));
+        btntien.setPreferredSize(new java.awt.Dimension(50, 20));
+        btntien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLamMoiActionPerformed(evt);
+                btntienActionPerformed(evt);
             }
         });
-        add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 117, -1, -1));
+        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 960, 130, 40));
 
-        txtTenMua.setEnabled(false);
-        add(txtTenMua, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 270, -1));
+        btntruoc.setBackground(new java.awt.Color(173, 139, 115));
+        btntruoc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btntruoc.setForeground(new java.awt.Color(255, 255, 255));
+        btntruoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon trước.png"))); // NOI18N
+        btntruoc.setText("Trước");
+        btntruoc.setMaximumSize(new java.awt.Dimension(50, 20));
+        btntruoc.setMinimumSize(new java.awt.Dimension(50, 20));
+        btntruoc.setPreferredSize(new java.awt.Dimension(50, 20));
+        btntruoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntruocActionPerformed(evt);
+            }
+        });
+        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 960, 120, 40));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel13.setText("Mùa:");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 40, -1));
+        btnvedau.setBackground(new java.awt.Color(173, 139, 115));
+        btnvedau.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnvedau.setForeground(new java.awt.Color(255, 255, 255));
+        btnvedau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon về đầu.png"))); // NOI18N
+        btnvedau.setText("Về đầu");
+        btnvedau.setMaximumSize(new java.awt.Dimension(50, 20));
+        btnvedau.setMinimumSize(new java.awt.Dimension(50, 20));
+        btnvedau.setPreferredSize(new java.awt.Dimension(50, 20));
+        btnvedau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvedauActionPerformed(evt);
+            }
+        });
+        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 960, 120, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoiActionPerformed
@@ -526,26 +517,6 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
 
     }//GEN-LAST:event_btnDau1ActionPerformed
 
-    private void btnCuoi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoi1ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnCuoi1ActionPerformed
-
-    private void btnTien2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTien2ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnTien2ActionPerformed
-
-    private void btnTruoc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTruoc2ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnTruoc2ActionPerformed
-
-    private void btnDau2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDau2ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnDau2ActionPerformed
-
     private void tblLoaiMonAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblLoaiMonAncestorAdded
         // TODO add your handling code here:
         DefaultTableModel model = new DefaultTableModel(
@@ -562,10 +533,14 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
         fillToTable();
     }//GEN-LAST:event_tblLoaiMonAncestorAdded
 
-    private void btnTiemkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiemkiemActionPerformed
+    private void tblLoaiMonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLoaiMonMouseClicked
         // TODO add your handling code here:
-        fillToTableTheoDieuKien();
-    }//GEN-LAST:event_btnTiemkiemActionPerformed
+        edit();
+    }//GEN-LAST:event_tblLoaiMonMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
 
@@ -580,7 +555,6 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-
         update();
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -589,36 +563,52 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
         clear();
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
-    private void tblLoaiMonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLoaiMonMouseClicked
+    private void btnTiemkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiemkiemActionPerformed
         // TODO add your handling code here:
-        edit();
-    }//GEN-LAST:event_tblLoaiMonMouseClicked
+        fillToTableTheoDieuKien();
+    }//GEN-LAST:event_btnTiemkiemActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnvecuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvecuoiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        moveLast();
+    }//GEN-LAST:event_btnvecuoiActionPerformed
+
+    private void btntienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntienActionPerformed
+        // TODO add your handling code here:
+        moveNext();
+    }//GEN-LAST:event_btntienActionPerformed
+
+    private void btntruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntruocActionPerformed
+        // TODO add your handling code here:
+        movePrevious();
+    }//GEN-LAST:event_btntruocActionPerformed
+
+    private void btnvedauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvedauActionPerformed
+        // TODO add your handling code here:
+        moveFirst();
+    }//GEN-LAST:event_btnvedauActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCuoi;
-    private javax.swing.JButton btnCuoi1;
     private javax.swing.JButton btnDau1;
-    private javax.swing.JButton btnDau2;
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnTiemkiem;
     private javax.swing.JButton btnTien1;
-    private javax.swing.JButton btnTien2;
     private javax.swing.JButton btnTruoc1;
-    private javax.swing.JButton btnTruoc2;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btntien;
+    private javax.swing.JButton btntruoc;
+    private javax.swing.JButton btnvecuoi;
+    private javax.swing.JButton btnvedau;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
@@ -629,7 +619,6 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;

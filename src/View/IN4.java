@@ -91,6 +91,7 @@ public class IN4 extends javax.swing.JPanel{
         });
 
         btnChon.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnChon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon thêm ảnh.png"))); // NOI18N
         btnChon.setText("Chọn ảnh");
         btnChon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +145,7 @@ public class IN4 extends javax.swing.JPanel{
         txtLuong.setText("XXXXX-XXX");
 
         btnSUa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnSUa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon sửa.png"))); // NOI18N
         btnSUa.setText("Sửa");
         btnSUa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,9 +197,9 @@ public class IN4 extends javax.swing.JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtMaNV))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtMaNV)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,13 +213,13 @@ public class IN4 extends javax.swing.JPanel{
                             .addComponent(jLabel11)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(txtLuong)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtLuong)
+                            .addComponent(jLabel13)))
                     .addComponent(dcNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSUa)
-                .addContainerGap(692, Short.MAX_VALUE))
+                .addContainerGap(687, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(173, 135, 115));
