@@ -62,7 +62,7 @@ public class signup extends javax.swing.JFrame implements SignInController{
         DcNgaySinh = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        chkShowPass = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/form_dang_ky_resized_750x750_latest.png"))); // NOI18N
@@ -156,8 +156,13 @@ public class signup extends javax.swing.JFrame implements SignInController{
         txtPass.setBorder(null);
         getContentPane().add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 380, 30));
 
-        jCheckBox2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, -1, 30));
+        chkShowPass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        chkShowPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkShowPassActionPerformed(evt);
+            }
+        });
+        getContentPane().add(chkShowPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, -1, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/backgroundchivaythoi.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 650));
@@ -183,14 +188,23 @@ public class signup extends javax.swing.JFrame implements SignInController{
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void chkShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkShowPassActionPerformed
+        // TODO add your handling code here:
+        if (chkShowPass.isSelected()) {
+            txtPass.setEchoChar((char) 0); // Hiện mật khẩu
+        } else {
+            txtPass.setEchoChar('●'); // Ẩn mật khẩu bằng dấu chấm
+        }
+    }//GEN-LAST:event_chkShowPassActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser DcNgaySinh;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JCheckBox chkShowPass;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -210,35 +224,38 @@ public class signup extends javax.swing.JFrame implements SignInController{
     @Override
 public void create() {
     String Pass = new String(txtPass.getPassword()).trim();
-    String username = txtUser.getText().trim();
-    String email = txtEmail.getText().trim(); 
-    Date ngaySinh = DcNgaySinh.getDate();     
+String username = txtUser.getText().trim();
+String email = txtEmail.getText().trim(); 
+Date ngaySinh = DcNgaySinh.getDate();     
 
-    NhanVien nv = dao.findById(username);
+NhanVien nv = dao.findById(username);
 
-    if (username.isEmpty()) {
-        UDialog.alert("Bạn chưa nhập mã nhân viên!");
-    } else if (nv == null || !username.equals(nv.getMaNV())) {
-        UDialog.alert("Tài khoản nhân viên không tồn tại!");
+if (username.isEmpty()) {
+    UDialog.alert("Bạn chưa nhập mã nhân viên!");
+} else if (nv == null) {
+    UDialog.alert("Tài khoản nhân viên không tồn tại!");
+} else {
+    if (Pass.isEmpty()) {
+        UDialog.alert("Vui lòng nhập mật khẩu!");
+    } else if (email.isEmpty()) {
+        UDialog.alert("Vui lòng nhập email!");
+    } else if (ngaySinh == null) {
+        UDialog.alert("Vui lòng chọn ngày sinh!");
     } else {
-        if (Pass.isEmpty()) {
-            UDialog.alert("Vui lòng nhập mật khẩu!");
-        } else if (email.isEmpty()) {
-            UDialog.alert("Vui lòng nhập email!");
-        } else if (ngaySinh == null) {
-            UDialog.alert("Vui lòng chọn ngày sinh!");
-        } else {
-            // ✅ Mã hóa mật khẩu bằng MD5 trước khi lưu
-            nv.setMatKhau(UHash.encrypt(Pass));
-            nv.setEmail(email);
-            nv.setNgaySinh(ngaySinh);
+        // Cập nhật thông tin nhân viên
+        nv.setMatKhau(UHash.encrypt(Pass));
+        nv.setEmail(email);
+        nv.setNgaySinh(ngaySinh);
 
-            dao.update(nv);
-            UDialog.alert("Tạo tài khoản thành công!");
-            new login().setVisible(true);
-            dispose();
-        }
+        // Gọi update thay vì create
+        dao.update(nv);
+
+        UDialog.alert("Tạo tài khoản thành công!");
+        new login().setVisible(true);
+        dispose();
     }
+}
+
 }
 
 
