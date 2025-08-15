@@ -377,7 +377,7 @@ public void loadTang2() {
         });
         jScrollPane3.setViewportView(tblGoimon);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 170, 490, 640));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 170, 490, 460));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -400,12 +400,12 @@ public void loadTang2() {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("THÀNH TIỀN:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1440, 920, 135, 54));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1440, 750, 135, 54));
 
         lblTongTien.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTongTien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongTien.setText("0.0");
-        add(lblTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(1780, 920, 110, 54));
+        add(lblTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(1780, 750, 110, 54));
 
         cboPTTT.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cboPTTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "chuyển khoản", "khác" }));
@@ -414,12 +414,12 @@ public void loadTang2() {
                 cboPTTTActionPerformed(evt);
             }
         });
-        add(cboPTTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 850, 310, 70));
+        add(cboPTTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 680, 310, 70));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel7.setText("Phương thức thanh toán:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 810, 310, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 640, 310, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel3.setText("Tìm kiếm:");
@@ -448,7 +448,7 @@ public void loadTang2() {
                 btnHuyBo1ActionPerformed(evt);
             }
         });
-        add(btnHuyBo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1440, 980, 153, 61));
+        add(btnHuyBo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1440, 810, 153, 61));
 
         btnDel.setBackground(new java.awt.Color(173, 139, 115));
         btnDel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -461,7 +461,7 @@ public void loadTang2() {
                 btnDelActionPerformed(evt);
             }
         });
-        add(btnDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1760, 980, 156, 61));
+        add(btnDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1760, 810, 156, 61));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setContentAreaFilled(false);

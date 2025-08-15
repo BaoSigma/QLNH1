@@ -278,7 +278,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="80" y="940" width="120" height="-1"/>
+          <AbsoluteConstraints x="580" y="840" width="120" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -292,7 +292,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="70" y="880" width="130" height="-1"/>
+          <AbsoluteConstraints x="570" y="780" width="130" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -330,7 +330,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="240" y="940" width="270" height="-1"/>
+          <AbsoluteConstraints x="740" y="840" width="270" height="-1"/>
         </Constraint>
       </Constraints>
 
@@ -347,7 +347,7 @@
     <Component class="javax.swing.JTextField" name="txtSoLuong">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="240" y="880" width="270" height="30"/>
+          <AbsoluteConstraints x="740" y="780" width="270" height="30"/>
         </Constraint>
       </Constraints>
     </Component>

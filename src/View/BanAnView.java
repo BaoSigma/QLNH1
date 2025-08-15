@@ -119,7 +119,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
         });
         jScrollPane1.setViewportView(tblBanAn);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 1920, 700));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 1920, 560));
 
         jPanel4.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -234,7 +234,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnvecuoiActionPerformed(evt);
             }
         });
-        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 990, 130, 40));
+        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 850, 130, 40));
 
         btntien.setBackground(new java.awt.Color(173, 139, 115));
         btntien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -249,7 +249,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btntienActionPerformed(evt);
             }
         });
-        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 990, 130, 40));
+        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 850, 130, 40));
 
         btntruoc.setBackground(new java.awt.Color(173, 139, 115));
         btntruoc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -264,7 +264,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btntruocActionPerformed(evt);
             }
         });
-        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 990, 120, 40));
+        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 850, 120, 40));
 
         btnvedau.setBackground(new java.awt.Color(173, 139, 115));
         btnvedau.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -279,7 +279,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
                 btnvedauActionPerformed(evt);
             }
         });
-        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 990, 120, 40));
+        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 850, 120, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTiemkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiemkiemActionPerformed

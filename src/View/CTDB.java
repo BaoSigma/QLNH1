@@ -211,12 +211,12 @@ public class CTDB extends javax.swing.JPanel implements ChiTietDatBanController{
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Ghi chú:");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 940, 120, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 840, 120, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Số lượng:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 880, 130, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 780, 130, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -232,8 +232,8 @@ public class CTDB extends javax.swing.JPanel implements ChiTietDatBanController{
         txatGhiChu.setRows(5);
         jScrollPane2.setViewportView(txatGhiChu);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 940, 270, -1));
-        add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 880, 270, 30));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 840, 270, -1));
+        add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 780, 270, 30));
 
         txtMaMon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

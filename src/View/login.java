@@ -163,6 +163,11 @@ public class login extends javax.swing.JFrame implements LoginController    {
         jButton4.setText("Đóng");
         jButton4.setBorder(null);
         jButton4.setOpaque(true);
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 470, 170, 50));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -228,6 +233,11 @@ public class login extends javax.swing.JFrame implements LoginController    {
         dispose();
         new QuenMatKhau().setVisible(true);
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton4MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -100,7 +100,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         jButton1.setContentAreaFilled(false);
         jButton1.setEnabled(false);
         jButton1.setFocusable(false);
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 80));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1240, 1080));
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -169,18 +169,18 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 txtEmailActionPerformed(evt);
             }
         });
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 890, 270, 30));
-        add(dcNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 990, 270, 30));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 740, 270, 30));
+        add(dcNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 840, 270, 30));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Ngày sinh:");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 990, 170, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 840, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Email:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 890, 160, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 740, 160, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -201,8 +201,8 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 .addComponent(lblAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 770, 200, 176));
-        add(txtLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 940, 270, 30));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 730, 200, 176));
+        add(txtLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 790, 270, 30));
         add(txtTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 790, 270, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
@@ -223,7 +223,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 960, -1, -1));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 920, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -233,7 +233,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Lương cơ bản:");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 940, 170, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 790, 170, -1));
 
         txtMaNV.setEnabled(false);
         add(txtMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 740, 270, 30));
@@ -321,7 +321,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 btnvecuoiActionPerformed(evt);
             }
         });
-        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1550, 770, 130, 40));
+        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1750, 760, 130, 40));
 
         btntien.setBackground(new java.awt.Color(173, 139, 115));
         btntien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -336,7 +336,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 btntienActionPerformed(evt);
             }
         });
-        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(1390, 770, 130, 40));
+        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(1590, 760, 130, 40));
 
         btntruoc.setBackground(new java.awt.Color(173, 139, 115));
         btntruoc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -351,7 +351,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 btntruocActionPerformed(evt);
             }
         });
-        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 770, 120, 40));
+        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(1440, 760, 120, 40));
 
         btnvedau.setBackground(new java.awt.Color(173, 139, 115));
         btnvedau.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -366,7 +366,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 btnvedauActionPerformed(evt);
             }
         });
-        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 770, 120, 40));
+        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 760, 120, 40));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setContentAreaFilled(false);
@@ -377,7 +377,7 @@ public class QLNV extends javax.swing.JPanel implements NhanVienController{
                 jButton3ActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1670, 1080));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1670, 90));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVienMouseClicked

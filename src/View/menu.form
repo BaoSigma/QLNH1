@@ -96,10 +96,11 @@
                   <Component id="lblCTDB" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblThongTinCaNhan" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="370" max="32767" attributes="0"/>
+                  <EmptySpace pref="349" max="32767" attributes="0"/>
                   <Component id="lblThoat" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblDangXuat" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -368,7 +369,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="110" width="1920" height="970"/>
+          <AbsoluteConstraints x="0" y="150" width="1920" height="970"/>
         </Constraint>
       </Constraints>
 

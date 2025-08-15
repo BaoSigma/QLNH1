@@ -366,6 +366,11 @@ if (currentPanel instanceof QLNV nv) {
         jLabel65.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel65.setForeground(new java.awt.Color(255, 255, 255));
         jLabel65.setText("x");
+        jLabel65.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel65MouseClicked(evt);
+            }
+        });
 
         lblThoat.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         lblThoat.setForeground(new java.awt.Color(255, 255, 255));
@@ -453,11 +458,11 @@ if (currentPanel instanceof QLNV nv) {
                 .addComponent(lblLM)
                 .addGap(18, 18, 18)
                 .addComponent(lblMA)
-                .addGap(97, 97, 97)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 350, Short.MAX_VALUE)
                 .addComponent(lblThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblDangXuat)
-                .addContainerGap(273, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 0, -1));
@@ -641,6 +646,11 @@ if (currentPanel instanceof QLNV nv) {
         // TODO add your handling code here:
         openmenu();
     }//GEN-LAST:event_jLabel22MouseClicked
+
+    private void jLabel65MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel65MouseClicked
+        // TODO add your handling code here:
+        closemenu();
+    }//GEN-LAST:event_jLabel65MouseClicked
 
     /**
      * @param args the command line arguments

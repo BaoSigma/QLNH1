@@ -45,14 +45,15 @@ public class OrderImpl {
 "FROM MonAn M\n" +
 "JOIN LoaiMon L ON M.MaLoai = L.MaLoai\n";
     public HoaDon create(HoaDon entity) {
-    try (Connection con = UJdbc.openConnection();
-         CallableStatement cs = con.prepareCall("{call sp_ThemHoaDon(?, ?, ?, ?, ?)}")) {
+    try (Connection con = UJdbc.openConnection();       
+         CallableStatement cs = con.prepareCall("{call sp_ThemHoaDon(?, ?, ?, ?, ?,?)}")) {
 
         cs.setString(1, entity.getMaBan());
         cs.setString(2, entity.getMaNV());
         cs.setTimestamp(3, new java.sql.Timestamp(System.currentTimeMillis())); // Ngày lập
         cs.setDouble(4, 0); // Tổng tiền ban đầu
         cs.setString(5, entity.getHinhThucTT());
+        cs.setString(6,entity.getTenKH());
         boolean hasResult = cs.execute();
 
         if (hasResult) {
@@ -133,7 +134,27 @@ public class OrderImpl {
         throw new RuntimeException("Lỗi khi gọi món theo bàn: " + e.getMessage(), e);
     }
     }
+        public void insertChiTietHoaDon(String MaHD, String MaMon, int SoLuong, String GhiChu, String TrangThai) {
+    if (MaHD == null || MaHD.isEmpty()) {
+        throw new IllegalArgumentException(" MaHD không được null khi thêm chi tiết hóa đơn");
+    }
 
+    try (Connection con = UJdbc.openConnection();
+         CallableStatement cs = con.prepareCall("{call sp_ThemChiTietHoaDon(?, ?, ?, ?, ?)}")) {
+
+        cs.setString(1, MaHD);
+        cs.setString(2, MaMon);
+        cs.setInt(3, SoLuong);
+        cs.setString(4, GhiChu);
+        cs.setString(5, TrangThai);
+
+
+        cs.executeUpdate();
+
+    } catch (SQLException e) {
+        throw new RuntimeException("Lỗi khi thêm chi tiết hóa đơn: " + e.getMessage(), e);
+    }
+}
 
         public List<MonAn> timkiemdouong(String keyword) {
     String sql = timkiemall

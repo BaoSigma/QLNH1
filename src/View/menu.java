@@ -197,8 +197,6 @@ public class menu extends javax.swing.JFrame {
             ct.setButtonVisible(true);
         } else if (currentPanel instanceof QLMA ma) {
             ma.setButtonVisible(true);
-        } else if (currentPanel instanceof goimon gm) {
-            gm.setButtonVisible(true);
         } else if (currentPanel instanceof QLLM lm) {
             lm.setButtonVisible(true);
         }else if (currentPanel instanceof IN4 ttcn) {
@@ -233,8 +231,6 @@ public class menu extends javax.swing.JFrame {
         ct.setButtonVisible(false);
     } else if (currentPanel instanceof QLMA ma) {
         ma.setButtonVisible(false);
-    } else if (currentPanel instanceof goimon gm) {
-        gm.setButtonVisible(false);
     } else if (currentPanel instanceof QLLM lm) {
         lm.setButtonVisible(false);
     }else if (currentPanel instanceof IN4 ttcn) {
@@ -478,10 +474,11 @@ public class menu extends javax.swing.JFrame {
                 .addComponent(lblCTDB)
                 .addGap(18, 18, 18)
                 .addComponent(lblThongTinCaNhan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 370, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
                 .addComponent(lblThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lblDangXuat))
+                .addComponent(lblDangXuat)
+                .addGap(21, 21, 21))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 0, 810));
@@ -632,7 +629,7 @@ public class menu extends javax.swing.JFrame {
         jLabel1.setOpaque(true);
         jPanel11.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1840, 90));
 
-        getContentPane().add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1920, 970));
+        getContentPane().add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 1920, 970));
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

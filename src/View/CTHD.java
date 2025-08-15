@@ -130,12 +130,12 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Trạng thái:");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 990, -1, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 870, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Ghi chú:");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 950, 130, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 830, 130, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -167,8 +167,8 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
         });
         add(txtMaMon, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 870, 270, 30));
         add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 910, 270, 30));
-        add(txtGhiChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 950, 270, 30));
-        add(txtTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 990, 270, 30));
+        add(txtGhiChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 830, 270, 30));
+        add(txtTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 870, 270, 30));
 
         tblChiTietHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

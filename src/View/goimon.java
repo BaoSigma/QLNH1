@@ -47,11 +47,8 @@ public class goimon extends javax.swing.JPanel implements OrderController {
     initComponents();
     filltoCombo();
     chinhsuatrencot();
-    setButtonVisible(visible);
     }
-    public void setButtonVisible(boolean visible) {
-    jButton1.setVisible(visible);
-} 
+   
     public void chinhsuatrencot(){
 // Dừng chỉnh sửa khi người dùng rời ô nhập
 tblGoimon.putClientProperty("terminateEditOnFocusLost", true);
@@ -93,7 +90,6 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -124,14 +120,10 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jLabel3 = new javax.swing.JLabel();
         txtTimkiem = new javax.swing.JTextField();
         btnXacNhan = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        txtTenKhach = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setContentAreaFilled(false);
-        jButton1.setEnabled(false);
-        jButton1.setFocusable(false);
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1670, 1080));
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -198,11 +190,12 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1404, Short.MAX_VALUE)
+            .addGap(0, 1410, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1404, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1069, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(335, 335, 335)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,9 +241,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1080, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1080, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,7 +355,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         });
         jScrollPane2.setViewportView(tblGoimon);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1129, 102, 780, 600));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1129, 102, 780, 410));
 
         btnDongY.setBackground(new java.awt.Color(173, 139, 115));
         btnDongY.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -376,7 +367,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
                 btnDongYActionPerformed(evt);
             }
         });
-        add(btnDongY, new org.netbeans.lib.awtextra.AbsoluteConstraints(1750, 940, 151, 61));
+        add(btnDongY, new org.netbeans.lib.awtextra.AbsoluteConstraints(1740, 880, 151, 61));
 
         btnHuyBo.setBackground(new java.awt.Color(173, 139, 115));
         btnHuyBo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -388,17 +379,17 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
                 btnHuyBoActionPerformed(evt);
             }
         });
-        add(btnHuyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 950, 162, 61));
+        add(btnHuyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 890, 162, 61));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("THÀNH TIỀN:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 820, 170, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 760, 170, 30));
 
         lblTongTien.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         lblTongTien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongTien.setText("0.0");
-        add(lblTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(1760, 820, 110, 30));
+        add(lblTongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(1750, 760, 110, 30));
 
         cboBanAn.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         cboBanAn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -412,22 +403,22 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
                 cboBanAnActionPerformed(evt);
             }
         });
-        add(cboBanAn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 760, 220, 30));
+        add(cboBanAn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 570, 220, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("Bàn ăn:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 710, 100, 34));
+        jLabel5.setText("Tên khách:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 660, 140, 34));
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1269, 443, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel7.setText("Phương thức thanh toán:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1600, 720, 320, 34));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1580, 530, 320, 34));
 
         cboPTTT.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         cboPTTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "chuyển khoản", "khác" }));
-        add(cboPTTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(1600, 760, 230, 30));
+        add(cboPTTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(1580, 570, 230, 30));
 
         btnDel.setBackground(new java.awt.Color(173, 139, 115));
         btnDel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -440,7 +431,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
                 btnDelActionPerformed(evt);
             }
         });
-        add(btnDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 870, 750, 61));
+        add(btnDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 810, 750, 61));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel3.setText("Tìm kiếm:");
@@ -458,6 +449,12 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
             }
         });
         add(btnXacNhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 130, 38));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel8.setText("Bàn ăn:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 520, 100, 34));
+        add(txtTenKhach, new org.netbeans.lib.awtextra.AbsoluteConstraints(1291, 662, 280, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
@@ -563,7 +560,7 @@ if (row != -1) {
         int row = tblMonNhe.getSelectionModel().getLeadSelectionIndex(); // luôn chính xác dòng đang click
 
         if (row != -1) {
-        Object oMaMon = tblMonNuong.getValueAt(row, 0);
+        Object oMaMon = tblMonNhe.getValueAt(row, 0);
         Object oTenMon = tblMonNhe.getValueAt(row, 1);
         Object oGia = tblMonNhe.getValueAt(row, 2);
         if (oTenMon != null && oGia != null) {
@@ -628,7 +625,6 @@ if (row != -1) {
     private javax.swing.JButton btnXacNhan;
     private javax.swing.JComboBox<String> cboBanAn;
     private javax.swing.JComboBox<String> cboPTTT;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -636,6 +632,7 @@ if (row != -1) {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -652,6 +649,7 @@ if (row != -1) {
     private javax.swing.JTable tblMonLau;
     private javax.swing.JTable tblMonNhe;
     private javax.swing.JTable tblMonNuong;
+    private javax.swing.JTextField txtTenKhach;
     private javax.swing.JTextField txtTimkiem;
     // End of variables declaration//GEN-END:variables
 public void Xoa(){
@@ -965,47 +963,51 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
 @Override
 public void XacNhan() {
     if (!UAuth.isLogin()) {
-UDialog.alert("Bạn cần đăng nhập để tạo hóa đơn!");
-return;
+        UDialog.alert("Bạn cần đăng nhập để tạo hóa đơn!");
+        return;
+    }
+
+    if (!UDialog.confirm("Bạn thực sự muốn thêm hóa đơn?")) {
+        return;
+    }
+
+    try {
+        // Lấy mã bàn từ combobox
+        String selected = String.valueOf(cboBanAn.getSelectedItem());
+        if (selected == null || selected.trim().isEmpty()) {
+            UDialog.alert("Vui lòng chọn bàn!");
+            return;
+        }
+        String maBan = selected.split(" - ")[0];
+
+        // Khởi tạo hóa đơn
+        HoaDon entity = new HoaDon();
+        entity.setMaNV(UAuth.user.getMaNV()); // Mã nhân viên từ người đăng nhập
+        entity.setHinhThucTT(String.valueOf(cboPTTT.getSelectedItem())); // Hình thức thanh toán
+        entity.setMaBan(maBan);
+        entity.setTenKH(txtTenKhach.getText());
+
+        // Tạo hóa đơn trong CSDL và lấy lại entity chứa MaHD
+        entity = dao.create(entity);
+
+        // Lấy dữ liệu từ bảng gọi món
+        DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String maSP = model.getValueAt(i, 0).toString();
+            int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString());
+            String ghiChu = ""; // Nếu có cột ghi chú thì lấy từ model
+
+
+            dao.insertChiTietHoaDon(maBan, maSP, soLuong, ghiChu);
+        }
+
+        UDialog.alert("Thêm hóa đơn thành công! Mã hóa đơn: " + entity.getMaHD());
+    } catch (Exception e) {
+        e.printStackTrace();
+        UDialog.alert("Đã xảy ra lỗi khi tạo hóa đơn!");
+    }
 }
 
-if (!UDialog.confirm("Bạn thực sự muốn thêm hóa đơn?")) {
-return;
-}
-
-try {
-// Khởi tạo hóa đơn
-HoaDon entity = new HoaDon();
-entity.setMaNV(UAuth.user.getMaNV()); // Mã nhân viên từ người đăng nhập
-entity.setHinhThucTT(String.valueOf(cboPTTT.getSelectedItem())); // Hình thức thanh toán
-String selected = String.valueOf(cboBanAn.getSelectedItem());
-String maBan = selected.split(" - ")[0];
-entity.setMaBan(maBan);
-
-// Tạo hóa đơn trong CSDL và lấy lại entity chứa MaHD
-entity = dao.create(entity);
-
-// Lấy dữ liệu từ bảng gọi món
-DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
-
-for (int i = 0; i < model.getRowCount(); i++) {
-    String maSP = model.getValueAt(i, 0).toString();
-    int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString());
-
-    String ghiChu = "";    // Bạn có thể lấy ghi chú từ cột khác nếu có
-    String trangThai = ""; // Nếu có cột trạng thái có thể sửa
-
-    // Thêm chi tiết hóa đơn (không còn maVanDon)
-    dao.goiMonTheoBan(maBan, maSP, soLuong, ghiChu);
-
-}
-
-UDialog.alert("Thêm hóa đơn thành công! Mã hóa đơn: " + entity.getMaHD());
-} catch (Exception e) {
-e.printStackTrace();
-UDialog.alert("Đã xảy ra lỗi khi tạo hóa đơn!");
-}
-}
   
 
     @Override

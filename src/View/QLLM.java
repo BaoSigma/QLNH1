@@ -434,7 +434,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
         });
         jScrollPane2.setViewportView(tblLoaiMon);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 1920, 540));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 1920, 490));
 
         btnvecuoi.setBackground(new java.awt.Color(173, 139, 115));
         btnvecuoi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -449,7 +449,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                 btnvecuoiActionPerformed(evt);
             }
         });
-        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 960, 130, 40));
+        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 880, 130, 40));
 
         btntien.setBackground(new java.awt.Color(173, 139, 115));
         btntien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -464,7 +464,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                 btntienActionPerformed(evt);
             }
         });
-        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 960, 130, 40));
+        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 880, 130, 40));
 
         btntruoc.setBackground(new java.awt.Color(173, 139, 115));
         btntruoc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -479,7 +479,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                 btntruocActionPerformed(evt);
             }
         });
-        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 960, 120, 40));
+        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 880, 120, 40));
 
         btnvedau.setBackground(new java.awt.Color(173, 139, 115));
         btnvedau.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -494,7 +494,7 @@ public class QLLM extends javax.swing.JPanel implements LoaiMonController{
                 btnvedauActionPerformed(evt);
             }
         });
-        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 960, 120, 40));
+        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 880, 120, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoiActionPerformed

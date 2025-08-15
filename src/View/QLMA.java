@@ -190,7 +190,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
         });
         jScrollPane2.setViewportView(tblMonAn);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 1920, 500));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 1920, 360));
 
         lblAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAnh.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -313,7 +313,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
                 btnvecuoiActionPerformed(evt);
             }
         });
-        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 980, 130, 40));
+        add(btnvecuoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 840, 130, 40));
 
         btntien.setBackground(new java.awt.Color(173, 139, 115));
         btntien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -328,7 +328,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
                 btntienActionPerformed(evt);
             }
         });
-        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 980, 130, 40));
+        add(btntien, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 840, 130, 40));
 
         btntruoc.setBackground(new java.awt.Color(173, 139, 115));
         btntruoc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -343,7 +343,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
                 btntruocActionPerformed(evt);
             }
         });
-        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 980, 120, 40));
+        add(btntruoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 840, 120, 40));
 
         btnvedau.setBackground(new java.awt.Color(173, 139, 115));
         btnvedau.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -358,7 +358,7 @@ public class QLMA extends javax.swing.JPanel implements MonAnController{
                 btnvedauActionPerformed(evt);
             }
         });
-        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 980, 120, 40));
+        add(btnvedau, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 840, 120, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTienActionPerformed
