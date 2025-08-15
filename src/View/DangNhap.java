@@ -109,11 +109,12 @@ public class DangNhap extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 UAuth.load();
-                try {
+               try {
                     UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatLightLaf());
-                } catch (Exception e) {
-                    e.printStackTrace();
+                } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                    ex.printStackTrace();
                 }
+
                 new splashscreen.SplashScreen(null, true).setVisible(true);
                 new DangNhap().setVisible(true);
             }

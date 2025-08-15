@@ -9,8 +9,8 @@ package Model;
  * @author Admin
  */
 public class ChiTietHoaDon {
-    private HoaDon hd;
-    private MonAn ma;
+    private HoaDon hd = new HoaDon();
+    private MonAn ma = new MonAn();
     private int soLuong;
     private String ghiChu;
     private String trangThai;

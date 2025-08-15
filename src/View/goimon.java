@@ -12,6 +12,7 @@ import Model.HoaDon;
 import Model.MonAn;
 import Util.UAuth;
 import Util.UDialog;
+import Util.UJdbc;
 import java.awt.Component;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -167,7 +168,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
                 {null, null, null, null}
             },
             new String [] {
-                "Tên loại", "Tên", "Giá", "Ảnh"
+                "Mã món", "Tên", "Giá", "Ảnh"
             }
         ));
         tblMonLau.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -190,20 +191,16 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1410, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1069, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(335, 335, 335)))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1077, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 876, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 876, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 876, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jtabSP.addTab("Món lẩu", jPanel2);
@@ -216,7 +213,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
                 {null, null, null, null}
             },
             new String [] {
-                "Tên loại", "Tên", "Giá", "Ảnh"
+                "Mã món", "Tên", "Giá", "Ảnh"
             }
         ));
         tblMonNuong.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -260,7 +257,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
                 {null, null, null, null}
             },
             new String [] {
-                "Tên loại", "Tên", "Giá", "Ảnh"
+                "Mã món", "Tên", "Giá", "Ảnh"
             }
         ));
         tblMonNhe.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -652,7 +649,66 @@ if (row != -1) {
     private javax.swing.JTextField txtTenKhach;
     private javax.swing.JTextField txtTimkiem;
     // End of variables declaration//GEN-END:variables
-public void Xoa(){
+@Override
+public void XacNhan() {
+    if (!UAuth.isLogin()) {
+        UDialog.alert("Bạn cần đăng nhập để tạo hóa đơn!");
+        return;
+    }
+
+    if (!UDialog.confirm("Bạn thực sự muốn thêm hóa đơn?")) {
+        return; // Hủy nếu người dùng không xác nhận
+    }
+
+    try {
+        // Tạo đối tượng hóa đơn mới
+        HoaDon entity = new HoaDon();
+        entity.setMaNV(UAuth.user.getMaNV()); // Lấy mã NV từ người dùng đăng nhập
+        entity.setHinhThucTT(String.valueOf(cboPTTT.getSelectedItem())); // Lấy hình thức thanh toán
+
+        // Lấy mã bàn từ comboBox (giả sử định dạng là "B01 - Bàn 1")
+        String selected = String.valueOf(cboBanAn.getSelectedItem());
+        String maBan = selected.split(" - ")[0];
+        entity.setMaBan(maBan);
+
+        // Tạo hóa đơn trong CSDL và lấy mã HD vừa tạo
+        entity = dao.create(entity);
+
+        // Lấy bảng gọi món
+        DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
+
+        // Duyệt qua từng dòng trong bảng gọi món để thêm chi tiết hóa đơn
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String maSP = model.getValueAt(i, 0).toString();
+            int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString());
+            String ghiChu = "";
+            String trangThai = "Đã đặt";
+            dao.insertChiTietHoaDon(entity.getMaHD(), maSP, soLuong, ghiChu, trangThai);
+        }
+
+        // Cập nhật trạng thái bàn sang "Đã đặt"
+        BanAn ba = new BanAn();
+        ba.setMaBan(maBan);
+        ba.setTrangThai("Đã đặt");
+        dao.capnhattrangthai(ba);
+
+        UDialog.alert("Thêm hóa đơn thành công! Mã hóa đơn: " + entity.getMaHD());
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        UDialog.alert("Đã xảy ra lỗi khi tạo hóa đơn!");
+    }
+}
+
+    public void capnhattrangthai(BanAn ba) {
+         String sqlUpdate= "UPDATE BanAn SET TrangThai = ? WHERE MaBan = ?";
+        Object[] values = {
+            ba.getTrangThai(),
+            ba.getMaBan()
+        };
+        UJdbc.executeUpdate(sqlUpdate, values);
+    }
+    public void Xoa(){
         int selectedRow = tblGoimon.getSelectedRow();
 if (selectedRow != -1) {
     DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
@@ -960,53 +1016,7 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
         } catch (Exception e) {}
     }
 
-@Override
-public void XacNhan() {
-    if (!UAuth.isLogin()) {
-        UDialog.alert("Bạn cần đăng nhập để tạo hóa đơn!");
-        return;
-    }
 
-    if (!UDialog.confirm("Bạn thực sự muốn thêm hóa đơn?")) {
-        return;
-    }
-
-    try {
-        // Lấy mã bàn từ combobox
-        String selected = String.valueOf(cboBanAn.getSelectedItem());
-        if (selected == null || selected.trim().isEmpty()) {
-            UDialog.alert("Vui lòng chọn bàn!");
-            return;
-        }
-        String maBan = selected.split(" - ")[0];
-
-        // Khởi tạo hóa đơn
-        HoaDon entity = new HoaDon();
-        entity.setMaNV(UAuth.user.getMaNV()); // Mã nhân viên từ người đăng nhập
-        entity.setHinhThucTT(String.valueOf(cboPTTT.getSelectedItem())); // Hình thức thanh toán
-        entity.setMaBan(maBan);
-        entity.setTenKH(txtTenKhach.getText());
-
-        // Tạo hóa đơn trong CSDL và lấy lại entity chứa MaHD
-        entity = dao.create(entity);
-
-        // Lấy dữ liệu từ bảng gọi món
-        DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
-        for (int i = 0; i < model.getRowCount(); i++) {
-            String maSP = model.getValueAt(i, 0).toString();
-            int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString());
-            String ghiChu = ""; // Nếu có cột ghi chú thì lấy từ model
-
-
-            dao.insertChiTietHoaDon(maBan, maSP, soLuong, ghiChu);
-        }
-
-        UDialog.alert("Thêm hóa đơn thành công! Mã hóa đơn: " + entity.getMaHD());
-    } catch (Exception e) {
-        e.printStackTrace();
-        UDialog.alert("Đã xảy ra lỗi khi tạo hóa đơn!");
-    }
-}
 
   
 

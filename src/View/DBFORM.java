@@ -15,6 +15,7 @@ import Model.HoaDon;
 import Model.MonAn;
 import Util.UAuth;
 import Util.UDialog;
+import Util.UJdbc;
 import com.github.lgooddatepicker.zinternaltools.WrapLayout;
 import java.awt.Component;
 import java.awt.Image;
@@ -27,15 +28,20 @@ import java.util.Date;
 import java.sql.Time;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import static javax.swing.SwingConstants.CENTER;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
+import javax.swing.text.AbstractDocument;
 
 /**
  *
@@ -43,7 +49,7 @@ import javax.swing.table.TableColumnModel;
  */
 public class DBFORM extends javax.swing.JPanel {
     private static DatBanimpl dao = new DatBanimpl();
-
+    
     private DatBan db;
     private List<BanAn> list;
     OrderImpl daor = new OrderImpl();
@@ -62,6 +68,7 @@ public class DBFORM extends javax.swing.JPanel {
 
         // Load bàn lên giao diện
         loadTang1();
+       chinhsuatrencot();
     setButtonVisible(visible);
     }
     public void setButtonVisible(boolean visible) {
@@ -79,8 +86,59 @@ public class DBFORM extends javax.swing.JPanel {
     panel.revalidate();
     panel.repaint();
     }
-           
-    
+          public void chinhsuatrencot(){
+// Dừng chỉnh sửa khi người dùng rời ô nhập
+tblGoimon.putClientProperty("terminateEditOnFocusLost", true);
+
+// Lắng nghe sự kiện sửa bảng
+tblGoimon.getModel().addTableModelListener(new TableModelListener() {
+    @Override
+    public void tableChanged(TableModelEvent e) {
+        if (e.getType() == TableModelEvent.UPDATE) {
+            int row = e.getFirstRow();
+            int column = e.getColumn();
+
+            if (column == 2) { // Cột số lượng
+                DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
+                try {
+                    int soLuong = Integer.parseInt(model.getValueAt(row, 2).toString());
+                    double tongTienCu = Double.parseDouble(model.getValueAt(row, 3).toString());
+                    double donGia = tongTienCu / (soLuong == 0 ? 1 : soLuong); // Tính đơn giá tạm
+                    double thanhTien = soLuong * donGia;
+                    model.setValueAt(thanhTien, row, 3);
+                } catch (Exception ex) {
+                    System.err.println("Lỗi cập nhật thành tiền tại dòng " + row + ": " + ex.getMessage());
+                }
+            }
+
+            capNhatTongTien(); // Luôn cập nhật tổng tiền
+        }
+    }
+});
+
+    }
+
+private void updateThanhTien(int row) {
+    DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
+    try {
+        String soLuongStr = model.getValueAt(row, 2).toString();
+        if (soLuongStr.isEmpty()) return;
+
+        int soLuong = Integer.parseInt(soLuongStr);
+
+        // Lấy đơn giá từ thành tiền cũ hoặc từ DB
+        double thanhTienCu = Double.parseDouble(model.getValueAt(row, 3).toString());
+        double donGia = thanhTienCu / (soLuong == 0 ? 1 : soLuong);
+
+        double thanhTienMoi = soLuong * donGia;
+        model.setValueAt(thanhTienMoi, row, 3);
+
+        capNhatTongTien();
+    } catch (Exception ex) {
+        // Nếu người dùng đang nhập chữ thì bỏ qua
+    }
+}
+
 public void loadTang1() {
     String tang = "KV01";
     try {
@@ -131,8 +189,6 @@ public void loadTang2() {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         tblMonNhe = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblGoimon = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         cboBanAn = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
@@ -148,6 +204,8 @@ public void loadTang2() {
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblGoimon = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -357,28 +415,6 @@ public void loadTang2() {
 
         add(jtabSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 1090, 920));
 
-        tblGoimon.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Mã món", "Tên sản phẩm", "Số lượng", "Tổng tiền"
-            }
-        ));
-        tblGoimon.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tblGoimonAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-                tblGoimonAncestorMoved(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        jScrollPane3.setViewportView(tblGoimon);
-
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 170, 490, 460));
-
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Bàn ăn:");
@@ -472,7 +508,7 @@ public void loadTang2() {
                 jButton2ActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1670, 1080));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1670, 1080));
 
         jPanel5.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -507,6 +543,36 @@ public void loadTang2() {
         );
 
         add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, -1));
+
+        tblGoimon.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã món", "Tên sản phẩm", "Số lượng", "Tổng tiền"
+            }
+        ));
+        tblGoimon.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tblGoimonAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                tblGoimonAncestorMoved(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        tblGoimon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblGoimonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tblGoimonMouseEntered(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tblGoimon);
+
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1430, 180, 470, 450));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cboTangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTangActionPerformed
@@ -620,15 +686,6 @@ public void loadTang2() {
         }
     }//GEN-LAST:event_tblMonNheMouseClicked
 
-    private void tblGoimonAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblGoimonAncestorAdded
-        // TODO add your handling code here:
-        capNhatTongTien();
-    }//GEN-LAST:event_tblGoimonAncestorAdded
-
-    private void tblGoimonAncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblGoimonAncestorMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblGoimonAncestorMoved
-
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
         timkiem();
@@ -670,6 +727,24 @@ public void loadTang2() {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void tblGoimonAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblGoimonAncestorAdded
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_tblGoimonAncestorAdded
+
+    private void tblGoimonAncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblGoimonAncestorMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblGoimonAncestorMoved
+
+    private void tblGoimonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGoimonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblGoimonMouseClicked
+
+    private void tblGoimonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGoimonMouseEntered
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_tblGoimonMouseEntered
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDel;
@@ -693,7 +768,7 @@ public void loadTang2() {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
@@ -727,30 +802,47 @@ if (selectedRow != -1) {
     UDialog.alert("Vui lòng chọn món cần xóa!");
 }
     }
-    public void capNhatTongTien() {
-        DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
-double tong = 0;
-
-for (int i = 0; i < model.getRowCount(); i++) {
-    Object val = model.getValueAt(i, 3); 
-    if (val != null) {
-        try {
-            tong += Double.parseDouble(val.toString()); 
-        } catch (NumberFormatException e) {
+public void capNhatTongTien() {
+    DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
+    double tong = 0;
+    for (int i = 0; i < model.getRowCount(); i++) {
+        Object val = model.getValueAt(i, 3); 
+        if (val != null) {
+            try {
+                tong += Double.parseDouble(val.toString()); 
+            } catch (NumberFormatException e) {}
         }
     }
-}
-
-lblTongTien.setText(String.format("%.1f", tong));
-
+    lblTongTien.setText(String.format("%.1f", tong));
 }
 
 
     public List<DatBanINFOR> XacNhan(String maKH, String maBan, Date ngayDat, LocalTime gioDat, int soNguoi, String maNV) {
+        HoaDon entity = new HoaDon();
+    OrderImpl dao = new OrderImpl();
+    entity.setTenKH(maKH);
+            entity.setMaNV(UAuth.user.getMaNV());
+            
     List<DatBanINFOR> ds = new ArrayList<>();
     String HTTT = cboPTTT.getSelectedItem().toString();
     String ghiChu = "";
+    entity.setHinhThucTT(HTTT);
+    entity.setMaBan(maBan);
+    entity = dao.create(entity);
+    DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
 
+        // Duyệt qua từng dòng trong bảng gọi món để thêm chi tiết hóa đơn
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String maSP = model.getValueAt(i, 0).toString();
+            int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString());
+            String ghi = "";
+            String trangThai = "Đã đặt";
+            dao.insertChiTietHoaDon(entity.getMaHD(), maSP, soLuong, ghi, trangThai);
+        }
+        BanAn ba = new BanAn();
+        ba.setMaBan(maBan);
+        ba.setTrangThai("Đã đặt");
+        dao.capnhattrangthai(ba);
     for (int i = 0; i < tblGoimon.getRowCount(); i++) {
         Object maMonObj = tblGoimon.getValueAt(i, 0);
         Object slObj = tblGoimon.getValueAt(i, 2);
@@ -769,7 +861,6 @@ lblTongTien.setText(String.format("%.1f", tong));
             System.err.println("⚠ Số lượng không hợp lệ tại dòng " + i + ": " + slText);
         }
     }
-
     return ds;
 }
     public void filltoTableDoUong() {
@@ -1056,14 +1147,16 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
     }
 
 
+
+
 public void filltoTableGoiMon(String MaMon, String TenMon, double Gia) {
     DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
     boolean found = false;
 
     for (int i = 0; i < model.getRowCount(); i++) {
-        String existingTenMon = model.getValueAt(i, 1).toString();
-        if (existingTenMon.equals(TenMon)) {
-            int soLuong = (int) model.getValueAt(i, 2);
+        String existingMaMon = model.getValueAt(i, 0).toString();
+        if (existingMaMon.equals(MaMon)) { // Ưu tiên so sánh theo MaMon
+            int soLuong = Integer.parseInt(model.getValueAt(i, 2).toString());
             soLuong++;
             model.setValueAt(soLuong, i, 2);
             model.setValueAt(Gia * soLuong, i, 3);
@@ -1081,28 +1174,27 @@ public void filltoTableGoiMon(String MaMon, String TenMon, double Gia) {
 }
 
 
- 
+
+
 public double tinhTongTien() {
     DefaultTableModel model = (DefaultTableModel) tblGoimon.getModel();
     double tong = 0;
 
     for (int i = 0; i < model.getRowCount(); i++) {
-        Object val = model.getValueAt(i, 3);
-        if (val instanceof Number) {
-            tong += ((Number) val).doubleValue();
-        } else if (val != null) {
-            try {
-                String cleaned = val.toString().replace(",", "").trim();
-                tong += Double.parseDouble(cleaned);
-            } catch (NumberFormatException e) {
-                System.err.println("Lỗi parse tổng tiền tại dòng " + i + ": " + val);
-            }
+        Object val = model.getValueAt(i, 3); // Thành tiền
+
+        try {
+            double tien = Double.parseDouble(val.toString().replace(",", "").trim());
+            tong += tien;
+        } catch (Exception e) {
+            System.err.println("Lỗi tại dòng " + i + ": " + val);
         }
     }
 
-    lblTongTien.setText(String.format("%,.0f", tong)); // định dạng 1,000,000
+    lblTongTien.setText(String.format("%,.0f", tong));
     return tong;
 }
+
 
     public void filltoCombo(){
     cboBanAn.removeAllItems();

@@ -61,15 +61,21 @@ public void init() {
 
    
 public void gandulieu() {
+    
     btnXacNhan.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            
             String maKH = txttenKH.getText();
             String maBan = b.getMaBan();  // đảm bảo b != null
             Date ngayDat = txtNgayDat.getDate();
             LocalTime gioDat = tPGioDat.getTime();
             String maNV = UAuth.user.getMaNV();
-
+            
+            BanAn ba = new BanAn();
+            ba.setMaBan(maBan);
+            ba.setTrangThai("Đã đặt");
+            
             // Kiểm tra ngày đặt
             if (ngayDat == null) {
                 JOptionPane.showMessageDialog(null, "Vui lòng chọn ngày đặt bàn.");

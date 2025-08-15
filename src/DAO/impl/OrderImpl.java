@@ -76,6 +76,14 @@ public class OrderImpl {
         throw new RuntimeException("Lỗi khi tạo hóa đơn: " + e.getMessage(), e);
     }
 }
+     public void capnhattrangthai(BanAn ba) {
+         String sqlUpdate= "UPDATE BanAn SET TrangThai = ? WHERE MaBan = ?";
+        Object[] values = {
+            ba.getTrangThai(),
+            ba.getMaBan()
+        };
+        UJdbc.executeUpdate(sqlUpdate, values);
+    }
     public HoaDon createDB(HoaDon entity) {
     try (Connection con = UJdbc.openConnection();
          CallableStatement cs = con.prepareCall("{call sp_ThemHoaDon(?, ?, ?, ?, ?, ?)}")) {

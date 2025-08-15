@@ -7,6 +7,7 @@ package DAO.impl;
 import DAO.ModelDAO.SignInDAO;
 import Model.NhanVien;
 import Util.UJdbc;
+import Util.UQuery;
 import java.util.List;
 
 /**
@@ -16,27 +17,27 @@ import java.util.List;
 public class SignInImpl implements SignInDAO{
     private static final String createsql = "UPDATE NhanVien\n" +
             "SET \n" +
-            "    HoTen = ?,\n" +
             "    MatKhau = ?,\n" +
             "    Email = ?,\n" +
             "    NgaySinh = ?\n" +
             "WHERE MaNV = ?";
+    private static final String sqlFind = "SELECT * FROM NhanVien";
+    private static final String sqlfindid = sqlFind + "Where MaNV = ?";
     @Override
     public NhanVien create(NhanVien entity) {
-        Object[] values = {
-            entity.getHoTen(),
-            entity.getMatKhau(),
-            entity.getEmail(),
-            entity.getNgaySinh(),
-            entity.getMaNV(),
-        };
-        UJdbc.executeUpdate(createsql, values);
-        return entity;
+       return entity;
     }
 
     @Override
     public void update(NhanVien entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         Object[] values = {
+            entity.getMatKhau(),
+            entity.getEmail(),
+            entity.getNgaySinh(),
+            entity.getMaNV()
+        };
+        UJdbc.executeUpdate(createsql, values);
+
     }
 
     @Override
@@ -51,7 +52,7 @@ public class SignInImpl implements SignInDAO{
 
     @Override
     public NhanVien findById(Object id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return UQuery.getSingleBean(NhanVien.class, sqlFind);
     }
     
 }

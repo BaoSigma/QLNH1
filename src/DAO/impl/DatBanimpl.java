@@ -62,7 +62,7 @@ public static final String timkietDatBancoTang = """
 
 // Tìm kiếm theo điều kiện (ví dụ theo MaDat)
 public static final String timkiemcodieukien = timkietDatBan + " WHERE MaDat = ?";
-public static String datbantruocgoimon = "EXEC sp_DatBanVaTaoHoaDon_GoiMon_MaTuyChinh \n" +
+public static String datbantruocgoimon = "EXEC  \n" +
 "    @TenKH = ?,\n" +
 "    @MaBan = ?,\n" +
 "    @NgayDat = ?,\n" +
@@ -89,32 +89,34 @@ public DatBan create(DatBan entity) {
     return entity;
 }
    public static void executeProcedureDatBan(
-    String TenKH, String MaBan, java.sql.Date NgayDat, Time GioDat,
-    int soNguoi, String maNV, String HTTT, String maMon, int SoLuong, String ghiChu) {
+        String TenKH, String MaBan, java.sql.Date NgayDat, Time GioDat,
+        int SoNguoi, String MaNV, String HTTT, String MaMon, int SoLuong, String GhiChu) {
 
-    String call =datbantruocgoimon;
-    
-    try (Connection con = UJdbc.openConnection(); 
+    // Chuỗi gọi thủ tục với 10 tham số
+    String call = "{call sp_DatBanVaTaoHoaDon_GoiMon_MaTuyChinh(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+
+    try (Connection con = UJdbc.openConnection();
          CallableStatement cs = con.prepareCall(call)) {
 
         cs.setString(1, TenKH);
         cs.setString(2, MaBan);
         cs.setDate(3, NgayDat);
         cs.setTime(4, GioDat);
-        cs.setInt(5, soNguoi);
-        cs.setString(6, maNV);
+        cs.setInt(5, SoNguoi);
+        cs.setString(6, MaNV);
         cs.setString(7, HTTT);
-        cs.setString(8, maMon);
+        cs.setString(8, MaMon);
         cs.setInt(9, SoLuong);
-        cs.setString(10, ghiChu);
+        cs.setString(10, GhiChu);
 
         cs.execute();
 
-    } catch (Exception e) {
+    } catch (SQLException e) {
         e.printStackTrace();
-        throw new RuntimeException("Lỗi gọi thủ tục sp_DatBanVaGoiMon: " + e.getMessage());
+        throw new RuntimeException("Lỗi gọi thủ tục sp_DatBanVaTaoHoaDon_GoiMon_MaTuyChinh: " + e.getMessage());
     }
 }
+
 
 
 

@@ -90,7 +90,7 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1600, 1080));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 2, 1600, 740));
 
         jPanel3.setBackground(new java.awt.Color(173, 139, 115));
 
@@ -127,33 +127,33 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, -1));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Trạng thái:");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 870, -1, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 830, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Ghi chú:");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 830, 130, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 800, 130, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Số lượng:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 910, 130, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 860, 130, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Mã món:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 870, 130, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 830, 130, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Mã hóa đơn:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 830, 160, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 800, 160, -1));
 
         txtMaHD.setEnabled(false);
-        add(txtMaHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 830, 270, 30));
+        add(txtMaHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 800, 270, 20));
 
         txtMaMon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -165,10 +165,10 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
                 txtMaMonActionPerformed(evt);
             }
         });
-        add(txtMaMon, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 870, 270, 30));
-        add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 910, 270, 30));
-        add(txtGhiChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 830, 270, 30));
-        add(txtTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 870, 270, 30));
+        add(txtMaMon, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 840, 270, 20));
+        add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 870, 270, 20));
+        add(txtGhiChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 800, 270, 20));
+        add(txtTrangThai, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 830, 270, 20));
 
         tblChiTietHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
