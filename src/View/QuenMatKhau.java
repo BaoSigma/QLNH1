@@ -285,7 +285,7 @@ public class QuenMatKhau extends javax.swing.JFrame implements ForgetPassControl
         if (nv != null) {
             try {
                 
-                String hashedPass = UHash.encrypt(newPass);
+                    String hashedPass = UHash.encrypt(newPass);
                 nv.setMatKhau(hashedPass);
                 dao.update(nv);
 

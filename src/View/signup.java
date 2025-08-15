@@ -5,6 +5,7 @@
 package View;
 
 import Controller.ModelController.SignInController;
+import DAO.ModelDAO.SignInDAO;
 import DAO.impl.SignInImpl;
 import Model.NhanVien;
 import Util.UDialog;
@@ -20,7 +21,7 @@ import javax.swing.UIManager;
  * @author User
  */
 public class signup extends javax.swing.JFrame implements SignInController{
-    SignInImpl dao = new SignInImpl();
+    SignInDAO dao = new SignInImpl();
     List<NhanVien> item = new ArrayList<>();
     /**
      * Creates new form NewJPanel
@@ -227,7 +228,7 @@ public void create() {
 String username = txtUser.getText().trim();
 String email = txtEmail.getText().trim(); 
 Date ngaySinh = DcNgaySinh.getDate();     
-
+String hashedPass = UHash.encrypt(Pass);
 NhanVien nv = dao.findById(username);
 
 if (username.isEmpty()) {
@@ -243,7 +244,7 @@ if (username.isEmpty()) {
         UDialog.alert("Vui lòng chọn ngày sinh!");
     } else {
         // Cập nhật thông tin nhân viên
-        nv.setMatKhau(UHash.encrypt(Pass));
+        nv.setMatKhau(Pass);
         nv.setEmail(email);
         nv.setNgaySinh(ngaySinh);
 

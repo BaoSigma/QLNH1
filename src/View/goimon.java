@@ -802,7 +802,7 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
             columnModel.getColumn(3).setPreferredWidth(200);
             MonAn = dao.MonLau();
             MonAn.forEach(item -> {
-                 String imagePath = "src/main/resources/img" + item.getHinhAnh();
+                 String imagePath = "src/img/" + item.getHinhAnh();
                   ImageIcon icon = new ImageIcon(imagePath);
                     Image scaledImage = icon.getImage().getScaledInstance(194, 149, Image.SCALE_SMOOTH);
                     ImageIcon scaledIcon = new ImageIcon(scaledImage);
@@ -843,7 +843,7 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
                 columnModel.getColumn(3).setPreferredWidth(200);
                 MonAn = dao.MonNuong();
                 MonAn.forEach(item -> {
-                     String imagePath = "src/main/resources/img" + item.getHinhAnh();
+                     String imagePath = "src/img/" + item.getHinhAnh();
                       ImageIcon icon = new ImageIcon(imagePath);
                         Image scaledImage = icon.getImage().getScaledInstance(194, 149, Image.SCALE_SMOOTH);
                         ImageIcon scaledIcon = new ImageIcon(scaledImage);
@@ -885,7 +885,7 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
                 columnModel.getColumn(3).setPreferredWidth(200);
                 MonAn = dao.MoNhe();
                 MonAn.forEach(item -> {
-                     String imagePath = "src/main/resources/img" + item.getHinhAnh();
+                     String imagePath = "src/img/" + item.getHinhAnh();
                       ImageIcon icon = new ImageIcon(imagePath);
                         Image scaledImage = icon.getImage().getScaledInstance(194, 149, Image.SCALE_SMOOTH);
                         ImageIcon scaledIcon = new ImageIcon(scaledImage);
