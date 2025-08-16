@@ -19,8 +19,12 @@ import java.util.List;
 public class MonAnImpl implements MonAnDAO {
 
     private static final String sqlInsert = """
-        INSERT INTO MonAn (MaMon, TenMon, DonGia, MoTa, HinhAnh, MaLoai)
-        VALUES (?, ?, ?, ?, ?, ?);
+        EXEC sp_ThemMonAn 
+            @TenMon = ?,
+            @DonGia = ?,
+            @MoTa = ?,
+            @HinhAnh = ?,
+            @MaLoai = ?;
     """;
 
     private static final String sqlUpdate = """
@@ -46,14 +50,11 @@ public class MonAnImpl implements MonAnDAO {
     @Override
     public MonAn create(MonAn m) {
         Object[] values = {
-            m.getMaMon(),
             m.getTenMon(),
-            m.l.getMaLoai(),
             m.getDonGia(),
             m.getMoTa(),
-            m.getHinhAnh()
-            
-        };
+            m.getHinhAnh(),
+            m.l.getMaLoai()        };
         UJdbc.executeUpdate(sqlInsert, values);
         return m;
     }
@@ -61,13 +62,14 @@ public class MonAnImpl implements MonAnDAO {
     @Override
     public void update(MonAn m) {
         Object[] values = {
+            
             m.getTenMon(),
             m.l.getMaLoai(),
             m.getDonGia(),
             m.getMoTa(),
             m.getHinhAnh(),
+            m.getMaMon(),
             
-            m.getMaMon()
         };
         UJdbc.executeUpdate(sqlUpdate, values);
     }
@@ -99,7 +101,6 @@ public class MonAnImpl implements MonAnDAO {
     String sql = """
         SELECT 
             *
-            
         FROM MonAn
         WHERE MaMon LIKE ? 
            OR TenMon LIKE ? 

@@ -235,7 +235,7 @@ public void loadTang2() {
 
         jScrollPane1.setViewportView(panel);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 145, -1, 930));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, 840));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel2.setText("Số tầng: ");
@@ -316,9 +316,9 @@ public void loadTang2() {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 885, Short.MAX_VALUE)
+            .addGap(0, 805, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE))
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE))
         );
 
         jtabSP.addTab("Món lẩu", jPanel2);
@@ -362,9 +362,9 @@ public void loadTang2() {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 885, Short.MAX_VALUE)
+            .addGap(0, 805, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE))
         );
 
         jtabSP.addTab("Món nướng", jPanel3);
@@ -406,14 +406,14 @@ public void loadTang2() {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 885, Short.MAX_VALUE)
+            .addGap(0, 805, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 885, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE))
         );
 
         jtabSP.addTab("Món nhẹ", jPanel4);
 
-        add(jtabSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 1090, 920));
+        add(jtabSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 1090, 840));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1053,10 +1053,10 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
 
             for (MonAn item : list) {
                 Object[] row = {
-                    item.getMaMon(),
-                item.getTenMon(),
-                item.getDonGia(),
-                    false
+                item.getMaMon(),
+                    item.getTenMon(),
+                    item.getDonGia(),
+                    item.getHinhAnh(),
                 };
                 model.addRow(row);
             }
@@ -1077,9 +1077,9 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
             for (MonAn item : list) {
                 Object[] row = {
                     item.getMaMon(),
-                item.getTenMon(),
-                item.getDonGia(),
-                    false
+                    item.getTenMon(),
+                    item.getDonGia(),
+                    item.getHinhAnh(),
                 };
                 model.addRow(row);
             }
@@ -1099,10 +1099,10 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
 
             for (MonAn item : list) {
                 Object[] row = {
+                    item.getMaMon(),
                     item.getTenMon(),
-                    item.getTenLoai(),
                     item.getDonGia(),
-                    false
+                    item.getHinhAnh(),
                 };
                 model.addRow(row);
             }
@@ -1122,10 +1122,10 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
 
             for (MonAn item : list) {
                 Object[] row = {
+                    item.getMaMon(),
                     item.getTenMon(),
-                    item.getTenLoai(),
                     item.getDonGia(),
-                    false
+                    item.getHinhAnh(),
                 };
                 model.addRow(row);
             }

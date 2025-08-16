@@ -20,7 +20,7 @@ public class BanAnImpl implements BanAnDAO {
     public static final String sqlTang = "SELECT * FROM KhuVuc";
     private static final String sqlUpdate = """
         UPDATE BanAn
-        SET SoBan = ?, TrangThai = ?, MaKV = ?
+        set TrangThai = ?
         WHERE MaBan = ?;
     """;
 
@@ -61,9 +61,15 @@ public BanAn create(BanAn ba) {
     @Override
     public void update(BanAn ba) {
         Object[] values = {
-            ba.getSoBan(),
             ba.getTrangThai(),
-            ba.getMaKV(),
+            ba.getMaBan()
+        };
+        UJdbc.executeUpdate(sqlUpdate, values);
+    }
+    public void updateTrangThai(String maBan) {
+        BanAn ba = new BanAn();
+        Object[] values = {
+            ba.getTrangThai(),
             ba.getMaBan()
         };
         UJdbc.executeUpdate(sqlUpdate, values);

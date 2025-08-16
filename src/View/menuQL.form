@@ -99,11 +99,10 @@
                   <Component id="lblLM" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lblMA" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="350" max="32767" attributes="0"/>
+                  <EmptySpace pref="382" max="32767" attributes="0"/>
                   <Component id="lblThoat" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblDangXuat" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

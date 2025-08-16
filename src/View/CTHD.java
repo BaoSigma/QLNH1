@@ -256,7 +256,7 @@ public class CTHD extends javax.swing.JPanel implements ChiTietHoaDonController{
     private void tblChiTietHoaDonAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblChiTietHoaDonAncestorAdded
         // TODO add your handling code here:
         DefaultTableModel model = new DefaultTableModel(
-            new Object[]{"Mã Hóa Đơn", "Mã Món", "Số Lượng", "Ghi Chú", "Trạng Thái", "Mã Vận Đơn"},
+            new Object[]{"Mã Hóa Đơn", "Mã Món", "Số Lượng", "Ghi Chú", "Trạng Thái"},
             0
         ) {
             @Override
@@ -413,21 +413,27 @@ public void update() {
 
 @Override
 public void delete() {
-    int row = tblChiTietHoaDon.getSelectedRow();
-    if (row == -1) {
-        UDialog.alert("Vui lòng chọn dòng để xóa!");
-        return;
-    }
+   int row = tblChiTietHoaDon.getSelectedRow();
+if (row == -1) {
+    UDialog.alert("Vui lòng chọn dòng để xóa!");
+    return;
+}
 
-    String maHD = tblChiTietHoaDon.getValueAt(row, 0).toString();
-    String maMon = tblChiTietHoaDon.getValueAt(row, 1).toString();
+// Lấy dữ liệu an toàn, tránh NullPointerException
+Object maHDObj = tblChiTietHoaDon.getValueAt(row, 0);
+Object maMonObj = tblChiTietHoaDon.getValueAt(row, 1);
 
-    if (UDialog.confirm("Bạn chắc chắn muốn xóa chi tiết này?")) {
-        dao.deleteById(maHD);
-        fillToTable();
-        clear();
-        UDialog.alert("Xóa thành công");
-    }
+
+String maHD = maHDObj.toString();
+String maMon = maMonObj.toString();
+
+if (UDialog.confirm("Bạn chắc chắn muốn xóa chi tiết này?")) {
+    dao.deleteById(maHD); // Nếu cần xóa theo cả maHD và maMon thì sửa dao.deleteById(maHD, maMon)
+    fillToTable();
+    clear();
+    UDialog.alert("Xóa thành công");
+}
+
 }
 
 @Override

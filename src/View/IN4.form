@@ -102,7 +102,7 @@
                   <Component id="lblAnh" min="-2" pref="200" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="btnChon" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="705" max="32767" attributes="0"/>
+                  <EmptySpace pref="615" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -165,10 +165,8 @@
                                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="txtEmail" min="-2" pref="193" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                                  <Component id="dcNgaySinh" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
-                                                  <Component id="txtTenNV" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="dcNgaySinh" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
+                                              <Component id="txtTenNV" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -176,7 +174,6 @@
                                           <Component id="txtLuong" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -230,7 +227,7 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btnSUa" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="687" max="32767" attributes="0"/>
+                  <EmptySpace pref="597" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

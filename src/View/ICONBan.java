@@ -8,10 +8,13 @@ import DAO.ModelDAO.DatBanDAO;
 import DAO.impl.KhuVucImp;
 import Model.BanAn;
 import Model.ChiTietDatBan;
+import Model.ChiTietHoaDon;
 import Model.DatBan;
+import Model.HoaDon;
 import Model.KhuVuc;
 import java.awt.Image;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -25,7 +28,8 @@ import javax.swing.JOptionPane;
 public class ICONBan extends javax.swing.JPanel {
     private BanAn b = new BanAn();
     private DatBan db = new DatBan();
-    
+    private HoaDon hd = new HoaDon();
+    private ChiTietHoaDon cthd = new ChiTietHoaDon();
     /**
      * Creates new form ICONBan
      */
@@ -36,36 +40,19 @@ public class ICONBan extends javax.swing.JPanel {
         
         init();
     }
-    private void showOrderDetail() {
+private void showOrderDetail() {
     KhuVucImp dao = new KhuVucImp();
-    String maDat = dao.getMaDatChuaThanhToan(b.getMaBan());
+    int soBan = Integer.parseInt(lblBan.getText().replace("Bàn : ", "").trim());
+    HoaDon hd = dao.findByIdHoaDon2(soBan);
 
-    if (maDat == null) {
-        JOptionPane.showMessageDialog(this, "Bàn chưa có phiếu đặt món!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-        return;
+    if (hd != null) {
+        OrderDetailDialog dialog = new OrderDetailDialog(null, hd);
+        dialog.setVisible(true);   // hiện form nhỏ
+    } else {
+        JOptionPane.showMessageDialog(this, 
+                "Không tìm thấy hóa đơn cho bàn " + soBan, 
+                "Thông báo", JOptionPane.WARNING_MESSAGE);
     }
-
-    List<ChiTietDatBan> dsMon = dao.getChiTietTheoMaDat(maDat);
-
-    if (dsMon.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Bàn chưa đặt món nào!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-        return;
-    }
-
-    StringBuilder sb = new StringBuilder("Chi tiết món đã đặt:\n");
-    for (ChiTietDatBan ct : dsMon) {
-        sb.append("- Mã Đặt: ").append(ct.getMaDat())
-          .append(", Mã Món: ").append(ct.getMaMon())
-          .append(", Số lượng: ").append(ct.getSoLuong());
-
-        if (ct.getGhiChu() != null && !ct.getGhiChu().isBlank()) {
-            sb.append(", Ghi chú: ").append(ct.getGhiChu());
-        }
-
-        sb.append("\n");
-    }
-
-    JOptionPane.showMessageDialog(this, sb.toString(), "Chi tiết đặt món", JOptionPane.INFORMATION_MESSAGE);
 }
 
 
@@ -118,9 +105,9 @@ public class ICONBan extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(lblGioDat, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblGioDat, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,43 +140,52 @@ public class ICONBan extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void init() {
-       lblBan.setText("Bàn : " + b.getSoBan());
+       KhuVucImp dao = new KhuVucImp();
+lblBan.setText("Bàn : " + b.getSoBan());
 
 String trangThai = b.getTrangThai();
 if ("Trống".equals(trangThai)) {
     lblTrangThai.setText("Trạng thái: " + trangThai);
     lblGioDat.setText("Chưa đặt");
-    String path = "src/img/BanTrong.png";
-    File file = new File(path);
-    if (file.exists()) {
-        ImageIcon icon = new ImageIcon(path);
-        Image img = icon.getImage().getScaledInstance(326, 325, Image.SCALE_SMOOTH);
-        lblAnh.setIcon(new ImageIcon(img));
-    } else {
-        lblAnh.setIcon(null);
-        System.out.println("Không tìm thấy ảnh: " + path);
-    }
+    setImage("src/img/BanTrong.png");
 
 } else if ("Đã đặt".equals(trangThai)) {
     lblTrangThai.setText("Trạng thái: " + trangThai);
-    lblGioDat.setText("Thời gian: " + db.getNgayDat() + " " + db.getGioDat());
-    String path = "src/img/BanDat.jpg";
-    File file = new File(path);
-    if (file.exists()) {
-        ImageIcon icon = new ImageIcon(path);
-        Image img = icon.getImage().getScaledInstance(326, 325, Image.SCALE_SMOOTH);
-        lblAnh.setIcon(new ImageIcon(img));
+
+    // ✅ Lấy mã bàn đúng
+    String maBan = b.getMaBan();   // nếu có getMaBan()
+    // String maBan = b.getSoBan(); // nếu MaBan trong DB lưu dạng số bàn
+
+    HoaDon hd = dao.findByIdHoaDon(maBan);
+
+    if (hd != null && hd.getNgayLap() != null) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        lblGioDat.setText("Thời gian: " + sdf.format(hd.getNgayLap()));
     } else {
-        lblAnh.setIcon(null);
-        System.out.println("Không tìm thấy ảnh: " + path);
+        lblGioDat.setText("Thời gian: Chưa có hóa đơn");
     }
+    
+    setImage("src/img/BanDat.jpg");
 
 } else {
-    // Nếu trạng thái khác hoặc null
     lblTrangThai.setText("Trạng thái: Không xác định");
     lblGioDat.setText("Chưa rõ");
     lblAnh.setIcon(null);
 }
 
 }
+
+private void setImage(String path) {
+    File file = new File(path);
+    if (file.exists()) {
+        ImageIcon icon = new ImageIcon(path);
+        Image img = icon.getImage().getScaledInstance(326, 325, Image.SCALE_SMOOTH);
+        lblAnh.setIcon(new ImageIcon(img));
+    } else {
+        lblAnh.setIcon(null);
+        System.out.println("Không tìm thấy ảnh: " + path);
+    }
 }
+
+}
+

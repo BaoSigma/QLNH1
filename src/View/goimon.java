@@ -191,10 +191,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1077, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,15 +233,15 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
+            .addGap(0, 1110, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1080, Short.MAX_VALUE))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 876, Short.MAX_VALUE)
+            .addGap(0, 805, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE))
         );
 
         jtabSP.addTab("Món nướng", jPanel3);
@@ -280,15 +277,15 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1080, Short.MAX_VALUE)
+            .addGap(0, 1110, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1080, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 876, Short.MAX_VALUE)
+            .addGap(0, 805, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE))
         );
 
         jtabSP.addTab("Món nhẹ", jPanel4);
@@ -322,7 +319,7 @@ tblGoimon.getModel().addTableModelListener(new TableModelListener() {
 
         jtabSP.addTab("Đồ uống", jScrollPane1);
 
-        add(jtabSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 1080, -1));
+        add(jtabSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 1110, 840));
 
         tblGoimon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -935,16 +932,16 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
 
             for (MonAn item : list) {
                 Object[] row = {
-                    item.getMaMon(),
-                item.getTenMon(),
-                item.getDonGia(),
-                    false
+                     item.getMaMon(),
+                    item.getTenMon(),
+                    item.getDonGia(),
+                    item.getHinhAnh(),
                 };
                 model.addRow(row);
             }
             }
             if (jtabSP.getTitleAt(jtabSP.getSelectedIndex()).equals("Món lẩu")) {
-                List<MonAn> list = dao.timkiemdouong(keyword);
+                List<MonAn> list = dao.timkiemmonlau(keyword);
 
             DefaultTableModel model = (DefaultTableModel) tblMonLau.getModel();
             model.setRowCount(0);
@@ -959,15 +956,16 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
             for (MonAn item : list) {
                 Object[] row = {
                     item.getMaMon(),
-                item.getTenMon(),
-                item.getDonGia(),
-                    false
+                    item.getTenMon(),
+                    item.getDonGia(),
+                    
+                    item.getHinhAnh(),
                 };
                 model.addRow(row);
             }
             }
             if (jtabSP.getTitleAt(jtabSP.getSelectedIndex()).equals("Món nướng")) {
-                List<MonAn> list = dao.timkiemdouong(keyword);
+                List<MonAn> list = dao.timkiemmonnuong(keyword);
 
             DefaultTableModel model = (DefaultTableModel) tblMonNuong.getModel();
             model.setRowCount(0);
@@ -981,16 +979,19 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
 
             for (MonAn item : list) {
                 Object[] row = {
+                    item.getMaMon(),
                     item.getTenMon(),
-                    item.getTenLoai(),
                     item.getDonGia(),
-                    false
+                    
+                    item.getHinhAnh(),
+                    
+
                 };
                 model.addRow(row);
             }
             }
             if (jtabSP.getTitleAt(jtabSP.getSelectedIndex()).equals("Món nhẹ")) {
-                List<MonAn> list = dao.timkiemdouong(keyword);
+                List<MonAn> list = dao.timkiemmonnhe(keyword);
 
             DefaultTableModel model = (DefaultTableModel) tblMonNhe.getModel();
             model.setRowCount(0);
@@ -1004,11 +1005,11 @@ DefaultTableModel model = (DefaultTableModel) tblDoUong.getModel();
 
             for (MonAn item : list) {
                 Object[] row = {
+                    item.getMaMon(),
                     item.getTenMon(),
-                    item.getTenLoai(),
                     item.getDonGia(),
-                    false
-                };
+                    
+                    item.getHinhAnh(),                };
                 model.addRow(row);
             }
             }

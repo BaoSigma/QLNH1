@@ -122,10 +122,10 @@ private void addEventForComboBox() {
 
         jPanel1.setBackground(new java.awt.Color(173, 139, 115));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Doanh Thu");
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Doanh Thu");
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
 
@@ -149,9 +149,9 @@ private void addEventForComboBox() {
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/expenses.png"))); // NOI18N
         jLabel2.setText("THỐNG KÊ DOANH THU");
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         Thang.setColor1(new java.awt.Color(227, 127, 20));
         Thang.setColor2(new java.awt.Color(240, 222, 132));
@@ -185,9 +185,9 @@ private void addEventForComboBox() {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/revenue.png"))); // NOI18N
         jLabel3.setText("Biểu đồ");
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         cboThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboThang.addActionListener(new java.awt.event.ActionListener() {
@@ -196,8 +196,8 @@ private void addEventForComboBox() {
             }
         });
 
-        lblDoanhThuThang.setText("Tổng doanh thu: ");
         lblDoanhThuThang.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblDoanhThuThang.setText("Tổng doanh thu: ");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -224,7 +224,7 @@ private void addEventForComboBox() {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -237,8 +237,8 @@ private void addEventForComboBox() {
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addGap(11, 11, 11)
                             .addComponent(lblDoanhThuThang)))
-                    .addGap(6, 6, 6)
-                    .addComponent(lineChart, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lineChart, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -267,10 +267,9 @@ private void addEventForComboBox() {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(98, 98, 98)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 886, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );

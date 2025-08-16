@@ -58,6 +58,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBanAn = new javax.swing.JTable();
@@ -370,6 +371,7 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
     private javax.swing.JButton btnvecuoi;
     private javax.swing.JButton btnvedau;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cboMaKV;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -384,15 +386,15 @@ public class BanAnView extends javax.swing.JPanel implements BanAnController{
     // End of variables declaration//GEN-END:variables
 @Override
 public void setForm(BanAn entity) {
-    for (int i = 0; i < cboMaKV.getItemCount(); i++) {
-        String item = cboMaKV.getItemAt(i); // VD: "KV01 - Tầng 1"
-        if (item.startsWith(entity.getMaKV())) {
-            cboMaKV.setSelectedIndex(i);
-            break;
-        }
+for (int i = 0; i < cboMaKV.getItemCount(); i++) {
+    String item = cboMaKV.getItemAt(i); // VD: "KV01 - Tầng 1"
+    String maKV = entity.getMaKV();
+    if (maKV != null && item.startsWith(maKV)) {
+        cboMaKV.setSelectedIndex(i);
+        break;
     }
+}
 
-    // Không cần set txtSoluongBan nếu không cập nhật số lượng nữa
 }
 
 @Override
@@ -404,14 +406,26 @@ public BanAn getForm() {
     String maKV = parts[0];
 
     ba.setMaKV(maKV);
-    ba.setTrangThai("Trống");
-
+    String trangThai = "Trống";
+    ba.setTrangThai(trangThai);
+    
     int soBan = Integer.parseInt(txtSoluongBan.getText());
     ba.setSoBan(soBan);
 
     return ba;
 }
-
+public BanAn getFormUpdate() {
+    BanAn ba = new BanAn();
+    String trangThai = "Trống";
+    ba.setTrangThai(trangThai);
+     int row = tblBanAn.getSelectedRow();
+    if (row == -1) {
+        UDialog.alert("Vui lòng chọn bàn ăn cần xóa!");
+    }
+    String maBan = tblBanAn.getValueAt(row, 0).toString(); // cột 0 là MaBan
+    ba.setMaBan(maBan);
+    return ba;
+}
 
 @Override
 public void fillToTable() {
@@ -480,11 +494,10 @@ public void create() {
 
 @Override
 public void update() {
-    if (!checkAll()) return;
-
+    BanAnImpl dao = new BanAnImpl();
     if (UDialog.confirm("Bạn có chắc chắn muốn cập nhật bàn ăn này?")) {
-        BanAn ba = this.getForm();
-        dao.update(ba);
+        BanAn entity = this.getFormUpdate();
+        dao.update(entity);
         this.fillToTable();
         this.clear();
         UDialog.alert("Cập nhật thành công!");

@@ -51,7 +51,7 @@ public class OrderImpl {
         cs.setString(1, entity.getMaBan());
         cs.setString(2, entity.getMaNV());
         cs.setTimestamp(3, new java.sql.Timestamp(System.currentTimeMillis())); // Ngày lập
-        cs.setDouble(4, 0); // Tổng tiền ban đầu
+        cs.setDouble(4, entity.getTongTien()); // Tổng tiền ban đầu
         cs.setString(5, entity.getHinhThucTT());
         cs.setString(6,entity.getTenKH());
         boolean hasResult = cs.execute();

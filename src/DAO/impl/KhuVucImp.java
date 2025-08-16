@@ -6,6 +6,8 @@ package DAO.impl;
 import DAO.ModelDAO.KhuVucDAO;
 import Model.BanAn;
 import Model.ChiTietDatBan;
+import Model.ChiTietHoaDon;
+import Model.HoaDon;
 import Model.KhuVuc;
 import Model.NhanVien;
 
@@ -26,6 +28,11 @@ public class KhuVucImp implements KhuVucDAO{
             kv.maKV,
             kv.tenKV
         FROM KhuVuc kv
+    """;
+     private static final String findAllHoaDonsql = """
+        SELECT 
+            *
+        FROM HoaDon 
     """;
     private static final String  createsql= "EXEC sp_ThemVaTraKhuVuc\n" +
 "    kv.maKV,\n" +
@@ -82,22 +89,28 @@ public class KhuVucImp implements KhuVucDAO{
     public List<KhuVuc> findAll() {
         return UQuery.getBeanList(KhuVuc.class, findAll);
     }
-
+    public List<HoaDon> findAllHoaDon() {
+        return UQuery.getBeanList(HoaDon.class, findAllHoaDonsql);
+    }
     @Override
     public KhuVuc findById(Object id) {
         return UQuery.getSingleBean(KhuVuc.class, findById, id);
     }
-    public String getMaDatChuaThanhToan(String maBan) {
-        String sql = "SELECT MaDat FROM DatBan WHERE MaBan = ? AND TrangThai = N'Chưa thanh toán'";
-        try (ResultSet rs = UJdbc.executeQuery(sql, maBan)) {
-            if (rs.next()) {
-                return rs.getString("MaDat");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+        public HoaDon findByIdHoaDon(Object id) {
+    String sql = "SELECT * FROM HoaDon WHERE MaBan = ?";
+    return UQuery.getSingleBean(HoaDon.class, sql, id);
+}
+public HoaDon findByIdHoaDon2(int soBan) {
+    String sql = """
+        SELECT TOP 1 hd.*
+        FROM HoaDon hd
+        JOIN BanAn b ON hd.MaBan = b.MaBan
+        WHERE b.SoBan = ?
+        ORDER BY hd.NgayLap DESC
+    """;
+    return UQuery.getSingleBean(HoaDon.class, sql, soBan);
+}
+
 
     public List<ChiTietDatBan> getChiTietTheoMaDat(String maDat) {
         List<ChiTietDatBan> list = new ArrayList<>();
